@@ -1,0 +1,2405 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Newtons Ai: Clinical-grade AI for doctors. Tools include AI OPD, Hospital Management, Neet Pg, Prescription, Treatment Planner, and ICU Assistant. Founded by Shiva Kolli, MBBS.">
+    <title>Newtons Ai: Best Ai for Doctors</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            /* Light Theme Colors */
+            --bg-light: #F9FAFB;
+            --surface-light: #FFFFFF;
+            --text-primary-light: #1F2937;
+            --text-secondary-light: #6B7280;
+            --heading-light: #111827;
+            --border-light: #E5E7EB;
+            --shadow-color-light-rgb: 0, 0, 0;
+            --primary-color-light: #2563EB; /* Blue */
+            --secondary-color-light: #10B981; /* Green/Teal */
+
+            /* Dark Theme Colors */
+            --bg-dark: #111827; /* Dark Blue/Gray */
+            --surface-dark: #1F2937; /* Slightly Lighter Dark Blue/Gray */
+            --text-primary-dark: #F3F4F6; /* Off-white */
+            --text-secondary-dark: #9CA3AF; /* Lighter Gray */
+            --heading-dark: #FFFFFF; /* White */
+            --border-dark: #374151; /* Darker Gray */
+            --shadow-color-dark-rgb: 0, 0, 0; /* Shadow color for dark can be dark or slightly lighter depending on effect */
+            --primary-color-dark: #3B82F6; /* Brighter Blue */
+            --secondary-color-dark: #14B8A6; /* Brighter Green/Teal */
+
+            /* Default Theme Variables (Initially Light) */
+            --app-bg: var(--bg-light);
+            --app-surface: var(--surface-light);
+            --app-text-primary: var(--text-primary-light);
+            --app-text-secondary: var(--text-secondary-light);
+            --app-heading: var(--heading-light);
+            --app-border: var(--border-light);
+            --app-shadow-color-rgb: var(--shadow-color-light-rgb);
+            --app-primary: var(--primary-color-light);
+            --app-secondary: var(--secondary-color-light);
+
+            /* RGB versions for RGBA usage */
+            --primary-color-light-rgb: 37, 99, 235;
+            --secondary-color-light-rgb: 16, 185, 129;
+            --primary-color-dark-rgb: 59, 130, 246;
+            --secondary-color-dark-rgb: 20, 184, 166;
+            --surface-light-rgb: 255, 255, 255;
+            --bg-dark-rgb: 17, 24, 39;
+            --surface-dark-rgb: 31, 41, 55;
+
+
+            --app-primary-rgb: var(--primary-color-light-rgb);
+            --app-secondary-rgb: var(--secondary-color-light-rgb);
+
+
+            /* UI Elements */
+            --card-shadow-opacity: 0.07;
+            --card-shadow-opacity-hover: 0.08;
+            --button-shadow-opacity: 0.06;
+
+            --card-shadow: 0 4px 8px -2px rgba(var(--app-shadow-color-rgb), var(--card-shadow-opacity)), 0 2px 4px -2px rgba(var(--app-shadow-color-rgb), calc(var(--card-shadow-opacity) - 0.03));
+            --card-hover-shadow: 0 10px 15px -3px rgba(var(--app-shadow-color-rgb), var(--card-shadow-opacity-hover)), 0 4px 6px -4px rgba(var(--app-shadow-color-rgb), calc(var(--card-shadow-opacity-hover) - 0.03));
+            --button-shadow: 0 1px 3px 0 rgba(var(--app-shadow-color-rgb), var(--button-shadow-opacity)), 0 1px 2px -1px rgba(var(--app-shadow-color-rgb), calc(var(--button-shadow-opacity) - 0.02));
+
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 16px;
+
+            --transition-fast: all 0.2s ease-in-out;
+            --transition-std: all 0.3s ease-in-out;
+
+            --section-spacing: clamp(60px, 10vw, 100px);
+            --container-padding: clamp(15px, 4vw, 20px); /* Base, overridden for mobile */
+
+            --app-focus-ring-color: rgba(var(--app-primary-rgb), 0.5);
+            --app-focus-ring-width: 3px;
+            --app-focus-ring-offset: 2px;
+        }
+
+        body.dark-theme {
+            --app-bg: var(--bg-dark);
+            --app-surface: var(--surface-dark);
+            --app-text-primary: var(--text-primary-dark);
+            --app-text-secondary: var(--text-secondary-dark);
+            --app-heading: var(--heading-dark);
+            --app-border: var(--border-dark);
+            --app-primary: var(--primary-color-dark);
+            --app-secondary: var(--secondary-color-dark);
+            --app-primary-rgb: var(--primary-color-dark-rgb);
+            --app-secondary-rgb: var(--secondary-color-dark-rgb);
+            --app-focus-ring-color: rgba(var(--app-primary-rgb), 0.6);
+            --app-shadow-color-rgb: var(--shadow-color-dark-rgb); /* Ensure shadows adapt if needed */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Adjust to match header height, JS will override */
+        }
+
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--app-bg);
+            color: var(--app-text-primary);
+            transition: background-color var(--transition-std), color var(--transition-std);
+            overflow-x: hidden;
+            line-height: 1.7;
+            min-height: 100vh;
+            font-size: 16px;
+        }
+
+        *:focus-visible {
+            outline: var(--app-focus-ring-width) solid var(--app-focus-ring-color);
+            outline-offset: var(--app-focus-ring-offset);
+            border-radius: var(--border-radius-sm);
+        }
+        *:focus:not(:focus-visible) {
+            outline: none;
+        }
+        .btn:focus-visible, .theme-toggle:focus-visible, .mobile-menu-btn:focus-visible, .slider-arrow:focus-visible, .scroll-top:focus-visible, .assistant-item:focus-visible {
+             border-radius: var(--border-radius-md);
+        }
+
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--app-heading);
+            line-height: 1.3;
+            margin-top: 0;
+            margin-bottom: 0.75em;
+            font-weight: 700;
+        }
+        h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 800; }
+        h2 { font-size: clamp(2rem, 5vw, 2.75rem); }
+        h3 { font-size: clamp(1.5rem, 4vw, 1.75rem); }
+        h4 { font-size: clamp(1.1rem, 3vw, 1.25rem); }
+
+
+        p {
+            margin-top: 0;
+            margin-bottom: 1.25em;
+            color: var(--app-text-secondary);
+        }
+
+        a {
+            color: var(--app-primary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        a:hover {
+            color: var(--app-secondary);
+            text-decoration: underline;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+            margin-bottom: 1.25em;
+        }
+        li {
+            margin-bottom: 0.5em;
+            color: var(--app-text-secondary);
+        }
+        ul ul, ol ol, ul ol, ol ul {
+            margin-bottom: 0;
+            margin-top: 0.5em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--container-padding);
+            padding-right: var(--container-padding);
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(var(--surface-light-rgb), 0.85);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            box-shadow: 0 1px 2px 0 rgba(var(--app-shadow-color-rgb), 0.05);
+            transition: background-color var(--transition-std), box-shadow var(--transition-std);
+        }
+        body.dark-theme header {
+            background-color: rgba(var(--surface-dark-rgb), 0.85);
+            box-shadow: 0 1px 2px 0 rgba(var(--app-shadow-color-rgb), 0.1); /* Slightly adjusted shadow for dark */
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: clamp(1.5rem, 4vw, 1.75rem);
+            color: var(--app-primary);
+            text-decoration: none;
+        }
+        .logo:hover {
+            text-decoration: none;
+            color: var(--app-secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: clamp(16px, 3vw, 32px);
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--app-text-primary);
+            font-weight: 600;
+            position: relative;
+            padding: 8px 4px;
+            transition: color var(--transition-fast);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--app-primary);
+            transition: width var(--transition-fast);
+            border-radius: 1px;
+        }
+
+        nav a:hover, nav a.nav-active {
+            color: var(--app-primary);
+        }
+        nav a:hover::after, nav a.nav-active::after {
+            width: 100%;
+        }
+        nav a:hover { text-decoration: none; }
+
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid transparent;
+            color: var(--app-text-secondary);
+            cursor: pointer;
+            font-size: 1.35rem;
+            padding: 10px;
+            border-radius: 50%;
+            transition: color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+            line-height: 1;
+        }
+        .theme-toggle:hover {
+            color: var(--app-primary);
+            background-color: rgba(var(--app-primary-rgb), 0.1);
+            transform: scale(1.1);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--app-text-secondary);
+            font-size: 1.6rem;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            transition: color var(--transition-fast), background-color var(--transition-fast);
+            line-height: 1;
+        }
+        .mobile-menu-btn:hover {
+            color: var(--app-primary);
+            background-color: rgba(var(--app-primary-rgb), 0.1);
+        }
+
+
+        /* Hero Section */
+        #hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--app-heading); /* Changed from --app-text-primary for better heading consistency */
+            overflow: hidden;
+            padding-top: 80px; /* Match header height */
+            text-align: center;
+        }
+
+        body:not(.dark-theme) #hero {
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(var(--primary-color-light-rgb), 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(var(--secondary-color-light-rgb), 0.08) 0%, transparent 50%);
+            background-color: var(--app-bg);
+        }
+        body.dark-theme #hero {
+             background-image:
+                radial-gradient(circle at 15% 25%, rgba(var(--primary-color-dark-rgb), 0.18) 0%, transparent 50%),
+                radial-gradient(circle at 85% 75%, rgba(var(--secondary-color-dark-rgb), 0.12) 0%, transparent 60%);
+            background-color: var(--app-bg);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 var(--container-padding);
+        }
+
+        .hero-title {
+            font-size: clamp(2.8rem, 7vw, 4.2rem);
+            font-weight: 800;
+            margin-bottom: 0.4em;
+            line-height: 1.1;
+            color: var(--app-heading); /* Ensured hero title uses heading color */
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.4rem);
+            margin-bottom: 0.75em;
+            font-weight: 400;
+            color: var(--app-text-secondary);
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* Removed specific Dr. Shiva Kolli styles here as it's better handled in About */
+
+        .hero-tagline {
+            font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+            margin-bottom: 1.5em;
+            font-weight: 700;
+            color: var(--app-primary);
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 32px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition-std);
+            cursor: pointer;
+            font-size: 1rem;
+            border: 2px solid transparent;
+            box-shadow: var(--button-shadow);
+            text-align: center;
+            line-height: 1.4;
+        }
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: var(--card-hover-shadow);
+            text-decoration: none;
+        }
+        .btn:active {
+            transform: translateY(0px) scale(0.98);
+            box-shadow: var(--button-shadow);
+        }
+
+        .btn-primary {
+            background-color: var(--app-primary);
+            color: var(--surface-light); /* White text on primary bg */
+            border-color: var(--app-primary);
+        }
+        body.dark-theme .btn-primary {
+            color: var(--bg-dark); /* Dark text on bright primary bg in dark mode */
+        }
+        .btn-primary:hover {
+            background-color: var(--app-secondary);
+            border-color: var(--app-secondary);
+            color: var(--surface-light);
+        }
+        body.dark-theme .btn-primary:hover {
+            color: var(--bg-dark);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--app-primary);
+            border-color: var(--app-primary);
+        }
+        .btn-secondary:hover {
+            background-color: rgba(var(--app-primary-rgb), 0.1);
+            color: var(--app-primary); /* Ensure text color remains primary */
+        }
+        body.dark-theme .btn-secondary:hover {
+             background-color: rgba(var(--app-primary-rgb), 0.15);
+        }
+
+
+        .hero-decoration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .hero-decoration::before,
+        .hero-decoration::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.08;
+            animation: float 12s ease-in-out infinite alternate;
+        }
+        body.dark-theme .hero-decoration::before,
+        body.dark-theme .hero-decoration::after {
+            opacity: 0.12; /* Slightly more visible decoration in dark mode */
+        }
+
+        .hero-decoration::before {
+            width: clamp(200px, 30vw, 400px);
+            height: clamp(200px, 30vw, 400px);
+            background: var(--app-primary);
+            top: -10%; right: -15%;
+        }
+        .hero-decoration::after {
+            width: clamp(300px, 40vw, 600px);
+            height: clamp(300px, 40vw, 600px);
+            background: var(--app-secondary);
+            bottom: -15%; left: -20%;
+            animation-duration: 15s;
+            animation-direction: alternate-reverse;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(15px, -10px) scale(1.03); }
+            100% { transform: translate(-10px, 15px) scale(0.97); }
+        }
+
+        /* Section Styling */
+        section {
+            padding-top: var(--section-spacing);
+            padding-bottom: var(--section-spacing);
+            position: relative;
+            overflow: hidden; /* Good for containing decorative elements or animations */
+        }
+        #about { background-color: var(--app-bg); }
+        #ai-for-doctors.bg-surface, /* Explicitly use class for alternating backgrounds */
+        #guide.bg-surface,
+        #pricing.bg-surface,
+        #testimonials.bg-surface,
+        #download-app.bg-surface {
+            background-color: var(--app-surface);
+        }
+        #contact { background-color: var(--app-bg); }
+
+
+        .section-heading {
+            font-weight: 700;
+            margin-bottom: 16px; /* Space before underline */
+            text-align: center;
+            position: relative;
+            color: var(--app-heading);
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -12px; /* Position underline below text */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--app-primary), var(--app-secondary));
+            border-radius: var(--border-radius-sm);
+        }
+
+        .section-subheading {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 56px; /* Increased bottom margin for more space */
+            color: var(--app-text-secondary);
+            font-size: 1.05rem; /* Slightly larger subheading */
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            justify-content: center; /* Center content if it doesn't fill space */
+        }
+        .about-text {
+            flex: 1;
+            max-width: 800px;
+            margin: 0 auto; /* Center text block */
+        }
+        .about-text p {
+            font-size: 1.05rem;
+            text-align: center;
+            line-height: 1.8;
+            margin-bottom: 1.5em;
+        }
+        .stats-row {
+            display: flex;
+            gap: 24px;
+            margin-top: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .stat-card {
+            flex: 1;
+            min-width: 220px;
+            max-width: 280px;
+            background-color: var(--app-surface);
+            border-radius: var(--border-radius-lg);
+            padding: 28px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: transform var(--transition-std), box-shadow var(--transition-std);
+            border: 1px solid var(--app-border);
+        }
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-hover-shadow);
+        }
+        .stat-number {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            font-weight: 700;
+            color: var(--app-primary);
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-weight: 500;
+            color: var(--app-text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* AI Systems Section & Pricing Section Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+            gap: 28px;
+            margin-top: 48px;
+        }
+        .system-card { /* Base card style for AI tools and pricing plans */
+            background-color: var(--app-bg); /* Default, may be overridden by section specific bg */
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition-std);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--app-border);
+        }
+        #ai-for-doctors.bg-surface .system-card,
+        #pricing.bg-surface .system-card {
+            background-color: var(--app-bg); /* Cards on surface bg should be app-bg for contrast */
+        }
+        body.dark-theme #ai-for-doctors.bg-surface .system-card,
+        body.dark-theme #pricing.bg-surface .system-card {
+             background-color: var(--bg-dark); /* Ensure correct contrast in dark mode */
+        }
+
+
+        .system-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--card-hover-shadow);
+        }
+        .system-card-content {
+            padding: 28px;
+            flex-grow: 1; /* Allow content to grow */
+            display: flex;
+            flex-direction: column; /* Ensure vertical layout of children */
+        }
+        .system-card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--app-heading);
+        }
+        .system-card-desc {
+            color: var(--app-text-secondary);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            flex-grow: 1; /* Allow description to take available space if no list/button */
+        }
+        .system-card-content ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 24px;
+            flex-grow: 1; /* Allows list to push button down if content is variable */
+        }
+        .system-card-content li {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            color: var(--app-text-secondary);
+            padding-left: 24px;
+            position: relative;
+        }
+        .system-card-content li::before {
+            content: '\f00c'; /* FontAwesome check icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--app-secondary);
+            position: absolute;
+            left: 0;
+            top: 2px; /* Adjust for vertical alignment */
+        }
+
+        .system-card-link {
+            color: var(--app-primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex; /* Align icon and text */
+            align-items: center;
+            gap: 8px;
+            margin-top: auto; /* Push to bottom if card content is short */
+            transition: color var(--transition-fast), transform var(--transition-fast);
+            padding: 8px 0; /* Clickable area */
+        }
+        .system-card-link:hover {
+            color: var(--app-secondary);
+            transform: translateX(4px);
+            text-decoration: underline;
+        }
+        .system-card-link i {
+            transition: transform var(--transition-fast);
+        }
+        .system-card-link:hover i {
+            transform: translateX(2px); /* Subtle arrow movement */
+        }
+        .system-card-content > .btn { /* For buttons directly in card content */
+            margin-top: auto; /* Push to bottom */
+        }
+
+        /* Pricing Section Specific Styles */
+        .pricing-grid {
+            /* Inherits from .card-grid */
+        }
+
+        .pricing-card {
+            position: relative; /* For featured ribbon */
+            text-align: center;
+            padding-bottom: 20px; /* Ensure space for button */
+        }
+
+        .pricing-card .system-card-content {
+             align-items: center; /* Center title, desc, price block */
+        }
+
+        .pricing-card .system-card-title {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .pricing-card .system-card-desc {
+            font-size: 1rem;
+            margin-bottom: 24px;
+            flex-grow: 0; /* Don't let short descriptions mess with layout */
+        }
+
+        .pricing-card .features-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 24px;
+            text-align: left;
+            width: 100%;
+            max-width: 280px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-card .features-list li {
+            margin-bottom: 12px;
+            font-size: 1rem; /* Larger font for features */
+            color: var(--app-text-primary); /* More prominent feature text */
+            line-height: 1.8;
+            padding-left: 28px;
+            position: relative;
+        }
+
+         .pricing-card .features-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--app-secondary);
+            position: absolute;
+            left: 0;
+            top: 7px; /* Adjusted for larger font and line-height */
+        }
+
+        .pricing-card .price {
+            margin-bottom: 24px;
+            font-size: 2.5rem; /* Base size for current price */
+            font-weight: 700;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.1;
+        }
+
+        .pricing-card .current-price {
+            font-size: 1em; /* Relative to .price font-size */
+            font-weight: 800;
+            color: var(--app-heading);
+            margin-bottom: 4px;
+        }
+        .pricing-card.featured .current-price {
+            color: var(--app-primary); /* Highlight featured price */
+        }
+
+        .pricing-card .original-price {
+            font-size: 0.6em;
+            color: var(--app-text-secondary);
+            text-decoration: line-through;
+        }
+
+        .pricing-card .price-term {
+            font-size: 0.5em;
+            color: var(--app-text-secondary);
+            font-weight: 400;
+            margin-top: 4px;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--app-primary);
+            transform: scale(1.03) translateY(-15px);
+            z-index: 10; /* Bring to front */
+            overflow: visible; /* Allow ribbon to be visible */
+        }
+         .pricing-card.featured:hover {
+             transform: scale(1.05) translateY(-20px);
+             box-shadow: 0 12px 35px rgba(var(--app-primary-rgb), 0.25);
+         }
+
+        .pricing-card.featured::before { /* "Most Popular" ribbon */
+            content: "Most Popular";
+            position: absolute;
+            width: 180px;
+            padding: 7px 0;
+            line-height: 1.3;
+            background: var(--app-primary);
+            color: var(--surface-light);
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 3px 6px rgba(var(--app-shadow-color-rgb), 0.2);
+            z-index: 1; /* Above card content */
+            top: 22px;
+            right: -48px;
+            transform: rotate(45deg);
+        }
+        body.dark-theme .pricing-card.featured::before {
+            color: var(--bg-dark); /* Dark text for contrast on bright ribbon */
+        }
+
+        .savings-badge {
+            background-color: rgba(var(--app-secondary-rgb), 0.15);
+            color: var(--app-secondary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: var(--border-radius-md);
+            margin-top: 8px;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            display: inline-block;
+            border: 1px solid var(--app-secondary);
+        }
+        body.dark-theme .savings-badge {
+            background-color: rgba(var(--app-secondary-rgb), 0.25);
+        }
+
+        .savings-badge.primary-savings { /* For featured plan */
+            background-color: rgba(var(--app-primary-rgb), 0.15);
+            color: var(--app-primary);
+            border-color: var(--app-primary);
+        }
+        body.dark-theme .savings-badge.primary-savings {
+            background-color: rgba(var(--app-primary-rgb), 0.25);
+        }
+
+        .feature-accent { /* For highlighting "(Unlimited)" */
+            font-weight: 600;
+            color: var(--app-text-primary);
+            margin-left: 4px;
+        }
+        .pricing-card.featured .feature-accent {
+            color: var(--app-primary); /* Accent color in featured plan */
+        }
+
+        .pricing-card.featured .features-list li::before {
+            color: var(--app-primary); /* Checkmark color in featured plan */
+        }
+
+        .pricing-card .btn-featured-cta { /* Special button for featured plan */
+            padding: 15px 30px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            background-image: linear-gradient(45deg, var(--app-primary) 0%, color-mix(in srgb, var(--app-primary) 85%, var(--app-secondary) 15%) 100%);
+            border: none;
+            color: var(--surface-light);
+        }
+        body.dark-theme .pricing-card .btn-featured-cta {
+            color: var(--bg-dark);
+        }
+
+        .pricing-card .btn-featured-cta:hover {
+            background-image: linear-gradient(45deg, color-mix(in srgb, var(--app-primary) 85%, var(--app-secondary) 15%) 0%, var(--app-secondary) 100%);
+        }
+
+        .pricing-card .btn-secondary {
+            border-width: 2px; /* Ensure consistent with other .btn definitions */
+        }
+
+        .pricing-card .btn { /* Button inside pricing card */
+            width: 100%;
+            max-width: 280px; /* Consistent max width for buttons */
+        }
+
+
+        /* Testimonials Section */
+        .testimonial-slider-container {
+            position: relative;
+            margin-top: 48px;
+            padding: 0 30px; /* Space for arrows */
+        }
+        @media (max-width: 768px) {
+            .testimonial-slider-container {
+                padding: 0; /* Relies on main .container padding on smaller screens */
+            }
+        }
+        .testimonial-grid {
+            display: flex;
+            overflow-x: auto;
+            gap: 24px;
+            padding: 10px 2px 20px 2px; /* Padding for shadow visibility and scrollbar */
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: var(--app-primary) rgba(var(--app-primary-rgb), 0.1);
+        }
+        .testimonial-grid::-webkit-scrollbar { height: 8px; background-color: rgba(var(--app-primary-rgb), 0.1); border-radius: 4px;}
+        .testimonial-grid::-webkit-scrollbar-thumb {
+            background-color: var(--app-primary);
+            border-radius: 4px;
+            border: 2px solid transparent; /* Ensure thumb is visually distinct from track */
+             background-clip: content-box; /* Makes border act as padding */
+        }
+         .testimonial-grid::-webkit-scrollbar-thumb:hover {
+            background-color: var(--app-secondary);
+        }
+        .testimonial-card {
+            flex: 0 0 clamp(280px, 80vw, 350px); /* Responsive card width */
+            scroll-snap-align: start; /* Snap to start of card */
+            background-color: var(--app-bg); /* Different from section bg if section is --app-surface */
+            border-radius: var(--border-radius-lg);
+            padding: 28px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition-std);
+            position: relative;
+            border: 1px solid var(--app-border);
+            display: flex;
+            flex-direction: column;
+        }
+        #testimonials.bg-surface .testimonial-card {
+            background-color: var(--app-bg); /* Ensure card stands out on surface background */
+        }
+         body.dark-theme #testimonials.bg-surface .testimonial-card {
+            background-color: var(--bg-dark);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--card-hover-shadow);
+        }
+        .quote-icon {
+            position: absolute;
+            color: rgba(var(--app-primary-rgb), 0.08); /* Subtle quote icon */
+            top: 20px;
+            right: 20px;
+            font-size: 3rem;
+        }
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 24px;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            color: var(--app-text-secondary);
+            flex-grow: 1; /* Ensure text takes up space */
+        }
+        .testimonial-person {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: auto; /* Push to bottom */
+        }
+        .testimonial-info h4 { /* Person's name */
+            margin: 0 0 4px 0;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--app-heading);
+        }
+        .testimonial-info p { /* Person's title/role */
+            margin: 0;
+            color: var(--app-text-secondary);
+            font-size: 0.9rem;
+        }
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--app-surface);
+            border: 1px solid var(--app-border);
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(var(--app-shadow-color-rgb), 0.08);
+            transition: var(--transition-std);
+            color: var(--app-primary);
+        }
+        .slider-arrow:hover {
+            background-color: var(--app-primary);
+            color: var(--surface-light); /* White icon on primary bg */
+            border-color: var(--app-primary);
+            box-shadow: 0 4px 12px rgba(var(--app-shadow-color-rgb), 0.12);
+            transform: translateY(-50%) scale(1.05);
+        }
+        body.dark-theme .slider-arrow:hover {
+            color: var(--bg-dark); /* Dark icon on bright primary bg in dark mode */
+        }
+        .left-arrow { left: -24px; }
+        .right-arrow { right: -24px; }
+         @media (max-width: 992px) { /* Adjust arrow position for medium screens */
+            .left-arrow { left: -10px; }
+            .right-arrow { right: -10px; }
+        }
+        @media (max-width: 768px) { /* Adjust arrow position for small screens */
+            .left-arrow { left: 10px; }
+            .right-arrow { right: 10px; }
+            .slider-arrow { width: 40px; height: 40px; font-size: 0.9rem; }
+        }
+
+
+        /* Contact Section */
+        .contact-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 48px;
+            gap: 32px;
+        }
+        .contact-info {
+            max-width: 600px;
+            width: 100%;
+            background-color: var(--app-surface);
+            padding: 32px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--app-border);
+        }
+        .contact-item {
+            display: flex;
+            align-items: flex-start; /* Align icon with top of text block */
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+        .contact-item:last-child { margin-bottom: 0; }
+        .contact-icon {
+            font-size: 1.3rem;
+            color: var(--app-primary);
+            background-color: rgba(var(--app-primary-rgb), 0.1);
+            padding: 12px;
+            border-radius: var(--border-radius-md);
+            width: 48px;
+            height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0; /* Prevent icon from shrinking */
+        }
+        .contact-text h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--app-heading);
+        }
+        .contact-text p, .contact-text a {
+            margin: 0;
+            color: var(--app-text-secondary);
+            font-size: 0.95rem;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+        .contact-text a:hover {
+            color: var(--app-primary);
+            text-decoration: underline;
+        }
+        .contact-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            width: 100%;
+            max-width: 600px;
+        }
+        .contact-btn {
+            flex-grow: 1;
+            min-width: 180px;
+        }
+
+        /* Guide Section & Download App Section Styling */
+        .guide-content { /* Shared by Guide and Download App sections */
+            margin-top: 24px;
+        }
+        .guide-content > h3 { /* Top-level heading within guide content */
+            margin-top: 0;
+            margin-bottom: 1em;
+            font-size: 1.6rem;
+        }
+         .guide-content > h4 { /* Sub-heading for tab selection etc. */
+            margin-top: 1.5em;
+            margin-bottom: 0.75em;
+            font-size: 1.3rem;
+        }
+
+        .assistant-list { /* Container for tab buttons */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 32px;
+            justify-content: center; /* Center tabs if they don't fill width */
+        }
+
+        .assistant-item { /* Tab button */
+            background-color: var(--app-surface);
+            color: var(--app-text-primary);
+            padding: 12px 20px;
+            border-radius: var(--border-radius-md);
+            border: 1px solid var(--app-border);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition-std);
+            cursor: pointer;
+            box-shadow: var(--button-shadow);
+        }
+        /* Ensure tabs contrast with section background if section is .bg-surface */
+        #guide.bg-surface .assistant-item,
+        #download-app.bg-surface .assistant-item {
+             background-color: var(--app-bg); /* Use app-bg for tabs on a surface background */
+        }
+        body.dark-theme #guide.bg-surface .assistant-item,
+        body.dark-theme #download-app.bg-surface .assistant-item {
+             background-color: var(--bg-dark);
+        }
+
+
+        .assistant-item:hover {
+            background-color: rgba(var(--app-primary-rgb), 0.1);
+            color: var(--app-primary);
+            border-color: var(--app-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--card-hover-shadow);
+        }
+        body.dark-theme .assistant-item:hover {
+             color: var(--app-primary); /* Ensure text is primary on hover */
+        }
+        .assistant-item:active {
+            color: var(--app-primary); /* Change text color to blue when clicked */
+        }
+        .assistant-item.active { /* Active tab style */
+            background-color: var(--app-primary);
+            color: var(--app-primary); /* Change text color to blue when active */
+            border-color: var(--app-primary);
+            box-shadow: 0 4px 8px rgba(var(--app-primary-rgb), 0.2);
+            transform: translateY(-1px);
+        }
+        body.dark-theme .assistant-item.active {
+             color: var(--app-primary); /* Change text color to blue when active in dark mode */
+        }
+
+        .assistant-guide-details { /* Tab panel content */
+            display: none; /* Hidden by default, shown by JS */
+            margin-top: 32px;
+            padding: 24px;
+            background-color: var(--app-bg);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid var(--app-border);
+            box-shadow: var(--card-shadow);
+            animation: fadeInContent 0.5s ease-out;
+        }
+        /* Ensure tab panels contrast with section background if section is .bg-surface */
+        #guide.bg-surface .assistant-guide-details,
+        #download-app.bg-surface .assistant-guide-details {
+            background-color: var(--app-surface); /* Use app-surface for panels on a surface background */
+        }
+         body.dark-theme #guide.bg-surface .assistant-guide-details,
+         body.dark-theme #download-app.bg-surface .assistant-guide-details {
+            background-color: var(--surface-dark);
+         }
+
+
+        .assistant-guide-details.active { /* Active tab panel */
+            display: block;
+        }
+        .assistant-guide-details > h4 { /* Heading inside tab panel */
+             margin-top: 0;
+             margin-bottom: 1.2em;
+             font-size: 1.4rem;
+             color: var(--app-heading);
+        }
+
+        @keyframes fadeInContent {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .guide-steps { /* Grid for steps within a guide */
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .guide-step-card { /* Card for individual step */
+            background-color: var(--app-surface);
+            border-radius: var(--border-radius-lg);
+            padding: 24px;
+            box-shadow: var(--card-shadow);
+            transition: transform var(--transition-std), box-shadow var(--transition-std);
+            border: 1px solid var(--app-border);
+            display: flex;
+            flex-direction: column;
+        }
+        /* Ensure step cards contrast with tab panel background */
+        #guide.bg-surface .assistant-guide-details .guide-step-card,
+        #download-app.bg-surface .assistant-guide-details .guide-step-card {
+             background-color: var(--app-bg); /* Use app-bg for cards inside a surface-bg panel */
+        }
+        body.dark-theme #guide.bg-surface .assistant-guide-details .guide-step-card,
+        body.dark-theme #download-app.bg-surface .assistant-guide-details .guide-step-card {
+             background-color: var(--bg-dark);
+        }
+
+        .guide-step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+        }
+        .guide-step-card h4 { /* Step title */
+            color: var(--app-primary);
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .guide-step-card p {
+            color: var(--app-text-secondary);
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .guide-step-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            color: var(--app-text-secondary);
+        }
+        .guide-step-card li {
+            color: inherit;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            position: relative;
+            padding-left: 24px;
+        }
+        .guide-step-card li::before { /* Custom bullet point */
+            content: '\2022'; /* Unicode bullet */
+            color: var(--app-primary);
+            font-weight: bold;
+            display: inline-block;
+            position: absolute;
+            left: 4px;
+            top: 1px; /* Adjust alignment */
+        }
+        .guide-step-card ul a { /* Links within guide steps */
+            font-weight: 500;
+            color: var(--app-primary);
+        }
+        .guide-step-card ul a:hover {
+            color: var(--app-secondary);
+            text-decoration: underline;
+        }
+
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-dark); /* Always dark footer */
+            color: var(--text-secondary-dark);
+            padding: 80px 0 40px;
+            border-top: 1px solid var(--border-dark);
+        }
+        footer h3 { color: var(--heading-dark); font-size: 1.3rem; }
+        footer p { color: var(--text-secondary-dark); }
+        footer a { color: var(--text-secondary-dark); } /* Default link color in footer */
+        footer a:hover { color: var(--secondary-color-dark); text-decoration: underline; }
+        footer .footer-quote { color: var(--text-secondary-dark); } /* Ensure quote text color */
+
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+            justify-content: space-between;
+        }
+        .footer-col { flex: 1; min-width: 220px; }
+        .footer-col h3 {
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .footer-col h3::after { /* Accent under footer column titles */
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color-dark), var(--secondary-color-dark));
+            border-radius: 2px;
+        }
+        .footer-links { list-style: none; padding: 0; margin: 0; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a {
+            transition: var(--transition-fast);
+            padding: 4px 0; /* Clickable area */
+            display: inline-block;
+        }
+        .footer-links a:hover { text-decoration: none; } /* Removed padding-left on hover */
+        .footer-links a i { margin-right: 10px; width: 1.2em; text-align: center; } /* Icon alignment */
+
+        .footer-quote {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            padding-left: 1em; /* Indent quote */
+            border-left: 3px solid var(--secondary-color-dark); /* Accent border */
+        }
+        .footer-quote::before, .footer-quote::after { display: none; } /* Remove default blockquote styling */
+
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid var(--border-dark);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .heart {
+            color: #e91e63; /* Pink heart */
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+            font-size: 0.9em;
+            vertical-align: baseline;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 52px;
+            height: 52px;
+            background-color: var(--app-primary);
+            color: var(--surface-light); /* White icon */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-std);
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(var(--app-shadow-color-rgb), 0.15);
+            border: none;
+            font-size: 1.2rem;
+        }
+        body.dark-theme .scroll-top {
+            color: var(--bg-dark); /* Dark icon on bright primary bg in dark mode */
+        }
+        .scroll-top.active { opacity: 1; visibility: visible; }
+        .scroll-top:hover {
+            background-color: var(--app-secondary);
+            transform: scale(1.1) rotate(5deg); /* Fun hover effect */
+        }
+
+        /* Animations */
+        .animated { opacity: 0; } /* Initial state for JS-triggered animations */
+        .fadeIn {
+            animation: fadeInAnimation 0.8s ease forwards;
+        }
+        @keyframes fadeInAnimation {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+
+        /* Responsive Styles */
+        @media (max-width: 992px) { /* Tablet and larger mobile */
+            html { scroll-padding-top: 72px; } /* Adjust for potentially shorter header */
+            .about-content { flex-direction: column; gap: 32px; text-align: center; }
+            .testimonial-slider-container { padding: 0 10px; }
+        }
+
+        @media (max-width: 768px) { /* Mobile */
+            html { scroll-padding-top: 64px; }
+
+            .container { /* Reduced padding for smaller screens */
+                padding-left: 10px; /* MODIFIED: Was 12px */
+                padding-right: 10px; /* MODIFIED: Was 12px */
+            }
+
+            .header-content { height: 64px; }
+            .logo { font-size: 1.3rem; }
+            .nav-desktop { display: none; } /* Hide desktop nav */
+            .mobile-menu-btn { display: block; } /* Show mobile menu button */
+            .header-actions { display: flex; align-items: center; gap: 8px; } /* Group theme toggle and menu btn */
+            .theme-toggle { order: 1; } /* Order of items in header actions */
+            .mobile-menu-btn { order: 2; }
+
+            #hero { padding-top: 64px; min-height: auto; padding-bottom: 50px; }
+            .hero-content { padding: 20px 0; } /* Rely on container padding */
+            .btn-row { flex-direction: column; gap: 16px; align-items: center; } /* Stack buttons */
+            .btn { width: 100%; max-width: 320px; padding: 14px; font-size: 1rem; } /* Full-width buttons on mobile */
+
+            .section-subheading { margin-bottom: 40px; font-size: 1rem; }
+            .about-text p { font-size: 1rem; }
+            .stats-row { flex-direction: column; gap: 20px; align-items: center;}
+            .stat-card { max-width: 100%; width: 300px; padding: 20px; }
+
+            .card-grid { gap: 20px; }
+
+            .pricing-card.featured {
+                transform: scale(1.02) translateY(-10px);
+            }
+            .pricing-card.featured:hover {
+                transform: scale(1.03) translateY(-12px);
+            }
+            .pricing-card.featured::before { /* Adjust ribbon for mobile */
+                width: 140px;
+                top: 18px;
+                right: -30px;
+                font-size: 0.8rem;
+            }
+
+
+            .system-card-content { padding: 20px; }
+            .system-card-title { font-size: 1.2rem; }
+            .system-card-desc { font-size: 0.9rem; }
+
+            .testimonial-grid { gap: 16px; padding-bottom: 16px; }
+            .testimonial-card { padding: 20px; }
+
+            .contact-content { gap: 24px; }
+            .contact-info { padding: 20px; }
+            .contact-item { flex-direction: column; align-items: center; text-align: center; gap: 12px; }
+            .contact-icon { margin-bottom: 8px; } /* Space between icon and text when stacked */
+            .contact-buttons { flex-direction: column; gap: 12px; align-items: center; }
+            .contact-btn { width: 100%; max-width: 320px; padding: 14px; }
+
+            .footer-content { flex-direction: column; gap: 32px; text-align: center; }
+            .footer-col { min-width: auto; }
+            .footer-col h3::after { left: 50%; transform: translateX(-50%); } /* Center accent line */
+            .footer-links a i { margin-right: 8px; }
+            .footer-bottom { padding: 20px 0 0; font-size: 0.85rem; }
+            .assistant-list { justify-content: center; }
+
+            .assistant-guide-details { padding: 20px; }
+            .guide-step-card { padding: 20px; }
+
+            /* Footer Mobile Optimization */
+            footer .footer-content {
+                flex-direction: column;
+                gap: 32px;
+                text-align: center;
+            }
+            footer .footer-col {
+                min-width: auto;
+                width: 100%;
+            }
+            footer .footer-col h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            footer .footer-links {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) { /* Very small screens */
+            .container {
+                padding-left: 8px; /* MODIFIED: Was 10px */
+                padding-right: 8px; /* MODIFIED: Was 10px */
+            }
+
+            .logo { font-size: 1.2rem; }
+            .hero-title { font-size: clamp(2.2rem, 10vw, 2.8rem); }
+            .hero-tagline { font-size: clamp(1.2rem, 5vw, 1.5rem); }
+            .hero-subtitle { font-size: clamp(1rem, 4vw, 1.2rem); }
+            .btn { font-size: 0.95rem; max-width: 280px; }
+            .contact-btn { max-width: 280px; }
+
+
+            .pricing-card.featured::before { /* Further adjust ribbon */
+                width: 110px;
+                padding: 4px 0;
+                font-size: 0.65rem;
+                top: 12px;
+                right: -20px;
+            }
+            .pricing-card .features-list {
+                 max-width: none; /* Allow list to use full card width */
+            }
+            .pricing-card .btn {
+                max-width: none; /* Allow button to use full card width */
+            }
+
+            .stat-card,
+            .system-card-content,
+            .testimonial-card,
+            .contact-info,
+            .assistant-guide-details,
+            .guide-step-card {
+                padding: 16px; /* Further reduce padding */
+            }
+        }
+
+
+        /* Mobile Menu Styles */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%; /* Off-screen initially */
+            width: min(280px, 80vw); /* Responsive width */
+            height: 100vh;
+            background-color: var(--app-surface);
+            z-index: 1001; /* Above header, below overlay if used differently */
+            padding: 24px;
+            transition: right 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: -5px 0 25px rgba(var(--app-shadow-color-rgb), 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto; /* Scroll if content exceeds height */
+        }
+        .mobile-nav.open { right: 0; } /* Slide in */
+        .mobile-nav-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: var(--app-text-secondary);
+            font-size: 1.75rem;
+            cursor: pointer;
+            padding: 12px; /* Larger click target */
+            border-radius: 50%;
+            line-height: 1;
+            transition: color var(--transition-fast), background-color var(--transition-fast);
+        }
+        .mobile-nav-close:hover {
+            color: var(--app-primary);
+            background-color: rgba(var(--app-primary-rgb), 0.1);
+        }
+        .mobile-nav-close:focus-visible { /* Ensure focus ring is visible */
+            outline: var(--app-focus-ring-width) solid var(--app-focus-ring-color);
+            outline-offset: var(--app-focus-ring-offset);
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 60px 0 20px; /* Space from top/close button */
+            flex-grow: 1; /* Allow list to take up space */
+            display: flex;
+            flex-direction: column;
+        }
+        .mobile-nav li { margin-bottom: 8px; }
+        .mobile-nav a {
+            text-decoration: none;
+            color: var(--app-text-primary);
+            font-weight: 500;
+            font-size: 1.1rem;
+            display: block; /* Full width clickable area */
+            padding: 14px 18px;
+            border-radius: var(--border-radius-md);
+            transition: background-color var(--transition-fast), color var(--transition-fast);
+        }
+        .mobile-nav a:hover, .mobile-nav a:focus, .mobile-nav a.nav-active-mobile {
+            background-color: rgba(var(--app-primary-rgb), 0.1);
+            color: var(--app-primary);
+            text-decoration: none;
+        }
+        .mobile-nav a:focus-visible { /* Ensure focus ring is visible and respects border-radius */
+             outline: var(--app-focus-ring-width) solid var(--app-focus-ring-color);
+             outline-offset: var(--app-focus-ring-offset);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(var(--app-shadow-color-rgb), 0.4); /* Semi-transparent overlay */
+            z-index: 1000; /* Below mobile nav, above page content */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+        }
+        .overlay.open { opacity: 1; visibility: visible; }
+
+    </style>
+  <link rel="icon" href="logo.png" type="image/png">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#hero" class="logo">Newtons Ai</a>
+                <nav class="nav-desktop">
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#ai-for-doctors">AI for Doctors</a></li>
+                        <li><a href="#guide">Guide</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#download-app">Download App</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+                        <i class="fa-solid fa-moon"></i> <!-- Icon will be changed by JS -->
+                    </button>
+                    <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNavMenu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-nav" id="mobileNavMenu" aria-hidden="true" tabindex="-1"> <!-- tabindex for focus management -->
+        <button class="mobile-nav-close" aria-label="Close menu">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <ul>
+            <li><a href="#hero" class="mobile-nav-link">Home</a></li>
+            <li><a href="#about" class="mobile-nav-link">About</a></li>
+            <li><a href="#ai-for-doctors" class="mobile-nav-link">AI for Doctors</a></li>
+            <li><a href="#guide" class="mobile-nav-link">Guide</a></li>
+            <li><a href="#pricing" class="mobile-nav-link">Pricing</a></li>
+            <li><a href="#download-app" class="mobile-nav-link">Download App</a></li>
+        </ul>
+    </div>
+    <div class="overlay"></div>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-decoration"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title animated">Newtons Ai</h1>
+                <p class="hero-tagline animated">Clinical-Grade AI for Medical Excellence</p> <!-- Slightly enhanced tagline -->
+                <p class="hero-subtitle animated">Empowering medical professionals and institutions with clinical AI.</p> <!-- Shortened subtitle -->
+                <div class="btn-row animated">
+                    <a href="https://newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-primary"> <!-- Added rel attribute -->
+                        <i class="fa-solid fa-brain"></i> Get Started — Free
+                    </a>
+                     <a href="https://neetpg.newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                        <i class="fa-solid fa-graduation-cap"></i> NeetPg - PYQs & MCQs
+                    </a>
+                     <a href="https://hms.newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                        <i class="fa-solid fa-hospital-user"></i> AI Hospital Management
+                    </a>
+                    <a href="https://group.newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                        <i class="fa-solid fa-users"></i> AI Wards & Group Chat
+                    </a>
+                    <a href="#download-app" class="btn btn-primary">
+                        <i class="fa-solid fa-download"></i> Download App
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-heading animated">About Newtons Ai</h2>
+            <p class="section-subheading animated">Founded by Shiva Kolli, MBBS, Newtons Ai is pioneering clinical-grade artificial intelligence solutions for the medical field.</p>
+            <div class="about-content animated">
+                <div class="about-text">
+                    <p>Newtons Ai develops advanced, domain-specific AI tools for medical colleges, doctors, and healthcare institutions. We empower professionals and students with intelligent resources to enhance learning, streamline practice, and foster research.</p>
+                    <p>We offer AI assistants like OSCE simulators, question generators, medical guides, and clinic management systems, designed to elevate medical education and patient care.</p>
+                    <div class="stats-row">
+                        <div class="stat-card animated">
+                            <div class="stat-number">100k+</div> <!-- Changed to k for Lakh -->
+                            <div class="stat-label">Active Users</div>
+                        </div>
+                        <div class="stat-card animated">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Specialized AI Tools</div>
+                        </div>
+                        <div class="stat-card animated">
+                            <div class="stat-number">Trusted</div> <!-- More active verb -->
+                            <div class="stat-label">by Leading Institutions</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI for Doctors Section -->
+    <section id="ai-for-doctors" class="bg-surface">
+        <div class="container">
+            <h2 class="section-heading animated">AI-Powered Medical Assistants</h2> <!-- More descriptive heading -->
+            <p class="section-subheading animated">Intelligent tools designed to augment clinical practice, enhance decision-making, and improve patient outcomes.</p>
+            <div class="card-grid">
+                <div class="system-card animated">
+                    <div class="system-card-content">
+                        <h3 class="system-card-title">AI OPD Assistant</h3>
+                        <p class="system-card-desc">Streamlines consultations: aids history taking, suggests tests, provides diagnoses, and offers treatment recommendations.</p>
+                        <a href="https://newtons.in" target="_blank" rel="noopener noreferrer" class="system-card-link">Explore OPD Assistant <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                 <div class="system-card animated">
+                    <div class="system-card-content">
+                        <h3 class="system-card-title">AI Hospital Management</h3>
+                        <p class="system-card-desc">Optimizes hospital operations, resource allocation, and workflows for enhanced efficiency.</p>
+                        <a href="https://hms.newtons.in" target="_blank" rel="noopener noreferrer" class="system-card-link">Discover AI HMS <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                 <div class="system-card animated">
+                    <div class="system-card-content">
+                        <h3 class="system-card-title">Neet PG Preparation</h3>
+                        <p class="system-card-desc">AI-driven question banks, mock tests, and personalized study plans to help aspirants excel in the Neet PG examination.</p>
+                        <a href="https://neetpg.newtons.in" target="_blank" rel="noopener noreferrer" class="system-card-link">Start NeetPG Prep <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="system-card animated">
+                    <div class="system-card-content">
+                        <h3 class="system-card-title">AI Prescription Writer</h3>
+                        <p class="system-card-desc">Provides intelligent suggestions for drug dosages, forms, and interactions, ensuring accurate and safe prescription writing.</p>
+                        <a href="https://newtons.in" target="_blank" rel="noopener noreferrer" class="system-card-link">Try AI Prescription <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                 <div class="system-card animated">
+                    <div class="system-card-content">
+                        <h3 class="system-card-title">AI Treatment Planner</h3>
+                        <p class="system-card-desc">Generates evidence-based, personalized treatment plans, assisting clinicians in making informed therapeutic decisions.</p>
+                        <a href="https://newtons.in" target="_blank" rel="noopener noreferrer" class="system-card-link">Use Treatment Planner <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                 <div class="system-card animated">
+                    <div class="system-card-content">
+                        <h3 class="system-card-title">AI ICU Assistant</h3>
+                        <p class="system-card-desc">Aids in critical care by predicting patient deterioration, suggesting interventions, and assisting in the management of complex ICU cases.</p>
+                        <a href="https://newtons.in" target="_blank" rel="noopener noreferrer" class="system-card-link">Learn About ICU AI <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guide Section -->
+     <section id="guide" class="bg-surface">
+        <div class="container">
+            <h2 class="section-heading animated">User Guides & Resources</h2>
+            <div class="guide-content animated">
+                <h4>Select an Assistant to Learn More:</h4>
+                <div class="assistant-list" role="tablist" aria-label="AI Assistant Guides">
+                    <button class="assistant-item" data-target="opd-guide-panel" id="opd-guide-tab" role="tab" aria-controls="opd-guide-panel" aria-selected="false">OPD Assistant</button>
+                    <button class="assistant-item" data-target="emg-guide-panel" id="emg-guide-tab" role="tab" aria-controls="emg-guide-panel" aria-selected="false">EMG Assistant</button>
+                    <button class="assistant-item" data-target="osce-guide-panel" id="osce-guide-tab" role="tab" aria-controls="osce-guide-panel" aria-selected="false">OSCE Simulator</button>
+                    <button class="assistant-item" data-target="treatment-guide-panel" id="treatment-guide-tab" role="tab" aria-controls="treatment-guide-panel" aria-selected="false">Treatment Planner</button>
+                    <button class="assistant-item" data-target="icu-guide-panel" id="icu-guide-tab" role="tab" aria-controls="icu-guide-panel" aria-selected="false">ICU Assistant</button>
+                </div>
+
+                <div id="opd-guide-panel" class="assistant-guide-details" role="tabpanel" aria-labelledby="opd-guide-tab" aria-hidden="true">
+                    <h4>Using the OPD Assistant: A Step-by-Step Guide</h4>
+                    <div class="guide-steps">
+                        <div class="guide-step-card">
+                            <h4>1. Input Patient Vitals</h4>
+                            <ul>
+                                <li>Enter essential details: age, sex, and chief complaints.</li>
+                                <li>Alternatively, provide a concise case summary in free-text format.</li>
+                            </ul>
+                        </div>
+                        <div class="guide-step-card">
+                            <h4>2. AI-Assisted History Taking</h4>
+                            <ul>
+                                <li>Respond to targeted questions posed by the AI to refine the diagnostic pathway.</li>
+                            </ul>
+                        </div>
+                        <div class="guide-step-card">
+                            <h4>3. Integrate Lab Findings</h4>
+                            <ul>
+                                <li>Input any positive or significant lab results as prompted or when available.</li>
+                            </ul>
+                        </div>
+                        <div class="guide-step-card">
+                            <h4>4. Review Differential Diagnosis</h4>
+                            <ul>
+                                <li>The AI presents potential diagnoses with confidence scores. Aim for a high confidence level for the final diagnosis.</li>
+                            </ul>
+                        </div>
+                        <div class="guide-step-card">
+                            <h4>5. Formulate Treatment Plan</h4>
+                            <ul>
+                                <li>Access an AI-generated, personalized treatment plan based on the confirmed diagnosis.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="emg-guide-panel" class="assistant-guide-details" role="tabpanel" aria-labelledby="emg-guide-tab" aria-hidden="true">
+                    <h4>Navigating the EMG Assistant for Emergencies</h4>
+                    <div class="guide-steps">
+                        <div class="guide-step-card">
+                            <h4>1. Provide Patient Data</h4>
+                            <ul>
+                                <li>Quickly input age, sex, chief complaints, and critical medical history.</li>
+                            </ul>
+                        </div>
+                        <div class="guide-step-card">
+                            <h4>2. Describe Emergency Context</h4>
+                            <ul>
+                                <li>Clearly detail the emergency scenario and the patient's current condition.</li>
+                            </ul>
+                        </div>
+                        <div class="guide-step-card">
+                            <h4>3. Receive Actionable Insights</h4>
+                            <ul>
+                                <li>Get immediate AI-powered recommendations for emergency management and subsequent steps.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="osce-guide-panel" class="assistant-guide-details" role="tabpanel" aria-labelledby="osce-guide-tab" aria-hidden="true">
+                    <h4>Mastering Clinical Skills with the OSCE Simulator</h4>
+                    <div class="guide-steps">
+                        <div class="guide-step-card">
+                            <h4>1. Choose a Scenario</h4>
+                            <ul>
+                                <li>Select from a diverse library of realistic Objective Structured Clinical Examination scenarios.</li>
+                            </ul>
+                        </div>
+                        <div class="guide-step-card">
+                            <h4>2. Interact with AI Patient</h4>
+                            <ul>
+                                <li>Engage in simulated patient encounters to practice history taking, physical examination, and communication skills.</li>
+                            </ul>
+                        </div>
+                        <div class="guide-step-card">
+                            <h4>3. Obtain Instant Feedback</h4>
+                            <ul>
+                                <li>Receive personalized, constructive, and detailed feedback on your performance.</li>
+                            </ul>
+                        </div>
+                        <div class="guide-step-card">
+                            <h4>4. Analyze Performance Metrics</h4>
+                            <ul>
+                                <li>Review auto-generated mark sheets and performance analytics to identify areas for improvement.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="treatment-guide-panel" class="assistant-guide-details" role="tabpanel" aria-labelledby="treatment-guide-tab" aria-hidden="true">
+                    <h4>Optimizing Care with the AI Treatment Planner</h4>
+                    <div class="guide-steps">
+                        <div class="guide-step-card">
+                            <h4>1. Enter Case Details</h4>
+                            <ul>
+                                <li>Input the confirmed diagnosis, relevant patient history, and other pertinent clinical data.</li>
+                            </ul>
+                        </div>
+                        <div class="guide-step-card">
+                            <h4>2. Generate Treatment Protocol</h4>
+                            <ul>
+                                <li>Receive a comprehensive, day-wise treatment plan, including accurate dosages and administration routes.</li>
+                            </ul>
+                        </div>
+                        <div class="guide-step-card">
+                            <h4>3. Clinician Review & Customization</h4>
+                            <ul>
+                                <li>Critically review the AI-suggested plan and make necessary adjustments based on your clinical judgment and patient-specific factors.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="icu-guide-panel" class="assistant-guide-details" role="tabpanel" aria-labelledby="icu-guide-tab" aria-hidden="true">
+                    <h4>Leveraging the AI ICU Assistant for Critical Care</h4>
+                    <div class="guide-steps">
+                        <div class="guide-step-card">
+                            <h4>1. Input Real-time Patient Data</h4>
+                            <ul>
+                                <li>Enter the patient's current condition, vital signs, lab results, and relevant medical history.</li>
+                            </ul>
+                        </div>
+                        <div class="guide-step-card">
+                            <h4>2. Access Predictive Analytics</h4>
+                            <ul>
+                                <li>Receive AI-driven predictions for potential complications, mortality risk, and other critical outcomes.</li>
+                            </ul>
+                        </div>
+                        <div class="guide-step-card">
+                            <h4>3. Guided ICU Management</h4>
+                            <ul>
+                                <li>Utilize AI-powered suggestions for managing complex ICU cases and optimizing treatment strategies. Monitor and update data for continuous support.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+     <section id="pricing" class="bg-surface">
+        <div class="container">
+            <h2 class="section-heading animated">Choose Your Plan & Supercharge Your Practice</h2>
+            <p class="section-subheading animated">Simple, transparent pricing designed for medical professionals and students. Unlock the full power of Newton's AI today.</p>
+            <div class="pricing-grid card-grid">
+                <!-- Standard Plan -->
+                <div class="pricing-card system-card animated">
+                    <div class="system-card-content">
+                        <h3 class="system-card-title">Standard Plan</h3>
+                        <p class="system-card-desc">Ideal for focused use: 10 Lakh credits to analyze over 100+ clinical cases.</p>
+                        <div class="price">
+                            <span class="current-price">₹222</span>
+                            <span class="original-price">₹500</span>
+                            <span class="savings-badge">Save 55%</span>
+                            <span class="price-term">One-Time Payment</span>
+                        </div>
+                        <ul class="features-list">
+                            <li>AI Differential Diagnosis (Confidence Scoring)</li>
+                            <li>Emergency Medicine Assistant (Limited Access)</li>
+                            <li>ICU Assistant (Limited Access)</li>
+                            <li>Day-Wise Treatment Plans (Basic)</li>
+                            <li>Access to Core Guides & Resources</li>
+                            <li>Standard Email Support</li>
+                        </ul>
+                        <a href="https://pro.newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                            <i class="fa-solid fa-shopping-cart"></i> Get Standard Plan
+                        </a>
+                    </div>
+                </div>
+                <!-- Unlimited Access Plan - Featured -->
+                <div class="pricing-card system-card animated featured">
+                    <div class="system-card-content">
+                        <h3 class="system-card-title">Unlimited Pro Plan</h3>
+                        <p class="system-card-desc">Comprehensive access to all premium features for professionals and institutions.</p>
+                         <div class="price">
+                            <span class="current-price">₹500</span>
+                            <span class="original-price">₹2000</span>
+                            <span class="savings-badge primary-savings">Save 75%</span>
+                            <span class="price-term">Per Month, Billed Annually</span>
+                        </div>
+                        <ul class="features-list">
+                            <li><strong>All AI Assistants</strong> <span class="feature-accent">(Unlimited Use)</span></li>
+                            <li>Advanced Differential Diagnosis</li>
+                            <li>Full Emergency Medicine & ICU Support</li>
+                            <li>Comprehensive Day-Wise Treatment Plans</li>
+                            <li>Full Access to All Guides & Premium Resources</li>
+                            <li>Priority Customer Support (24/7)</li>
+                            <li>Early Access to New Features</li>
+                        </ul>
+                        <a href="https://pro.newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-featured-cta">
+                            <i class="fa-solid fa-rocket"></i> Go Unlimited Pro
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Testimonials Section -->
+     <section id="testimonials" class="bg-surface">
+        <div class="container">
+            <h2 class="section-heading animated">Trusted by Medical Students</h2>
+            <p class="section-subheading animated">Hear from aspiring doctors at top medical colleges who are enhancing their learning with Newtons Ai.</p>
+            <div class="testimonial-slider-container">
+                <button class="slider-arrow left-arrow" aria-label="Previous testimonial"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="slider-arrow right-arrow" aria-label="Next testimonial"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card animated">
+                        <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
+                        <p class="testimonial-text">"Newtons Ai's OSCE simulator is a game-changer for my exam preparation. The realistic scenarios and detailed feedback are invaluable for building confidence."</p>
+                        <div class="testimonial-person">
+                            <!-- Placeholder for avatar if available
+                            <div class="testimonial-avatar"><img src="placeholder-avatar.jpg" alt="A. Singh"></div>
+                            -->
+                            <div class="testimonial-info">
+                                <h4>A. Singh</h4>
+                                <p>Medical Student, AIIMS Delhi</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card animated">
+                        <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
+                        <p class="testimonial-text">"The AI Questions feature helps me test my knowledge effectively. The detailed explanations for complex topics are far better than traditional Q-banks."</p>
+                        <div class="testimonial-person">
+                            <div class="testimonial-info">
+                                <h4>P. Sharma</h4>
+                                <p>Medical Student, CMC Vellore</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card animated">
+                        <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
+                        <p class="testimonial-text">"I highly recommend Newtons Ai to all medical students. The resources are comprehensive, current, and truly enhance the learning experience beyond textbooks."</p>
+                        <div class="testimonial-person">
+                            <div class="testimonial-info">
+                                <h4>R. Gupta</h4>
+                                <p>Medical Student, KMC Manipal</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card animated">
+                        <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
+                        <p class="testimonial-text">"Using Newtons Ai has significantly improved my understanding of differential diagnosis. The platform is user-friendly, and the AI tools are incredibly insightful."</p>
+                        <div class="testimonial-person">
+                            <div class="testimonial-info">
+                                <h4>S. Khan</h4>
+                                <p>Medical Student, JIPMER</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download App Section -->
+    <section id="download-app" class="bg-surface">
+        <div class="container">
+            <h2 class="section-heading animated">Access Newtons Ai On The Go</h2>
+            <p class="section-subheading animated">Install our Progressive Web Apps (PWAs) for a seamless, app-like experience on your mobile device. No app store needed!</p>
+
+            <div class="guide-content animated">
+                <div class="assistant-list" role="tablist" aria-label="PWA Installation Guides">
+                    <button class="assistant-item" data-target="download-android-panel" id="download-android-tab" role="tab" aria-controls="download-android-panel" aria-selected="false">Android Installation</button>
+                    <button class="assistant-item" data-target="download-ios-panel" id="download-ios-tab" role="tab" aria-controls="download-ios-panel" aria-selected="false">iOS (iPhone/iPad) Installation</button>
+                </div>
+
+                <div id="download-android-panel" class="assistant-guide-details" role="tabpanel" aria-labelledby="download-android-tab" aria-hidden="true">
+                    <h4>Install Newtons Ai on Android:</h4>
+                    <div class="guide-steps">
+                        <div class="guide-step-card">
+                            <h4>1. Open in Chrome</h4>
+                            <p>Navigate to your desired Newtons Ai web app using the Google Chrome browser:</p>
+                           <ul>
+                             <li><a href="https://newtons.in" target="_blank" rel="noopener noreferrer">Newtons Ai Platform</a></li>
+                             <li><a href="https://hms.newtons.in" target="_blank" rel="noopener noreferrer">AI HMS</a></li>
+                             <li><a href="https://group.newtons.in" target="_blank" rel="noopener noreferrer">AI Wards</a></li>
+                             <li><a href="https://neetpg.newtons.in" target="_blank" rel="noopener noreferrer">NeetPG Prep</a></li>
+                           </ul>
+                        </div>
+                        <div class="guide-step-card">
+                            <h4>2. Access Chrome Menu</h4>
+                            <p>Tap the three-dot menu icon (<i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i>) in the top-right corner of Chrome.</p>
+                        </div>
+                        <div class="guide-step-card">
+                            <h4>3. Select Install Option</h4>
+                            <p>Look for and select "Add to Home Screen" or "Install app" from the menu options that appear.</p>
+                        </div>
+                        <div class="guide-step-card">
+                            <h4>4. Confirm Installation</h4>
+                            <p>Tap "Add" or "Install" in the confirmation prompt. The Newtons Ai icon will appear on your home screen for easy access.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="download-ios-panel" class="assistant-guide-details" role="tabpanel" aria-labelledby="download-ios-tab" aria-hidden="true">
+                    <h4>Install Newtons Ai on iPhone/iPad (iOS):</h4>
+                    <div class="guide-steps">
+                        <div class="guide-step-card">
+                            <h4>1. Open in Safari</h4>
+                            <p>Navigate to your desired Newtons Ai web app using the Safari browser:</p>
+                           <ul>
+                             <li><a href="https://newtons.in" target="_blank" rel="noopener noreferrer">Newtons Ai Platform</a></li>
+                             <li><a href="https://hms.newtons.in" target="_blank" rel="noopener noreferrer">AI HMS</a></li>
+                             <li><a href="https://group.newtons.in" target="_blank" rel="noopener noreferrer">AI Wards</a></li>
+                             <li><a href="https://neetpg.newtons.in" target="_blank" rel="noopener noreferrer">NeetPG Prep</a></li>
+                           </ul>
+                        </div>
+                        <div class="guide-step-card">
+                            <h4>2. Tap Share Icon</h4>
+                            <p>Tap the Share icon (<i class="fa-solid fa-arrow-up-from-bracket" aria-hidden="true"></i>) located in the bottom toolbar of Safari.</p>
+                        </div>
+                        <div class="guide-step-card">
+                            <h4>3. Find "Add to Home Screen"</h4>
+                            <p>Scroll down through the share options and tap "Add to Home Screen".</p>
+                        </div>
+                        <div class="guide-step-card">
+                            <h4>4. Confirm Addition</h4>
+                            <p>Review the app name and icon, then tap "Add" in the top-right corner. The Newtons Ai icon will now be on your Home Screen.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Newtons Ai</h3>
+                    <p class="footer-quote">"AI won’t replace doctors. But doctors who use AI will replace those who don’t." <br>– Dr. Shiva Kolli, MBBS, Founder</p>
+                    <p>Pioneering Clinical-Grade AI for Medicine.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about"><i class="fa-solid fa-info-circle"></i> About Us</a></li>
+                        <li><a href="#ai-for-doctors"><i class="fa-solid fa-microchip"></i> AI Assistants</a></li>
+                        <li><a href="#guide"><i class="fa-solid fa-book-open"></i> User Guides</a></li>
+                        <li><a href="#pricing"><i class="fa-solid fa-tags"></i> Pricing Plans</a></li>
+                         <li><a href="#download-app"><i class="fa-solid fa-mobile-screen-button"></i> Get The App</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Our Platforms</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://newtons.in" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-brain"></i> Newtons AI Platform</a></li>
+                         <li><a href="https://neetpg.newtons.in" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-graduation-cap"></i> Newtons NeetPG</a></li>
+                         <li><a href="https://drshiva.in" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-user-doctor"></i> Dr. Shiva Kolli</a></li>
+                         <li><a href="https://hospitals.newtons.in" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-hospital"></i> AI for Hospitals</a></li>
+                         <li><a href="https://group.newtons.in" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-users-medical"></i> AI Wards & Groups</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Newtons Ai. All Rights Reserved. Crafted with <span class="heart"><i class="fa-solid fa-heart"></i></span> by the Newtons Ai Team.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to top button -->
+    <button class="scroll-top" aria-label="Scroll to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const body = document.body;
+            const themeToggleButton = document.querySelector('.theme-toggle');
+            const moonIconClass = 'fa-moon';
+            const sunIconClass = 'fa-sun';
+            const currentThemeIcon = themeToggleButton.querySelector('i');
+
+            const applyTheme = (theme) => {
+                body.classList.toggle('dark-theme', theme === 'dark');
+                currentThemeIcon.classList.toggle(moonIconClass, theme === 'light');
+                currentThemeIcon.classList.toggle(sunIconClass, theme === 'dark');
+                localStorage.setItem('theme', theme);
+                themeToggleButton.setAttribute('aria-pressed', theme === 'dark');
+            };
+
+            themeToggleButton.addEventListener('click', () => {
+                const newTheme = body.classList.contains('dark-theme') ? 'light' : 'dark';
+                applyTheme(newTheme);
+            });
+
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const mobileNavClose = document.querySelector('.mobile-nav-close');
+            const overlay = document.querySelector('.overlay');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            const header = document.querySelector('header');
+
+            const toggleMobileMenu = (open) => {
+                const isOpen = mobileNav.classList.contains('open');
+                if (open === isOpen && typeof open !== 'undefined') return; // Avoid re-triggering if state is already set
+
+                const shouldOpen = typeof open === 'undefined' ? !isOpen : open;
+
+                mobileNav.classList.toggle('open', shouldOpen);
+                overlay.classList.toggle('open', shouldOpen);
+                mobileMenuBtn.setAttribute('aria-expanded', shouldOpen);
+                mobileNav.setAttribute('aria-hidden', !shouldOpen);
+
+                if (shouldOpen) {
+                    body.style.overflow = 'hidden';
+                    mobileNav.focus(); // Focus the menu itself for screen readers
+                    mobileNavClose.focus(); // Then focus the close button
+                } else {
+                    body.style.overflow = '';
+                    mobileMenuBtn.focus();
+                }
+            };
+
+            if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', () => toggleMobileMenu(true));
+            if (mobileNavClose) mobileNavClose.addEventListener('click', () => toggleMobileMenu(false));
+            if (overlay) overlay.addEventListener('click', () => toggleMobileMenu(false));
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => toggleMobileMenu(false));
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+                    toggleMobileMenu(false);
+                }
+            });
+
+            const updateScrollPadding = () => {
+                const currentHeaderHeight = header?.offsetHeight || 72;
+                document.documentElement.style.scrollPaddingTop = `${currentHeaderHeight}px`;
+            };
+            updateScrollPadding(); // Initial call
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId.startsWith('#') && targetId.length > 1) {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            e.preventDefault();
+                             targetElement.scrollIntoView({ behavior: 'smooth' });
+                             // Update URL hash without page jump after smooth scroll (optional)
+                             // history.pushState(null, null, targetId);
+
+
+                            if (this.classList.contains('mobile-nav-link')) {
+                                toggleMobileMenu(false);
+                            }
+                        }
+                    }
+                });
+            });
+
+            const navLinks = document.querySelectorAll('.nav-desktop a');
+            const mobileLinks = document.querySelectorAll('.mobile-nav a');
+            let isThrottled = false;
+
+            const highlightNavLinks = () => {
+                if (isThrottled) return;
+                isThrottled = true;
+                setTimeout(() => {
+                    let currentSectionId = 'hero'; // Default to hero
+                    const currentHeaderHeight = header?.offsetHeight || 72;
+                    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
+                    document.querySelectorAll('section[id]').forEach(section => {
+                        const sectionTop = section.offsetTop - currentHeaderHeight - 50;
+                        const sectionBottom = sectionTop + section.offsetHeight;
+                        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                            currentSectionId = section.id;
+                        }
+                    });
+                    // Special case for bottom of page if last section isn't filling viewport
+                    if ((window.innerHeight + scrollPosition) >= document.body.offsetHeight - 50) { // -50 for footer tolerance
+                        const sections = Array.from(document.querySelectorAll('section[id]'));
+                        if (sections.length > 0) currentSectionId = sections[sections.length - 1].id;
+                    }
+
+
+                    navLinks.forEach(link => {
+                        link.classList.remove('nav-active');
+                        if (link.getAttribute('href') === `#${currentSectionId}`) {
+                            link.classList.add('nav-active');
+                        }
+                    });
+                    mobileLinks.forEach(link => {
+                        link.classList.remove('nav-active-mobile');
+                         if (link.getAttribute('href') === `#${currentSectionId}`) {
+                            link.classList.add('nav-active-mobile');
+                        }
+                    });
+                    isThrottled = false;
+                }, 100); // Throttle to run at most every 100ms
+            };
+            window.addEventListener('scroll', highlightNavLinks);
+            window.addEventListener('resize', () => {
+                 updateScrollPadding();
+                 highlightNavLinks();
+            });
+            highlightNavLinks(); // Initial call
+
+
+            const scrollTopButton = document.querySelector('.scroll-top');
+            if (scrollTopButton) {
+                window.addEventListener('scroll', () => {
+                    scrollTopButton.classList.toggle('active', window.scrollY > 400);
+                });
+                scrollTopButton.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            const testimonialGrid = document.querySelector('.testimonial-grid');
+            const leftArrow = document.querySelector('.left-arrow');
+            const rightArrow = document.querySelector('.right-arrow');
+
+            if (testimonialGrid && leftArrow && rightArrow) {
+                const scrollTestimonial = (direction) => {
+                    const card = testimonialGrid.querySelector('.testimonial-card');
+                    if (!card) return;
+                    const cardWidth = card.offsetWidth;
+                    const gap = parseFloat(window.getComputedStyle(testimonialGrid).gap) || 24;
+                    testimonialGrid.scrollBy({ left: direction * (cardWidth + gap), behavior: 'smooth' });
+                };
+                leftArrow.addEventListener('click', () => scrollTestimonial(-1));
+                rightArrow.addEventListener('click', () => scrollTestimonial(1));
+
+                // Hide arrows if content doesn't overflow (optional enhancement)
+                const checkScrollability = () => {
+                    const canScroll = testimonialGrid.scrollWidth > testimonialGrid.clientWidth;
+                    leftArrow.style.display = canScroll ? 'flex' : 'none';
+                    rightArrow.style.display = canScroll ? 'flex' : 'none';
+                };
+                checkScrollability();
+                window.addEventListener('resize', checkScrollability);
+                testimonialGrid.addEventListener('scroll', () => { // Update arrow states based on scroll position
+                    leftArrow.disabled = testimonialGrid.scrollLeft < 10;
+                    rightArrow.disabled = testimonialGrid.scrollWidth - testimonialGrid.scrollLeft - testimonialGrid.clientWidth < 10;
+                });
+            }
+
+            const animatedElements = document.querySelectorAll('.animated');
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fadeIn');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+            animatedElements.forEach(element => observer.observe(element));
+
+            const yearSpan = document.getElementById('currentYear');
+            if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+            const initializeTabSystem = (sectionSelector, preferredDefaultTabTargetId) => {
+                const sectionElement = document.querySelector(sectionSelector);
+                if (!sectionElement) return;
+
+                const tabButtons = Array.from(sectionElement.querySelectorAll('.assistant-item[data-target]'));
+                if (tabButtons.length === 0) return;
+
+                const tabList = sectionElement.querySelector('.assistant-list');
+                if(tabList && !tabList.hasAttribute('role')) tabList.setAttribute('role', 'tablist');
+
+                tabButtons.forEach(button => {
+                    if(!button.hasAttribute('role')) button.setAttribute('role', 'tab');
+                    if(!button.hasAttribute('aria-selected')) button.setAttribute('aria-selected', 'false');
+                    if (!button.id && button.dataset.target) {
+                        // Ensure panel ID matches button's data-target if button ID needs to derive from panel
+                        // Current IDs are like "opd-guide-tab" for button and "opd-guide-panel" for panel
+                        // Ensure aria-controls points to panel ID (e.g., data-target + "-panel")
+                        button.setAttribute('aria-controls', `${button.dataset.target}`);
+                    }
+                });
+
+                const setActiveTab = (targetId) => {
+                    tabButtons.forEach(btn => {
+                        const isTarget = btn.dataset.target === targetId;
+                        btn.classList.toggle('active', isTarget);
+                        btn.setAttribute('aria-selected', isTarget);
+                        if (isTarget) btn.removeAttribute('tabindex'); else btn.setAttribute('tabindex', '-1');
+                    });
+                    sectionElement.querySelectorAll('.assistant-guide-details[id]').forEach(panel => {
+                        const isActivePanel = panel.id === targetId;
+                        panel.classList.toggle('active', isActivePanel);
+                        panel.setAttribute('aria-hidden', !isActivePanel);
+                         if(!panel.hasAttribute('role')) panel.setAttribute('role', 'tabpanel');
+                         // Ensure aria-labelledby points to the button's ID
+                         // (e.g., search for button with data-target matching panel.id)
+                         const tabButtonForPanel = sectionElement.querySelector(`.assistant-item[data-target="${panel.id}"]`);
+                         if(tabButtonForPanel && tabButtonForPanel.id && !panel.hasAttribute('aria-labelledby')) {
+                             panel.setAttribute('aria-labelledby', tabButtonForPanel.id);
+                         }
+                    });
+                };
+
+                let initialTabId = preferredDefaultTabTargetId;
+
+                // Device detection for download section
+                if (sectionSelector === '#download-app') {
+                    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+                    if (/android/i.test(userAgent)) {
+                        initialTabId = 'download-android-panel';
+                    } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                        initialTabId = 'download-ios-panel';
+                    } else {
+                        // Default to Android if device is not clearly Android or iOS
+                        initialTabId = 'download-android-panel';
+                    }
+                } else {
+                     const preferredButton = tabButtons.find(btn => btn.dataset.target === preferredDefaultTabTargetId);
+                     const preferredPanel = sectionElement.querySelector(`#${preferredDefaultTabTargetId}.assistant-guide-details`);
+
+                     if (!preferredButton || !preferredPanel) {
+                         initialTabId = tabButtons[0]?.dataset.target;
+                     }
+                }
+
+
+                if (initialTabId) {
+                    setActiveTab(initialTabId);
+                } else if (tabButtons.length > 0) { // Fallback if initialTabId is still undefined
+                    setActiveTab(tabButtons[0].dataset.target);
+                }
+
+
+                tabButtons.forEach((button, idx) => {
+                    button.addEventListener('click', (e) => {
+                        setActiveTab(e.currentTarget.dataset.target);
+                    });
+                    button.addEventListener('keydown', (e) => {
+                        let newIdx = idx;
+                        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                            e.preventDefault();
+                            newIdx = (idx + 1) % tabButtons.length;
+                        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                            e.preventDefault();
+                            newIdx = (idx - 1 + tabButtons.length) % tabButtons.length;
+                        } else if (e.key === 'Home') {
+                            e.preventDefault();
+                            newIdx = 0;
+                        } else if (e.key === 'End') {
+                            e.preventDefault();
+                            newIdx = tabButtons.length - 1;
+                        }
+                        if (newIdx !== idx) {
+                            tabButtons[newIdx].focus();
+                            setActiveTab(tabButtons[newIdx].dataset.target);
+                        }
+                    });
+                });
+            };
+
+            // Corrected initial tab IDs to match panel IDs
+            initializeTabSystem('#guide', 'opd-guide-panel');
+            initializeTabSystem('#download-app', 'download-android-panel');
+        });
+    </script>
+</body>
+</html>
+```
