@@ -4,83 +4,383 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found - Redirecting...</title>
-    <meta http-equiv="refresh" content="3;url=improved-homepage.html">
+    <meta http-equiv="refresh" content="3;url=https://dr.newtons.in">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
+            /* Light Theme Colors */
             --bg-light: #F9FAFB;
             --surface-light: #FFFFFF;
             --text-primary-light: #1F2937;
             --text-secondary-light: #6B7280;
             --heading-light: #111827;
-            --primary-color-light: #2563EB;
+            --border-light: #E5E7EB;
+            --shadow-color-light-rgb: 0, 0, 0;
+            --primary-color-light: #2563EB; /* Blue */
+            --secondary-color-light: #10B981; /* Green/Teal */
+
+            /* Dark Theme Colors */
+            --bg-dark: #111827; /* Dark Blue/Gray */
+            --surface-dark: #1F2937; /* Slightly Lighter Dark Blue/Gray */
+            --text-primary-dark: #F3F4F6; /* Off-white */
+            --text-secondary-dark: #9CA3AF; /* Lighter Gray */
+            --heading-dark: #FFFFFF; /* White */
+            --border-dark: #374151; /* Darker Gray */
+            --shadow-color-dark-rgb: 0, 0, 0; /* Shadow color for dark can be dark or slightly lighter depending on effect */
+            --primary-color-dark: #3B82F6; /* Brighter Blue */
+            --secondary-color-dark: #14B8A6; /* Brighter Green/Teal */
+
+            /* Default Theme Variables (Initially Light) */
             --app-bg: var(--bg-light);
+            --app-surface: var(--surface-light);
             --app-text-primary: var(--text-primary-light);
             --app-text-secondary: var(--text-secondary-light);
             --app-heading: var(--heading-light);
+            --app-border: var(--border-light);
+            --app-shadow-color-rgb: var(--shadow-color-light-rgb);
             --app-primary: var(--primary-color-light);
+            --app-secondary: var(--secondary-color-light);
+
+            /* RGB versions for RGBA usage */
+            --primary-color-light-rgb: 37, 99, 235;
+            --secondary-color-light-rgb: 16, 185, 129;
+            --primary-color-dark-rgb: 59, 130, 246;
+            --secondary-color-dark-rgb: 20, 184, 166;
+            --surface-light-rgb: 255, 255, 255;
+            --bg-dark-rgb: 17, 24, 39;
+            --surface-dark-rgb: 31, 41, 55;
+
+
+            --app-primary-rgb: var(--primary-color-light-rgb);
+            --app-secondary-rgb: var(--secondary-color-light-rgb);
+
+
+            /* UI Elements */
+            --card-shadow-opacity: 0.07;
+            --card-shadow-opacity-hover: 0.08;
+            --button-shadow-opacity: 0.06;
+
+            --card-shadow: 0 4px 8px -2px rgba(var(--app-shadow-color-rgb), var(--card-shadow-opacity)), 0 2px 4px -2px rgba(var(--app-shadow-color-rgb), calc(var(--card-shadow-opacity) - 0.03));
+            --card-hover-shadow: 0 10px 15px -3px rgba(var(--app-shadow-color-rgb), var(--card-shadow-opacity-hover)), 0 4px 6px -4px rgba(var(--app-shadow-color-rgb), calc(var(--card-shadow-opacity-hover) - 0.03));
+            --button-shadow: 0 1px 3px 0 rgba(var(--app-shadow-color-rgb), var(--button-shadow-opacity)), 0 1px 2px -1px rgba(var(--app-shadow-color-rgb), calc(var(--button-shadow-opacity) - 0.02));
+
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 16px;
+
+            --transition-fast: all 0.2s ease-in-out;
+            --transition-std: all 0.3s ease-in-out;
+
+            --section-spacing: clamp(60px, 10vw, 100px);
+            --container-padding: clamp(15px, 4vw, 20px); /* Base, overridden for mobile */
+
+            --app-focus-ring-color: rgba(var(--app-primary-rgb), 0.5);
+            --app-focus-ring-width: 3px;
+            --app-focus-ring-offset: 2px;
         }
+
         body.dark-theme {
-            --bg-dark: #111827;
-            --surface-dark: #1F2937;
-            --text-primary-dark: #F3F4F6;
-            --text-secondary-dark: #9CA3AF;
-            --heading-dark: #FFFFFF;
-            --primary-color-dark: #3B82F6;
             --app-bg: var(--bg-dark);
+            --app-surface: var(--surface-dark);
             --app-text-primary: var(--text-primary-dark);
             --app-text-secondary: var(--text-secondary-dark);
             --app-heading: var(--heading-dark);
+            --app-border: var(--border-dark);
             --app-primary: var(--primary-color-dark);
+            --app-secondary: var(--secondary-color-dark);
+            --app-primary-rgb: var(--primary-color-dark-rgb);
+            --app-secondary-rgb: var(--secondary-color-dark-rgb);
+            --app-focus-ring-color: rgba(var(--app-primary-rgb), 0.6);
+            --app-shadow-color-rgb: var(--shadow-color-dark-rgb); /* Ensure shadows adapt if needed */
         }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Adjust to match header height, JS will override */
+        }
+
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--app-bg);
             color: var(--app-text-primary);
+            transition: background-color var(--transition-std), color var(--transition-std);
+            overflow-x: hidden;
+            line-height: 1.7;
+            min-height: 100vh;
+            font-size: 16px;
+            display: flex; /* Added for main content centering */
+            flex-direction: column; /* Added for main content centering */
+        }
+
+        *:focus-visible {
+            outline: var(--app-focus-ring-width) solid var(--app-focus-ring-color);
+            outline-offset: var(--app-focus-ring-offset);
+            border-radius: var(--border-radius-sm);
+        }
+        *:focus:not(:focus-visible) {
+            outline: none;
+        }
+        .btn:focus-visible, .theme-toggle:focus-visible, .mobile-menu-btn:focus-visible, .slider-arrow:focus-visible, .scroll-top:focus-visible, .assistant-item:focus-visible {
+             border-radius: var(--border-radius-md);
+        }
+
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--app-heading);
+            line-height: 1.3;
+            margin-top: 0;
+            margin-bottom: 0.75em;
+            font-weight: 700;
+        }
+        h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 800; }
+        h2 { font-size: clamp(2rem, 5vw, 2.75rem); }
+        h3 { font-size: clamp(1.5rem, 4vw, 1.75rem); }
+        h4 { font-size: clamp(1.1rem, 3vw, 1.25rem); }
+
+
+        p {
+            margin-top: 0;
+            margin-bottom: 1.25em;
+            color: var(--app-text-secondary);
+        }
+
+        a {
+            color: var(--app-primary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        a:hover {
+            color: var(--app-secondary);
+            text-decoration: underline;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+            margin-bottom: 1.25em;
+        }
+        li {
+            margin-bottom: 0.5em;
+            color: var(--app-text-secondary);
+        }
+        ul ul, ol ol, ul ol, ol ul {
+            margin-bottom: 0;
+            margin-top: 0.5em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--container-padding);
+            padding-right: var(--container-padding);
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(var(--surface-light-rgb), 0.85);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            box-shadow: 0 1px 2px 0 rgba(var(--app-shadow-color-rgb), 0.05);
+            transition: background-color var(--transition-std), box-shadow var(--transition-std);
+        }
+        body.dark-theme header {
+            background-color: rgba(var(--surface-dark-rgb), 0.85);
+            box-shadow: 0 1px 2px 0 rgba(var(--app-shadow-color-rgb), 0.1); /* Slightly adjusted shadow for dark */
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: clamp(1.5rem, 4vw, 1.75rem);
+            color: var(--app-primary);
+            text-decoration: none;
+        }
+        .logo:hover {
+            text-decoration: none;
+            color: var(--app-secondary);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid transparent;
+            color: var(--app-text-secondary);
+            cursor: pointer;
+            font-size: 1.35rem;
+            padding: 10px;
+            border-radius: 50%;
+            transition: color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+            line-height: 1;
+        }
+        .theme-toggle:hover {
+            color: var(--app-primary);
+            background-color: rgba(var(--app-primary-rgb), 0.1);
+            transform: scale(1.1);
+        }
+
+        /* 404 Specific Styles */
+        .error-container {
+            flex-grow: 1; /* Allows it to take up available space */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
+            padding: 40px 20px;
             text-align: center;
-            transition: background-color 0.3s ease, color 0.3s ease;
         }
-        h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
-            color: var(--app-heading);
+        .error-container h1 {
+            font-size: clamp(4rem, 10vw, 8rem);
+            margin-bottom: 0.2em;
+            font-weight: 800;
+            color: var(--app-primary); /* Highlight 404 number */
+        }
+        .error-container h2 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             margin-bottom: 0.5em;
+            color: var(--app-heading);
         }
-        p {
-            font-size: clamp(1rem, 3vw, 1.2rem);
-            color: var(--app-text-secondary);
-            margin-bottom: 1.5em;
-            max-width: 600px;
+        .error-container p {
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
         }
-        a {
-            color: var(--app-primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.2s ease;
+        .error-container .btn-row {
+            margin-top: 30px;
         }
-        a:hover {
-            text-decoration: underline;
+        .error-container .btn {
+            padding: 12px 24px;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-dark); /* Always dark footer */
+            color: var(--text-secondary-dark);
+            padding: 40px 0 20px; /* Reduced padding for 404 page */
+            border-top: 1px solid var(--border-dark);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        footer a { color: var(--text-secondary-dark); }
+        footer a:hover { color: var(--secondary-color-dark); text-decoration: underline; }
+        .footer-bottom {
+            padding-top: 20px;
+            border-top: 1px solid var(--border-dark);
+            margin-top: 20px;
+        }
+        .heart {
+            color: #e91e63;
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+            font-size: 0.9em;
+            vertical-align: baseline;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
         }
     </style>
+    <link rel="icon" href="logo.png" type="image/png">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="https://dr.newtons.in" class="logo">Newtons Ai</a>
+                <div class="header-actions">
+                    <button class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="error-container">
+        <h1>404</h1>
+        <h2>Page Not Found</h2>
+        <p>We're sorry, the page you requested could not be found. It might have been moved or deleted.</p>
+        <p>You will be redirected to the <a href="https://dr.newtons.in">homepage</a> in 3 seconds.</p>
+        <p>If you are not redirected automatically, please <a href="https://dr.newtons.in">click here</a>.</p>
+        <div class="btn-row">
+            <a href="https://dr.newtons.in" class="btn btn-primary">Go to Homepage</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Newtons Ai. All Rights Reserved. Crafted with <span class="heart"><i class="fa-solid fa-heart"></i></span> by the Newtons Ai Team.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const body = document.body;
+            const themeToggleButton = document.querySelector('.theme-toggle');
+            const moonIconClass = 'fa-moon';
+            const sunIconClass = 'fa-sun';
+            const currentThemeIcon = themeToggleButton.querySelector('i');
+
+            const applyTheme = (theme) => {
+                body.classList.toggle('dark-theme', theme === 'dark');
+                currentThemeIcon.classList.toggle(moonIconClass, theme === 'light');
+                currentThemeIcon.classList.toggle(sunIconClass, theme === 'dark');
+                localStorage.setItem('theme', theme);
+                themeToggleButton.setAttribute('aria-pressed', theme === 'dark');
+            };
+
+            themeToggleButton.addEventListener('click', () => {
+                const newTheme = body.classList.contains('dark-theme') ? 'light' : 'dark';
+                applyTheme(newTheme);
+            });
+
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+
+            const yearSpan = document.getElementById('currentYear');
+            if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+            // Fallback JavaScript redirect in case meta refresh is blocked
+            setTimeout(function() {
+                window.location.replace('https://dr.newtons.in');
+            }, 3000); // 3 seconds delay
+        });
+    </script>
     <script>
         // Fallback JavaScript redirect in case meta refresh is blocked
         setTimeout(function() {
-            window.location.replace('improved-homepage.html');
+            window.location.replace('https://dr.newtons.in');
         }, 3000); // 3 seconds delay
     </script>
 </head>
 <body>
     <h1>404</h1>
     <p>Oops! The page you are looking for could not be found.</p>
-    <p>You will be redirected to the <a href="improved-homepage.html">homepage</a> in 3 seconds.</p>
-    <p>If you are not redirected automatically, please <a href="improved-homepage.html">click here</a>.</p>
+    <p>You will be redirected to the <a href="https://dr.newtons.in">homepage</a> in 3 seconds.</p>
+    <p>If you are not redirected automatically, please <a href="https://dr.newtons.in">click here</a>.</p>
 </body>
 </html>
