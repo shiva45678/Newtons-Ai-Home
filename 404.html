@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Redirecting...</title>
+    <meta http-equiv="refresh" content="3;url=improved-homepage.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-light: #F9FAFB;
+            --surface-light: #FFFFFF;
+            --text-primary-light: #1F2937;
+            --text-secondary-light: #6B7280;
+            --heading-light: #111827;
+            --primary-color-light: #2563EB;
+            --app-bg: var(--bg-light);
+            --app-text-primary: var(--text-primary-light);
+            --app-text-secondary: var(--text-secondary-light);
+            --app-heading: var(--heading-light);
+            --app-primary: var(--primary-color-light);
+        }
+        body.dark-theme {
+            --bg-dark: #111827;
+            --surface-dark: #1F2937;
+            --text-primary-dark: #F3F4F6;
+            --text-secondary-dark: #9CA3AF;
+            --heading-dark: #FFFFFF;
+            --primary-color-dark: #3B82F6;
+            --app-bg: var(--bg-dark);
+            --app-text-primary: var(--text-primary-dark);
+            --app-text-secondary: var(--text-secondary-dark);
+            --app-heading: var(--heading-dark);
+            --app-primary: var(--primary-color-dark);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--app-bg);
+            color: var(--app-text-primary);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            color: var(--app-heading);
+            margin-bottom: 0.5em;
+        }
+        p {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            color: var(--app-text-secondary);
+            margin-bottom: 1.5em;
+            max-width: 600px;
+        }
+        a {
+            color: var(--app-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        // Fallback JavaScript redirect in case meta refresh is blocked
+        setTimeout(function() {
+            window.location.replace('improved-homepage.html');
+        }, 3000); // 3 seconds delay
+    </script>
+</head>
+<body>
+    <h1>404</h1>
+    <p>Oops! The page you are looking for could not be found.</p>
+    <p>You will be redirected to the <a href="improved-homepage.html">homepage</a> in 3 seconds.</p>
+    <p>If you are not redirected automatically, please <a href="improved-homepage.html">click here</a>.</p>
+</body>
+</html>
