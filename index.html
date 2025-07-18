@@ -1481,11 +1481,11 @@
                 display: flex; /* Switch to flexbox for easier ordering */
                 flex-direction: column; /* Stack items vertically */
             }
-            #pricing .pricing-card.featured { /* 500 Plan */
+            #pricing .pricing-card.featured {
                 order: 1;
             }
-            #pricing .pricing-card:not(.featured) { /* 222 Plan */
-                order: 2;
+            #pricing .pricing-card:not(.featured) {
+                order: 2; /* Both non-featured cards will get this order, appearing after */
             }
         }
 
@@ -1495,18 +1495,22 @@
             position: fixed;
             top: 0;
             right: -100%; /* Off-screen initially */
-            width: min(280px, 80vw); /* Responsive width */
+            width: min(300px, 85vw); /* Slightly wider for better content display */
             height: 100vh;
             background-color: var(--app-surface);
             z-index: 1001; /* Above header, below overlay if used differently */
-            padding: 24px;
-            transition: right 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: -5px 0 25px rgba(var(--app-shadow-color-rgb), 0.1);
+            padding: 32px 24px; /* Increased top/bottom padding */
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease; /* Smoother, slightly longer transition */
+            box-shadow: -8px 0 30px rgba(var(--app-shadow-color-rgb), 0.15); /* More prominent shadow */
+            border-left: 1px solid var(--app-border); /* Subtle border */
             display: flex;
             flex-direction: column;
             overflow-y: auto; /* Scroll if content exceeds height */
         }
-        .mobile-nav.open { right: 0; } /* Slide in */
+        .mobile-nav.open {
+            right: 0;
+            box-shadow: -12px 0 40px rgba(var(--app-shadow-color-rgb), 0.25); /* Deeper shadow when open */
+        }
         .mobile-nav-close {
             position: absolute;
             top: 16px;
@@ -1565,17 +1569,18 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(var(--app-shadow-color-rgb), 0.4); /* Semi-transparent overlay */
+            background-color: rgba(var(--app-shadow-color-rgb), 0.5); /* Slightly darker overlay */
             z-index: 1000; /* Below mobile nav, above page content */
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+            transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out; /* Match menu transition speed */
         }
         .overlay.open { opacity: 1; visibility: visible; }
 
     </style>
   <link rel="icon" href="logo.png" type="image/png">
     <link rel="prefetch" href="https://newtons.in">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 </head>
 <body>
     <!-- Header -->
@@ -1893,54 +1898,79 @@
     <!-- Pricing Section -->
      <section id="pricing" class="bg-surface">
         <div class="container">
-            <h2 class="section-heading animated">Pricing</h2>
-            <p class="section-subheading animated">Simple, transparent pricing designed for medical professionals and students. Unlock the full power of Newton's AI today.</p>
+            <h2 class="section-heading animated">Choose Your Plan</h2>
+            <p class="section-subheading animated">Simple, transparent pricing for individuals and institutions. Unlock the full power of Newtons AI today.</p>
             <div class="pricing-grid card-grid">
-                <!-- Standard Plan -->
+                <!-- Unlimited Pro Monthly Plan -->
                 <div class="pricing-card system-card animated">
                     <div class="system-card-content">
-                        <h3 class="system-card-title">Standard Plan</h3>
-                        <p class="system-card-desc">10 Lakh credits for 100+ cases.</p>
+                        <h3 class="system-card-title">Unlimited Pro</h3>
+                        <p class="system-card-desc">One-time purchase for unlimited access to premium features.</p>
                         <div class="price">
-                            <span class="current-price">₹222</span>
-                            <span class="original-price">₹500</span>
-                            <span class="savings-badge">Save 55%</span>
-                            <span class="price-term"></span>
-                        </div>
-                        <ul class="features-list">
-                            <li>AI Differential Diagnosis</li>
-                            <li>Limited Emergency & ICU Access</li>
-                            <li>Basic Treatment Plans</li>
-
-
-                        </ul>
-                        <a href="https://pro.newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                            <i class="fa-solid fa-shopping-cart"></i> Get Standard Plan
-                        </a>
-                    </div>
-                </div>
-                <!-- Unlimited Access Plan - Featured -->
-                <div class="pricing-card system-card animated featured">
-                    <div class="system-card-content">
-                        <h3 class="system-card-title">Unlimited Pro Plan</h3>
-                        <p class="system-card-desc">Unlimited access to all premium features.</p>
-                         <div class="price">
                             <span class="current-price">₹500</span>
+                            <span class="price-term">/ month</span>
                             <span class="original-price">₹2000</span>
-                            <span class="savings-badge primary-savings">Save 75%</span>
-                            <span class="price-term"></span>
+                            <span class="savings-badge">Save 75%</span>
+                            <span class="price-term">Special Offer</span>
                         </div>
                         <ul class="features-list">
                             <li><strong>Unlimited Access</strong></li>
                             <li>Advanced Differential Diagnosis</li>
                             <li>Full Emergency & ICU Support</li>
                             <li>Comprehensive Treatment Plans</li>
-
                             <li>Priority Support (24/7)</li>
-                            <li>Early Feature Access</li>
                         </ul>
-                        <a href="https://pro.newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-featured-cta">
-                            <i class="fa-solid fa-rocket"></i> Go Unlimited Pro
+                        <a href="https://pro.newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                            <i class="fa-solid fa-rocket"></i> Go Unlimited
+                        </a>
+                    </div>
+                </div>
+                <!-- Unlimited Pro Yearly Plan -->
+                <div class="pricing-card system-card animated">
+                    <div class="system-card-content">
+                        <h3 class="system-card-title">Unlimited Pro Yearly</h3>
+                        <p class="system-card-desc">Annual subscription for unlimited access to premium features.</p>
+                        <div class="price">
+                            <span class="current-price">₹3000</span>
+                            <span class="price-term">/ year</span>
+                            <span class="original-price">₹6000</span>
+                            <span class="savings-badge">Save 50%</span>
+                            <span class="price-term">Annual Savings</span>
+                        </div>
+                        <ul class="features-list">
+                            <li><strong>Unlimited Access</strong></li>
+                            <li>Advanced Differential Diagnosis</li>
+                            <li>Full Emergency & ICU Support</li>
+                            <li>Comprehensive Treatment Plans</li>
+                            <li>Priority Support (24/7)</li>
+                            <li>Exclusive Annual Content</li>
+                        </ul>
+                        <a href="https://pro.newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                            <i class="fa-solid fa-calendar-days"></i> Go Unlimited Yearly
+                        </a>
+                    </div>
+                </div>
+                <!-- AI Hospital Pro Plan - Featured -->
+                <div class="pricing-card system-card animated featured">
+                    <div class="system-card-content">
+                        <h3 class="system-card-title">AI Hospital Pro</h3>
+                        <p class="system-card-desc">Complete AI-powered hospital management solution.</p>
+                         <div class="price">
+                            <span class="current-price">₹30,000</span>
+                            <span class="original-price">₹50,000</span>
+                            <span class="savings-badge primary-savings">Save 40%</span>
+                            <span class="price-term">/ year</span>
+                        </div>
+                        <ul class="features-list">
+                            <li><strong>All-in-One AI HMS</strong></li>
+                            <li>Automated Complaint Intake</li>
+                            <li>AI-Driven Investigation Orders</li>
+                            <li>Automatic Report Analysis</li>
+                            <li>Smart Pharmacy Integration</li>
+                            <li>All General HMS Features</li>
+                        </ul>
+                        <a href="https://hms.newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-featured-cta">
+                            <i class="fa-solid fa-hospital"></i> Deploy AI HMS
                         </a>
                     </div>
                 </div>
@@ -2434,4 +2464,3 @@
         });
     </script>
 </body>
-</html>
