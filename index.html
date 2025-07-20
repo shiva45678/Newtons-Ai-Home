@@ -364,6 +364,17 @@
             line-height: 1.1;
             color: var(--app-heading); /* Ensured hero title uses heading color */
         }
+        
+        /* UPDATED: Style for the logo inside the hero title */
+        .hero-title img {
+            height: 1.2em;          /* Set height relative to the parent h1's font-size */
+            width: 1.2em;           /* Set width equal to height to make it a square */
+            max-width: 90%;         /* Ensure it doesn't overflow its container */
+            vertical-align: middle; /* Aligns the image nicely */
+            border-radius: 50%;     /* This makes the shape a circle */
+            object-fit: cover;      /* Prevents the image from stretching if it's not square */
+            box-shadow: var(--card-shadow); /* Adds a subtle shadow for depth */
+        }
 
         .hero-subtitle {
             font-size: clamp(1.2rem, 3vw, 1.4rem);
@@ -1659,7 +1670,9 @@
         <div class="hero-decoration"></div>
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title animated">Newtons Ai</h1>
+                <h1 class="hero-title animated">
+                    <img src="logo.png" alt="Newtons Ai Logo">
+                </h1>
                 <p class="hero-tagline animated">Clinical-Grade AI</p> <!-- Slightly enhanced tagline -->
                 <p class="hero-subtitle animated">Empowering medical professionals and institutions.</p> <!-- Shortened subtitle -->
                 <div class="btn-row animated">
