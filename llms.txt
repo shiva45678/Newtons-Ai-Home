@@ -1,0 +1,17 @@
+# Guidelines for LLM-based crawlers for Newtons AI Home page.
+
+User-agent: *
+Disallow: /private/
+Allow: /
+
+# Website Description:
+Description: Newtons AI is a platform providing clinical-grade AI solutions for medical professionals, doctors, colleges, and healthcare institutions, empowering enhanced learning, practice, and research.
+URL: https://dr.newtons.in
+
+# Key Sections:
+Sections: Home, About, AI for Doctors, Guide, Pricing, Download App.
+
+# Relevant Keywords:
+Keywords: AI, Artificial Intelligence, Machine Learning, Deep Learning, Data Science, Automation, Solutions, Services, Technology, Medical AI, Clinical AI, Healthcare AI, Doctors, Medical Professionals, Hospitals, Colleges, Institutions, Medical Students, Neet PG, OPD Assistant, Hospital Management, Prescription Writer, Treatment Planner, ICU Assistant, OSCE Simulator, Patient Care, Dr. Shiva Kolli.
+
+# For specific data extraction, refer to API documentation or Schema.org markup.
