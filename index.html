@@ -159,7 +159,7 @@
         *:focus:not(:focus-visible) {
             outline: none;
         }
-        .btn:focus-visible, .theme-toggle:focus-visible, .mobile-menu-btn:focus-visible, .slider-arrow:focus-visible, .scroll-top:focus-visible, .assistant-item:focus-visible {
+        .btn:focus-visible, .theme-toggle:focus-visible, .mobile-menu-btn:focus-visible, .slider-arrow:focus-visible, .scroll-top:focus-visible, .assistant-item:focus-visible, .download-apk-btn:focus-visible {
              border-radius: var(--border-radius-md);
         }
 
@@ -1156,22 +1156,54 @@
              color: var(--bg-dark); /* Dark text for contrast on bright primary in dark mode */
         }
 
-        /* Custom active colors for download buttons */
-        #download-app .assistant-item[data-target="download-android-panel"].active {
+        /* NEW: Styling for the direct APK download link */
+        .download-apk-btn {
+            background-color: #4CAF50; /* Green */
+            color: #000000; /* Black */
+            border-color: #4CAF50;
+            font-weight: 600;
+            padding: 12px 20px; /* Matching assistant-item padding */
+            font-size: 1rem; /* Matching assistant-item font size */
+            display: inline-flex; /* To align icon and text */
+            align-items: center;
+            justify-content: center;
+            gap: 10px; /* Space between icon and text */
+            border-width: 1px; /* Matching assistant-item border width */
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--button-shadow);
+            transition: var(--transition-std);
+            cursor: pointer;
+            text-decoration: none; /* Ensure no underline by default */
+        }
+        .download-apk-btn:hover {
+            background-color: #43A047; /* Slightly darker green on hover */
+            border-color: #43A047;
+            color: #000000;
+            transform: translateY(-2px); /* Maintain assistant-item hover effect */
+            box-shadow: var(--card-hover-shadow);
+            text-decoration: none;
+        }
+        .download-apk-btn:active {
+            transform: translateY(0px); /* Maintain assistant-item active effect */
+            box-shadow: var(--button-shadow);
+        }
+        /* Ensure these custom styles also apply in dark mode if desired, or define specific dark mode overrides */
+        body.dark-theme .download-apk-btn {
             background-color: #4CAF50; /* Green */
             color: #000000; /* Black */
             border-color: #4CAF50;
         }
+        body.dark-theme .download-apk-btn:hover {
+            background-color: #43A047; /* Slightly darker green on hover */
+            border-color: #43A047;
+            color: #000000;
+        }
+
+        /* Existing iOS active styles, ensure they are still there and correct */
         #download-app .assistant-item[data-target="download-ios-panel"].active {
             background-color: #000000; /* Black */
             color: #4CAF50; /* Green */
             border-color: #000000;
-        }
-        /* Ensure these custom styles also apply in dark mode if desired, or define specific dark mode overrides */
-        body.dark-theme #download-app .assistant-item[data-target="download-android-panel"].active {
-            background-color: #4CAF50; /* Green */
-            color: #000000; /* Black */
-            border-color: #4CAF50;
         }
         body.dark-theme #download-app .assistant-item[data-target="download-ios-panel"].active {
             background-color: #000000; /* Black */
@@ -1438,6 +1470,8 @@
             .hero-content { padding: 20px 0; } /* Rely on container padding */
             .btn-row { flex-direction: column; gap: 16px; align-items: center; } /* Stack buttons */
             .btn { width: 100%; max-width: 320px; padding: 14px; font-size: 1rem; } /* Full-width buttons on mobile */
+            .download-apk-btn { width: 100%; max-width: 320px; padding: 14px; font-size: 1rem; }
+
 
             .section-subheading { margin-bottom: 40px; font-size: 1rem; }
             .about-text p { font-size: 1rem; }
@@ -1514,6 +1548,7 @@
             .hero-tagline { font-size: clamp(1.2rem, 5vw, 1.5rem); }
             .hero-subtitle { font-size: clamp(1rem, 4vw, 1.2rem); }
             .btn { font-size: 0.95rem; max-width: 280px; }
+            .download-apk-btn { font-size: 0.95rem; max-width: 280px; }
             .contact-btn { max-width: 280px; }
 
 
@@ -1726,14 +1761,14 @@
             <h2 class="section-heading animated">About Newtons Ai</h2>
             <p class="section-subheading animated">Founded by Shiva Kolli, MBBS, Newtons Ai delivers clinical-grade AI for the medical field.</p>
             <div class="about-content animated">
-<div class="about-text">
-    <ul>
-        <li>Develops advanced AI tools for medical colleges, doctors, and healthcare institutions.</li>
-        <li>Empowers professionals and students with intelligent resources for enhanced learning, streamlined practice, and fostered research.</li>
-        <li>Offers AI assistants like OSCE simulators, question generators, medical guides, and clinic management systems.</li>
-        <li>Designed to elevate medical education and patient care.</li>
-    </ul>
-    <div class="stats-row">
+                <div class="about-text">
+                    <ul>
+                        <li>Develops advanced AI tools for medical colleges, doctors, and healthcare institutions.</li>
+                        <li>Empowers professionals and students with intelligent resources for enhanced learning, streamlined practice, and fostered research.</li>
+                        <li>Offers AI assistants like OSCE simulators, question generators, medical guides, and clinic management systems.</li>
+                        <li>Designed to elevate medical education and patient care.</li>
+                    </ul>
+                    <div class="stats-row">
                         <div class="stat-card animated">
                             <div class="stat-number">100k+</div> <!-- Changed to k for Lakh -->
                             <div class="stat-label">Active Users</div>
@@ -2108,27 +2143,18 @@
             <p class="section-subheading animated">Install our Progressive Web Apps (PWAs) for a seamless, app-like experience or get the direct Android APK.</p>
 
             <div class="guide-content animated">
-                <div class="assistant-list" role="tablist" aria-label="PWA Installation Guides">
-                    <button class="assistant-item" data-target="download-android-panel" id="download-android-tab" role="tab" aria-controls="download-android-panel" aria-selected="false">Android (APK) Download</button>
+                <div class="assistant-list" role="tablist" aria-label="App Download Options">
+                    <!-- This link now directly downloads the APK -->
+                    <a href="https://github.com/shiva45678/Newtons-Ai-Home/releases/download/v1.01/Newtons.Ai.apk"
+                       target="_blank" rel="noopener noreferrer" download="Newtons.Ai.apk"
+                       class="assistant-item download-apk-btn" id="download-android-link">
+                        <i class="fa-brands fa-android"></i> Android (APK) Download
+                    </a>
+                    <!-- This remains a tab button for iOS PWA installation -->
                     <button class="assistant-item" data-target="download-ios-panel" id="download-ios-tab" role="tab" aria-controls="download-ios-panel" aria-selected="false">iOS (iPhone/iPad) Installation</button>
                 </div>
 
-                <!-- MODIFIED: Android Download Panel with APK Button -->
-                <div id="download-android-panel" class="assistant-guide-details" role="tabpanel" aria-labelledby="download-android-tab" aria-hidden="true">
-                    <h4>Download Newtons Ai Android App (APK):</h4>
-                    <p style="text-align: center; color: var(--app-text-secondary); margin-bottom: 30px;">
-                        Click the button below to directly download the Newtons Ai Android application package (APK) file for offline use and native features.
-                    </p>
-                    <div class="btn-row" style="justify-content: center;">
-                        <a href="https://github.com/shiva45678/Newtons-Ai-Home/releases/download/v1.01/Newtons.Ai.apk" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 1.1rem; padding: 15px 30px;">
-                            <i class="fa-brands fa-android"></i> Download Newtons Ai APK
-                        </a>
-                    </div>
-                    <p style="text-align: center; color: var(--app-text-secondary); margin-top: 30px; font-size: 0.9rem;">
-                        Note: For Progressive Web App (PWA) installations of our various platforms (no app store needed, and works on Android too), please refer to the instructions for iOS devices in the adjacent tab, as the method is similar across modern mobile browsers for PWA installation.
-                    </p>
-                </div>
-                <!-- END MODIFIED -->
+                <!-- The Android download panel is removed, as the link above directly downloads -->
 
                 <div id="download-ios-panel" class="assistant-guide-details" role="tabpanel" aria-labelledby="download-ios-tab" aria-hidden="true">
                     <h4>Install Newtons Ai as a Web App on iPhone/iPad (iOS) & Android:</h4>
@@ -2408,6 +2434,7 @@
                 const sectionElement = document.querySelector(sectionSelector);
                 if (!sectionElement) return;
 
+                // Only query for actual tab buttons (excluding the direct download link)
                 const tabButtons = Array.from(sectionElement.querySelectorAll('.assistant-item[data-target]'));
                 if (tabButtons.length === 0) return;
 
@@ -2417,12 +2444,10 @@
                 tabButtons.forEach(button => {
                     if(!button.hasAttribute('role')) button.setAttribute('role', 'tab');
                     if(!button.hasAttribute('aria-selected')) button.setAttribute('aria-selected', 'false');
-                    if (!button.id && button.dataset.target) {
-                        // Ensure panel ID matches button's data-target if button ID needs to derive from panel
-                        // Current IDs are like "opd-guide-tab" for button and "opd-guide-panel" for panel
-                        // Ensure aria-controls points to panel ID (e.g., data-target + "-panel")
-                        button.setAttribute('aria-controls', `${button.dataset.target}`);
+                    if (!button.id) { // Ensure button has an ID for aria-labelledby
+                        button.id = `${button.dataset.target.replace('-panel', '')}-tab`; // Example: download-ios-panel -> download-ios-tab
                     }
+                    button.setAttribute('aria-controls', `${button.dataset.target}`);
                 });
 
                 const setActiveTab = (targetId) => {
@@ -2438,7 +2463,6 @@
                         panel.setAttribute('aria-hidden', !isActivePanel);
                          if(!panel.hasAttribute('role')) panel.setAttribute('role', 'tabpanel');
                          // Ensure aria-labelledby points to the button's ID
-                         // (e.g., search for button with data-target matching panel.id)
                          const tabButtonForPanel = sectionElement.querySelector(`.assistant-item[data-target="${panel.id}"]`);
                          if(tabButtonForPanel && tabButtonForPanel.id && !panel.hasAttribute('aria-labelledby')) {
                              panel.setAttribute('aria-labelledby', tabButtonForPanel.id);
@@ -2448,20 +2472,12 @@
 
                 let initialTabId = preferredDefaultTabTargetId;
 
-                // Device detection for download section
+                // For the download-app section, the Android link is a direct download, not a tab.
+                // We ensure the iOS tab is the default active tab.
                 if (sectionSelector === '#download-app') {
-                    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-                    // Prefer APK tab for Android devices
-                    if (/android/i.test(userAgent)) {
-                        initialTabId = 'download-android-panel';
-                    } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                        // Prefer iOS PWA tab for iOS devices
-                        initialTabId = 'download-ios-panel';
-                    } else {
-                        // Default to Android APK tab for other devices (e.g., desktop user might want to inspect APK)
-                        initialTabId = 'download-android-panel';
-                    }
+                    initialTabId = 'download-ios-panel'; // Always default to the iOS PWA installation tab
                 } else {
+                     // Existing logic for other tab systems
                      const preferredButton = tabButtons.find(btn => btn.dataset.target === preferredDefaultTabTargetId);
                      const preferredPanel = sectionElement.querySelector(`#${preferredDefaultTabTargetId}.assistant-guide-details`);
 
@@ -2469,7 +2485,6 @@
                          initialTabId = tabButtons[0]?.dataset.target;
                      }
                 }
-
 
                 if (initialTabId) {
                     setActiveTab(initialTabId);
@@ -2505,9 +2520,9 @@
                 });
             };
 
-            // Corrected initial tab IDs to match panel IDs
+            // Initialize tab systems
             initializeTabSystem('#guide', 'opd-guide-panel');
-            initializeTabSystem('#download-app', 'download-android-panel'); // Set default to Android APK
+            initializeTabSystem('#download-app', 'download-ios-panel'); // Set default tab to iOS, as Android is now a direct link
         });
     </script>
 </body>
