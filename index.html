@@ -539,7 +539,7 @@
             width: 80px;
             height: 4px;
             background: linear-gradient(to right, var(--app-primary), var(--app-secondary));
-            border-radius: var(--border-radius-sm);
+            border-radius: 1px; /* Changed from border-radius-sm to 1px for a subtler line */
         }
 
         .section-subheading {
@@ -1147,13 +1147,13 @@
         }
         .assistant-item.active { /* Active tab style */
             background-color: var(--app-primary);
-            color: var(--app-primary); /* Change text color to blue when active */
+            color: var(--surface-light); /* Changed to light for active tab text */
             border-color: var(--app-primary);
             box-shadow: 0 4px 8px rgba(var(--app-primary-rgb), 0.2);
             transform: translateY(-1px);
         }
         body.dark-theme .assistant-item.active {
-             color: var(--app-primary); /* Change text color to blue when active in dark mode */
+             color: var(--bg-dark); /* Dark text for contrast on bright primary in dark mode */
         }
 
         .assistant-guide-details { /* Tab panel content */
@@ -2081,56 +2081,37 @@
     <section id="download-app" class="bg-surface">
         <div class="container">
             <h2 class="section-heading animated">Download App</h2>
-            <p class="section-subheading animated">Install our Progressive Web Apps (PWAs) for a seamless, app-like experience on your mobile device. No app store needed!</p>
+            <p class="section-subheading animated">Install our Progressive Web Apps (PWAs) for a seamless, app-like experience or get the direct Android APK.</p>
 
             <div class="guide-content animated">
                 <div class="assistant-list" role="tablist" aria-label="PWA Installation Guides">
-                    <button class="assistant-item" data-target="download-android-panel" id="download-android-tab" role="tab" aria-controls="download-android-panel" aria-selected="false">Android Installation</button>
+                    <button class="assistant-item" data-target="download-android-panel" id="download-android-tab" role="tab" aria-controls="download-android-panel" aria-selected="false">Android (APK) Download</button>
                     <button class="assistant-item" data-target="download-ios-panel" id="download-ios-tab" role="tab" aria-controls="download-ios-panel" aria-selected="false">iOS (iPhone/iPad) Installation</button>
                 </div>
 
+                <!-- MODIFIED: Android Download Panel with APK Button -->
                 <div id="download-android-panel" class="assistant-guide-details" role="tabpanel" aria-labelledby="download-android-tab" aria-hidden="true">
-                    <h4>Install Newtons Ai on Android:</h4>
-                    <div class="guide-steps">
-                        <div class="guide-step-card">
-                            <h4>1. Open in Chrome</h4>
-                            <p>Navigate to your desired Newtons Ai web app using the Google Chrome browser:</p>
-                           <div class="btn-row" style="justify-content: flex-start; margin-top: 10px; margin-bottom: 20px;">
-                             <a href="https://newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: auto; padding: 8px 16px; font-size: 0.9rem;">
-                               <i class="fa-solid fa-brain"></i> Newtons Ai
-                             </a>
-                             <a href="https://hms.newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: auto; padding: 8px 16px; font-size: 0.9rem;">
-                               <i class="fa-solid fa-hospital-user"></i> AI HMS
-                             </a>
-                             <a href="https://group.newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: auto; padding: 8px 16px; font-size: 0.9rem;">
-                               <i class="fa-solid fa-users"></i> AI Wards
-                             </a>
-                             <a href="https://neetpg.newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: auto; padding: 8px 16px; font-size: 0.9rem;">
-                               <i class="fa-solid fa-graduation-cap"></i> NeetPG Prep
-                             </a>
-                           </div>
-                        </div>
-                        <div class="guide-step-card">
-                            <h4>2. Access Chrome Menu</h4>
-                            <p>Tap the three-dot menu icon (<i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i>) in the top-right corner of Chrome.</p>
-                        </div>
-                        <div class="guide-step-card">
-                            <h4>3. Select Install Option</h4>
-                            <p>Look for and select "Add to Home Screen" or "Install app" from the menu options that appear.</p>
-                        </div>
-                        <div class="guide-step-card">
-                            <h4>4. Confirm Installation</h4>
-                            <p>Tap "Add" or "Install" in the confirmation prompt. The Newtons Ai icon will appear on your home screen for easy access.</p>
-                        </div>
+                    <h4>Download Newtons Ai Android App (APK):</h4>
+                    <p style="text-align: center; color: var(--app-text-secondary); margin-bottom: 30px;">
+                        Click the button below to directly download the Newtons Ai Android application package (APK) file for offline use and native features.
+                    </p>
+                    <div class="btn-row" style="justify-content: center;">
+                        <a href="https://github.com/shiva45678/Newtons-Ai-Home/releases/download/v1.01/Newtons.Ai.apk" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 1.1rem; padding: 15px 30px;">
+                            <i class="fa-brands fa-android"></i> Download Newtons Ai APK
+                        </a>
                     </div>
+                    <p style="text-align: center; color: var(--app-text-secondary); margin-top: 30px; font-size: 0.9rem;">
+                        Note: For Progressive Web App (PWA) installations of our various platforms (no app store needed, and works on Android too), please refer to the instructions for iOS devices in the adjacent tab, as the method is similar across modern mobile browsers for PWA installation.
+                    </p>
                 </div>
+                <!-- END MODIFIED -->
 
                 <div id="download-ios-panel" class="assistant-guide-details" role="tabpanel" aria-labelledby="download-ios-tab" aria-hidden="true">
-                    <h4>Install Newtons Ai on iPhone/iPad (iOS):</h4>
+                    <h4>Install Newtons Ai as a Web App on iPhone/iPad (iOS) & Android:</h4>
                     <div class="guide-steps">
                         <div class="guide-step-card">
-                            <h4>1. Open in Safari</h4>
-                            <p>Navigate to your desired Newtons Ai web app using the Safari browser:</p>
+                            <h4>1. Open in Safari (or Chrome on Android)</h4>
+                            <p>Navigate to your desired Newtons Ai web app using the Safari browser on iOS, or Chrome on Android:</p>
                            <div class="btn-row" style="justify-content: flex-start; margin-top: 10px; margin-bottom: 20px;">
                              <a href="https://newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: auto; padding: 8px 16px; font-size: 0.9rem;">
                                <i class="fa-solid fa-brain"></i> Newtons Ai Platform
@@ -2148,11 +2129,11 @@
                         </div>
                         <div class="guide-step-card">
                             <h4>2. Tap Share Icon</h4>
-                            <p>Tap the Share icon (<i class="fa-solid fa-arrow-up-from-bracket" aria-hidden="true"></i>) located in the bottom toolbar of Safari.</p>
+                            <p>Tap the Share icon (<i class="fa-solid fa-arrow-up-from-bracket" aria-hidden="true"></i>) located in the bottom toolbar of Safari (or the three-dot menu in Chrome on Android).</p>
                         </div>
                         <div class="guide-step-card">
                             <h4>3. Find "Add to Home Screen"</h4>
-                            <p>Scroll down through the share options and tap "Add to Home Screen".</p>
+                            <p>Scroll down through the share options and tap "Add to Home Screen" (or "Install app" in Chrome for Android).</p>
                         </div>
                         <div class="guide-step-card">
                             <h4>4. Confirm Addition</h4>
@@ -2446,12 +2427,14 @@
                 // Device detection for download section
                 if (sectionSelector === '#download-app') {
                     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+                    // Prefer APK tab for Android devices
                     if (/android/i.test(userAgent)) {
                         initialTabId = 'download-android-panel';
                     } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                        // Prefer iOS PWA tab for iOS devices
                         initialTabId = 'download-ios-panel';
                     } else {
-                        // Default to Android if device is not clearly Android or iOS
+                        // Default to Android APK tab for other devices (e.g., desktop user might want to inspect APK)
                         initialTabId = 'download-android-panel';
                     }
                 } else {
@@ -2500,7 +2483,8 @@
 
             // Corrected initial tab IDs to match panel IDs
             initializeTabSystem('#guide', 'opd-guide-panel');
-            initializeTabSystem('#download-app', 'download-android-panel');
+            initializeTabSystem('#download-app', 'download-android-panel'); // Set default to Android APK
         });
     </script>
 </body>
+</html>
