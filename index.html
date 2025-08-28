@@ -1187,13 +1187,13 @@
             transform: translateY(0px); /* Maintain assistant-item active effect */
             box-shadow: var(--button-shadow);
         }
-        /* Ensure these custom styles also apply in dark mode if desired, or define specific dark mode overrides */
-        body.dark-theme .download-apk-btn {
+        /* Corrected specificity to ensure green in dark mode for the APK download button */
+        body.dark-theme #download-app.bg-surface .download-apk-btn {
             background-color: #4CAF50; /* Green */
             color: #000000; /* Black */
             border-color: #4CAF50;
         }
-        body.dark-theme .download-apk-btn:hover {
+        body.dark-theme #download-app.bg-surface .download-apk-btn:hover {
             background-color: #43A047; /* Slightly darker green on hover */
             border-color: #43A047;
             color: #000000;
