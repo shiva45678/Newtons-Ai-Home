@@ -84,6 +84,33 @@
         /* Scroll Top Button */
         .scroll-top { position: fixed; bottom: 25px; right: 25px; width: 52px; height: 52px; background-color: var(--app-primary); color: var(--surface-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transition: var(--transition-std); z-index: 999; box-shadow: 0 4px 12px rgba(var(--app-shadow-color-rgb), 0.15); border: none; font-size: 1.2rem; }
         body.dark-theme .scroll-top { color: var(--bg-dark); } .scroll-top.active { opacity: 1; visibility: visible; } .scroll-top:hover { background-color: var(--app-secondary); transform: scale(1.1) rotate(5deg); }
+        
+        .floating-btn {
+            position: fixed;
+            bottom: 90px; /* Adjust to be above the scroll-top button */
+            right: 25px;
+            z-index: 999;
+            background-color: var(--app-cta);
+            color: white;
+            padding: 12px 24px;
+            border-radius: var(--border-radius-md);
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: var(--button-shadow);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: none;
+            text-decoration: none;
+        }
+        .floating-btn:hover {
+            background-color: var(--app-cta-hover);
+            box-shadow: var(--card-hover-shadow);
+            transform: translateY(-3px);
+        }
+
         /* --- END GLOBAL THEME CSS --- */
 
 
@@ -791,6 +818,11 @@
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
+    <!-- Floating Contact Button -->
+    <button class="btn floating-btn" id="floatingContactBtn" aria-label="Request a Consultation">
+        <i class="fab fa-whatsapp"></i> Contact
+    </button>
+
     <!-- Main JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -953,6 +985,16 @@
             const consultationBtn = document.getElementById('requestConsultationBtn');
             if (consultationBtn) {
                 consultationBtn.addEventListener('click', function() {
+                    const phoneNumber = '916363111328';
+                    const message = "Hi! I'm interested in the Newtons Ai Hospitals franchise. I understand you provide and install everything, including the lab, pharmacy, furniture, beds, etc. Please provide more details.";
+                    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                    window.open(whatsappUrl, '_blank');
+                });
+            }
+
+            const floatingConsultationBtn = document.getElementById('floatingContactBtn');
+            if (floatingConsultationBtn) {
+                floatingConsultationBtn.addEventListener('click', function() {
                     const phoneNumber = '916363111328';
                     const message = "Hi! I'm interested in the Newtons Ai Hospitals franchise. I understand you provide and install everything, including the lab, pharmacy, furniture, beds, etc. Please provide more details.";
                     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
