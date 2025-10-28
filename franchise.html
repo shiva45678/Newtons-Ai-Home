@@ -18,264 +18,194 @@
     <link rel="icon" href="logo.png" type="image/png">
     <link rel="apple-touch-icon" href="logo.png">
 
-    <!-- Stylesheets from Parent Page -->
+    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     
-    <!-- Combined CSS from Parent and Franchise Page -->
     <style>
-        /* --- START PARENT THEME CSS --- */
+        /* --- START GLOBAL THEME CSS --- */
         :root {
-            --bg-light: #F9FAFB; --surface-light: #FFFFFF; --text-primary-light: #1F2937; --text-secondary-light: #6B7280; --heading-light: #111827; --border-light: #E5E7EB; --shadow-color-light-rgb: 0, 0, 0; --primary-color-light: #2563EB; --secondary-color-light: #10B981;
-            --bg-dark: #111827; --surface-dark: #1F2937; --text-primary-dark: #F3F4F6; --text-secondary-dark: #9CA3AF; --heading-dark: #FFFFFF; --border-dark: #374151; --shadow-color-dark-rgb: 0, 0, 0; --primary-color-dark: #3B82F6; --secondary-color-dark: #14B8A6;
-            --app-bg: var(--bg-light); --app-surface: var(--surface-light); --app-text-primary: var(--text-primary-light); --app-text-secondary: var(--text-secondary-light); --app-heading: var(--heading-light); --app-border: var(--border-light); --app-shadow-color-rgb: var(--shadow-color-light-rgb); --app-primary: var(--primary-color-light); --app-secondary: var(--secondary-color-light);
+            --bg-light: #F9FAFB; --surface-light: #FFFFFF; --text-primary-light: #1F2937; --text-secondary-light: #6B7280; --heading-light: #111827; --border-light: #E5E7EB; --shadow-color-light-rgb: 0, 0, 0; --primary-color-light: #2563EB; --secondary-color-light: #10B981; --cta-color-light: #E67E22; --cta-hover-light: #D35400;
+            --bg-dark: #111827; --surface-dark: #1F2937; --text-primary-dark: #F3F4F6; --text-secondary-dark: #9CA3AF; --heading-dark: #FFFFFF; --border-dark: #374151; --shadow-color-dark-rgb: 0, 0, 0; --primary-color-dark: #3B82F6; --secondary-color-dark: #14B8A6; --cta-color-dark: #F39C12; --cta-hover-dark: #E67E22;
+            
+            /* Dynamic Variables */
+            --app-bg: var(--bg-light); --app-surface: var(--surface-light); --app-text-primary: var(--text-primary-light); --app-text-secondary: var(--text-secondary-light); --app-heading: var(--heading-light); --app-border: var(--border-light); --app-shadow-color-rgb: var(--shadow-color-light-rgb); --app-primary: var(--primary-color-light); --app-secondary: var(--secondary-color-light); --app-cta: var(--cta-color-light); --app-cta-hover: var(--cta-hover-light);
             --primary-color-light-rgb: 37, 99, 235; --secondary-color-light-rgb: 16, 185, 129; --primary-color-dark-rgb: 59, 130, 246; --secondary-color-dark-rgb: 20, 184, 166; --surface-light-rgb: 255, 255, 255; --bg-dark-rgb: 17, 24, 39; --surface-dark-rgb: 31, 41, 55;
             --app-primary-rgb: var(--primary-color-light-rgb); --app-secondary-rgb: var(--secondary-color-light-rgb);
-            --card-shadow-opacity: 0.07; --card-shadow-opacity-hover: 0.08; --button-shadow-opacity: 0.06;
+            
+            /* UI Elements */
+            --card-shadow-opacity: 0.07; --card-shadow-opacity-hover: 0.09; --button-shadow-opacity: 0.06;
             --card-shadow: 0 4px 8px -2px rgba(var(--app-shadow-color-rgb), var(--card-shadow-opacity)), 0 2px 4px -2px rgba(var(--app-shadow-color-rgb), calc(var(--card-shadow-opacity) - 0.03));
             --card-hover-shadow: 0 10px 15px -3px rgba(var(--app-shadow-color-rgb), var(--card-shadow-opacity-hover)), 0 4px 6px -4px rgba(var(--app-shadow-color-rgb), calc(var(--card-shadow-opacity-hover) - 0.03));
             --button-shadow: 0 1px 3px 0 rgba(var(--app-shadow-color-rgb), var(--button-shadow-opacity)), 0 1px 2px -1px rgba(var(--app-shadow-color-rgb), calc(var(--button-shadow-opacity) - 0.02));
             --border-radius-sm: 4px; --border-radius-md: 8px; --border-radius-lg: 16px;
             --transition-fast: all 0.2s ease-in-out; --transition-std: all 0.3s ease-in-out;
-            --section-spacing: clamp(60px, 10vw, 100px); --container-padding: clamp(15px, 4vw, 20px);
+            --section-spacing: clamp(60px, 10vw, 100px); --container-padding: clamp(10px, 2vw, 20px);
             --app-focus-ring-color: rgba(var(--app-primary-rgb), 0.5); --app-focus-ring-width: 3px; --app-focus-ring-offset: 2px;
         }
         body.dark-theme {
-            --app-bg: var(--bg-dark); --app-surface: var(--surface-dark); --app-text-primary: var(--text-primary-dark); --app-text-secondary: var(--text-secondary-dark); --app-heading: var(--heading-dark); --app-border: var(--border-dark); --app-primary: var(--primary-color-dark); --app-secondary: var(--secondary-color-dark); --app-primary-rgb: var(--primary-color-dark-rgb); --app-secondary-rgb: var(--secondary-color-dark-rgb); --app-focus-ring-color: rgba(var(--app-primary-rgb), 0.6); --app-shadow-color-rgb: var(--shadow-color-dark-rgb);
+            --app-bg: var(--bg-dark); --app-surface: var(--surface-dark); --app-text-primary: var(--text-primary-dark); --app-text-secondary: var(--text-secondary-dark); --app-heading: var(--heading-dark); --app-border: var(--border-dark); --app-primary: var(--primary-color-dark); --app-secondary: var(--secondary-color-dark); --app-cta: var(--cta-color-dark); --app-cta-hover: var(--cta-hover-dark);
+            --app-primary-rgb: var(--primary-color-dark-rgb); --app-secondary-rgb: var(--secondary-color-dark-rgb); --app-focus-ring-color: rgba(var(--app-primary-rgb), 0.6); --app-shadow-color-rgb: var(--shadow-color-dark-rgb);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--app-bg); color: var(--app-text-primary); transition: background-color var(--transition-std), color var(--transition-std); overflow-x: hidden; line-height: 1.7; min-height: 100vh; font-size: 16px; }
+        html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--app-bg); color: var(--app-text-primary); transition: background-color var(--transition-std), color var(--transition-std); overflow-x: hidden; line-height: 1.7; font-size: 16px; }
         *:focus-visible { outline: var(--app-focus-ring-width) solid var(--app-focus-ring-color); outline-offset: var(--app-focus-ring-offset); border-radius: var(--border-radius-sm); }
         *:focus:not(:focus-visible) { outline: none; }
-        h1, h2, h3, h4, h5, h6 { color: var(--app-heading); line-height: 1.3; margin-top: 0; margin-bottom: 0.75em; font-weight: 700; }
+        h1, h2, h3, h4, h5, h6 { color: var(--app-heading); line-height: 1.3; margin-bottom: 0.75em; font-weight: 700; }
         h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 800; } h2 { font-size: clamp(2rem, 5vw, 2.75rem); } h3 { font-size: clamp(1.5rem, 4vw, 1.75rem); }
-        p { margin-top: 0; margin-bottom: 1.25em; color: var(--app-text-secondary); }
+        p { margin-bottom: 1.25em; color: var(--app-text-secondary); } p:last-child { margin-bottom: 0; }
         a { color: var(--app-primary); text-decoration: none; transition: color var(--transition-fast); } a:hover { color: var(--app-secondary); text-decoration: underline; }
-        .container { max-width: 1200px; margin-left: auto; margin-right: auto; padding-left: var(--container-padding); padding-right: var(--container-padding); }
+        .container { max-width: 1300px; margin-left: auto; margin-right: auto; padding-left: var(--container-padding); padding-right: var(--container-padding); }
+        
+        /* Header & Nav */
         header { position: fixed; width: 100%; top: 0; z-index: 1000; background-color: rgba(var(--surface-light-rgb), 0.85); backdrop-filter: blur(12px) saturate(180%); -webkit-backdrop-filter: blur(12px) saturate(180%); box-shadow: 0 1px 2px 0 rgba(var(--app-shadow-color-rgb), 0.05); transition: background-color var(--transition-std), box-shadow var(--transition-std); }
         body.dark-theme header { background-color: rgba(var(--surface-dark-rgb), 0.85); box-shadow: 0 1px 2px 0 rgba(var(--app-shadow-color-rgb), 0.1); }
         .header-content { display: flex; justify-content: space-between; align-items: center; height: 72px; }
         .logo { font-weight: 800; font-size: clamp(1.5rem, 4vw, 1.75rem); color: var(--app-primary); text-decoration: none; } .logo:hover { text-decoration: none; color: var(--app-secondary); }
-        nav ul { display: flex; list-style: none; gap: clamp(16px, 3vw, 32px); margin: 0; padding: 0; }
-        nav a { text-decoration: none; color: var(--app-text-primary); font-weight: 600; position: relative; padding: 8px 4px; transition: color var(--transition-fast); }
-        nav a::after { content: ''; position: absolute; width: 0; height: 3px; bottom: -2px; left: 50%; transform: translateX(-50%); background-color: var(--app-primary); transition: width var(--transition-fast); border-radius: 1px; }
-        nav a:hover, nav a.nav-active { color: var(--app-primary); } nav a:hover::after, nav a.nav-active::after { width: 100%; } nav a:hover { text-decoration: none; }
-        .theme-toggle { background: none; border: 1px solid transparent; color: var(--app-text-secondary); cursor: pointer; font-size: 1.35rem; padding: 10px; border-radius: 50%; transition: color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast); line-height: 1; } .theme-toggle:hover { color: var(--app-primary); background-color: rgba(var(--app-primary-rgb), 0.1); transform: scale(1.1); }
-        .mobile-menu-btn { display: none; background: none; border: none; color: var(--app-text-secondary); font-size: 1.6rem; cursor: pointer; padding: 10px; border-radius: 50%; transition: color var(--transition-fast), background-color var(--transition-fast); line-height: 1; }
-        footer { background-color: var(--bg-dark); color: var(--text-secondary-dark); padding: 80px 0 40px; border-top: 1px solid var(--border-dark); } footer h3 { color: var(--heading-dark); font-size: 1.3rem; } footer p { color: var(--text-secondary-dark); } footer a { color: var(--text-secondary-dark); } footer a:hover { color: var(--secondary-color-dark); text-decoration: underline; }
-        .footer-content { display: flex; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; justify-content: space-between; } .footer-col { flex: 1; min-width: 220px; } .footer-col h3 { font-weight: 600; margin-bottom: 20px; position: relative; padding-bottom: 10px; } .footer-col h3::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 3px; background: linear-gradient(to right, var(--primary-color-dark), var(--secondary-color-dark)); border-radius: 2px; } .footer-links { list-style: none; padding: 0; margin: 0; } .footer-links li { margin-bottom: 12px; }
+        nav.nav-desktop ul { display: flex; list-style: none; gap: clamp(16px, 3vw, 32px); }
+        nav.nav-desktop a { color: var(--app-text-primary); font-weight: 600; position: relative; padding: 8px 4px; transition: color var(--transition-fast); }
+        nav.nav-desktop a::after { content: ''; position: absolute; width: 0; height: 3px; bottom: -2px; left: 50%; transform: translateX(-50%); background-color: var(--app-primary); transition: width var(--transition-fast); border-radius: 1px; }
+        nav.nav-desktop a:hover, nav.nav-desktop a.nav-active { color: var(--app-primary); } nav.nav-desktop a:hover::after, nav.nav-desktop a.nav-active::after { width: 100%; } nav.nav-desktop a:hover { text-decoration: none; }
+        .header-actions { display: flex; align-items: center; gap: 8px; }
+        .theme-toggle, .mobile-menu-btn { background: none; border: 1px solid transparent; color: var(--app-text-secondary); cursor: pointer; padding: 10px; border-radius: 50%; transition: color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast); line-height: 1; }
+        .theme-toggle { font-size: 1.35rem; } .theme-toggle:hover { color: var(--app-primary); background-color: rgba(var(--app-primary-rgb), 0.1); transform: scale(1.1); }
+        .mobile-menu-btn { display: none; font-size: 1.6rem; } /* Hidden by default */
+
+        .mobile-nav, .overlay {
+            display: none;
+        }
+
+        /* Footer */
+        footer { background-color: var(--bg-dark); color: var(--text-secondary-dark); padding: 80px 0 40px; border-top: 1px solid var(--border-dark); } footer h3 { color: var(--heading-dark); font-size: 1.3rem; font-weight: 600; margin-bottom: 20px; position: relative; padding-bottom: 10px; } footer h3::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 3px; background: linear-gradient(to right, var(--primary-color-dark), var(--secondary-color-dark)); border-radius: 2px; } footer p, footer a { color: var(--text-secondary-dark); } footer a:hover { color: var(--secondary-color-dark); text-decoration: underline; }
+        .footer-content { display: flex; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; justify-content: space-between; } .footer-col { flex: 1; min-width: 220px; } .footer-links { list-style: none; } .footer-links li { margin-bottom: 12px; }
         .footer-bottom { padding-top: 30px; border-top: 1px solid var(--border-dark); text-align: center; font-size: 0.9rem; }
+        
+        /* Scroll Top Button */
         .scroll-top { position: fixed; bottom: 25px; right: 25px; width: 52px; height: 52px; background-color: var(--app-primary); color: var(--surface-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transition: var(--transition-std); z-index: 999; box-shadow: 0 4px 12px rgba(var(--app-shadow-color-rgb), 0.15); border: none; font-size: 1.2rem; }
         body.dark-theme .scroll-top { color: var(--bg-dark); } .scroll-top.active { opacity: 1; visibility: visible; } .scroll-top:hover { background-color: var(--app-secondary); transform: scale(1.1) rotate(5deg); }
-        /* --- END PARENT THEME CSS --- */
+        /* --- END GLOBAL THEME CSS --- */
 
 
         /* --- START FRANCHISE PAGE SPECIFIC CSS --- */
-        .franchise-page-main {
-            padding-top: var(--section-spacing);
-            padding-bottom: var(--section-spacing);
-        }
-        .franchise-container {
-            max-width: 1100px;
-            margin: 2rem auto;
-            background: var(--app-surface);
-            padding: 2rem;
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--card-shadow);
-            border: 1px solid var(--app-border);
-        }
-        .franchise-intro {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-        .franchise-intro h2 {
-            font-size: 2.2em;
-            color: var(--app-heading);
-        }
-        .franchise-intro p {
-            font-size: 1.1em;
-            color: var(--app-text-secondary);
-            max-width: 800px;
-            margin: 1rem auto;
-        }
-        details {
-            margin-bottom: 1.5rem;
-            border: 1px solid var(--app-border);
-            border-radius: var(--border-radius-md);
-            overflow: hidden;
-        }
-        summary {
-            font-size: 1.5em;
-            font-weight: 600;
-            padding: 1rem;
-            background-color: var(--app-bg);
-            cursor: pointer;
-            outline: none;
-            transition: background-color var(--transition-fast);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        summary::-webkit-details-marker {
-            display: none; 
-        }
-        summary:hover {
-            background-color: rgba(var(--app-primary-rgb), 0.1);
-        }
-        .summary-content {
-            display: flex;
-            align-items: center;
-        }
-        .summary-content i {
-            margin-right: 12px;
-            width: 24px;
-            text-align: center;
-            color: var(--app-primary);
-        }
-        .chevron {
-            transition: transform 0.3s ease;
-        }
-        details[open] .chevron {
-            transform: rotate(180deg);
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        .section-content {
-            padding: 1.5rem;
-            background-color: var(--app-surface);
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 1.5rem;
-        }
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--app-border);
-            color: var(--app-text-primary);
-        }
-        thead th {
-            background-color: #005f73; /* Modern Blue, kept for branding consistency */
-            color: white;
-            font-weight: 600;
-        }
-        body.dark-theme thead th {
-             background-color: #023e8a;
-        }
-        tbody tr:nth-child(even) {
-            background-color: var(--app-bg);
-        }
-        tfoot {
-            font-weight: bold;
-        }
-        tfoot td {
-            font-size: 1.1em;
-            background-color: var(--app-bg);
-        }
-        .button-container {
-            text-align: right;
-            margin-top: 1rem;
-        }
-        .download-btn {
-            background-color: #0077b6; /* Brighter Blue */
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: var(--border-radius-md);
-            font-size: 14px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            box-shadow: var(--button-shadow);
-        }
-        .download-btn:hover {
-            background-color: #023e8a;
-            box-shadow: var(--card-hover-shadow);
-            transform: translateY(-2px);
-        }
-        .cta-section {
-            text-align: center;
-            padding: 2rem;
-            background-color: var(--app-bg);
-            border-radius: var(--border-radius-lg);
-            margin-top: 2rem;
-        }
-        .cta-section h2 {
-            color: var(--app-heading);
-        }
-        .cta-btn {
-            background-color: #e67e22; /* Vibrant Orange */
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: var(--border-radius-md);
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            font-weight: bold;
-            box-shadow: var(--button-shadow);
-        }
-        .cta-btn:hover {
-            background-color: #d35400;
-            box-shadow: var(--card-hover-shadow);
-            transform: translateY(-3px);
-        }
-        .download-btn i, .cta-btn i {
-            margin-right: 8px;
-        }
+        .franchise-page-container { padding-top: calc(var(--section-spacing) + 72px); padding-bottom: var(--section-spacing); }
+        
+        .hero-section { text-align: center; margin-bottom: var(--section-spacing); }
+        .hero-section h1 { margin-bottom: 0.5em; }
+        .hero-section p { font-size: 1.15rem; color: var(--app-text-secondary); max-width: 800px; margin: 0 auto; line-height: 1.8; }
 
-        .grand-total {
-            text-align: center;
-            margin-top: 3rem;
-            padding: 1.5rem;
-            background-color: #111827; /* Dark Blue/Gray, consistent with dark theme */
-            color: white;
-            border-radius: var(--border-radius-lg);
-        }
-        .grand-total h2 {
-            border: none;
-            color: white;
-            margin: 0;
-            font-size: 1.5em;
-        }
-        .grand-total p {
-            font-size: 2.5em;
-            font-weight: bold;
-            margin: 0.5rem 0 0 0;
-            color: white; /* Ensure text is white */
-        }
-        .numeric, .numeric th {
-            text-align: right;
-        }
+        .franchise-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 2.5rem; align-items: flex-start; }
+        .franchise-packages { display: flex; flex-direction: column; gap: 2.5rem; }
+        
+        .package-card { background-color: var(--app-surface); border: 1px solid var(--app-border); border-radius: var(--border-radius-lg); padding: 1.5rem; display: flex; flex-direction: column; box-shadow: var(--card-shadow); transition: var(--transition-std); animation: fadeIn 0.5s ease-out forwards; opacity: 0; }
+        .package-card:nth-child(1) { animation-delay: 0.1s; }
+        .package-card:nth-child(2) { animation-delay: 0.2s; }
+        .package-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .package-card:hover { transform: translateY(-5px); box-shadow: var(--card-hover-shadow); }
+        .package-card h3 { font-size: 1.6rem; font-weight: 700; display: flex; align-items: center; margin-bottom: 1.5rem; color: var(--app-heading); }
+        .package-card h3 .icon-wrapper { background-color: rgba(var(--app-primary-rgb), 0.1); color: var(--app-primary); border-radius: 50%; width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center; margin-right: 16px; font-size: 1.3rem; flex-shrink: 0; }
+        
+        /* Pharmacy Accordion */
+        .pharmacy-accordion details { border: 1px solid var(--app-border); border-radius: var(--border-radius-md); overflow: hidden; }
+        .pharmacy-accordion summary { cursor: pointer; padding: 1rem 1.5rem; font-weight: 600; color: var(--app-primary); list-style: none; display: flex; justify-content: space-between; align-items: center; background-color: rgba(var(--app-primary-rgb), 0.05); transition: background-color var(--transition-fast); }
+        .pharmacy-accordion summary::-webkit-details-marker { display: none; }
+        .pharmacy-accordion summary:hover { background-color: rgba(var(--app-primary-rgb), 0.1); }
+        .pharmacy-accordion summary .accordion-icon { transition: transform var(--transition-std); font-size: 0.9em; }
+        .pharmacy-accordion details[open] summary .accordion-icon { transform: rotate(180deg); }
+        .pharmacy-accordion .accordion-content { padding: 0; }
+
+        .table-wrapper { flex-grow: 1; overflow-y: auto; max-height: 450px; }
+        .table-wrapper::-webkit-scrollbar { width: 8px; }
+        .table-wrapper::-webkit-scrollbar-track { background: transparent; }
+        .table-wrapper::-webkit-scrollbar-thumb { background-color: var(--app-border); border-radius: 10px; border: 2px solid var(--app-surface); }
+        .table-wrapper::-webkit-scrollbar-thumb:hover { background-color: var(--app-text-secondary); }
+
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid var(--app-border); color: var(--app-text-primary); }
+        thead th { background-color: var(--app-bg); color: var(--app-heading); font-weight: 600; position: sticky; top: 0; z-index: 1; }
+        tbody tr:last-child td { border-bottom: none; }
+        tbody tr:hover { background-color: rgba(var(--app-primary-rgb), 0.05); }
+        
+        .button-container { text-align: right; margin-top: 1.5rem; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border: none; border-radius: var(--border-radius-md); font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; text-decoration: none; }
+        .btn i { line-height: 1; }
+        .btn:hover { text-decoration: none; }
+        
+        .download-btn { background-color: var(--app-primary); color: white; box-shadow: var(--button-shadow); }
+        .download-btn:hover { background-color: var(--app-secondary); box-shadow: var(--card-hover-shadow); transform: translateY(-2px); }
+        
+        /* Sticky Summary Sidebar */
+        .summary-sidebar { position: sticky; top: 100px; border: 1px solid var(--app-border); background-color: var(--app-surface); border-radius: var(--border-radius-lg); padding: 1.5rem; box-shadow: var(--card-shadow); }
+        .summary-sidebar h2 { font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center; color: var(--app-heading); }
+        .summary-list { list-style: none; margin-bottom: 1.5rem; }
+        .summary-list li { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--app-border); }
+        .summary-list li:last-child { border-bottom: none; }
+        .summary-list .item-name { font-weight: 500; color: var(--app-text-secondary); }
+        .summary-list .item-value { font-weight: 600; color: var(--app-text-primary); }
+        .summary-sidebar hr { border: 0; height: 1px; background-color: var(--app-border); margin: 0 0 1.5rem 0; }
+        .summary-grand-total { text-align: center; }
+        .summary-grand-total p { text-transform: uppercase; font-size: 1rem; letter-spacing: 1px; font-weight: 500; color: var(--app-text-secondary); margin-bottom: 0.5rem; }
+        .summary-grand-total .total-value { font-size: clamp(2rem, 5vw, 2.75rem); font-weight: 800; color: var(--app-primary); line-height: 1.1; }
+
+        .cta-section { text-align: center; padding: 3rem; margin-top: var(--section-spacing); background: linear-gradient(45deg, rgba(var(--app-primary-rgb), 0.1), rgba(var(--app-secondary-rgb), 0.1)); border-radius: var(--border-radius-lg); }
+        .cta-section h2 { color: var(--app-heading); }
+        .cta-btn { background-color: var(--app-cta); color: white; padding: 15px 30px; font-size: 1.2em; box-shadow: var(--button-shadow); }
+        .cta-btn:hover { background-color: var(--app-cta-hover); box-shadow: var(--card-hover-shadow); transform: translateY(-3px); }
+        
+        .numeric, .numeric th { text-align: right; }
         /* --- END FRANCHISE PAGE SPECIFIC CSS --- */
 
 
-        /* Responsive Adjustments for Mobile Menu and Layout */
-        @media (max-width: 768px) {
-            html { scroll-padding-top: 64px; }
-            .header-content { height: 64px; }
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (max-width: 1024px) {
             .nav-desktop { display: none; }
             .mobile-menu-btn { display: block; }
-            .header-actions { display: flex; align-items: center; gap: 8px; }
-            .theme-toggle { order: 1; }
-            .mobile-menu-btn { order: 2; }
-            .mobile-nav { position: fixed; top: 0; right: -100%; width: min(300px, 85vw); height: 100vh; background-color: var(--app-surface); z-index: 1001; padding: 32px 24px; transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: -8px 0 30px rgba(var(--app-shadow-color-rgb), 0.15); }
+            .franchise-layout { grid-template-columns: 1fr; }
+            .summary-sidebar { position: static; top: auto; order: -1; /* Move summary to the top on mobile */ margin-bottom: 2.5rem; }
+
+            .mobile-nav { display: block; position: fixed; top: 0; right: -100%; width: min(300px, 85vw); height: 100vh; background-color: var(--app-surface); z-index: 1001; padding: 32px 24px; transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: -8px 0 30px rgba(var(--app-shadow-color-rgb), 0.15); }
             .mobile-nav.open { right: 0; }
             .mobile-nav-close { position: absolute; top: 16px; right: 16px; background: none; border: none; color: var(--app-text-secondary); font-size: 1.75rem; cursor: pointer; padding: 12px; border-radius: 50%; }
             .mobile-nav ul { list-style: none; padding: 0; margin-top: 60px; } .mobile-nav li { margin-bottom: 8px; }
             .mobile-nav a { text-decoration: none; color: var(--app-text-primary); font-weight: 500; font-size: 1.1rem; display: block; padding: 14px 18px; border-radius: var(--border-radius-md); transition: background-color var(--transition-fast), color var(--transition-fast); }
             .mobile-nav a:hover, .mobile-nav a.nav-active-mobile { background-color: rgba(var(--app-primary-rgb), 0.1); color: var(--app-primary); }
-            .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(var(--app-shadow-color-rgb), 0.5); z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.4s ease-in-out; }
+            .overlay { display: block; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(var(--app-shadow-color-rgb), 0.5); z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.4s ease-in-out; }
             .overlay.open { opacity: 1; visibility: visible; }
-            .franchise-container { padding: 1rem; margin-top: 1rem; }
-            summary { font-size: 1.2em; }
-            th, td { padding: 8px 10px; font-size: 0.9rem; }
-            .footer-content { flex-direction: column; text-align: center; } .footer-col h3::after { left: 50%; transform: translateX(-50%); }
+        }
+
+        @media (max-width: 768px) {
+            html { scroll-padding-top: 72px; }
+            .franchise-page-container { padding-top: calc(var(--section-spacing) / 2 + 72px); }
+            th, td { padding: 10px; font-size: 0.9rem; }
+            
+            /* MOBILE TABLE TRANSFORMATION */
+            .package-card table, .package-card thead, .package-card tbody, .package-card th, .package-card td, .package-card tr { display: block; }
+            .package-card thead tr { position: absolute; top: -9999px; left: -9999px; } /* Hide headers */
+            .package-card tr { border: 1px solid var(--app-border); margin-bottom: 1rem; border-radius: var(--border-radius-md); background-color: var(--app-surface); }
+            .package-card td { border: none; border-bottom: 1px solid var(--app-border); position: relative; padding-left: 50%; text-align: right; min-height: 2.5em; /* for empty cells */ display: flex; align-items: center; justify-content: flex-end;}
+            .package-card tr:last-child { margin-bottom: 0; }
+            .package-card td:last-child { border-bottom: 0; }
+            .package-card td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 10px;
+                width: calc(50% - 20px);
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+                color: var(--app-heading);
+            }
+            .footer-content { flex-direction: column; text-align: center; } 
+            .footer-col h3::after { left: 50%; transform: translateX(-50%); }
         }
     </style>
 </head>
 <body>
-    <!-- Header from Parent Page -->
+    <!-- Header -->
     <header>
         <div class="container">
             <div class="header-content">
@@ -301,8 +231,8 @@
         </div>
     </header>
 
-    <!-- Mobile Menu from Parent Page -->
-    <div class="mobile-nav" id="mobileNavMenu" aria-hidden="true">
+    <!-- Mobile Menu -->
+    <nav class="mobile-nav" id="mobileNavMenu" aria-hidden="true">
         <button class="mobile-nav-close" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
         <ul>
             <li><a href="index.html#hero" class="mobile-nav-link">Home</a></li>
@@ -311,329 +241,522 @@
             <li><a href="index.html#pricing" class="mobile-nav-link">Pricing</a></li>
             <li><a href="index.html#download-app" class="mobile-nav-link">Download App</a></li>
         </ul>
-    </div>
+    </nav>
     <div class="overlay"></div>
 
     <!-- Main Content for Franchise Page -->
-    <main class="franchise-page-main" style="padding-top: 100px;">
+    <div class="franchise-page-container">
         <div class="container">
-            <div class="franchise-container">
-                <div class="franchise-intro">
-                    <h2>Your Turnkey Solution for a Newtons Ai Hospitals Franchise</h2>
-                    <p>Welcome to the future of healthcare. Newtons Ai Hospitals offers a unique franchise opportunity, combining state-of-the-art medical technology with our proprietary AI platform to deliver unparalleled patient care. This document outlines the comprehensive, pre-negotiated setup package, ensuring you have everything you need to launch your successful franchise from day one.</p>
-                </div>
+            
+            <section class="hero-section">
+                <h1>Newtons Ai Hospitals Franchise for Doctors</h1>
+                <p>Newtons Ai Hospitals provides a complete, pre-negotiated package for a day-one launch. See your initial investment details below.</p>
+            </section>
 
-                <!-- Section 1: Equipment and Furniture -->
-                <details open>
-                    <summary>
-                        <span class="summary-content">
-                            <i class="fas fa-clinic-medical"></i>
-                            Package 1: AI-Integrated Equipment & Clinic Ambiance
-                        </span>
-                        <i class="fas fa-chevron-down chevron"></i>
-                    </summary>
-                    <div class="section-content">
-                        <table id="equipmentTable">
-                             <thead>
-                                <tr><th>Item</th><th>Category</th><th class="numeric">Quantity</th><th class="numeric">Unit Price (₹)</th><th class="numeric">Total Price (₹)</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>Newtons Ai Hospital Management System</td><td>Software</td><td class="numeric">1</td><td class="numeric">Included</td><td class="numeric">Included</td></tr>
-                                <tr><td>Semi-Auto Biochemistry Analyser</td><td>Lab Equipment</td><td class="numeric">1</td><td class="numeric">70,000</td><td class="numeric">70,000</td></tr>
-                                <tr><td>Cell Counter (3-Part)</td><td>Lab Equipment</td><td class="numeric">1</td><td class="numeric">190,000</td><td class="numeric">190,000</td></tr>
-                                <tr><td>ECG Machine (3-Lead)</td><td>Medical Equipment</td><td class="numeric">1</td><td class="numeric">16,000</td><td class="numeric">16,000</td></tr>
-                                <tr><td>Microtek Online UPS</td><td>Infrastructure</td><td class="numeric">1</td><td class="numeric">14,000</td><td class="numeric">14,000</td></tr>
-                                <tr><td>Inverter & Battery</td><td>Infrastructure</td><td class="numeric">1</td><td class="numeric">15,000</td><td class="numeric">15,000</td></tr>
-                                <tr><td>Fridge</td><td>Infrastructure</td><td class="numeric">2</td><td class="numeric">10,000</td><td class="numeric">20,000</td></tr>
-                                <tr><td>Centrifuge Machine</td><td>Lab Equipment</td><td class="numeric">1</td><td class="numeric">1,500</td><td class="numeric">1,500</td></tr>
-                                <tr><td>Laptops (Used)</td><td>Office Equipment</td><td class="numeric">3</td><td class="numeric">10,000</td><td class="numeric">30,000</td></tr>
-                                <tr><td>Printer (Used)</td><td>Office Equipment</td><td class="numeric">1</td><td class="numeric">3,000</td><td class="numeric">3,000</td></tr>
-                                <tr><td>Patient Beds (Liftable, with mattress)</td><td>Furniture</td><td class="numeric">4</td><td class="numeric">12,000</td><td class="numeric">48,000</td></tr>
-                                <tr><td>Reception Table + Doctor Table</td><td>Furniture</td><td class="numeric">1</td><td class="numeric">30,000</td><td class="numeric">30,000</td></tr>
-                                <tr><td>Air Port Chair (3-in-1)</td><td>Furniture</td><td class="numeric">1</td><td class="numeric">9,000</td><td class="numeric">9,000</td></tr>
-                                <tr><td>Patient Examination Table</td><td>Furniture</td><td class="numeric">1</td><td class="numeric">5,000</td><td class="numeric">5,000</td></tr>
-                                <tr><td>Doctor Office Chairs</td><td>Furniture</td><td class="numeric">2</td><td class="numeric">1,500</td><td class="numeric">3,000</td></tr>
-                                <tr><td>Wooden Tables</td><td>Furniture</td><td class="numeric">2</td><td class="numeric">1,500</td><td class="numeric">3,000</td></tr>
-                                <tr><td>Patient Stools</td><td>Furniture</td><td class="numeric">1</td><td class="numeric">1,000</td><td class="numeric">1,000</td></tr>
-                                <tr><td>Chairs (for waiting area)</td><td>Furniture</td><td class="numeric">4</td><td class="numeric">400</td><td class="numeric">1,600</td></tr>
-                                <tr><td>Saline Stands</td><td>Medical Equipment</td><td class="numeric">3</td><td class="numeric">1,000</td><td class="numeric">3,000</td></tr>
-                                <tr><td>Curtains</td><td>Furnishings</td><td class="numeric">10</td><td class="numeric">100</td><td class="numeric">1,000</td></tr>
-                                <tr><td>Stethoscope & BP Machine</td><td>Medical Equipment</td><td class="numeric">1</td><td class="numeric">2,000</td><td class="numeric">2,000</td></tr>
-                                <tr><td>Glucometer & Strips</td><td>Medical Equipment</td><td class="numeric">1</td><td class="numeric">3,000</td><td class="numeric">3,000</td></tr>
-                                <tr><td>Digital Thermometer</td><td>Medical Equipment</td><td class="numeric">1</td><td class="numeric">200</td><td class="numeric">200</td></tr>
-                                <tr><td>Letter Heads & Prescription Pads</td><td>Stationery</td><td class="numeric">1</td><td class="numeric">3,000</td><td class="numeric">3,000</td></tr>
-                                <tr><td>Billboards</td><td>Marketing</td><td class="numeric">3</td><td class="numeric">2,000</td><td class="numeric">6,000</td></tr>
-                                <tr><td>Micropipettes (5-50µl & 100-1000µl)</td><td>Lab Consumables</td><td class="numeric">2</td><td class="numeric">3,000</td><td class="numeric">6,000</td></tr>
-                                <tr><td>ECG Gel (10 bottles)</td><td>Medical Consumables</td><td class="numeric">1</td><td class="numeric">800</td><td class="numeric">800</td></tr>
-                                <tr><td>Blood/Urine Containers</td><td>Lab Consumables</td><td class="numeric">200</td><td class="numeric">2</td><td class="numeric">400</td></tr>
-                                <tr><td>Pipette Tips (Blue & Yellow)</td><td>Lab Consumables</td><td class="numeric">2</td><td class="numeric">250</td><td class="numeric">500</td></tr>
-                                <tr><td>Testube Holder</td><td>Lab Consumables</td><td class="numeric">1</td><td class="numeric">200</td><td class="numeric">200</td></tr>
-                                <tr><td>Glass Slides</td><td>Lab Consumables</td><td class="numeric">1</td><td class="numeric">200</td><td class="numeric">200</td></tr>
-                                <tr><td>Dustbins</td><td>General Supplies</td><td class="numeric">5</td><td class="numeric">200</td><td class="numeric">1,000</td></tr>
-                            </tbody>
-                            <tfoot>
-                                <tr><td colspan="4" class="numeric">Package 1 Subtotal (₹)</td><td class="numeric subtotal">487,400</td></tr>
-                            </tfoot>
-                        </table>
+            <div class="franchise-layout">
+                <main class="franchise-packages">
+                    <!-- Package 1: Equipment -->
+                    <div class="package-card">
+                        <h3><span class="icon-wrapper"><i class="fas fa-clinic-medical"></i></span>AI Equipment & Clinic Setup</h3>
+                        <div class="table-wrapper">
+                            <table id="equipmentTable">
+                                <thead>
+                                    <tr><th>Item</th><th>Category</th><th class="numeric">Total (₹)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td data-label="Item">Newtons Ai Hospital Management System</td><td data-label="Category">Software</td><td class="numeric" data-price="0">Included</td></tr>
+                                    <tr><td data-label="Item">Semi-Auto Biochemistry Analyser</td><td data-label="Category">Lab Equipment</td><td class="numeric" data-price="70000">70,000</td></tr>
+                                    <tr><td data-label="Item">Cell Counter (3-Part)</td><td data-label="Category">Lab Equipment</td><td class="numeric" data-price="190000">190,000</td></tr>
+                                    <tr><td data-label="Item">ECG Machine (3-Lead)</td><td data-label="Category">Medical Equipment</td><td class="numeric" data-price="16000">16,000</td></tr>
+                                    <tr><td data-label="Item">Microtek Online UPS</td><td data-label="Category">Infrastructure</td><td class="numeric" data-price="14000">14,000</td></tr>
+                                    <tr><td data-label="Item">Inverter & Battery</td><td data-label="Category">Infrastructure</td><td class="numeric" data-price="15000">15,000</td></tr>
+                                    <tr><td data-label="Item">Fridge (2)</td><td data-label="Category">Infrastructure</td><td class="numeric" data-price="20000">20,000</td></tr>
+                                    <tr><td data-label="Item">Water Purifier</td><td data-label="Category">Infrastructure</td><td class="numeric" data-price="4000">4,000</td></tr>
+                                    <tr><td data-label="Item">Centrifuge Machine</td><td data-label="Category">Lab Equipment</td><td class="numeric" data-price="1500">1,500</td></tr>
+                                    <tr><td data-label="Item">Laptops (3, Used)</td><td data-label="Category">Office Equipment</td><td class="numeric" data-price="30000">30,000</td></tr>
+                                    <tr><td data-label="Item">Printer (Used)</td><td data-label="Category">Office Equipment</td><td class="numeric" data-price="3000">3,000</td></tr>
+                                    <tr><td data-label="Item">Patient Beds (4, with mattress)</td><td data-label="Category">Furniture</td><td class="numeric" data-price="48000">48,000</td></tr>
+                                    <tr><td data-label="Item">Reception & Doctor Table</td><td data-label="Category">Furniture</td><td class="numeric" data-price="30000">30,000</td></tr>
+                                    <tr><td data-label="Item">Air Port Chair (3-in-1)</td><td data-label="Category">Furniture</td><td class="numeric" data-price="9000">9,000</td></tr>
+                                    <tr><td data-label="Item">Patient Examination Table</td><td data-label="Category">Furniture</td><td class="numeric" data-price="5000">5,000</td></tr>
+                                    <tr><td data-label="Item">Doctor Office Chairs (2)</td><td data-label="Category">Furniture</td><td class="numeric" data-price="3000">3,000</td></tr>
+                                    <tr><td data-label="Item">Wooden Tables (2)</td><td data-label="Category">Furniture</td><td class="numeric" data-price="3000">3,000</td></tr>
+                                    <tr><td data-label="Item">Patient Stools</td><td data-label="Category">Furniture</td><td class="numeric" data-price="1000">1,000</td></tr>
+                                    <tr><td data-label="Item">Waiting Area Chairs (4)</td><td data-label="Category">Furniture</td><td class="numeric" data-price="1600">1,600</td></tr>
+                                    <tr><td data-label="Item">Saline Stands (3)</td><td data-label="Category">Medical Equipment</td><td class="numeric" data-price="3000">3,000</td></tr>
+                                    <tr><td data-label="Item">Curtains (10)</td><td data-label="Category">Furnishings</td><td class="numeric" data-price="1000">1,000</td></tr>
+                                    <tr><td data-label="Item">Stethoscope & BP Machine</td><td data-label="Category">Medical Equipment</td><td class="numeric" data-price="2000">2,000</td></tr>
+                                    <tr><td data-label="Item">Glucometer & Strips</td><td data-label="Category">Medical Equipment</td><td class="numeric" data-price="3000">3,000</td></tr>
+                                    <tr><td data-label="Item">Digital Thermometer</td><td data-label="Category">Medical Equipment</td><td class="numeric" data-price="200">200</td></tr>
+                                    <tr><td data-label="Item">Stationery (Heads, Pads)</td><td data-label="Category">Stationery</td><td class="numeric" data-price="3000">3,000</td></tr>
+                                    <tr><td data-label="Item">Billboards (3)</td><td data-label="Category">Marketing</td><td class="numeric" data-price="6000">6,000</td></tr>
+                                    <tr><td data-label="Item">Micropipettes (2)</td><td data-label="Category">Lab Consumables</td><td class="numeric" data-price="6000">6,000</td></tr>
+                                    <tr><td data-label="Item">ECG Gel (10 bottles)</td><td data-label="Category">Medical Consumables</td><td class="numeric" data-price="800">800</td></tr>
+                                    <tr><td data-label="Item">Blood/Urine Containers (200)</td><td data-label="Category">Lab Consumables</td><td class="numeric" data-price="400">400</td></tr>
+                                    <tr><td data-label="Item">Pipette Tips (2 packs)</td><td data-label="Category">Lab Consumables</td><td class="numeric" data-price="500">500</td></tr>
+                                    <tr><td data-label="Item">Testube Holder</td><td data-label="Category">Lab Consumables</td><td class="numeric" data-price="200">200</td></tr>
+                                    <tr><td data-label="Item">Glass Slides</td><td data-label="Category">Lab Consumables</td><td class="numeric" data-price="200">200</td></tr>
+                                    <tr><td data-label="Item">Dustbins (5)</td><td data-label="Category">General Supplies</td><td class="numeric" data-price="1000">1,000</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
                         <div class="button-container">
-                            <button class="download-btn" data-table="equipmentTable" data-filename="newtons_ai_franchise_package1.csv"><i class="fas fa-download"></i>Download Package Details (CSV)</button>
+                            <button class="btn download-btn" data-table="equipmentTable" data-filename="newtons_ai_franchise_equipment.csv"><i class="fas fa-download"></i>Download Details</button>
                         </div>
                     </div>
-                </details>
 
-                <!-- Section 2: Diagnostic Kits -->
-                <details>
-                    <summary>
-                        <span class="summary-content">
-                            <i class="fas fa-vial"></i>
-                            Package 2: Starter Diagnostic & Lab Kits
-                        </span>
-                        <i class="fas fa-chevron-down chevron"></i>
-                    </summary>
-                    <div class="section-content">
-                        <table id="kitOrderTable">
-                           <thead>
-                                <tr><th>Test Name</th><th>Category</th><th class="numeric">Est. Price/Test (₹)</th><th class="numeric">Quantity</th><th class="numeric">Est. Subtotal (₹)</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>Urinalysis (Strips)</td><td>High Frequency</td><td class="numeric">4</td><td class="numeric">100</td><td class="numeric">400</td></tr>
-                                <tr><td>Blood Grouping</td><td>High Frequency</td><td class="numeric">18</td><td class="numeric">50</td><td class="numeric">900</td></tr>
-                                <tr><td>HIV Screening Test</td><td>High Frequency</td><td class="numeric">50</td><td class="numeric">25</td><td class="numeric">1,250</td></tr>
-                                <tr><td>HBsAg (Hepatitis B)</td><td>High Frequency</td><td class="numeric">15</td><td class="numeric">25</td><td class="numeric">375</td></tr>
-                                <tr><td>Malaria Rapid Card</td><td>Moderate Frequency</td><td class="numeric">30</td><td class="numeric">20</td><td class="numeric">600</td></tr>
-                                <tr><td>Dengue Test (Combo)</td><td>Moderate Frequency</td><td class="numeric">90</td><td class="numeric">20</td><td class="numeric">1,800</td></tr>
-                                <tr><td>Typhoid (IgG, IgM)</td><td>Moderate Frequency</td><td class="numeric">35</td><td class="numeric">20</td><td class="numeric">700</td></tr>
-                                <tr><td>HCV (Hepatitis C)</td><td>Moderate Frequency</td><td class="numeric">40</td><td class="numeric">20</td><td class="numeric">800</td></tr>
-                                <tr><td>VDRL/Syphilis</td><td>Moderate Frequency</td><td class="numeric">25</td><td class="numeric">20</td><td class="numeric">500</td></tr>
-                                <tr><td>Troponin I or T</td><td>Low Frequency</td><td class="numeric">95</td><td class="numeric">10</td><td class="numeric">950</td></tr>
-                                <tr><td>Rheumatoid Factor (RA)</td><td>Low Frequency</td><td class="numeric">45</td><td class="numeric">10</td><td class="numeric">450</td></tr>
-                            </tbody>
-                            <tfoot>
-                                <tr><td colspan="4" class="numeric">Package 2 Subtotal (₹)</td><td class="numeric subtotal">8,725</td></tr>
-                            </tfoot>
-                        </table>
+                    <!-- Package 2: Diagnostics -->
+                    <div class="package-card">
+                        <h3><span class="icon-wrapper"><i class="fas fa-vial"></i></span>Starter Diagnostic Kits</h3>
+                         <div class="table-wrapper">
+                            <table id="kitOrderTable">
+                               <thead>
+                                    <tr><th>Test Name</th><th class="numeric">Qty</th><th class="numeric">Subtotal (₹)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td data-label="Test Name">Semi-Auto Biochemistry Analyser Tests (LFT, RFT, CRP, Lipid Profile, Blood Sugar, etc.)</td><td data-label="Qty" class="numeric">Included</td><td data-label="Subtotal (₹)" class="numeric" data-price="0">Free</td></tr>
+                                    <tr><td data-label="Test Name">Cell Counter Tests (CBC, ESR, Platelet Count, etc.)</td><td data-label="Qty" class="numeric">Included</td><td data-label="Subtotal (₹)" class="numeric" data-price="0">Free</td></tr>
+                                    <tr><td data-label="Test Name">Urinalysis (Strips)</td><td data-label="Qty" class="numeric">100</td><td data-label="Subtotal (₹)" class="numeric" data-price="400">400</td></tr>
+                                    <tr><td data-label="Test Name">Blood Grouping</td><td data-label="Qty" class="numeric">50</td><td data-label="Subtotal (₹)" class="numeric" data-price="900">900</td></tr>
+                                    <tr><td data-label="Test Name">HIV Screening Test</td><td data-label="Qty" class="numeric">25</td><td data-label="Subtotal (₹)" class="numeric" data-price="1250">1,250</td></tr>
+                                    <tr><td data-label="Test Name">HBsAg (Hepatitis B)</td><td data-label="Qty" class="numeric">25</td><td data-label="Subtotal (₹)" class="numeric" data-price="375">375</td></tr>
+                                    <tr><td data-label="Test Name">Malaria Rapid Card</td><td data-label="Qty" class="numeric">20</td><td data-label="Subtotal (₹)" class="numeric" data-price="600">600</td></tr>
+                                    <tr><td data-label="Test Name">Dengue Test (Combo)</td><td data-label="Qty" class="numeric">20</td><td data-label="Subtotal (₹)" class="numeric" data-price="1800">1,800</td></tr>
+                                    <tr><td data-label="Test Name">Typhoid (IgG, IgM)</td><td data-label="Qty" class="numeric">20</td><td data-label="Subtotal (₹)" class="numeric" data-price="700">700</td></tr>
+                                    <tr><td data-label="Test Name">HCV (Hepatitis C)</td><td data-label="Qty" class="numeric">20</td><td data-label="Subtotal (₹)" class="numeric" data-price="800">800</td></tr>
+                                    <tr><td data-label="Test Name">VDRL/Syphilis</td><td data-label="Qty" class="numeric">20</td><td data-label="Subtotal (₹)" class="numeric" data-price="500">500</td></tr>
+                                    <tr><td data-label="Test Name">Troponin I or T</td><td data-label="Qty" class="numeric">10</td><td data-label="Subtotal (₹)" class="numeric" data-price="950">950</td></tr>
+                                    <tr><td data-label="Test Name">Rheumatoid Factor (RA)</td><td data-label="Qty" class="numeric">10</td><td data-label="Subtotal (₹)" class="numeric" data-price="450">450</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
                         <div class="button-container">
-                            <button class="download-btn" data-table="kitOrderTable" data-filename="newtons_ai_franchise_package2.csv"><i class="fas fa-download"></i>Download Package Details (CSV)</button>
+                            <button class="btn download-btn" data-table="kitOrderTable" data-filename="newtons_ai_franchise_diagnostics.csv"><i class="fas fa-download"></i>Download Details</button>
                         </div>
                     </div>
-                </details>
 
-                <!-- Section 3: Pharmacy Inventory -->
-                <details>
-                    <summary>
-                        <span class="summary-content">
-                           <i class="fas fa-pills"></i>
-                           Package 3: Initial Pharmacy & Consumables Inventory
-                        </span>
-                        <i class="fas fa-chevron-down chevron"></i>
-                    </summary>
-                    <div class="section-content">
-                        <table id="pharmacyTable">
-                            <thead>
-                                <tr><th class="numeric">S.No.</th><th>Name</th><th class="numeric">Price (₹)</th><th class="numeric">Quantity</th><th class="numeric">Total Price (₹)</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td class="numeric">1</td><td>Albendazole Oral Suspension IP 400 mg / each 5 ml 10ml bottle</td><td class="numeric">2.00</td><td class="numeric">10</td><td class="numeric">20.00</td></tr>
-                                <tr><td class="numeric">2</td><td>Albendazole Tablets IP 400 mg 1 tablet</td><td class="numeric">0.91</td><td class="numeric">20</td><td class="numeric">18.20</td></tr>
-                                <tr><td class="numeric">3</td><td>Albendazole 400 mg & Ivermectin 6 mg 1 Tablet</td><td class="numeric">4.80</td><td class="numeric">20</td><td class="numeric">96.00</td></tr>
-                                <tr><td class="numeric">4</td><td>Allopurinol Tablets IP 100mg 10 tablets</td><td class="numeric">22.12</td><td class="numeric">1</td><td class="numeric">22.12</td></tr>
-                                <tr><td class="numeric">5</td><td>Alprazolam 0.25mg Tablets IP 15 Tablets</td><td class="numeric">1.73</td><td class="numeric">1</td><td class="numeric">1.73</td></tr>
-                                <tr><td class="numeric">6</td><td>Amitriptyline Tablets I.P 10mg 10 Tablets</td><td class="numeric">2.38</td><td class="numeric">1</td><td class="numeric">2.38</td></tr>
-                                <tr><td class="numeric">7</td><td>Amlodipine Besylate Tablets IP 5 mg 10 tablets</td><td class="numeric">2.80</td><td class="numeric">2</td><td class="numeric">5.60</td></tr>
-                                <tr><td class="numeric">8</td><td>Amlodipine Besylate Tablets IP 10 mg10 tablets</td><td class="numeric">6.10</td><td class="numeric">2</td><td class="numeric">12.20</td></tr>
-                                <tr><td class="numeric">9</td><td>Amoxicillin & Potassium Clavulanate Tablets IP 625 mg 10tablet s</td><td class="numeric">20.50</td><td class="numeric">2</td><td class="numeric">41.00</td></tr>
-                                <tr><td class="numeric">10</td><td>Antifungal Powder</td><td class="numeric">9.30</td><td class="numeric">5</td><td class="numeric">46.50</td></tr>
-                                <tr><td class="numeric">11</td><td>Aspirin Gastro-Resistant Tablets IP 75mg14 tablets</td><td class="numeric">0.55</td><td class="numeric">2</td><td class="numeric">1.10</td></tr>
-                                <tr><td class="numeric">12</td><td>Atorvastatin Tablets IP 10 mg10 tablets</td><td class="numeric">5.58</td><td class="numeric">2</td><td class="numeric">11.16</td></tr>
-                                <tr><td class="numeric">13</td><td>Atorvastatin Tablets IP 20 mg 10tablet s</td><td class="numeric">14.06</td><td class="numeric">1</td><td class="numeric">14.06</td></tr>
-                                <tr><td class="numeric">14</td><td>Azithromycin Oral Suspension IP 200 mg / 5 ml 15ml bottile</td><td class="numeric">5.71</td><td class="numeric">10</td><td class="numeric">57.10</td></tr>
-                                <tr><td class="numeric">15</td><td>Azithromycin Tablets IP 500 mg 3 tablets</td><td class="numeric">7.92</td><td class="numeric">5</td><td class="numeric">39.60</td></tr>
-                                <tr><td class="numeric">16</td><td>Baclofen Tablets IP 10 mg</td><td class="numeric">1.19</td><td class="numeric">1</td><td class="numeric">1.19</td></tr>
-                                <tr><td class="numeric">17</td><td>Betahistine Hydrochloride Tablets IP 8 mg</td><td class="numeric">8.50</td><td class="numeric">1</td><td class="numeric">8.50</td></tr>
-                                <tr><td class="numeric">18</td><td>Calamine Lotion IP 60 ml bottle</td><td class="numeric">11.00</td><td class="numeric">5</td><td class="numeric">55.00</td></tr>
-                                <tr><td class="numeric">19</td><td>Calcium 1250 mg & Vitamin D3 250 IU Tablets</td><td class="numeric">9.50</td><td class="numeric">2</td><td class="numeric">19.00</td></tr>
-                                <tr><td class="numeric">20</td><td>Carboxymethylcellulose Sodium Eye Drops IP</td><td class="numeric">19.00</td><td class="numeric">10</td><td class="numeric">190.00</td></tr>
-                                <tr><td class="numeric">21</td><td>Cefixime Dispersible Tablets IP 200 mg 10 Tablets</td><td class="numeric">10.99</td><td class="numeric">2</td><td class="numeric">21.98</td></tr>
-                                <tr><td class="numeric">22</td><td>Cefixime Oral Suspension IP 100 mg / 5 ml</td><td class="numeric">8.00</td><td class="numeric">10</td><td class="numeric">80.00</td></tr>
-                                <tr><td class="numeric">23</td><td>Cetirizine Hydrochloride Tablets IP 10 mg</td><td class="numeric">2.06</td><td class="numeric">5</td><td class="numeric">10.30</td></tr>
-                                <tr><td class="numeric">24</td><td>Chlorhexidine Gluconate, Sodium Fluoride & Zinc Chloride Mouthwash</td><td class="numeric">9.50</td><td class="numeric">5</td><td class="numeric">47.50</td></tr>
-                                <tr><td class="numeric">25</td><td>Ciprofloxacin & Dexamethasone Eye/Ear Drops</td><td class="numeric">5.80</td><td class="numeric">10</td><td class="numeric">58.00</td></tr>
-                                <tr><td class="numeric">26</td><td>Ciprofloxacin Tablets IP 500 mg 10 tablets</td><td class="numeric">4.75</td><td class="numeric">2</td><td class="numeric">9.50</td></tr>
-                                <tr><td class="numeric">27</td><td>Citicoline Sodium &Piracetam Tablets 10Tablets</td><td class="numeric">110.00</td><td class="numeric">1</td><td class="numeric">110.00</td></tr>
-                                <tr><td class="numeric">28</td><td>Clinical Thermometer type Ovel large</td><td class="numeric">24.00</td><td class="numeric">2</td><td class="numeric">48.00</td></tr>
-                                <tr><td class="numeric">29</td><td>Clobetasol Propionate IP 0.05% & Salicylic Acid 6% Ointment 20 gm tube</td><td class="numeric">15.00</td><td class="numeric">5</td><td class="numeric">75.00</td></tr>
-                                <tr><td class="numeric">30</td><td>Clopidogrel Tablets IP 75 mg 10tablet s</td><td class="numeric">7.40</td><td class="numeric">1</td><td class="numeric">7.40</td></tr>
-                                <tr><td class="numeric">31</td><td>Clopidogrel 75 mg & Aspirin 75 mg Tablets IP15 tablets</td><td class="numeric">6.47</td><td class="numeric">1</td><td class="numeric">6.47</td></tr>
-                                <tr><td class="numeric">32</td><td>Clotrimazole Cream IP 1% 20 g tube</td><td class="numeric">7.90</td><td class="numeric">10</td><td class="numeric">79.00</td></tr>
-                                <tr><td class="numeric">33</td><td>Clotrimazole Dusting powder 75 g</td><td class="numeric">9.50</td><td class="numeric">5</td><td class="numeric">47.50</td></tr>
-                                <tr><td class="numeric">34</td><td>Clotrimazole 1.00% & Beclomethasone Dipropionate 0.025%Lotion</td><td class="numeric">8.90</td><td class="numeric">5</td><td class="numeric">44.50</td></tr>
-                                <tr><td class="numeric">35</td><td>Clotrimazole1.00% & Beclomethasone ipropionate0.025% Cream15g 1 tube</td><td class="numeric">8.60</td><td class="numeric">10</td><td class="numeric">86.00</td></tr>
-                                <tr><td class="numeric">36</td><td>Compound Sodium Lactate Injection IP Ringer-lactate For InjectionIP</td><td class="numeric">6.44</td><td class="numeric">10</td><td class="numeric">64.40</td></tr>
-                                <tr><td class="numeric">37</td><td>Compressor Nebulizer</td><td class="numeric">189.90</td><td class="numeric">2</td><td class="numeric">379.80</td></tr>
-                                <tr><td class="numeric">38</td><td>Cotton crepe Bandage 10 cm</td><td class="numeric">22.00</td><td class="numeric">10</td><td class="numeric">220.00</td></tr>
-                                <tr><td class="numeric">39</td><td>Cotton crepe Bandage 15 cm</td><td class="numeric">33.00</td><td class="numeric">5</td><td class="numeric">165.00</td></tr>
-                                <tr><td class="numeric">40</td><td>Cotton Wool</td><td class="numeric">2.50</td><td class="numeric">10</td><td class="numeric">25.00</td></tr>
-                                <tr><td class="numeric">41</td><td>Cyproheptadine Hydrochloride syrap IP</td><td class="numeric">12.00</td><td class="numeric">10</td><td class="numeric">120.00</td></tr>
-                                <tr><td class="numeric">42</td><td>Dapagliflozin 10mg &Metformin Hydrochloride 500mgER tablets</td><td class="numeric">17.50</td><td class="numeric">1</td><td class="numeric">17.50</td></tr>
-                                <tr><td class="numeric">43</td><td>Dexamethasone Sodium Phosphate Injection IP</td><td class="numeric">1.14</td><td class="numeric">20</td><td class="numeric">22.80</td></tr>
-                                <tr><td class="numeric">44</td><td>Dexamethasone Tablets IP 0.5 mg</td><td class="numeric">0.03</td><td class="numeric">2</td><td class="numeric">0.06</td></tr>
-                                <tr><td class="numeric">45</td><td>Dextromethorphan Hydrobromide10mg,Phenylephrine,Hydrochloride5mg &Cholrpheniramine maleate 2mg (For Dry Cough)</td><td class="numeric">8.50</td><td class="numeric">15</td><td class="numeric">127.50</td></tr>
-                                <tr><td class="numeric">46</td><td>Diclofenac Diethylamine 1.16%, Linseed Oil 3%, Methyl Salicylate 10% & Menthol 0.50% Gel</td><td class="numeric">12.65</td><td class="numeric">10</td><td class="numeric">126.50</td></tr>
-                                <tr><td class="numeric">47</td><td>Diclofenac Sodium Injection IP</td><td class="numeric">3.00</td><td class="numeric">25</td><td class="numeric">75.00</td></tr>
-                                <tr><td class="numeric">48</td><td>Diclofenac Sodium Tablets IP 50 mg</td><td class="numeric">2.30</td><td class="numeric">3</td><td class="numeric">6.90</td></tr>
-                                <tr><td class="numeric">49</td><td>Diethylcarbamazine Citrate150mg 10tablet sTablets IP 150 mg</td><td class="numeric">7.50</td><td class="numeric">1</td><td class="numeric">7.50</td></tr>
-                                <tr><td class="numeric">50</td><td>Digital Thermometer</td><td class="numeric">17.00</td><td class="numeric">5</td><td class="numeric">85.00</td></tr>
-                                <tr><td class="numeric">51</td><td>Domperidone Tablets</td><td class="numeric">2.59</td><td class="numeric">2</td><td class="numeric">5.18</td></tr>
-                                <tr><td class="numeric">52</td><td>Doxofylline Tablets IP 400 mg</td><td class="numeric">10.00</td><td class="numeric">2</td><td class="numeric">20.00</td></tr>
-                                <tr><td class="numeric">53</td><td>Doxycycline Hydrochloride 100 mg & Lactic Acid Bacillus pack of 10 Capsules</td><td class="numeric">0.95</td><td class="numeric">2</td><td class="numeric">1.90</td></tr>
-                                <tr><td class="numeric">54</td><td>Dried Aluminium Hydroxide IP 250mg Magnesium HydroxideIP250mg & Simethicone Suspension IP Each 5ml</td><td class="numeric">19.00</td><td class="numeric">10</td><td class="numeric">190.00</td></tr>
-                                <tr><td class="numeric">55</td><td>Entriched With Carica Papaya,Kiwi,Giloy&Tulsi</td><td class="numeric">18.00</td><td class="numeric">5</td><td class="numeric">90.00</td></tr>
-                                <tr><td class="numeric">56</td><td>Etoricoxib IP 60mg, Thiolchicoside IP 4mg</td><td class="numeric">28.40</td><td class="numeric">2</td><td class="numeric">56.80</td></tr>
-                                <tr><td class="numeric">57</td><td>FamotidineTablets IP40mg</td><td class="numeric">0.09</td><td class="numeric">3</td><td class="numeric">0.27</td></tr>
-                                <tr><td class="numeric">58</td><td>Faropenem Sodium Extended release Tablets 300mg 6 Tablets</td><td class="numeric">75.00</td><td class="numeric">1</td><td class="numeric">75.00</td></tr>
-                                <tr><td class="numeric">59</td><td>Ferrous Ascorbate 100 mg, Folic Acid 1.5 mg & Zinc 22.5 mg Tablets</td><td class="numeric">1.75</td><td class="numeric">3</td><td class="numeric">5.25</td></tr>
-                                <tr><td class="numeric">60</td><td>Fexofenadine Hydrochloride 120 mg & Montelukast 10 mg Tablets</td><td class="numeric">26.80</td><td class="numeric">2</td><td class="numeric">53.60</td></tr>
-                                <tr><td class="numeric">61</td><td>Fluconazole Tablets IP 150 mg 1 tablet</td><td class="numeric">1.35</td><td class="numeric">20</td><td class="numeric">27.00</td></tr>
-                                <tr><td class="numeric">62</td><td>Flunarizine Dihydrochloride Tablets IP 10 mg</td><td class="numeric">0.65</td><td class="numeric">1</td><td class="numeric">0.65</td></tr>
-                                <tr><td class="numeric">63</td><td>Foley Trac Foley Cather</td><td class="numeric">19.00</td><td class="numeric">5</td><td class="numeric">95.00</td></tr>
-                                <tr><td class="numeric">64</td><td>Folic Acid Tablets IP 5 mg</td><td class="numeric">5.07</td><td class="numeric">3</td><td class="numeric">15.21</td></tr>
-                                <tr><td class="numeric">65</td><td>Formoterol Fumarate&Budesonide 200mg Inhaler</td><td class="numeric">44.70</td><td class="numeric">3</td><td class="numeric">134.10</td></tr>
-                                <tr><td class="numeric">66</td><td>Formoterol Fumarate&Budesonide 400 Inhaler</td><td class="numeric">51.00</td><td class="numeric">3</td><td class="numeric">153.00</td></tr>
-                                <tr><td class="numeric">67</td><td>Formoterol Fumaratate And Budesonide powder For ?Inhalation IP 400mcg</td><td class="numeric">22.24</td><td class="numeric">5</td><td class="numeric">111.20</td></tr>
-                                <tr><td class="numeric">68</td><td>Frusemide Tablets IP 40 mg 15 Tablets</td><td class="numeric">1.51</td><td class="numeric">1</td><td class="numeric">1.51</td></tr>
-                                <tr><td class="numeric">69</td><td>Gliclazide Prolonged Release Tablets IP 30 mg</td><td class="numeric">0.69</td><td class="numeric">2</td><td class="numeric">1.38</td></tr>
-                                <tr><td class="numeric">70</td><td>Gliclazide Prolonged Release Tablets IP 60 mg 10 tablets pack</td><td class="numeric">1.19</td><td class="numeric">2</td><td class="numeric">2.38</td></tr>
-                                <tr><td class="numeric">71</td><td>Gliclazide80mg&Metformin Hydrochloride 500mg</td><td class="numeric">10.16</td><td class="numeric">2</td><td class="numeric">20.32</td></tr>
-                                <tr><td class="numeric">72</td><td>Glimepiride 1 mg, Pioglitazone Hydrochloride 15 mg & Metformin Hydrochloride 400 mg Tablets</td><td class="numeric">1.42</td><td class="numeric">2</td><td class="numeric">2.84</td></tr>
-                                <tr><td class="numeric">73</td><td>Hydrogen Peroxide Solution IP</td><td class="numeric">3.00</td><td class="numeric">5</td><td class="numeric">15.00</td></tr>
-                                <tr><td class="numeric">74</td><td>Hydroquinone, Tretinoin, & Mometasone Furoate 0.1% Cream 15 g tube</td><td class="numeric">15.50</td><td class="numeric">5</td><td class="numeric">77.50</td></tr>
-                                <tr><td class="numeric">75</td><td>Hydroxychloroquine Sulphate200mg 15 Tablets</td><td class="numeric">10.68</td><td class="numeric">1</td><td class="numeric">10.68</td></tr>
-                                <tr><td class="numeric">76</td><td>Hyoscice Butylbromide 20mg Injection IP 1ml</td><td class="numeric">1.26</td><td class="numeric">10</td><td class="numeric">12.60</td></tr>
-                                <tr><td class="numeric">77</td><td>Ibuprofen 400 mg & Paracetamol 325 mg Tablets IP</td><td class="numeric">2.85</td><td class="numeric">4</td><td class="numeric">11.40</td></tr>
-                                <tr><td class="numeric">78</td><td>Intimate Wash 100ml bottle</td><td class="numeric">19.00</td><td class="numeric">5</td><td class="numeric">95.00</td></tr>
-                                <tr><td class="numeric">79</td><td>Isosorbide Mononitrate Tablets IP 10 mg 10tablet s</td><td class="numeric">0.90</td><td class="numeric">1</td><td class="numeric">0.90</td></tr>
-                                <tr><td class="numeric">80</td><td>I V Cannula 22 Gaze</td><td class="numeric">14.00</td><td class="numeric">20</td><td class="numeric">280.00</td></tr>
-                                <tr><td class="numeric">81</td><td>IV .Cannula Fixator</td><td class="numeric">9.00</td><td class="numeric">20</td><td class="numeric">180.00</td></tr>
-                                <tr><td class="numeric">82</td><td>IV set</td><td class="numeric">19.80</td><td class="numeric">15</td><td class="numeric">297.00</td></tr>
-                                <tr><td class="numeric">83</td><td>Ketoconazole, Zinc Pyrithione & Biotin Shampoo 100ml bottle</td><td class="numeric">25.00</td><td class="numeric">5</td><td class="numeric">125.00</td></tr>
-                                <tr><td class="numeric">84</td><td>Ketoconazole Soap 2% 75 g</td><td class="numeric">11.50</td><td class="numeric">10</td><td class="numeric">115.00</td></tr>
-                                <tr><td class="numeric">85</td><td>Ketorolac tromethamine 30mg 1ml ampoules</td><td class="numeric">4.15</td><td class="numeric">20</td><td class="numeric">83.00</td></tr>
-                                <tr><td class="numeric">86</td><td>Lactulose Solution USP lactulose each 15ml 10gm 100ml bottle</td><td class="numeric">12.92</td><td class="numeric">5</td><td class="numeric">64.60</td></tr>
-                                <tr><td class="numeric">87</td><td>Leflunomide Tablet 10mg</td><td class="numeric">1.00</td><td class="numeric">1</td><td class="numeric">1.00</td></tr>
-                                <tr><td class="numeric">88</td><td>Levocetirizine Hydrochloride Tablets IP 5 mg</td><td class="numeric">0.80</td><td class="numeric">5</td><td class="numeric">4.00</td></tr>
-                                <tr><td class="numeric">89</td><td>Levofloxacin Tablets IP 500 mg 5 Tablets</td><td class="numeric">9.00</td><td class="numeric">3</td><td class="numeric">27.00</td></tr>
-                                <tr><td class="numeric">90</td><td>Levosalbutamol 1.0mg Sulphate, Guaiphesin 50.0mg&Ambroxol Hcl 30.0mg (For Wet Cough)</td><td class="numeric">12.50</td><td class="numeric">15</td><td class="numeric">187.50</td></tr>
-                                <tr><td class="numeric">91</td><td>Metformin Hydrochloride 500 mg & Glimepiride 2 mg Tablets IP</td><td class="numeric">21.20</td><td class="numeric">3</td><td class="numeric">63.60</td></tr>
-                                <tr><td class="numeric">92</td><td>Metformin Hydrochloride Sustained Release Tablets IP 1000 mg</td><td class="numeric">0.46</td><td class="numeric">3</td><td class="numeric">1.38</td></tr>
-                                <tr><td class="numeric">93</td><td>Metformin Hydrochloride Tablets IP 500 mg</td><td class="numeric">4.52</td><td class="numeric">5</td><td class="numeric">22.60</td></tr>
-                                <tr><td class="numeric">94</td><td>Methotrexate Tablets IP 7.5mg</td><td class="numeric">1.19</td><td class="numeric">1</td><td class="numeric">1.19</td></tr>
-                                <tr><td class="numeric">95</td><td>Methylcobalamin,Pyridoxine Hydrochloride&Niacinnamide Injection</td><td class="numeric">11.50</td><td class="numeric">10</td><td class="numeric">115.00</td></tr>
-                                <tr><td class="numeric">96</td><td>Methylprednisolone Tablets IP 4mg 10 Tablets</td><td class="numeric">7.50</td><td class="numeric">1</td><td class="numeric">7.50</td></tr>
-                                <tr><td class="numeric">97</td><td>Metoprolol Succinate Extended Release Tablets IP 50 mg 10tablet s</td><td class="numeric">6.00</td><td class="numeric">1</td><td class="numeric">6.00</td></tr>
-                                <tr><td class="numeric">98</td><td>Metoprolol Succinate Extended Release Tablets USP 25 mg10 tablets</td><td class="numeric">5.00</td><td class="numeric">1</td><td class="numeric">5.00</td></tr>
-                                <tr><td class="numeric">99</td><td>Metronidazole Tablets IP 400 mg 15 Tablets</td><td class="numeric">2.55</td><td class="numeric">2</td><td class="numeric">5.10</td></tr>
-                                <tr><td class="numeric">100</td><td>Mometasone furoate 0.1%& Fusidic Acid 2.0%Cream 10gm</td><td class="numeric">16.50</td><td class="numeric">5</td><td class="numeric">82.50</td></tr>
-                                <tr><td class="numeric">101</td><td>Montelukast Sodium 10 mg & Levocetirizine Hydrochloride 5 mg Tablets</td><td class="numeric">9.90</td><td class="numeric">3</td><td class="numeric">29.70</td></tr>
-                                <tr><td class="numeric">102</td><td>Multivitamin, Multimineral & Antioxidants Soft Gellatin 10 Capsules pack</td><td class="numeric">17.50</td><td class="numeric">2</td><td class="numeric">35.00</td></tr>
-                                <tr><td class="numeric">103</td><td>Multivitamin, Multimineral with Astaxanthin Syrup</td><td class="numeric">19.00</td><td class="numeric">10</td><td class="numeric">190.00</td></tr>
-                                <tr><td class="numeric">104</td><td>Mupirocin Ointment IP 2% 5gm tube</td><td class="numeric">11.36</td><td class="numeric">10</td><td class="numeric">113.60</td></tr>
-                                <tr><td class="numeric">105</td><td>Ofloxacin Eye/Ear Drops IP</td><td class="numeric">5.30</td><td class="numeric">10</td><td class="numeric">53.00</td></tr>
-                                <tr><td class="numeric">106</td><td>Omeprazole Capsules IP 20 mg</td><td class="numeric">6.20</td><td class="numeric">3</td><td class="numeric">18.60</td></tr>
-                                <tr><td class="numeric">107</td><td>Ondansetron Hydrochloride Tablets IP 4 mg</td><td class="numeric">5.76</td><td class="numeric">2</td><td class="numeric">11.52</td></tr>
-                                <tr><td class="numeric">108</td><td>Ondansetron Injection</td><td class="numeric">1.19</td><td class="numeric">20</td><td class="numeric">23.80</td></tr>
-                                <tr><td class="numeric">109</td><td>Oral Rehydration Salts IP (21.8 grams)</td><td class="numeric">2.20</td><td class="numeric">50</td><td class="numeric">110.00</td></tr>
-                                <tr><td class="numeric">110</td><td>Oriscalp hair kit</td><td class="numeric">5.21</td><td class="numeric">3</td><td class="numeric">15.63</td></tr>
-                                <tr><td class="numeric">111</td><td>Oxymetazoline Hydrochloride Nasal Solution USP</td><td class="numeric">10.55</td><td class="numeric">5</td><td class="numeric">52.75</td></tr>
-                                <tr><td class="numeric">112</td><td>Pantoprazole For Injection</td><td class="numeric">5.65</td><td class="numeric">20</td><td class="numeric">113.00</td></tr>
-                                <tr><td class="numeric">113</td><td>Pantoprazole Tablets IP 40 mg 10 tablets pack</td><td class="numeric">10.00</td><td class="numeric">3</td><td class="numeric">30.00</td></tr>
-                                <tr><td class="numeric">114</td><td>Paracetamol Infusion IP 1.0%w/v</td><td class="numeric">67.50</td><td class="numeric">10</td><td class="numeric">675.00</td></tr>
-                                <tr><td class="numeric">115</td><td>Paracetamol Tablets IP 500 mg</td><td class="numeric">1.01</td><td class="numeric">5</td><td class="numeric">5.05</td></tr>
-                                <tr><td class="numeric">116</td><td>Paracetamol Tablets IP 650 mg</td><td class="numeric">2.24</td><td class="numeric">5</td><td class="numeric">11.20</td></tr>
-                                <tr><td class="numeric">117</td><td>Permethrin Lotion 5% 60ml bottle</td><td class="numeric">5.98</td><td class="numeric">5</td><td class="numeric">29.90</td></tr>
-                                <tr><td class="numeric">118</td><td>Permethrin Soap 1% 75 gm</td><td class="numeric">9.90</td><td class="numeric">5</td><td class="numeric">49.50</td></tr>
-                                <tr><td class="numeric">119</td><td>Pheairamine Maleate Injection</td><td class="numeric">0.57</td><td class="numeric">20</td><td class="numeric">11.40</td></tr>
-                                <tr><td class="numeric">120</td><td>Pioglitazone Hydrochloride Tablets IP 15 mg</td><td class="numeric">0.55</td><td class="numeric">2</td><td class="numeric">1.10</td></tr>
-                                <tr><td class="numeric">121</td><td>Piperacillin And Tazobactam Injection IP</td><td class="numeric">44.70</td><td class="numeric">10</td><td class="numeric">447.00</td></tr>
-                                <tr><td class="numeric">122</td><td>Povidone Iodine & Metronidazole Ointment</td><td class="numeric">6.00</td><td class="numeric">10</td><td class="numeric">60.00</td></tr>
-                                <tr><td class="numeric">123</td><td>Povidone Iodine Solution IP 10% 15gm</td><td class="numeric">10.75</td><td class="numeric">10</td><td class="numeric">107.50</td></tr>
-                                <tr><td class="numeric">124</td><td>Povidone-Iodine Ointment USP 10%</td><td class="numeric">8.90</td><td class="numeric">10</td><td class="numeric">89.00</td></tr>
-                                <tr><td class="numeric">125</td><td>Prebiotic & Probiotic Capsules</td><td class="numeric">15.00</td><td class="numeric">2</td><td class="numeric">30.00</td></tr>
-                                <tr><td class="numeric">126</td><td>Prednisolone Tablets IP 10 mg 10 tablets</td><td class="numeric">1.33</td><td class="numeric">2</td><td class="numeric">2.66</td></tr>
-                                <tr><td class="numeric">127</td><td>Prednisolone Tablets IP 20 mg</td><td class="numeric">2.68</td><td class="numeric">1</td><td class="numeric">2.68</td></tr>
-                                <tr><td class="numeric">128</td><td>Pregabalin Capsules IP 75 mg</td><td class="numeric">18.30</td><td class="numeric">2</td><td class="numeric">36.60</td></tr>
-                                <tr><td class="numeric">129</td><td>Pyridoxine HCl, Niacinamide, Cyanocobalamin, Folic Acid with Chromium, Zinc & Selenium Tablets</td><td class="numeric">11.50</td><td class="numeric">2</td><td class="numeric">23.00</td></tr>
-                                <tr><td class="numeric">130</td><td>Rabeprazole 20 mg & Domperidone SR 30 mg Capsules</td><td class="numeric">15.40</td><td class="numeric">3</td><td class="numeric">46.20</td></tr>
-                                <tr><td class="numeric">131</td><td>Rabeprazole injection IP 20mg</td><td class="numeric">39.50</td><td class="numeric">10</td><td class="numeric">395.00</td></tr>
-                                <tr><td class="numeric">132</td><td>Ranitidine Hydrochloride 168mg Ranitidine 150mg</td><td class="numeric">0.15</td><td class="numeric">4</td><td class="numeric">0.60</td></tr>
-                                <tr><td class="numeric">133</td><td>RanitidineHCL,150mg,Clidinium Bromide 2.5mg,Chlordiazepoxideand DicyclomineHCL10mg</td><td class="numeric">0.43</td><td class="numeric">2</td><td class="numeric">0.86</td></tr>
-                                <tr><td class="numeric">134</td><td>Ranolazine Sustained Released Tablet 10tablet s</td><td class="numeric">16.50</td><td class="numeric">1</td><td class="numeric">16.50</td></tr>
-                                <tr><td class="numeric">135</td><td>Rosuvastatin 10mg ,Clopidogrel75mg &Aspirin 75 mg 10 tablets</td><td class="numeric">14.00</td><td class="numeric">1</td><td class="numeric">14.00</td></tr>
-                                <tr><td class="numeric">136</td><td>Rosuvastatin tablets IP 10mg</td><td class="numeric">11.58</td><td class="numeric">2</td><td class="numeric">23.16</td></tr>
-                                <tr><td class="numeric">137</td><td>Rosuvastatin Calcium 20mg</td><td class="numeric">36.50</td><td class="numeric">1</td><td class="numeric">36.50</td></tr>
-                                <tr><td class="numeric">138</td><td>Rotahaler Device</td><td class="numeric">20.00</td><td class="numeric">5</td><td class="numeric">100.00</td></tr>
-                                <tr><td class="numeric">139</td><td>Ryles Tube</td><td class="numeric">8.10</td><td class="numeric">5</td><td class="numeric">40.50</td></tr>
-                                <tr><td class="numeric">140</td><td>Saline Nasal Solution IP</td><td class="numeric">5.10</td><td class="numeric">10</td><td class="numeric">51.00</td></tr>
-                                <tr><td class="numeric">141</td><td>Salmeterol50mg &Fluticasone Propionate 250mg powder for Inhalation 30 Capsules</td><td class="numeric">35.50</td><td class="numeric">1</td><td class="numeric">35.50</td></tr>
-                                <tr><td class="numeric">142</td><td>Sildenafil Citrate Tablets IP 100 mg 4 tablets</td><td class="numeric">23.23</td><td class="numeric">2</td><td class="numeric">46.46</td></tr>
-                                <tr><td class="numeric">143</td><td>Sildenafil Citrate Tablets IP 50 mg 4 tablets</td><td class="numeric">14.64</td><td class="numeric">2</td><td class="numeric">29.28</td></tr>
-                                <tr><td class="numeric">144</td><td>Silver Sulphadiazine 1.00%& Chlorhexidine Gluconate 0.60%Cream 15g tubes</td><td class="numeric">9.50</td><td class="numeric">5</td><td class="numeric">47.50</td></tr>
-                                <tr><td class="numeric">145</td><td>Sodium Alginate 250mg,Sodium Bicarbonate IP133.5 mg And calcium Carbonate IP 80 mg Each 5ml</td><td class="numeric">17.50</td><td class="numeric">10</td><td class="numeric">175.00</td></tr>
-                                <tr><td class="numeric">146</td><td>Sodium Bicarbonate Tablets IP 500 mg 10tablet s</td><td class="numeric">3.65</td><td class="numeric">1</td><td class="numeric">3.65</td></tr>
-                                <tr><td class="numeric">147</td><td>Sodium Chloride 0.9%and Dextrose5%W/v Injection IP</td><td class="numeric">4.35</td><td class="numeric">10</td><td class="numeric">43.50</td></tr>
-                                <tr><td class="numeric">148</td><td>Sodium chloride Injection IP 0.9%</td><td class="numeric">3.97</td><td class="numeric">10</td><td class="numeric">39.70</td></tr>
-                                <tr><td class="numeric">149</td><td>Sodium Phosphate Enema BP 100ml</td><td class="numeric">9.00</td><td class="numeric">5</td><td class="numeric">45.00</td></tr>
-                                <tr><td class="numeric">150</td><td>Sucralfate Suspension</td><td class="numeric">16.50</td><td class="numeric">5</td><td class="numeric">82.50</td></tr>
-                                <tr><td class="numeric">151</td><td>Surgical Spirit IP</td><td class="numeric">7.50</td><td class="numeric">10</td><td class="numeric">75.00</td></tr>
-                                <tr><td class="numeric">152</td><td>Surgical Face Mask (Box of 100)</td><td class="numeric">0.50</td><td class="numeric">2</td><td class="numeric">1.00</td></tr>
-                                <tr><td class="numeric">153</td><td>Telmisartan 40 mg & Amlodipine Besylate 5 mg Tablets IP 10tablet s</td><td class="numeric">8.05</td><td class="numeric">2</td><td class="numeric">16.10</td></tr>
-                                <tr><td class="numeric">154</td><td>Telmisartan Tablets IP 40 mg 10tablet s</td><td class="numeric">7.40</td><td class="numeric">2</td><td class="numeric">14.80</td></tr>
-                                <tr><td class="numeric">155</td><td>Telmisartan Tablets IP 80 mg 10tablet s</td><td class="numeric">11.64</td><td class="numeric">1</td><td class="numeric">11.64</td></tr>
-                                <tr><td class="numeric">156</td><td>Thyroxine Sodium Tablets IP100mg</td><td class="numeric">14.78</td><td class="numeric">1</td><td class="numeric">14.78</td></tr>
-                                <tr><td class="numeric">157</td><td>Thyroxine Sodium Tablets IP125mg</td><td class="numeric">18.93</td><td class="numeric">1</td><td class="numeric">18.93</td></tr>
-                                <tr><td class="numeric">158</td><td>Thyroxine Sodium Tablets IP25mg</td><td class="numeric">16.20</td><td class="numeric">1</td><td class="numeric">16.20</td></tr>
-                                <tr><td class="numeric">159</td><td>Thyroxine Sodium Tablets IP50mg</td><td class="numeric">11.50</td><td class="numeric">1</td><td class="numeric">11.50</td></tr>
-                                <tr><td class="numeric">160</td><td>Thyroxine Sodium Tablets IP75mg</td><td class="numeric">16.13</td><td class="numeric">1</td><td class="numeric">16.13</td></tr>
-                                <tr><td class="numeric">161</td><td>Tiotropium Bromide MH IP 9mcg/dose Inhaler</td><td class="numeric">37.30</td><td class="numeric">3</td><td class="numeric">111.90</td></tr>
-                                <tr><td class="numeric">162</td><td>Torsemide 10 mg IP 10 tablets</td><td class="numeric">4.72</td><td class="numeric">1</td><td class="numeric">4.72</td></tr>
-                                <tr><td class="numeric">163</td><td>Torsemide 20 mg Tablets IP 10 TABLETS</td><td class="numeric">8.00</td><td class="numeric">1</td><td class="numeric">8.00</td></tr>
-                                <tr><td class="numeric">164</td><td>Tramadol Hydrochloride 50 mg 2ml ampoules</td><td class="numeric">2.64</td><td class="numeric">20</td><td class="numeric">52.80</td></tr>
-                                <tr><td class="numeric">165</td><td>Tranexamic Acid & Mefenamic Acid Tablets</td><td class="numeric">20.00</td><td class="numeric">2</td><td class="numeric">40.00</td></tr>
-                                <tr><td class="numeric">166</td><td>Ursodeoxycholic Acid tablets IP 300mg15 tablets</td><td class="numeric">77.50</td><td class="numeric">1</td><td class="numeric">77.50</td></tr>
-                                <tr><td class="numeric">167</td><td>UV ZERO SPF 30 GEL</td><td class="numeric">36.00</td><td class="numeric">3</td><td class="numeric">108.00</td></tr>
-                                <tr><td class="numeric">168</td><td>Vaprocon vaporizer</td><td class="numeric">59.90</td><td class="numeric">2</td><td class="numeric">119.80</td></tr>
-                                <tr><td class="numeric">169</td><td>Vidagliptin Tablet IP 50mg</td><td class="numeric">19.80</td><td class="numeric">2</td><td class="numeric">39.60</td></tr>
-                                <tr><td class="numeric">170</td><td>Vildagliptin Tablets 50 mg 15 tablets pack</td><td class="numeric">1.32</td><td class="numeric">1</td><td class="numeric">1.32</td></tr>
-                                <tr><td class="numeric">171</td><td>Vitamin B Complex with Vitamin C Tablets</td><td class="numeric">0.14</td><td class="numeric">5</td><td class="numeric">0.70</td></tr>
-                                <tr><td class="numeric">172</td><td>Vitamin E400 I.U Soft gel 10 Capsules</td><td class="numeric">6.20</td><td class="numeric">1</td><td class="numeric">6.20</td></tr>
-                                <tr><td class="numeric">173</td><td>Voglibose Tablets IP 0.2 mg 10 tablets pack</td><td class="numeric">0.77</td><td class="numeric">2</td><td class="numeric">1.54</td></tr>
-                                <tr><td class="numeric">174</td><td>Voglibose Tablets IP 0.3 mg 10 tablets pack</td><td class="numeric">1.03</td><td class="numeric">2</td><td class="numeric">2.06</td></tr>
-                                <tr><td class="numeric">175</td><td>Xylometazoline Nasal Drops IP</td><td class="numeric">5.73</td><td class="numeric">10</td><td class="numeric">57.30</td></tr>
-                            </tbody>
-                            <tfoot>
-                                <tr><td colspan="4" class="numeric">Package 3 Subtotal (₹)</td><td class="numeric subtotal">9,737.52</td></tr>
-                            </tfoot>
-                        </table>
+                    <!-- Package 3: Pharmacy -->
+                    <div class="package-card">
+                        <h3><span class="icon-wrapper"><i class="fas fa-pills"></i></span>Initial Pharmacy Inventory</h3>
+                        <p>A comprehensive starting inventory of 175 essential medications is included to ensure your pharmacy is stocked from day one.</p>
+                        <div class="pharmacy-accordion">
+                             <details>
+                                <summary id="pharmacyAccordionToggle">
+                                    <span><i class="fas fa-list-check"></i> View Full Inventory (175 Items)</span>
+                                    <i class="fas fa-chevron-down accordion-icon"></i>
+                                </summary>
+                                <div class="accordion-content">
+                                    <div class="table-wrapper">
+                                        <table id="pharmacyTable">
+                                            <thead>
+                                                <tr><th>Name</th><th class="numeric">Qty</th><th class="numeric">Total (₹)</th></tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- Full List Here -->
+                                                <tr><td data-label="Name">Albendazole Oral Suspension IP 400 mg / each 5 ml 10ml bottle</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="20.00">20.00</td></tr>
+                                                <tr><td data-label="Name">Albendazole Tablets IP 400 mg 1 tablet</td><td data-label="Qty" class="numeric">20</td><td data-label="Total (₹)" class="numeric" data-price="18.20">18.20</td></tr>
+                                                <tr><td data-label="Name">Albendazole 400 mg & Ivermectin 6 mg 1 Tablet</td><td data-label="Qty" class="numeric">20</td><td data-label="Total (₹)" class="numeric" data-price="96.00">96.00</td></tr>
+                                                <tr><td data-label="Name">Allopurinol Tablets IP 100mg 10 tablets</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="22.12">22.12</td></tr>
+                                                <tr><td data-label="Name">Alprazolam 0.25mg Tablets IP 15 Tablets</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="1.73">1.73</td></tr>
+                                                <tr><td data-label="Name">Amitriptyline Tablets I.P 10mg 10 Tablets</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="2.38">2.38</td></tr>
+                                                <tr><td data-label="Name">Amlodipine Besylate Tablets IP 5 mg 10 tablets</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="5.60">5.60</td></tr>
+                                                <tr><td data-label="Name">Amlodipine Besylate Tablets IP 10 mg10 tablets</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="12.20">12.20</td></tr>
+                                                <tr><td data-label="Name">Amoxicillin & Potassium Clavulanate Tablets IP 625 mg 10tablet s</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="41.00">41.00</td></tr>
+                                                <tr><td data-label="Name">Antifungal Powder</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="46.50">46.50</td></tr>
+                                                <tr><td data-label="Name">Aspirin Gastro-Resistant Tablets IP 75mg14 tablets</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="1.10">1.10</td></tr>
+                                                <tr><td data-label="Name">Atorvastatin Tablets IP 10 mg10 tablets</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="11.16">11.16</td></tr>
+                                                <tr><td data-label="Name">Atorvastatin Tablets IP 20 mg 10tablet s</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="14.06">14.06</td></tr>
+                                                <tr><td data-label="Name">Azithromycin Oral Suspension IP 200 mg / 5 ml 15ml bottile</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="57.10">57.10</td></tr>
+                                                <tr><td data-label="Name">Azithromycin Tablets IP 500 mg 3 tablets</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="39.60">39.60</td></tr>
+                                                <tr><td data-label="Name">Baclofen Tablets IP 10 mg</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="1.19">1.19</td></tr>
+                                                <tr><td data-label="Name">Betahistine Hydrochloride Tablets IP 8 mg</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="8.50">8.50</td></tr>
+                                                <tr><td data-label="Name">Calamine Lotion IP 60 ml bottle</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="55.00">55.00</td></tr>
+                                                <tr><td data-label="Name">Calcium 1250 mg & Vitamin D3 250 IU Tablets</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="19.00">19.00</td></tr>
+                                                <tr><td data-label="Name">Carboxymethylcellulose Sodium Eye Drops IP</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="190.00">190.00</td></tr>
+                                                <tr><td data-label="Name">Cefixime Dispersible Tablets IP 200 mg 10 Tablets</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="21.98">21.98</td></tr>
+                                                <tr><td data-label="Name">Cefixime Oral Suspension IP 100 mg / 5 ml</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="80.00">80.00</td></tr>
+                                                <tr><td data-label="Name">Cetirizine Hydrochloride Tablets IP 10 mg</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="10.30">10.30</td></tr>
+                                                <tr><td data-label="Name">Chlorhexidine Gluconate, Sodium Fluoride & Zinc Chloride Mouthwash</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="47.50">47.50</td></tr>
+                                                <tr><td data-label="Name">Ciprofloxacin & Dexamethasone Eye/Ear Drops</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="58.00">58.00</td></tr>
+                                                <tr><td data-label="Name">Ciprofloxacin Tablets IP 500 mg 10 tablets</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="9.50">9.50</td></tr>
+                                                <tr><td data-label="Name">Citicoline Sodium &Piracetam Tablets 10Tablets</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="110.00">110.00</td></tr>
+                                                <tr><td data-label="Name">Clinical Thermometer type Ovel large</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="48.00">48.00</td></tr>
+                                                <tr><td data-label="Name">Clobetasol Propionate IP 0.05% & Salicylic Acid 6% Ointment 20 gm tube</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="75.00">75.00</td></tr>
+                                                <tr><td data-label="Name">Clopidogrel Tablets IP 75 mg 10tablet s</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="7.40">7.40</td></tr>
+                                                <tr><td data-label="Name">Clopidogrel 75 mg & Aspirin 75 mg Tablets IP15 tablets</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="6.47">6.47</td></tr>
+                                                <tr><td data-label="Name">Clotrimazole Cream IP 1% 20 g tube</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="79.00">79.00</td></tr>
+                                                <tr><td data-label="Name">Clotrimazole Dusting powder 75 g</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="47.50">47.50</td></tr>
+                                                <tr><td data-label="Name">Clotrimazole 1.00% & Beclomethasone Dipropionate 0.025%Lotion</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="44.50">44.50</td></tr>
+                                                <tr><td data-label="Name">Clotrimazole1.00% & Beclomethasone ipropionate0.025% Cream15g 1 tube</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="86.00">86.00</td></tr>
+                                                <tr><td data-label="Name">Compound Sodium Lactate Injection IP Ringer-lactate For InjectionIP</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="64.40">64.40</td></tr>
+                                                <tr><td data-label="Name">Compressor Nebulizer</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="379.80">379.80</td></tr>
+                                                <tr><td data-label="Name">Cotton crepe Bandage 10 cm</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="220.00">220.00</td></tr>
+                                                <tr><td data-label="Name">Cotton crepe Bandage 15 cm</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="165.00">165.00</td></tr>
+                                                <tr><td data-label="Name">Cotton Wool</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="25.00">25.00</td></tr>
+                                                <tr><td data-label="Name">Cyproheptadine Hydrochloride syrap IP</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="120.00">120.00</td></tr>
+                                                <tr><td data-label="Name">Dapagliflozin 10mg &Metformin Hydrochloride 500mgER tablets</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="17.50">17.50</td></tr>
+                                                <tr><td data-label="Name">Dexamethasone Sodium Phosphate Injection IP</td><td data-label="Qty" class="numeric">20</td><td data-label="Total (₹)" class="numeric" data-price="22.80">22.80</td></tr>
+                                                <tr><td data-label="Name">Dexamethasone Tablets IP 0.5 mg</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="0.06">0.06</td></tr>
+                                                <tr><td data-label="Name">Dextromethorphan Hydrobromide10mg,Phenylephrine,Hydrochloride5mg &Cholrpheniramine maleate 2mg (For Dry Cough)</td><td data-label="Qty" class="numeric">15</td><td data-label="Total (₹)" class="numeric" data-price="127.50">127.50</td></tr>
+                                                <tr><td data-label="Name">Diclofenac Diethylamine 1.16%, Linseed Oil 3%, Methyl Salicylate 10% & Menthol 0.50% Gel</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="126.50">126.50</td></tr>
+                                                <tr><td data-label="Name">Diclofenac Sodium Injection IP</td><td data-label="Qty" class="numeric">25</td><td data-label="Total (₹)" class="numeric" data-price="75.00">75.00</td></tr>
+                                                <tr><td data-label="Name">Diclofenac Sodium Tablets IP 50 mg</td><td data-label="Qty" class="numeric">3</td><td data-label="Total (₹)" class="numeric" data-price="6.90">6.90</td></tr>
+                                                <tr><td data-label="Name">Diethylcarbamazine Citrate150mg 10tablet sTablets IP 150 mg</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="7.50">7.50</td></tr>
+                                                <tr><td data-label="Name">Digital Thermometer</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="85.00">85.00</td></tr>
+                                                <tr><td data-label="Name">Domperidone Tablets</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="5.18">5.18</td></tr>
+                                                <tr><td data-label="Name">Doxofylline Tablets IP 400 mg</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="20.00">20.00</td></tr>
+                                                <tr><td data-label="Name">Doxycycline Hydrochloride 100 mg & Lactic Acid Bacillus pack of 10 Capsules</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="1.90">1.90</td></tr>
+                                                <tr><td data-label="Name">Dried Aluminium Hydroxide IP 250mg Magnesium HydroxideIP250mg & Simethicone Suspension IP Each 5ml</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="190.00">190.00</td></tr>
+                                                <tr><td data-label="Name">Entriched With Carica Papaya,Kiwi,Giloy&Tulsi</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="90.00">90.00</td></tr>
+                                                <tr><td data-label="Name">Etoricoxib IP 60mg, Thiolchicoside IP 4mg</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="56.80">56.80</td></tr>
+                                                <tr><td data-label="Name">FamotidineTablets IP40mg</td><td data-label="Qty" class="numeric">3</td><td data-label="Total (₹)" class="numeric" data-price="0.27">0.27</td></tr>
+                                                <tr><td data-label="Name">Faropenem Sodium Extended release Tablets 300mg 6 Tablets</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="75.00">75.00</td></tr>
+                                                <tr><td data-label="Name">Ferrous Ascorbate 100 mg, Folic Acid 1.5 mg & Zinc 22.5 mg Tablets</td><td data-label="Qty" class="numeric">3</td><td data-label="Total (₹)" class="numeric" data-price="5.25">5.25</td></tr>
+                                                <tr><td data-label="Name">Fexofenadine Hydrochloride 120 mg & Montelukast 10 mg Tablets</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="53.60">53.60</td></tr>
+                                                <tr><td data-label="Name">Fluconazole Tablets IP 150 mg 1 tablet</td><td data-label="Qty" class="numeric">20</td><td data-label="Total (₹)" class="numeric" data-price="27.00">27.00</td></tr>
+                                                <tr><td data-label="Name">Flunarizine Dihydrochloride Tablets IP 10 mg</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="0.65">0.65</td></tr>
+                                                <tr><td data-label="Name">Foley Trac Foley Cather</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="95.00">95.00</td></tr>
+                                                <tr><td data-label="Name">Folic Acid Tablets IP 5 mg</td><td data-label="Qty" class="numeric">3</td><td data-label="Total (₹)" class="numeric" data-price="15.21">15.21</td></tr>
+                                                <tr><td data-label="Name">Formoterol Fumarate&Budesonide 200mg Inhaler</td><td data-label="Qty" class="numeric">3</td><td data-label="Total (₹)" class="numeric" data-price="134.10">134.10</td></tr>
+                                                <tr><td data-label="Name">Formoterol Fumarate&Budesonide 400 Inhaler</td><td data-label="Qty" class="numeric">3</td><td data-label="Total (₹)" class="numeric" data-price="153.00">153.00</td></tr>
+                                                <tr><td data-label="Name">Formoterol Fumaratate And Budesonide powder For ?Inhalation IP 400mcg</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="111.20">111.20</td></tr>
+                                                <tr><td data-label="Name">Frusemide Tablets IP 40 mg 15 Tablets</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="1.51">1.51</td></tr>
+                                                <tr><td data-label="Name">Gliclazide Prolonged Release Tablets IP 30 mg</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="1.38">1.38</td></tr>
+                                                <tr><td data-label="Name">Gliclazide Prolonged Release Tablets IP 60 mg 10 tablets pack</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="2.38">2.38</td></tr>
+                                                <tr><td data-label="Name">Gliclazide80mg&Metformin Hydrochloride 500mg</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="20.32">20.32</td></tr>
+                                                <tr><td data-label="Name">Glimepiride 1 mg, Pioglitazone Hydrochloride 15 mg & Metformin Hydrochloride 400 mg Tablets</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="2.84">2.84</td></tr>
+                                                <tr><td data-label="Name">Hydrogen Peroxide Solution IP</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="15.00">15.00</td></tr>
+                                                <tr><td data-label="Name">Hydroquinone, Tretinoin, & Mometasone Furoate 0.1% Cream 15 g tube</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="77.50">77.50</td></tr>
+                                                <tr><td data-label="Name">Hydroxychloroquine Sulphate200mg 15 Tablets</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="10.68">10.68</td></tr>
+                                                <tr><td data-label="Name">Hyoscice Butylbromide 20mg Injection IP 1ml</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="12.60">12.60</td></tr>
+                                                <tr><td data-label="Name">Ibuprofen 400 mg & Paracetamol 325 mg Tablets IP</td><td data-label="Qty" class="numeric">4</td><td data-label="Total (₹)" class="numeric" data-price="11.40">11.40</td></tr>
+                                                <tr><td data-label="Name">Intimate Wash 100ml bottle</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="95.00">95.00</td></tr>
+                                                <tr><td data-label="Name">Isosorbide Mononitrate Tablets IP 10 mg 10tablet s</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="0.90">0.90</td></tr>
+                                                <tr><td data-label="Name">I V Cannula 22 Gaze</td><td data-label="Qty" class="numeric">20</td><td data-label="Total (₹)" class="numeric" data-price="280.00">280.00</td></tr>
+                                                <tr><td data-label="Name">IV .Cannula Fixator</td><td data-label="Qty" class="numeric">20</td><td data-label="Total (₹)" class="numeric" data-price="180.00">180.00</td></tr>
+                                                <tr><td data-label="Name">IV set</td><td data-label="Qty" class="numeric">15</td><td data-label="Total (₹)" class="numeric" data-price="297.00">297.00</td></tr>
+                                                <tr><td data-label="Name">Ketoconazole, Zinc Pyrithione & Biotin Shampoo 100ml bottle</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="125.00">125.00</td></tr>
+                                                <tr><td data-label="Name">Ketoconazole Soap 2% 75 g</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="115.00">115.00</td></tr>
+                                                <tr><td data-label="Name">Ketorolac tromethamine 30mg 1ml ampoules</td><td data-label="Qty" class="numeric">20</td><td data-label="Total (₹)" class="numeric" data-price="83.00">83.00</td></tr>
+                                                <tr><td data-label="Name">Lactulose Solution USP lactulose each 15ml 10gm 100ml bottle</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="64.60">64.60</td></tr>
+                                                <tr><td data-label="Name">Leflunomide Tablet 10mg</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="1.00">1.00</td></tr>
+                                                <tr><td data-label="Name">Levocetirizine Hydrochloride Tablets IP 5 mg</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="4.00">4.00</td></tr>
+                                                <tr><td data-label="Name">Levofloxacin Tablets IP 500 mg 5 Tablets</td><td data-label="Qty" class="numeric">3</td><td data-label="Total (₹)" class="numeric" data-price="27.00">27.00</td></tr>
+                                                <tr><td data-label="Name">Levosalbutamol 1.0mg Sulphate, Guaiphesin 50.0mg&Ambroxol Hcl 30.0mg (For Wet Cough)</td><td data-label="Qty" class="numeric">15</td><td data-label="Total (₹)" class="numeric" data-price="187.50">187.50</td></tr>
+                                                <tr><td data-label="Name">Metformin Hydrochloride 500 mg & Glimepiride 2 mg Tablets IP</td><td data-label="Qty" class="numeric">3</td><td data-label="Total (₹)" class="numeric" data-price="63.60">63.60</td></tr>
+                                                <tr><td data-label="Name">Metformin Hydrochloride Sustained Release Tablets IP 1000 mg</td><td data-label="Qty" class="numeric">3</td><td data-label="Total (₹)" class="numeric" data-price="1.38">1.38</td></tr>
+                                                <tr><td data-label="Name">Metformin Hydrochloride Tablets IP 500 mg</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="22.60">22.60</td></tr>
+                                                <tr><td data-label="Name">Methotrexate Tablets IP 7.5mg</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="1.19">1.19</td></tr>
+                                                <tr><td data-label="Name">Methylcobalamin,Pyridoxine Hydrochloride&Niacinnamide Injection</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="115.00">115.00</td></tr>
+                                                <tr><td data-label="Name">Methylprednisolone Tablets IP 4mg 10 Tablets</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="7.50">7.50</td></tr>
+                                                <tr><td data-label="Name">Metoprolol Succinate Extended Release Tablets IP 50 mg 10tablet s</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="6.00">6.00</td></tr>
+                                                <tr><td data-label="Name">Metoprolol Succinate Extended Release Tablets USP 25 mg10 tablets</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="5.00">5.00</td></tr>
+                                                <tr><td data-label="Name">Metronidazole Tablets IP 400 mg 15 Tablets</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="5.10">5.10</td></tr>
+                                                <tr><td data-label="Name">Mometasone furoate 0.1%& Fusidic Acid 2.0%Cream 10gm</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="82.50">82.50</td></tr>
+                                                <tr><td data-label="Name">Montelukast Sodium 10 mg & Levocetirizine Hydrochloride 5 mg Tablets</td><td data-label="Qty" class="numeric">3</td><td data-label="Total (₹)" class="numeric" data-price="29.70">29.70</td></tr>
+                                                <tr><td data-label="Name">Multivitamin, Multimineral & Antioxidants Soft Gellatin 10 Capsules pack</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="35.00">35.00</td></tr>
+                                                <tr><td data-label="Name">Multivitamin, Multimineral with Astaxanthin Syrup</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="190.00">190.00</td></tr>
+                                                <tr><td data-label="Name">Mupirocin Ointment IP 2% 5gm tube</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="113.60">113.60</td></tr>
+                                                <tr><td data-label="Name">Ofloxacin Eye/Ear Drops IP</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="53.00">53.00</td></tr>
+                                                <tr><td data-label="Name">Omeprazole Capsules IP 20 mg</td><td data-label="Qty" class="numeric">3</td><td data-label="Total (₹)" class="numeric" data-price="18.60">18.60</td></tr>
+                                                <tr><td data-label="Name">Ondansetron Hydrochloride Tablets IP 4 mg</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="11.52">11.52</td></tr>
+                                                <tr><td data-label="Name">Ondansetron Injection</td><td data-label="Qty" class="numeric">20</td><td data-label="Total (₹)" class="numeric" data-price="23.80">23.80</td></tr>
+                                                <tr><td data-label="Name">Oral Rehydration Salts IP (21.8 grams)</td><td data-label="Qty" class="numeric">50</td><td data-label="Total (₹)" class="numeric" data-price="110.00">110.00</td></tr>
+                                                <tr><td data-label="Name">Oriscalp hair kit</td><td data-label="Qty" class="numeric">3</td><td data-label="Total (₹)" class="numeric" data-price="15.63">15.63</td></tr>
+                                                <tr><td data-label="Name">Oxymetazoline Hydrochloride Nasal Solution USP</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="52.75">52.75</td></tr>
+                                                <tr><td data-label="Name">Pantoprazole For Injection</td><td data-label="Qty" class="numeric">20</td><td data-label="Total (₹)" class="numeric" data-price="113.00">113.00</td></tr>
+                                                <tr><td data-label="Name">Pantoprazole Tablets IP 40 mg 10 tablets pack</td><td data-label="Qty" class="numeric">3</td><td data-label="Total (₹)" class="numeric" data-price="30.00">30.00</td></tr>
+                                                <tr><td data-label="Name">Paracetamol Infusion IP 1.0%w/v</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="675.00">675.00</td></tr>
+                                                <tr><td data-label="Name">Paracetamol Tablets IP 500 mg</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="5.05">5.05</td></tr>
+                                                <tr><td data-label="Name">Paracetamol Tablets IP 650 mg</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="11.20">11.20</td></tr>
+                                                <tr><td data-label="Name">Permethrin Lotion 5% 60ml bottle</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="29.90">29.90</td></tr>
+                                                <tr><td data-label="Name">Permethrin Soap 1% 75 gm</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="49.50">49.50</td></tr>
+                                                <tr><td data-label="Name">Pheairamine Maleate Injection</td><td data-label="Qty" class="numeric">20</td><td data-label="Total (₹)" class="numeric" data-price="11.40">11.40</td></tr>
+                                                <tr><td data-label="Name">Pioglitazone Hydrochloride Tablets IP 15 mg</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="1.10">1.10</td></tr>
+                                                <tr><td data-label="Name">Piperacillin And Tazobactam Injection IP</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="447.00">447.00</td></tr>
+                                                <tr><td data-label="Name">Povidone Iodine & Metronidazole Ointment</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="60.00">60.00</td></tr>
+                                                <tr><td data-label="Name">Povidone Iodine Solution IP 10% 15gm</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="107.50">107.50</td></tr>
+                                                <tr><td data-label="Name">Povidone-Iodine Ointment USP 10%</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="89.00">89.00</td></tr>
+                                                <tr><td data-label="Name">Prebiotic & Probiotic Capsules</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="30.00">30.00</td></tr>
+                                                <tr><td data-label="Name">Prednisolone Tablets IP 10 mg 10 tablets</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="2.66">2.66</td></tr>
+                                                <tr><td data-label="Name">Prednisolone Tablets IP 20 mg</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="2.68">2.68</td></tr>
+                                                <tr><td data-label="Name">Pregabalin Capsules IP 75 mg</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="36.60">36.60</td></tr>
+                                                <tr><td data-label="Name">Pyridoxine HCl, Niacinamide, Cyanocobalamin, Folic Acid with Chromium, Zinc & Selenium Tablets</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="23.00">23.00</td></tr>
+                                                <tr><td data-label="Name">Rabeprazole 20 mg & Domperidone SR 30 mg Capsules</td><td data-label="Qty" class="numeric">3</td><td data-label="Total (₹)" class="numeric" data-price="46.20">46.20</td></tr>
+                                                <tr><td data-label="Name">Rabeprazole injection IP 20mg</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="395.00">395.00</td></tr>
+                                                <tr><td data-label="Name">Ranitidine Hydrochloride 168mg Ranitidine 150mg</td><td data-label="Qty" class="numeric">4</td><td data-label="Total (₹)" class="numeric" data-price="0.60">0.60</td></tr>
+                                                <tr><td data-label="Name">RanitidineHCL,150mg,Clidinium Bromide 2.5mg,Chlordiazepoxideand DicyclomineHCL10mg</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="0.86">0.86</td></tr>
+                                                <tr><td data-label="Name">Ranolazine Sustained Released Tablet 10tablet s</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="16.50">16.50</td></tr>
+                                                <tr><td data-label="Name">Rosuvastatin 10mg ,Clopidogrel75mg &Aspirin 75 mg 10 tablets</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="14.00">14.00</td></tr>
+                                                <tr><td data-label="Name">Rosuvastatin tablets IP 10mg</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="23.16">23.16</td></tr>
+                                                <tr><td data-label="Name">Rosuvastatin Calcium 20mg</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="36.50">36.50</td></tr>
+                                                <tr><td data-label="Name">Rotahaler Device</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="100.00">100.00</td></tr>
+                                                <tr><td data-label="Name">Ryles Tube</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="40.50">40.50</td></tr>
+                                                <tr><td data-label="Name">Saline Nasal Solution IP</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="51.00">51.00</td></tr>
+                                                <tr><td data-label="Name">Salmeterol50mg &Fluticasone Propionate 250mg powder for Inhalation 30 Capsules</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="35.50">35.50</td></tr>
+                                                <tr><td data-label="Name">Sildenafil Citrate Tablets IP 100 mg 4 tablets</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="46.46">46.46</td></tr>
+                                                <tr><td data-label="Name">Sildenafil Citrate Tablets IP 50 mg 4 tablets</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="29.28">29.28</td></tr>
+                                                <tr><td data-label="Name">Silver Sulphadiazine 1.00%& Chlorhexidine Gluconate 0.60%Cream 15g tubes</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="47.50">47.50</td></tr>
+                                                <tr><td data-label="Name">Sodium Alginate 250mg,Sodium Bicarbonate IP133.5 mg And calcium Carbonate IP 80 mg Each 5ml</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="175.00">175.00</td></tr>
+                                                <tr><td data-label="Name">Sodium Bicarbonate Tablets IP 500 mg 10tablet s</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="3.65">3.65</td></tr>
+                                                <tr><td data-label="Name">Sodium Chloride 0.9%and Dextrose5%W/v Injection IP</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="43.50">43.50</td></tr>
+                                                <tr><td data-label="Name">Sodium chloride Injection IP 0.9%</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="39.70">39.70</td></tr>
+                                                <tr><td data-label="Name">Sodium Phosphate Enema BP 100ml</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="45.00">45.00</td></tr>
+                                                <tr><td data-label="Name">Sucralfate Suspension</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="82.50">82.50</td></tr>
+                                                <tr><td data-label="Name">Surgical Spirit IP</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="75.00">75.00</td></tr>
+                                                <tr><td data-label="Name">Surgical Face Mask (Box of 100)</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="1.00">1.00</td></tr>
+                                                <tr><td data-label="Name">Telmisartan 40 mg & Amlodipine Besylate 5 mg Tablets IP 10tablet s</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="16.10">16.10</td></tr>
+                                                <tr><td data-label="Name">Telmisartan Tablets IP 40 mg 10tablet s</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="14.80">14.80</td></tr>
+                                                <tr><td data-label="Name">Telmisartan Tablets IP 80 mg 10tablet s</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="11.64">11.64</td></tr>
+                                                <tr><td data-label="Name">Thyroxine Sodium Tablets IP100mg</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="14.78">14.78</td></tr>
+                                                <tr><td data-label="Name">Thyroxine Sodium Tablets IP125mg</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="18.93">18.93</td></tr>
+                                                <tr><td data-label="Name">Thyroxine Sodium Tablets IP25mg</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="16.20">16.20</td></tr>
+                                                <tr><td data-label="Name">Thyroxine Sodium Tablets IP50mg</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="11.50">11.50</td></tr>
+                                                <tr><td data-label="Name">Thyroxine Sodium Tablets IP75mg</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="16.13">16.13</td></tr>
+                                                <tr><td data-label="Name">Tiotropium Bromide MH IP 9mcg/dose Inhaler</td><td data-label="Qty" class="numeric">3</td><td data-label="Total (₹)" class="numeric" data-price="111.90">111.90</td></tr>
+                                                <tr><td data-label="Name">Torsemide 10 mg IP 10 tablets</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="4.72">4.72</td></tr>
+                                                <tr><td data-label="Name">Torsemide 20 mg Tablets IP 10 TABLETS</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="8.00">8.00</td></tr>
+                                                <tr><td data-label="Name">Tramadol Hydrochloride 50 mg 2ml ampoules</td><td data-label="Qty" class="numeric">20</td><td data-label="Total (₹)" class="numeric" data-price="52.80">52.80</td></tr>
+                                                <tr><td data-label="Name">Tranexamic Acid & Mefenamic Acid Tablets</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="40.00">40.00</td></tr>
+                                                <tr><td data-label="Name">Ursodeoxycholic Acid tablets IP 300mg15 tablets</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="77.50">77.50</td></tr>
+                                                <tr><td data-label="Name">UV ZERO SPF 30 GEL</td><td data-label="Qty" class="numeric">3</td><td data-label="Total (₹)" class="numeric" data-price="108.00">108.00</td></tr>
+                                                <tr><td data-label="Name">Vaprocon vaporizer</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="119.80">119.80</td></tr>
+                                                <tr><td data-label="Name">Vidagliptin Tablet IP 50mg</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="39.60">39.60</td></tr>
+                                                <tr><td data-label="Name">Vildagliptin Tablets 50 mg 15 tablets pack</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="1.32">1.32</td></tr>
+                                                <tr><td data-label="Name">Vitamin B Complex with Vitamin C Tablets</td><td data-label="Qty" class="numeric">5</td><td data-label="Total (₹)" class="numeric" data-price="0.70">0.70</td></tr>
+                                                <tr><td data-label="Name">Vitamin E400 I.U Soft gel 10 Capsules</td><td data-label="Qty" class="numeric">1</td><td data-label="Total (₹)" class="numeric" data-price="6.20">6.20</td></tr>
+                                                <tr><td data-label="Name">Voglibose Tablets IP 0.2 mg 10 tablets pack</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="1.54">1.54</td></tr>
+                                                <tr><td data-label="Name">Voglibose Tablets IP 0.3 mg 10 tablets pack</td><td data-label="Qty" class="numeric">2</td><td data-label="Total (₹)" class="numeric" data-price="2.06">2.06</td></tr>
+                                                <tr><td data-label="Name">Xylometazoline Nasal Drops IP</td><td data-label="Qty" class="numeric">10</td><td data-label="Total (₹)" class="numeric" data-price="57.30">57.30</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
                         <div class="button-container">
-                            <button class="download-btn" data-table="pharmacyTable" data-filename="newtons_ai_franchise_package3.csv"><i class="fas fa-download"></i>Download Package Details (CSV)</button>
+                            <button class="btn download-btn" data-table="fullPharmacyTable" data-filename="newtons_ai_franchise_pharmacy.csv"><i class="fas fa-download"></i>Download Full List</button>
                         </div>
                     </div>
-                </details>
+                </main>
                 
-                <div class="cta-section">
-                    <h2>Ready to Begin?</h2>
-                    <p>Take the next step in your healthcare journey. Contact our franchise development team today.</p>
-                    <button class="cta-btn" id="requestConsultationBtn"><i class="fab fa-whatsapp"></i>Request a Consultation</button>
-                </div>
-
-                <div class="grand-total">
-                    <h2>YOUR ESTIMATED INITIAL FRANCHISE INVESTMENT</h2>
-                    <p id="grandTotalValue">₹ 0.00</p>
-                </div>
+                <aside class="summary-sidebar">
+                    <h2>Investment Summary</h2>
+                    <ul class="summary-list">
+                        <li>
+                            <span class="item-name">Equipment & Setup</span>
+                            <span class="item-value" id="equipment-subtotal">Calculating...</span>
+                        </li>
+                        <li>
+                            <span class="item-name">Diagnostic Kits</span>
+                            <span class="item-value" id="diagnostics-subtotal">Calculating...</span>
+                        </li>
+                        <li>
+                            <span class="item-name">Pharmacy Inventory</span>
+                            <span class="item-value" id="pharmacy-subtotal">Calculating...</span>
+                        </li>
+                    </ul>
+                    <hr>
+                    <div class="summary-grand-total">
+                        <p>Estimated Initial Investment</p>
+                        <div class="total-value" id="grandTotalValue">Calculating...</div>
+                    </div>
+                </aside>
             </div>
+            
+            <section class="cta-section">
+                <h2>Ready to Begin Your Journey?</h2>
+                <p>Take the next step in healthcare innovation. Contact our franchise development team today for a no-obligation consultation.</p>
+                <button class="btn cta-btn" id="requestConsultationBtn"><i class="fab fa-whatsapp"></i>Request a Consultation</button>
+            </section>
+                
         </div>
-    </main>
+    </div>
 
-    <!-- Footer from Parent Page -->
+    <!-- HIDDEN TABLE with full pharmacy data for download -->
+    <table id="fullPharmacyTable" style="display:none;">
+       <thead><tr><th>S.No.</th><th>Name</th><th>Price (₹)</th><th>Quantity</th><th>Total Price (₹)</th></tr></thead>
+       <tbody>
+            <tr><td>1</td><td>Albendazole Oral Suspension IP 400 mg / each 5 ml 10ml bottle</td><td>2.00</td><td>10</td><td>20.00</td></tr>
+            <tr><td>2</td><td>Albendazole Tablets IP 400 mg 1 tablet</td><td>0.91</td><td>20</td><td>18.20</td></tr>
+            <tr><td>3</td><td>Albendazole 400 mg & Ivermectin 6 mg 1 Tablet</td><td>4.80</td><td>20</td><td>96.00</td></tr>
+            <tr><td>4</td><td>Allopurinol Tablets IP 100mg 10 tablets</td><td>22.12</td><td>1</td><td>22.12</td></tr>
+            <tr><td>5</td><td>Alprazolam 0.25mg Tablets IP 15 Tablets</td><td>1.73</td><td>1</td><td>1.73</td></tr>
+            <tr><td>6</td><td>Amitriptyline Tablets I.P 10mg 10 Tablets</td><td>2.38</td><td>1</td><td>2.38</td></tr>
+            <tr><td>7</td><td>Amlodipine Besylate Tablets IP 5 mg 10 tablets</td><td>2.80</td><td>2</td><td>5.60</td></tr>
+            <tr><td>8</td><td>Amlodipine Besylate Tablets IP 10 mg10 tablets</td><td>6.10</td><td>2</td><td>12.20</td></tr>
+            <tr><td>9</td><td>Amoxicillin & Potassium Clavulanate Tablets IP 625 mg 10tablet s</td><td>20.50</td><td>2</td><td>41.00</td></tr>
+            <tr><td>10</td><td>Antifungal Powder</td><td>9.30</td><td>5</td><td>46.50</td></tr>
+            <tr><td>11</td><td>Aspirin Gastro-Resistant Tablets IP 75mg14 tablets</td><td>0.55</td><td>2</td><td>1.10</td></tr>
+            <tr><td>12</td><td>Atorvastatin Tablets IP 10 mg10 tablets</td><td>5.58</td><td>2</td><td>11.16</td></tr>
+            <tr><td>13</td><td>Atorvastatin Tablets IP 20 mg 10tablet s</td><td>14.06</td><td>1</td><td>14.06</td></tr>
+            <tr><td>14</td><td>Azithromycin Oral Suspension IP 200 mg / 5 ml 15ml bottile</td><td>5.71</td><td>10</td><td>57.10</td></tr>
+            <tr><td>15</td><td>Azithromycin Tablets IP 500 mg 3 tablets</td><td>7.92</td><td>5</td><td>39.60</td></tr>
+            <tr><td>16</td><td>Baclofen Tablets IP 10 mg</td><td>1.19</td><td>1</td><td>1.19</td></tr>
+            <tr><td>17</td><td>Betahistine Hydrochloride Tablets IP 8 mg</td><td>8.50</td><td>1</td><td>8.50</td></tr>
+            <tr><td>18</td><td>Calamine Lotion IP 60 ml bottle</td><td>11.00</td><td>5</td><td>55.00</td></tr>
+            <tr><td>19</td><td>Calcium 1250 mg & Vitamin D3 250 IU Tablets</td><td>9.50</td><td>2</td><td>19.00</td></tr>
+            <tr><td>20</td><td>Carboxymethylcellulose Sodium Eye Drops IP</td><td>19.00</td><td>10</td><td>190.00</td></tr>
+            <tr><td>21</td><td>Cefixime Dispersible Tablets IP 200 mg 10 Tablets</td><td>10.99</td><td>2</td><td>21.98</td></tr>
+            <tr><td>22</td><td>Cefixime Oral Suspension IP 100 mg / 5 ml</td><td>8.00</td><td>10</td><td>80.00</td></tr>
+            <tr><td>23</td><td>Cetirizine Hydrochloride Tablets IP 10 mg</td><td>2.06</td><td>5</td><td>10.30</td></tr>
+            <tr><td>24</td><td>Chlorhexidine Gluconate, Sodium Fluoride & Zinc Chloride Mouthwash</td><td>9.50</td><td>5</td><td>47.50</td></tr>
+            <tr><td>25</td><td>Ciprofloxacin & Dexamethasone Eye/Ear Drops</td><td>5.80</td><td>10</td><td>58.00</td></tr>
+            <tr><td>26</td><td>Ciprofloxacin Tablets IP 500 mg 10 tablets</td><td>4.75</td><td>2</td><td>9.50</td></tr>
+            <tr><td>27</td><td>Citicoline Sodium &Piracetam Tablets 10Tablets</td><td>110.00</td><td>1</td><td>110.00</td></tr>
+            <tr><td>28</td><td>Clinical Thermometer type Ovel large</td><td>24.00</td><td>2</td><td>48.00</td></tr>
+            <tr><td>29</td><td>Clobetasol Propionate IP 0.05% & Salicylic Acid 6% Ointment 20 gm tube</td><td>15.00</td><td>5</td><td>75.00</td></tr>
+            <tr><td>30</td><td>Clopidogrel Tablets IP 75 mg 10tablet s</td><td>7.40</td><td>1</td><td>7.40</td></tr>
+            <tr><td>31</td><td>Clopidogrel 75 mg & Aspirin 75 mg Tablets IP15 tablets</td><td>6.47</td><td>1</td><td>6.47</td></tr>
+            <tr><td>32</td><td>Clotrimazole Cream IP 1% 20 g tube</td><td>7.90</td><td>10</td><td>79.00</td></tr>
+            <tr><td>33</td><td>Clotrimazole Dusting powder 75 g</td><td>9.50</td><td>5</td><td>47.50</td></tr>
+            <tr><td>34</td><td>Clotrimazole 1.00% & Beclomethasone Dipropionate 0.025%Lotion</td><td>8.90</td><td>5</td><td>44.50</td></tr>
+            <tr><td>35</td><td>Clotrimazole1.00% & Beclomethasone ipropionate0.025% Cream15g 1 tube</td><td>8.60</td><td>10</td><td>86.00</td></tr>
+            <tr><td>36</td><td>Compound Sodium Lactate Injection IP Ringer-lactate For InjectionIP</td><td>6.44</td><td>10</td><td>64.40</td></tr>
+            <tr><td>37</td><td>Compressor Nebulizer</td><td>189.90</td><td>2</td><td>379.80</td></tr>
+            <tr><td>38</td><td>Cotton crepe Bandage 10 cm</td><td>22.00</td><td>10</td><td>220.00</td></tr>
+            <tr><td>39</td><td>Cotton crepe Bandage 15 cm</td><td>33.00</td><td>5</td><td>165.00</td></tr>
+            <tr><td>40</td><td>Cotton Wool</td><td>2.50</td><td>10</td><td>25.00</td></tr>
+            <tr><td>41</td><td>Cyproheptadine Hydrochloride syrap IP</td><td>12.00</td><td>10</td><td>120.00</td></tr>
+            <tr><td>42</td><td>Dapagliflozin 10mg &Metformin Hydrochloride 500mgER tablets</td><td>17.50</td><td>1</td><td>17.50</td></tr>
+            <tr><td>43</td><td>Dexamethasone Sodium Phosphate Injection IP</td><td>1.14</td><td>20</td><td>22.80</td></tr>
+            <tr><td>44</td><td>Dexamethasone Tablets IP 0.5 mg</td><td>0.03</td><td>2</td><td>0.06</td></tr>
+            <tr><td>45</td><td>Dextromethorphan Hydrobromide10mg,Phenylephrine,Hydrochloride5mg &Cholrpheniramine maleate 2mg (For Dry Cough)</td><td>8.50</td><td>15</td><td>127.50</td></tr>
+            <tr><td>46</td><td>Diclofenac Diethylamine 1.16%, Linseed Oil 3%, Methyl Salicylate 10% & Menthol 0.50% Gel</td><td>12.65</td><td>10</td><td>126.50</td></tr>
+            <tr><td>47</td><td>Diclofenac Sodium Injection IP</td><td>3.00</td><td>25</td><td>75.00</td></tr>
+            <tr><td>48</td><td>Diclofenac Sodium Tablets IP 50 mg</td><td>2.30</td><td>3</td><td>6.90</td></tr>
+            <tr><td>49</td><td>Diethylcarbamazine Citrate150mg 10tablet sTablets IP 150 mg</td><td>7.50</td><td>1</td><td>7.50</td></tr>
+            <tr><td>50</td><td>Digital Thermometer</td><td>17.00</td><td>5</td><td>85.00</td></tr>
+            <tr><td>51</td><td>Domperidone Tablets</td><td>2.59</td><td>2</td><td>5.18</td></tr>
+            <tr><td>52</td><td>Doxofylline Tablets IP 400 mg</td><td>10.00</td><td>2</td><td>20.00</td></tr>
+            <tr><td>53</td><td>Doxycycline Hydrochloride 100 mg & Lactic Acid Bacillus pack of 10 Capsules</td><td>0.95</td><td>2</td><td>1.90</td></tr>
+            <tr><td>54</td><td>Dried Aluminium Hydroxide IP 250mg Magnesium HydroxideIP250mg & Simethicone Suspension IP Each 5ml</td><td>19.00</td><td>10</td><td>190.00</td></tr>
+            <tr><td>55</td><td>Entriched With Carica Papaya,Kiwi,Giloy&Tulsi</td><td>18.00</td><td>5</td><td>90.00</td></tr>
+            <tr><td>56</td><td>Etoricoxib IP 60mg, Thiolchicoside IP 4mg</td><td>28.40</td><td>2</td><td>56.80</td></tr>
+            <tr><td>57</td><td>FamotidineTablets IP40mg</td><td>0.09</td><td>3</td><td>0.27</td></tr>
+            <tr><td>58</td><td>Faropenem Sodium Extended release Tablets 300mg 6 Tablets</td><td>75.00</td><td>1</td><td>75.00</td></tr>
+            <tr><td>59</td><td>Ferrous Ascorbate 100 mg, Folic Acid 1.5 mg & Zinc 22.5 mg Tablets</td><td>1.75</td><td>3</td><td>5.25</td></tr>
+            <tr><td>60</td><td>Fexofenadine Hydrochloride 120 mg & Montelukast 10 mg Tablets</td><td>26.80</td><td>2</td><td>53.60</td></tr>
+            <tr><td>61</td><td>Fluconazole Tablets IP 150 mg 1 tablet</td><td>1.35</td><td>20</td><td>27.00</td></tr>
+            <tr><td>62</td><td>Flunarizine Dihydrochloride Tablets IP 10 mg</td><td>0.65</td><td>1</td><td>0.65</td></tr>
+            <tr><td>63</td><td>Foley Trac Foley Cather</td><td>19.00</td><td>5</td><td>95.00</td></tr>
+            <tr><td>64</td><td>Folic Acid Tablets IP 5 mg</td><td>5.07</td><td>3</td><td>15.21</td></tr>
+            <tr><td>65</td><td>Formoterol Fumarate&Budesonide 200mg Inhaler</td><td>44.70</td><td>3</td><td>134.10</td></tr>
+            <tr><td>66</td><td>Formoterol Fumarate&Budesonide 400 Inhaler</td><td>51.00</td><td>3</td><td>153.00</td></tr>
+            <tr><td>67</td><td>Formoterol Fumaratate And Budesonide powder For ?Inhalation IP 400mcg</td><td>22.24</td><td>5</td><td>111.20</td></tr>
+            <tr><td>68</td><td>Frusemide Tablets IP 40 mg 15 Tablets</td><td>1.51</td><td>1</td><td>1.51</td></tr>
+            <tr><td>69</td><td>Gliclazide Prolonged Release Tablets IP 30 mg</td><td>0.69</td><td>2</td><td>1.38</td></tr>
+            <tr><td>70</td><td>Gliclazide Prolonged Release Tablets IP 60 mg 10 tablets pack</td><td>1.19</td><td>2</td><td>2.38</td></tr>
+            <tr><td>71</td><td>Gliclazide80mg&Metformin Hydrochloride 500mg</td><td>10.16</td><td>2</td><td>20.32</td></tr>
+            <tr><td>72</td><td>Glimepiride 1 mg, Pioglitazone Hydrochloride 15 mg & Metformin Hydrochloride 400 mg Tablets</td><td>1.42</td><td>2</td><td>2.84</td></tr>
+            <tr><td>73</td><td>Hydrogen Peroxide Solution IP</td><td>3.00</td><td>5</td><td>15.00</td></tr>
+            <tr><td>74</td><td>Hydroquinone, Tretinoin, & Mometasone Furoate 0.1% Cream 15 g tube</td><td>15.50</td><td>5</td><td>77.50</td></tr>
+            <tr><td>75</td><td>Hydroxychloroquine Sulphate200mg 15 Tablets</td><td>10.68</td><td>1</td><td>10.68</td></tr>
+            <tr><td>76</td><td>Hyoscice Butylbromide 20mg Injection IP 1ml</td><td>1.26</td><td>10</td><td>12.60</td></tr>
+            <tr><td>77</td><td>Ibuprofen 400 mg & Paracetamol 325 mg Tablets IP</td><td>2.85</td><td>4</td><td>11.40</td></tr>
+            <tr><td>78</td><td>Intimate Wash 100ml bottle</td><td>19.00</td><td>5</td><td>95.00</td></tr>
+            <tr><td>79</td><td>Isosorbide Mononitrate Tablets IP 10 mg 10tablet s</td><td>0.90</td><td>1</td><td>0.90</td></tr>
+            <tr><td>80</td><td>I V Cannula 22 Gaze</td><td>14.00</td><td>20</td><td>280.00</td></tr>
+            <tr><td>81</td><td>IV .Cannula Fixator</td><td>9.00</td><td>20</td><td>180.00</td></tr>
+            <tr><td>82</td><td>IV set</td><td>19.80</td><td>15</td><td>297.00</td></tr>
+            <tr><td>83</td><td>Ketoconazole, Zinc Pyrithione & Biotin Shampoo 100ml bottle</td><td>25.00</td><td>5</td><td>125.00</td></tr>
+            <tr><td>84</td><td>Ketoconazole Soap 2% 75 g</td><td>11.50</td><td>10</td><td>115.00</td></tr>
+            <tr><td>85</td><td>Ketorolac tromethamine 30mg 1ml ampoules</td><td>4.15</td><td>20</td><td>83.00</td></tr>
+            <tr><td>86</td><td>Lactulose Solution USP lactulose each 15ml 10gm 100ml bottle</td><td>12.92</td><td>5</td><td>64.60</td></tr>
+            <tr><td>87</td><td>Leflunomide Tablet 10mg</td><td>1.00</td><td>1</td><td>1.00</td></tr>
+            <tr><td>88</td><td>Levocetirizine Hydrochloride Tablets IP 5 mg</td><td>0.80</td><td>5</td><td>4.00</td></tr>
+            <tr><td>89</td><td>Levofloxacin Tablets IP 500 mg 5 Tablets</td><td>9.00</td><td>3</td><td>27.00</td></tr>
+            <tr><td>90</td><td>Levosalbutamol 1.0mg Sulphate, Guaiphesin 50.0mg&Ambroxol Hcl 30.0mg (For Wet Cough)</td><td>12.50</td><td>15</td><td>187.50</td></tr>
+            <tr><td>91</td><td>Metformin Hydrochloride 500 mg & Glimepiride 2 mg Tablets IP</td><td>21.20</td><td>3</td><td>63.60</td></tr>
+            <tr><td>92</td><td>Metformin Hydrochloride Sustained Release Tablets IP 1000 mg</td><td>0.46</td><td>3</td><td>1.38</td></tr>
+            <tr><td>93</td><td>Metformin Hydrochloride Tablets IP 500 mg</td><td>4.52</td><td>5</td><td>22.60</td></tr>
+            <tr><td>94</td><td>Methotrexate Tablets IP 7.5mg</td><td>1.19</td><td>1</td><td>1.19</td></tr>
+            <tr><td>95</td><td>Methylcobalamin,Pyridoxine Hydrochloride&Niacinnamide Injection</td><td>11.50</td><td>10</td><td>115.00</td></tr>
+            <tr><td>96</td><td>Methylprednisolone Tablets IP 4mg 10 Tablets</td><td>7.50</td><td>1</td><td>7.50</td></tr>
+            <tr><td>97</td><td>Metoprolol Succinate Extended Release Tablets IP 50 mg 10tablet s</td><td>6.00</td><td>1</td><td>6.00</td></tr>
+            <tr><td>98</td><td>Metoprolol Succinate Extended Release Tablets USP 25 mg10 tablets</td><td>5.00</td><td>1</td><td>5.00</td></tr>
+            <tr><td>99</td><td>Metronidazole Tablets IP 400 mg 15 Tablets</td><td>2.55</td><td>2</td><td>5.10</td></tr>
+            <tr><td>100</td><td>Mometasone furoate 0.1%& Fusidic Acid 2.0%Cream 10gm</td><td>16.50</td><td>5</td><td>82.50</td></tr>
+            <tr><td>101</td><td>Montelukast Sodium 10 mg & Levocetirizine Hydrochloride 5 mg Tablets</td><td>9.90</td><td>3</td><td>29.70</td></tr>
+            <tr><td>102</td><td>Multivitamin, Multimineral & Antioxidants Soft Gellatin 10 Capsules pack</td><td>17.50</td><td>2</td><td>35.00</td></tr>
+            <tr><td>103</td><td>Multivitamin, Multimineral with Astaxanthin Syrup</td><td>19.00</td><td>10</td><td>190.00</td></tr>
+            <tr><td>104</td><td>Mupirocin Ointment IP 2% 5gm tube</td><td>11.36</td><td>10</td><td>113.60</td></tr>
+            <tr><td>105</td><td>Ofloxacin Eye/Ear Drops IP</td><td>5.30</td><td>10</td><td>53.00</td></tr>
+            <tr><td>106</td><td>Omeprazole Capsules IP 20 mg</td><td>6.20</td><td>3</td><td>18.60</td></tr>
+            <tr><td>107</td><td>Ondansetron Hydrochloride Tablets IP 4 mg</td><td>5.76</td><td>2</td><td>11.52</td></tr>
+            <tr><td>108</td><td>Ondansetron Injection</td><td>1.19</td><td>20</td><td>23.80</td></tr>
+            <tr><td>109</td><td>Oral Rehydration Salts IP (21.8 grams)</td><td>2.20</td><td>50</td><td>110.00</td></tr>
+            <tr><td>110</td><td>Oriscalp hair kit</td><td>5.21</td><td>3</td><td>15.63</td></tr>
+            <tr><td>111</td><td>Oxymetazoline Hydrochloride Nasal Solution USP</td><td>10.55</td><td>5</td><td>52.75</td></tr>
+            <tr><td>112</td><td>Pantoprazole For Injection</td><td>5.65</td><td>20</td><td>113.00</td></tr>
+            <tr><td>113</td><td>Pantoprazole Tablets IP 40 mg 10 tablets pack</td><td>10.00</td><td>3</td><td>30.00</td></tr>
+            <tr><td>114</td><td>Paracetamol Infusion IP 1.0%w/v</td><td>67.50</td><td>10</td><td>675.00</td></tr>
+            <tr><td>115</td><td>Paracetamol Tablets IP 500 mg</td><td>1.01</td><td>5</td><td>5.05</td></tr>
+            <tr><td>116</td><td>Paracetamol Tablets IP 650 mg</td><td>2.24</td><td>5</td><td>11.20</td></tr>
+            <tr><td>117</td><td>Permethrin Lotion 5% 60ml bottle</td><td>5.98</td><td>5</td><td>29.90</td></tr>
+            <tr><td>118</td><td>Permethrin Soap 1% 75 gm</td><td>9.90</td><td>5</td><td>49.50</td></tr>
+            <tr><td>119</td><td>Pheairamine Maleate Injection</td><td>0.57</td><td>20</td><td>11.40</td></tr>
+            <tr><td>120</td><td>Pioglitazone Hydrochloride Tablets IP 15 mg</td><td>0.55</td><td>2</td><td>1.10</td></tr>
+            <tr><td>121</td><td>Piperacillin And Tazobactam Injection IP</td><td>44.70</td><td>10</td><td>447.00</td></tr>
+            <tr><td>122</td><td>Povidone Iodine & Metronidazole Ointment</td><td>6.00</td><td>10</td><td>60.00</td></tr>
+            <tr><td>123</td><td>Povidone Iodine Solution IP 10% 15gm</td><td>10.75</td><td>10</td><td>107.50</td></tr>
+            <tr><td>124</td><td>Povidone-Iodine Ointment USP 10%</td><td>8.90</td><td>10</td><td>89.00</td></tr>
+            <tr><td>125</td><td>Prebiotic & Probiotic Capsules</td><td>15.00</td><td>2</td><td>30.00</td></tr>
+            <tr><td>126</td><td>Prednisolone Tablets IP 10 mg 10 tablets</td><td>1.33</td><td>2</td><td>2.66</td></tr>
+            <tr><td>127</td><td>Prednisolone Tablets IP 20 mg</td><td>2.68</td><td>1</td><td>2.68</td></tr>
+            <tr><td>128</td><td>Pregabalin Capsules IP 75 mg</td><td>18.30</td><td>2</td><td>36.60</td></tr>
+            <tr><td>129</td><td>Pyridoxine HCl, Niacinamide, Cyanocobalamin, Folic Acid with Chromium, Zinc & Selenium Tablets</td><td>11.50</td><td>2</td><td>23.00</td></tr>
+            <tr><td>130</td><td>Rabeprazole 20 mg & Domperidone SR 30 mg Capsules</td><td>15.40</td><td>3</td><td>46.20</td></tr>
+            <tr><td>131</td><td>Rabeprazole injection IP 20mg</td><td>39.50</td><td>10</td><td>395.00</td></tr>
+            <tr><td>132</td><td>Ranitidine Hydrochloride 168mg Ranitidine 150mg</td><td>0.15</td><td>4</td><td>0.60</td></tr>
+            <tr><td>133</td><td>RanitidineHCL,150mg,Clidinium Bromide 2.5mg,Chlordiazepoxideand DicyclomineHCL10mg</td><td>0.43</td><td>2</td><td>0.86</td></tr>
+            <tr><td>134</td><td>Ranolazine Sustained Released Tablet 10tablet s</td><td>16.50</td><td>1</td><td>16.50</td></tr>
+            <tr><td>135</td><td>Rosuvastatin 10mg ,Clopidogrel75mg &Aspirin 75 mg 10 tablets</td><td>14.00</td><td>1</td><td>14.00</td></tr>
+            <tr><td>136</td><td>Rosuvastatin tablets IP 10mg</td><td>11.58</td><td>2</td><td>23.16</td></tr>
+            <tr><td>137</td><td>Rosuvastatin Calcium 20mg</td><td>36.50</td><td>1</td><td>36.50</td></tr>
+            <tr><td>138</td><td>Rotahaler Device</td><td>20.00</td><td>5</td><td>100.00</td></tr>
+            <tr><td>139</td><td>Ryles Tube</td><td>8.10</td><td>5</td><td>40.50</td></tr>
+            <tr><td>140</td><td>Saline Nasal Solution IP</td><td>5.10</td><td>10</td><td>51.00</td></tr>
+            <tr><td>141</td><td>Salmeterol50mg &Fluticasone Propionate 250mg powder for Inhalation 30 Capsules</td><td>35.50</td><td>1</td><td>35.50</td></tr>
+            <tr><td>142</td><td>Sildenafil Citrate Tablets IP 100 mg 4 tablets</td><td>23.23</td><td>2</td><td>46.46</td></tr>
+            <tr><td>143</td><td>Sildenafil Citrate Tablets IP 50 mg 4 tablets</td><td>14.64</td><td>2</td><td>29.28</td></tr>
+            <tr><td>144</td><td>Silver Sulphadiazine 1.00%& Chlorhexidine Gluconate 0.60%Cream 15g tubes</td><td>9.50</td><td>5</td><td>47.50</td></tr>
+            <tr><td>145</td><td>Sodium Alginate 250mg,Sodium Bicarbonate IP133.5 mg And calcium Carbonate IP 80 mg Each 5ml</td><td>17.50</td><td>10</td><td>175.00</td></tr>
+            <tr><td>146</td><td>Sodium Bicarbonate Tablets IP 500 mg 10tablet s</td><td>3.65</td><td>1</td><td>3.65</td></tr>
+            <tr><td>147</td><td>Sodium Chloride 0.9%and Dextrose5%W/v Injection IP</td><td>4.35</td><td>10</td><td>43.50</td></tr>
+            <tr><td>148</td><td>Sodium chloride Injection IP 0.9%</td><td>3.97</td><td>10</td><td>39.70</td></tr>
+            <tr><td>149</td><td>Sodium Phosphate Enema BP 100ml</td><td>9.00</td><td>5</td><td>45.00</td></tr>
+            <tr><td>150</td><td>Sucralfate Suspension</td><td>16.50</td><td>5</td><td>82.50</td></tr>
+            <tr><td>151</td><td>Surgical Spirit IP</td><td>7.50</td><td>10</td><td>75.00</td></tr>
+            <tr><td>152</td><td>Surgical Face Mask (Box of 100)</td><td>0.50</td><td>2</td><td>1.00</td></tr>
+            <tr><td>153</td><td>Telmisartan 40 mg & Amlodipine Besylate 5 mg Tablets IP 10tablet s</td><td>8.05</td><td>2</td><td>16.10</td></tr>
+            <tr><td>154</td><td>Telmisartan Tablets IP 40 mg 10tablet s</td><td>7.40</td><td>2</td><td>14.80</td></tr>
+            <tr><td>155</td><td>Telmisartan Tablets IP 80 mg 10tablet s</td><td>11.64</td><td>1</td><td>11.64</td></tr>
+            <tr><td>156</td><td>Thyroxine Sodium Tablets IP100mg</td><td>14.78</td><td>1</td><td>14.78</td></tr>
+            <tr><td>157</td><td>Thyroxine Sodium Tablets IP125mg</td><td>18.93</td><td>1</td><td>18.93</td></tr>
+            <tr><td>158</td><td>Thyroxine Sodium Tablets IP25mg</td><td>16.20</td><td>1</td><td>16.20</td></tr>
+            <tr><td>159</td><td>Thyroxine Sodium Tablets IP50mg</td><td>11.50</td><td>1</td><td>11.50</td></tr>
+            <tr><td>160</td><td>Thyroxine Sodium Tablets IP75mg</td><td>16.13</td><td>1</td><td>16.13</td></tr>
+            <tr><td>161</td><td>Tiotropium Bromide MH IP 9mcg/dose Inhaler</td><td>37.30</td><td>3</td><td>111.90</td></tr>
+            <tr><td>162</td><td>Torsemide 10 mg IP 10 tablets</td><td>4.72</td><td>1</td><td>4.72</td></tr>
+            <tr><td>163</td><td>Torsemide 20 mg Tablets IP 10 TABLETS</td><td>8.00</td><td>1</td><td>8.00</td></tr>
+            <tr><td>164</td><td>Tramadol Hydrochloride 50 mg 2ml ampoules</td><td>2.64</td><td>20</td><td>52.80</td></tr>
+            <tr><td>165</td><td>Tranexamic Acid & Mefenamic Acid Tablets</td><td>20.00</td><td>2</td><td>40.00</td></tr>
+            <tr><td>166</td><td>Ursodeoxycholic Acid tablets IP 300mg15 tablets</td><td>77.50</td><td>1</td><td>77.50</td></tr>
+            <tr><td>167</td><td>UV ZERO SPF 30 GEL</td><td>36.00</td><td>3</td><td>108.00</td></tr>
+            <tr><td>168</td><td>Vaprocon vaporizer</td><td>59.90</td><td>2</td><td>119.80</td></tr>
+            <tr><td>169</td><td>Vidagliptin Tablet IP 50mg</td><td>19.80</td><td>2</td><td>39.60</td></tr>
+            <tr><td>170</td><td>Vildagliptin Tablets 50 mg 15 tablets pack</td><td>1.32</td><td>1</td><td>1.32</td></tr>
+            <tr><td>171</td><td>Vitamin B Complex with Vitamin C Tablets</td><td>0.14</td><td>5</td><td>0.70</td></tr>
+            <tr><td>172</td><td>Vitamin E400 I.U Soft gel 10 Capsules</td><td>6.20</td><td>1</td><td>6.20</td></tr>
+            <tr><td>173</td><td>Voglibose Tablets IP 0.2 mg 10 tablets pack</td><td>0.77</td><td>2</td><td>1.54</td></tr>
+            <tr><td>174</td><td>Voglibose Tablets IP 0.3 mg 10 tablets pack</td><td>1.03</td><td>2</td><td>2.06</td></tr>
+            <tr><td>175</td><td>Xylometazoline Nasal Drops IP</td><td>5.73</td><td>10</td><td>57.30</td></tr>
+       </tbody>
+       <tfoot><tr><td colspan="4">Package 3 Subtotal (₹)</td><td>9,737.52</td></tr></tfoot>
+    </table>
+
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -663,14 +786,15 @@
         </div>
     </footer>
 
-    <!-- Scroll to top button from Parent Page -->
+    <!-- Scroll to top button -->
     <button class="scroll-top" aria-label="Scroll to top">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-    <!-- Main JS from Parent Page -->
+    <!-- Main JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // --- THEME TOGGLE LOGIC ---
             const body = document.body;
             const themeToggleButton = document.querySelector('.theme-toggle');
             const moonIconClass = 'fa-moon';
@@ -694,7 +818,7 @@
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
 
-            // Mobile menu toggle
+            // --- MOBILE MENU TOGGLE LOGIC ---
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const mobileNav = document.querySelector('.mobile-nav');
             const mobileNavClose = document.querySelector('.mobile-nav-close');
@@ -714,7 +838,7 @@
             overlay.addEventListener('click', () => toggleMobileMenu(false));
             mobileNavLinks.forEach(link => link.addEventListener('click', () => toggleMobileMenu(false)));
             
-            // Scroll to top button
+            // --- SCROLL TO TOP BUTTON ---
             const scrollTopButton = document.querySelector('.scroll-top');
             if (scrollTopButton) {
                 window.addEventListener('scroll', () => {
@@ -725,77 +849,94 @@
                 });
             }
 
-            // Year for footer
-            const yearSpan = document.getElementById('currentYear');
-            if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-        });
-    </script>
+            // --- FOOTER YEAR ---
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-    <!-- Franchise Page Specific JS -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Accordion Functionality with Auto Scroll
-            const allDetails = document.querySelectorAll('details');
-            allDetails.forEach(details => {
-                details.addEventListener('toggle', event => {
-                    if (details.open) {
-                        // Close all other details elements
-                        allDetails.forEach(otherDetails => {
-                            if (otherDetails !== details) {
-                                otherDetails.open = false;
-                            }
-                        });
+            // --- FRANCHISE PAGE SPECIFIC LOGIC ---
 
-                        // Smoothly scroll the opened element into view
-                        // A timeout allows the browser to finish closing other elements first
-                        setTimeout(() => {
-                            details.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start' 
-                            });
-                        }, 250);
-                    }
-                });
-            });
-
-            // Grand Total Calculation
-            function calculateGrandTotal() {
-                let total = 0;
-                document.querySelectorAll('.subtotal').forEach(subtotalCell => {
-                    total += parseFloat(subtotalCell.textContent.replace(/,/g, '')) || 0;
-                });
-                
-                document.getElementById('grandTotalValue').textContent = '₹ ' + total.toLocaleString('en-IN', {
+            /**
+             * Formats a number as Indian Rupees (₹).
+             * @param {number} number - The number to format.
+             * @returns {string} - The formatted currency string.
+             */
+            const formatCurrency = (number) => {
+                return '₹ ' + number.toLocaleString('en-IN', {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2
                 });
-            }
-            calculateGrandTotal();
+            };
 
-            // Download CSV Functionality
+            /**
+             * Calculates and updates subtotals for each package and the grand total in the new sticky sidebar.
+             */
+            function calculateAndUpdateTotals() {
+                let grandTotal = 0;
+                
+                // Define package IDs and their corresponding table and display elements
+                const packages = [
+                    { id: 'equipment', tableId: 'equipmentTable', subtotalEl: document.getElementById('equipment-subtotal') },
+                    { id: 'diagnostics', tableId: 'kitOrderTable', subtotalEl: document.getElementById('diagnostics-subtotal') },
+                    { id: 'pharmacy', tableId: 'pharmacyTable', subtotalEl: document.getElementById('pharmacy-subtotal') }
+                ];
+
+                packages.forEach(pkg => {
+                    const table = document.getElementById(pkg.tableId);
+                    if (!table || !pkg.subtotalEl) return;
+
+                    let subtotal = 0;
+                    table.querySelectorAll('tbody td[data-price]').forEach(cell => {
+                        subtotal += parseFloat(cell.getAttribute('data-price')) || 0;
+                    });
+                    
+                    pkg.subtotalEl.textContent = formatCurrency(subtotal);
+                    grandTotal += subtotal;
+                });
+                
+                // Update the main grand total display
+                const grandTotalElement = document.getElementById('grandTotalValue');
+                if (grandTotalElement) {
+                     grandTotalElement.textContent = formatCurrency(grandTotal);
+                }
+            }
+
+            calculateAndUpdateTotals(); // Run on page load
+
+            // --- PHARMACY ACCORDION TOGGLE TEXT ---
+            const pharmacyAccordion = document.querySelector('.pharmacy-accordion details');
+            const pharmacyAccordionToggle = document.getElementById('pharmacyAccordionToggle');
+            if(pharmacyAccordion && pharmacyAccordionToggle) {
+                pharmacyAccordion.addEventListener('toggle', () => {
+                    if (pharmacyAccordion.open) {
+                        pharmacyAccordionToggle.innerHTML = `<span><i class="fas fa-list-check"></i> Hide Full Inventory</span> <i class="fas fa-chevron-up accordion-icon"></i>`;
+                    } else {
+                        pharmacyAccordionToggle.innerHTML = `<span><i class="fas fa-list-check"></i> View Full Inventory (175 Items)</span> <i class="fas fa-chevron-down accordion-icon"></i>`;
+                    }
+                });
+                 // Fix for chevron icon rotation on toggle
+                pharmacyAccordionToggle.addEventListener('click', (e) => {
+                    const icon = pharmacyAccordionToggle.querySelector('.accordion-icon');
+                    if(icon) {
+                        icon.style.transform = pharmacyAccordion.open ? 'rotate(0deg)' : 'rotate(180deg)';
+                    }
+                });
+            }
+
+            // --- DOWNLOAD CSV FUNCTIONALITY ---
             document.querySelectorAll('.download-btn').forEach(button => {
                 button.addEventListener('click', function() {
                     const tableId = this.getAttribute('data-table');
                     const filename = this.getAttribute('data-filename');
                     const table = document.getElementById(tableId);
                     
+                    if (!table) return;
+
                     let csvContent = "data:text/csv;charset=utf-8,";
-                    const headers = [];
-                    table.querySelectorAll('thead th').forEach(header => headers.push('"' + header.innerText.trim() + '"'));
-                    csvContent += headers.join(',') + '\r\n';
-
-                    table.querySelectorAll('tbody tr').forEach(row => {
-                        const rowData = [];
-                        row.querySelectorAll('td').forEach(cell => rowData.push('"' + cell.innerText.trim().replace(/"/g, '""') + '"'));
-                        csvContent += rowData.join(',') + '\r\n';
-                    });
-
-                    if (table.querySelector('tfoot')) {
-                        const footerCells = table.querySelectorAll('tfoot td');
-                        const footerData = new Array(headers.length).fill('""');
-                        footerData[headers.length - 2] = `"${footerCells[0].innerText.trim()}"`;
-                        footerData[headers.length - 1] = `"${footerCells[1].innerText.trim()}"`;
-                        csvContent += footerData.join(',') + '\r\n';
+                    const rows = table.querySelectorAll("tr");
+                    
+                    for (const row of rows) {
+                        const cols = row.querySelectorAll("th, td");
+                        const rowData = Array.from(cols).map(col => `"${col.innerText.trim().replace(/"/g, '""')}"`);
+                        csvContent += rowData.join(",") + "\r\n";
                     }
 
                     const encodedUri = encodeURI(csvContent);
@@ -808,20 +949,17 @@
                 });
             });
 
-            // WhatsApp Consultation Request
+            // --- WHATSAPP CTA ---
             const consultationBtn = document.getElementById('requestConsultationBtn');
             if (consultationBtn) {
                 consultationBtn.addEventListener('click', function() {
                     const phoneNumber = '916363111328';
                     const message = "Hi! I'm interested in the Newtons Ai Hospitals franchise. I understand you provide and install everything, including the lab, pharmacy, furniture, beds, etc. Please provide more details.";
-                    
-                    const encodedMessage = encodeURIComponent(message);
-                    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-                    
+                    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
                     window.open(whatsappUrl, '_blank');
                 });
             }
         });
     </script>
 </body>
-</html>```
+</html>
