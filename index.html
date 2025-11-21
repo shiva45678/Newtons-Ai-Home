@@ -7,7 +7,7 @@
     <meta name="description" content="Clinical-grade AI for medical professionals. Empowering doctors, colleges, and institutions with advanced AI tools for enhanced learning, practice, and research.">
     <title>Newtons Ai | Best Ai for Doctors</title>
 
-    <!-- Social Media & Search Engine Preview (OG & Twitter Tags) -->
+    <!-- Social Media & Search Engine Preview -->
     <meta property="og:title" content="Newtons Ai | Best Ai for Doctors">
     <meta property="og:description" content="Clinical-grade AI for medical professionals. Empowering doctors, colleges, and institutions with advanced AI tools for enhanced learning, practice, and research.">
     <meta property="og:image" content="logo.png">
@@ -23,20 +23,31 @@
     <meta name="twitter:image" content="logo.png">
     <meta name="twitter:image:alt" content="Newtons Ai Logo">
 
-    <!-- Favicons & App Icons -->
+    <!-- Favicons -->
     <link rel="icon" href="logo.png" type="image/png">
     <link rel="apple-touch-icon" href="logo.png">
     <link rel="image_src" href="logo.png">
 
-    <!-- Resource Hints & SEO -->
+    <!-- Resource Hints & Preloading Strategy -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- PREFETCHING LOGIC ADDED HERE -->
+    <!-- 1. Standard Prefetch (High compatibility) -->
     <link rel="preconnect" href="https://app.newtons.in">
     <link rel="prefetch" href="https://app.newtons.in">
-    <link rel="prerender" href="https://app.newtons.in">
     
+    <!-- 2. Speculation Rules API (Modern 'Instant' Loading for Chrome/Edge) -->
+    <script type="speculationrules">
+    {
+      "prerender": [
+        {
+          "source": "list",
+          "urls": ["https://app.newtons.in/"]
+        }
+      ]
+    }
+    </script>
+
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
     <!-- Stylesheets -->
@@ -56,17 +67,17 @@
             --secondary-color-light: #10B981; /* Green/Teal */
 
             /* Dark Theme Colors */
-            --bg-dark: #111827; /* Dark Blue/Gray */
-            --surface-dark: #1F2937; /* Slightly Lighter Dark Blue/Gray */
-            --text-primary-dark: #F3F4F6; /* Off-white */
-            --text-secondary-dark: #9CA3AF; /* Lighter Gray */
-            --heading-dark: #FFFFFF; /* White */
-            --border-dark: #374151; /* Darker Gray */
+            --bg-dark: #111827; 
+            --surface-dark: #1F2937; 
+            --text-primary-dark: #F3F4F6; 
+            --text-secondary-dark: #9CA3AF; 
+            --heading-dark: #FFFFFF; 
+            --border-dark: #374151; 
             --shadow-color-dark-rgb: 0, 0, 0; 
-            --primary-color-dark: #3B82F6; /* Brighter Blue */
-            --secondary-color-dark: #14B8A6; /* Brighter Green/Teal */
+            --primary-color-dark: #3B82F6; 
+            --secondary-color-dark: #14B8A6; 
 
-            /* Default Theme Variables (Initially Light) */
+            /* Default Theme Variables */
             --app-bg: var(--bg-light);
             --app-surface: var(--surface-light);
             --app-text-primary: var(--text-primary-light);
@@ -76,15 +87,6 @@
             --app-shadow-color-rgb: var(--shadow-color-light-rgb);
             --app-primary: var(--primary-color-light);
             --app-secondary: var(--secondary-color-light);
-
-            /* RGB versions for RGBA usage */
-            --primary-color-light-rgb: 37, 99, 235;
-            --secondary-color-light-rgb: 16, 185, 129;
-            --primary-color-dark-rgb: 59, 130, 246;
-            --secondary-color-dark-rgb: 20, 184, 166;
-            --surface-light-rgb: 255, 255, 255;
-            --bg-dark-rgb: 17, 24, 39;
-            --surface-dark-rgb: 31, 41, 55;
 
             --app-primary-rgb: var(--primary-color-light-rgb);
             --app-secondary-rgb: var(--secondary-color-light-rgb);
@@ -150,63 +152,20 @@
             font-size: 16px;
         }
 
-        /* --- APP PRELOADER LAYER STYLES --- */
-        /* This container holds the iframe and sits on top of the page when active */
-        #app-layer {
+        /* --- CACHE WARMER FRAME --- */
+        /* Keeps the iframe totally invisible and non-interfering */
+        #app-cache-warmer {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: var(--app-bg);
-            z-index: 9999; /* Highest priority */
-            
-            /* Initially hidden but part of DOM to allow loading */
-            visibility: hidden; 
+            width: 1px;
+            height: 1px;
+            top: -100px;
+            left: -100px;
             opacity: 0;
-            
-            /* Slide up effect */
-            transform: translateY(10vh); 
-            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-            
-            /* Prevent interaction while hidden */
-            pointer-events: none; 
+            pointer-events: none;
+            border: 0;
+            z-index: -1;
+            visibility: hidden; /* Ensures it doesn't affect layout but browser still loads source */
         }
-
-        #app-layer.active {
-            visibility: visible;
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-
-        /* The iframe itself */
-        #flutter-app-frame {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block;
-        }
-
-        /* Close button for the app overlay (optional UX improvement) */
-        .app-layer-close {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            z-index: 10000;
-            background: rgba(0,0,0,0.5);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            display: none; /* Shown via JS if needed, usually browser back button handles this */
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* --- END PRELOADER STYLES --- */
 
         *:focus-visible {
             outline: var(--app-focus-ring-width) solid var(--app-focus-ring-color);
@@ -1787,8 +1746,8 @@
                 <p class="hero-tagline animated">Clinical-Grade AI</p> 
                 <p class="hero-subtitle animated">Empowering medical professionals and institutions.</p> 
                 <div class="btn-row animated">
-                    <!-- TARGET: This button now triggers the instant preloaded iframe -->
-                    <a href="https://app.newtons.in" class="btn btn-primary btn-open-app"> 
+                    <!-- TARGET: Standard Link, preloaded via Speculation Rules API -->
+                    <a href="https://app.newtons.in" class="btn btn-primary"> 
                         <i class="fa-solid fa-brain"></i> Get Started — Free
                     </a>
                      <a href="https://aidrivencloudbasedhospitalmanagementsystem.newtons.in/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
@@ -1850,8 +1809,8 @@
                     <div class="system-card-content">
                         <h3 class="system-card-title">AI OPD Assistant</h3>
                         <p class="system-card-desc">Streamlines consultations: aids history taking, suggests tests, provides diagnoses, and offers treatment recommendations.</p>
-                        <!-- Updated link to open app instantly -->
-                        <a href="https://app.newtons.in" class="system-card-link btn-open-app">Explore OPD Assistant <i class="fa-solid fa-arrow-right"></i></a>
+                        <!-- Updated link -->
+                        <a href="https://app.newtons.in" class="system-card-link">Explore OPD Assistant <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
                  <div class="system-card animated">
@@ -1872,24 +1831,24 @@
                     <div class="system-card-content">
                         <h3 class="system-card-title">AI Prescription Writer</h3>
                         <p class="system-card-desc">Provides intelligent suggestions for drug dosages, forms, and interactions, ensuring accurate and safe prescription writing.</p>
-                        <!-- Updated link to open app instantly -->
-                        <a href="https://app.newtons.in" class="system-card-link btn-open-app">Try AI Prescription <i class="fa-solid fa-arrow-right"></i></a>
+                        <!-- Updated link -->
+                        <a href="https://app.newtons.in" class="system-card-link">Try AI Prescription <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
                  <div class="system-card animated">
                     <div class="system-card-content">
                         <h3 class="system-card-title">AI Treatment Planner</h3>
                         <p class="system-card-desc">Generates evidence-based, personalized treatment plans, assisting clinicians in making informed therapeutic decisions.</p>
-                        <!-- Updated link to open app instantly -->
-                        <a href="https://app.newtons.in" class="system-card-link btn-open-app">Use Treatment Planner <i class="fa-solid fa-arrow-right"></i></a>
+                        <!-- Updated link -->
+                        <a href="https://app.newtons.in" class="system-card-link">Use Treatment Planner <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
                  <div class="system-card animated">
                     <div class="system-card-content">
                         <h3 class="system-card-title">AI ICU Assistant</h3>
                         <p class="system-card-desc">Aids in critical care by predicting patient deterioration, suggesting interventions, and assisting in the management of complex ICU cases.</p>
-                        <!-- Updated link to open app instantly -->
-                        <a href="https://app.newtons.in" class="system-card-link btn-open-app">Learn About ICU AI <i class="fa-solid fa-arrow-right"></i></a>
+                        <!-- Updated link -->
+                        <a href="https://app.newtons.in" class="system-card-link">Learn About ICU AI <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -2221,7 +2180,7 @@
                             <p>Navigate to your desired Newtons Ai web app using the Safari browser on iOS, or Chrome on Android:</p>
                            <div class="btn-row" style="justify-content: flex-start; margin-top: 10px; margin-bottom: 20px;">
                              <!-- Updated buttons to use the instant opener logic -->
-                             <a href="https://app.newtons.in" class="btn btn-primary btn-open-app" style="width: auto; padding: 8px 16px; font-size: 0.9rem;">
+                             <a href="https://app.newtons.in" class="btn btn-primary" style="width: auto; padding: 8px 16px; font-size: 0.9rem;">
                                <i class="fa-solid fa-brain"></i> Newtons Ai Platform
                              </a>
                              <a href="https://hms.newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: auto; padding: 8px 16px; font-size: 0.9rem;">
@@ -2273,7 +2232,7 @@
                     <h3>Our Platforms</h3>
                     <ul class="footer-links">
                          <!-- Updated link -->
-                         <li><a href="https://app.newtons.in" class="btn-open-app"><i class="fa-solid fa-brain"></i> Newtons Ai</a></li>
+                         <li><a href="https://app.newtons.in"><i class="fa-solid fa-brain"></i> Newtons Ai</a></li>
                          <li><a href="https://neetpg.newtons.in" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-graduation-cap"></i> Newtons NeetPG</a></li>
                          <li><a href="https://hms.newtons.in" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-hospital-user"></i> Newtons Ai HMS</a></li>
                          <li><a href="https://hospital.newtons.in" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-hospital"></i> AI for Hospitals</a></li>
@@ -2294,74 +2253,16 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
-            /* --- FLUTTER APP PRELOADER & INSTANT OPEN LOGIC --- */
-            
-            // 1. Create the Hidden Iframe Overlay
-            const createFlutterOverlay = () => {
-                const layer = document.createElement('div');
-                layer.id = 'app-layer';
-                
-                // Create close button
-                const closeBtn = document.createElement('button');
-                closeBtn.className = 'app-layer-close';
-                closeBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
-                closeBtn.onclick = closeFlutterApp;
-                layer.appendChild(closeBtn);
-
-                // Create Iframe
+            /* --- CACHE WARMER LOGIC (FLUTTER PRELOAD) --- */
+            const createCacheWarmer = () => {
                 const iframe = document.createElement('iframe');
-                iframe.id = 'flutter-app-frame';
-                iframe.setAttribute('allow', 'camera; microphone; geolocation; fullscreen'); // Permissions for Flutter app
-                // Point to the Flutter Web App
+                iframe.id = 'app-cache-warmer';
+                iframe.setAttribute('aria-hidden', 'true');
                 iframe.src = "https://app.newtons.in"; 
-                
-                layer.appendChild(iframe);
-                document.body.appendChild(layer);
+                document.body.appendChild(iframe);
             };
-
-            // 2. Function to Open App
-            const openFlutterApp = (e) => {
-                // Only if valid link
-                if(e) e.preventDefault();
-                
-                const layer = document.getElementById('app-layer');
-                if(!layer) return;
-
-                layer.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Stop background scrolling
-
-                // Push history state so browser "Back" button works to close app
-                history.pushState({ appOpen: true }, "", "/app"); 
-            };
-
-            // 3. Function to Close App
-            const closeFlutterApp = () => {
-                const layer = document.getElementById('app-layer');
-                if(!layer) return;
-
-                layer.classList.remove('active');
-                document.body.style.overflow = ''; // Restore scrolling
-            };
-
-            // 4. Initialize
-            // Create the iframe immediately to start loading the Flutter Engine (main.dart.js etc)
-            createFlutterOverlay();
-
-            // 5. Attach event listeners to all "Get Started" or App links
-            // Use class 'btn-open-app' or specific selectors
-            const appLinks = document.querySelectorAll('.btn-open-app, a[href="https://app.newtons.in"]');
-            appLinks.forEach(link => {
-                link.addEventListener('click', openFlutterApp);
-            });
-
-            // 6. Handle Browser Back Button
-            window.addEventListener('popstate', (event) => {
-                if (document.getElementById('app-layer').classList.contains('active')) {
-                    closeFlutterApp();
-                }
-            });
-
-            /* --- END FLUTTER LOGIC --- */
+            createCacheWarmer();
+            /* --- END CACHE WARMER --- */
 
 
             const body = document.body;
@@ -2648,3 +2549,4 @@
     </script>
 </body>
 </html>
+```
