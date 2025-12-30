@@ -7,7 +7,7 @@
     
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     
     <style>
@@ -35,7 +35,7 @@
         
         body { 
             background-color: var(--bg); color: var(--text-dark); 
-            line-height: 1.5; padding-bottom: 80px; 
+            line-height: 1.5; padding-bottom: 90px;
             transition: background 0.3s, color 0.3s;
         }
 
@@ -63,7 +63,8 @@
             aspect-ratio: 16/9; background: #000; border-radius: 12px; overflow: hidden;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        .video-box iframe { width: 100%; height: 100%; border: 0; }
+        /* The div replaced by YouTube API needs to fill the box */
+        #player { width: 100%; height: 100%; }
 
         /* --- Cards --- */
         .card { 
@@ -75,26 +76,32 @@
 
         /* --- Simple Tables --- */
         table { width: 100%; border-collapse: collapse; }
-        th { text-align: left; color: var(--text-gray); font-size: 0.85rem; padding: 10px 0; border-bottom: 1px solid var(--border); }
+        th { 
+            text-align: left; color: var(--text-gray); font-size: 0.85rem; 
+            padding: 10px 0; border-bottom: 1px solid var(--border); 
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
         td { padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
         tr:last-child td { border-bottom: none; }
         
-        .price { text-align: right; font-weight: 600; font-family: monospace; font-size: 1rem; }
+        .item-name { font-weight: 500; }
+        .price { text-align: right; font-weight: 600; font-family: monospace; font-size: 1rem; color: var(--text-dark); }
         
-        /* Mobile: Hide category column to keep it simple */
+        /* Mobile: Hide middle column */
         .col-cat { display: none; }
-        @media(min-width: 600px) { .col-cat { display: table-cell; color: var(--text-gray); font-size: 0.85rem; } }
+        @media(min-width: 600px) { .col-cat { display: table-cell; color: var(--text-gray); font-size: 0.9rem; } }
 
         /* --- Buttons --- */
         .btn { 
             display: inline-block; padding: 10px 20px; background: var(--blue); color: white; 
             border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer;
         }
-        .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-dark); }
+        .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-dark); cursor: pointer; width: 100%; padding: 12px; border-radius: 8px; font-weight: 600; margin-top: 15px;}
+        .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
 
         /* --- Side Menu (Right) --- */
         .side-menu {
-            position: fixed; top: 0; right: 0; width: 260px; height: 100%;
+            position: fixed; top: 0; right: 0; width: 280px; height: 100%;
             background: var(--card-bg); z-index: 200; transform: translateX(100%);
             transition: transform 0.3s; padding: 20px; border-left: 1px solid var(--border);
             display: flex; flex-direction: column;
@@ -103,9 +110,9 @@
         .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 150; display: none; }
         .overlay.open { display: block; }
         
-        .menu-link { display: block; padding: 12px 0; color: var(--text-dark); text-decoration: none; font-size: 1.1rem; border-bottom: 1px solid var(--border); }
+        .menu-link { display: block; padding: 14px 0; color: var(--text-dark); text-decoration: none; font-size: 1.1rem; border-bottom: 1px solid var(--border); }
         
-        .dark-mode-row { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 20px; }
+        .dark-mode-row { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid var(--border); }
 
         /* --- Sticky Bottom Bar --- */
         .bottom-bar {
@@ -113,9 +120,12 @@
             background: var(--card-bg); border-top: 1px solid var(--border);
             padding: 15px 20px; display: flex; justify-content: space-between; align-items: center;
             z-index: 90;
+            padding-bottom: max(15px, env(safe-area-inset-bottom));
         }
-        .total-label { font-size: 0.8rem; color: var(--text-gray); text-transform: uppercase; }
+        .total-label { font-size: 0.8rem; color: var(--text-gray); text-transform: uppercase; letter-spacing: 0.5px; }
         .total-price { font-size: 1.4rem; font-weight: 700; color: var(--blue); }
+
+        .table-wrap { max-height: 400px; overflow-y: auto; scrollbar-width: thin; }
 
     </style>
 </head>
@@ -130,18 +140,18 @@
     <!-- Side Menu -->
     <div class="overlay" onclick="toggleMenu(false)" id="overlay"></div>
     <div class="side-menu" id="sideMenu">
-        <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:20px; align-items:center;">
             <span style="font-weight:700; font-size:1.2rem; color:var(--text-dark)">Menu</span>
             <button class="menu-btn" onclick="toggleMenu(false)"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <a href="#" class="menu-link">Home</a>
         <a href="#" class="menu-link">About Us</a>
-        <a href="#" class="menu-link">Contact Support</a>
+        <a href="#" class="menu-link">Franchise Details</a>
         <a href="https://hms.newtons.in" class="menu-link" style="color: var(--blue);">Login to App</a>
 
         <div class="dark-mode-row">
             <span style="color:var(--text-dark)">Dark Mode</span>
-            <button class="btn-outline" id="themeBtn" style="padding: 8px 12px; border-radius: 50%;">
+            <button class="menu-btn" id="themeBtn" style="font-size: 1.2rem;">
                 <i class="fa-solid fa-moon"></i>
             </button>
         </div>
@@ -154,70 +164,103 @@
             <p>We provide the machines, the medicines, and the software. You provide the care.</p>
         </div>
 
-        <!-- Video -->
+        <!-- Video Box (YouTube API Target) -->
         <div class="video-box">
-            <iframe src="https://www.youtube.com/embed/C4XGqhEq43A" title="Setup Video" allowfullscreen></iframe>
+            <div id="player"></div>
         </div>
 
-        <!-- 1. Machines -->
+        <!-- 1. Machines & Infrastructure -->
         <div class="card">
             <h2><i class="fas fa-bed" style="color:var(--blue)"></i> Machines & Furniture</h2>
-            <p class="card-sub">Everything from lab machines to patient beds.</p>
+            <p class="card-sub">Complete infrastructure from lab to reception.</p>
             
-            <table id="t1">
-                <thead><tr><th>Item Name</th><th class="col-cat">Type</th><th class="price">Cost</th></tr></thead>
-                <tbody>
-                    <tr><td>Hospital Software</td><td class="col-cat">Software</td><td class="price" data-cost="0">Included</td></tr>
-                    <tr><td>Blood Test Machine</td><td class="col-cat">Lab</td><td class="price" data-cost="70000">70,000</td></tr>
-                    <tr><td>Cell Counter</td><td class="col-cat">Lab</td><td class="price" data-cost="190000">190,000</td></tr>
-                    <tr><td>ECG Machine</td><td class="col-cat">Medical</td><td class="price" data-cost="16000">16,000</td></tr>
-                    <tr><td>Patient Beds (4)</td><td class="col-cat">Furniture</td><td class="price" data-cost="48000">48,000</td></tr>
-                    <tr><td>Laptops (3)</td><td class="col-cat">Office</td><td class="price" data-cost="30000">30,000</td></tr>
-                    <tr><td>Tables & Chairs</td><td class="col-cat">Furniture</td><td class="price" data-cost="40000">40,000</td></tr>
-                    <!-- Hidden sum for other small items -->
-                    <tr style="display:none"><td data-cost="80000"></td></tr>
-                </tbody>
-            </table>
+            <div class="table-wrap">
+                <table id="t1">
+                    <thead><tr><th>Item Name</th><th class="col-cat">Category</th><th class="price">Cost</th></tr></thead>
+                    <tbody>
+                        <tr><td class="item-name">Hospital Software</td><td class="col-cat">Software</td><td class="price" data-cost="0">Included</td></tr>
+                        <tr><td class="item-name">Biochemistry Analyser</td><td class="col-cat">Lab Machine</td><td class="price" data-cost="70000">70,000</td></tr>
+                        <tr><td class="item-name">Cell Counter (3-Part)</td><td class="col-cat">Lab Machine</td><td class="price" data-cost="190000">190,000</td></tr>
+                        <tr><td class="item-name">ECG Machine (3-Lead)</td><td class="col-cat">Medical</td><td class="price" data-cost="16000">16,000</td></tr>
+                        <tr><td class="item-name">Online UPS (Microtek)</td><td class="col-cat">Power</td><td class="price" data-cost="14000">14,000</td></tr>
+                        <tr><td class="item-name">Inverter & Battery</td><td class="col-cat">Power</td><td class="price" data-cost="15000">15,000</td></tr>
+                        <tr><td class="item-name">Fridge (2 Units)</td><td class="col-cat">Appliance</td><td class="price" data-cost="20000">20,000</td></tr>
+                        <tr><td class="item-name">Water Purifier</td><td class="col-cat">Appliance</td><td class="price" data-cost="4000">4,000</td></tr>
+                        <tr><td class="item-name">Centrifuge Machine</td><td class="col-cat">Lab</td><td class="price" data-cost="1500">1,500</td></tr>
+                        <tr><td class="item-name">Laptops (3 Units)</td><td class="col-cat">Office</td><td class="price" data-cost="30000">30,000</td></tr>
+                        <tr><td class="item-name">Printer</td><td class="col-cat">Office</td><td class="price" data-cost="3000">3,000</td></tr>
+                        <tr><td class="item-name">Patient Beds (4 Units)</td><td class="col-cat">Furniture</td><td class="price" data-cost="48000">48,000</td></tr>
+                        <tr><td class="item-name">Doctor & Reception Tables</td><td class="col-cat">Furniture</td><td class="price" data-cost="30000">30,000</td></tr>
+                        <tr><td class="item-name">Waiting Chairs</td><td class="col-cat">Furniture</td><td class="price" data-cost="10600">10,600</td></tr>
+                        <tr><td class="item-name">Examination Table</td><td class="col-cat">Furniture</td><td class="price" data-cost="5000">5,000</td></tr>
+                        <tr><td class="item-name">Doctor Chairs</td><td class="col-cat">Furniture</td><td class="price" data-cost="3000">3,000</td></tr>
+                        <tr><td class="item-name">Stools & Misc Furniture</td><td class="col-cat">Furniture</td><td class="price" data-cost="4000">4,000</td></tr>
+                        <tr><td class="item-name">Medical Supplies (BP etc)</td><td class="col-cat">Medical</td><td class="price" data-cost="8200">8,200</td></tr>
+                        <tr><td class="item-name">Marketing Billboards</td><td class="col-cat">Marketing</td><td class="price" data-cost="6000">6,000</td></tr>
+                        <tr><td class="item-name">Lab Consumables</td><td class="col-cat">Starter Pack</td><td class="price" data-cost="7900">7,900</td></tr>
+                        <tr><td class="item-name">General Supplies</td><td class="col-cat">Misc</td><td class="price" data-cost="1000">1,000</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn-outline">Download CSV List</button>
         </div>
 
-        <!-- 2. Lab Kits -->
+        <!-- 2. Diagnostic Kits -->
         <div class="card">
             <h2><i class="fas fa-flask" style="color:#10B981"></i> Lab Test Kits</h2>
             <p class="card-sub">Chemicals to start doing blood tests immediately.</p>
-            <table id="t2">
-                <thead><tr><th>Kit Name</th><th class="col-cat">Quantity</th><th class="price">Cost</th></tr></thead>
-                <tbody>
-                    <tr><td>Biochemistry Set</td><td class="col-cat">1 Set</td><td class="price" data-cost="0">Free</td></tr>
-                    <tr><td>Dengue Test</td><td class="col-cat">20 Tests</td><td class="price" data-cost="1800">1,800</td></tr>
-                    <tr><td>HIV Test</td><td class="col-cat">25 Tests</td><td class="price" data-cost="1250">1,250</td></tr>
-                    <tr><td>Blood Grouping</td><td class="col-cat">50 Tests</td><td class="price" data-cost="900">900</td></tr>
-                    <tr style="display:none"><td data-cost="4000"></td></tr>
-                </tbody>
-            </table>
+            
+            <div class="table-wrap">
+                <table id="t2">
+                    <thead><tr><th>Kit Name</th><th class="col-cat">Quantity</th><th class="price">Cost</th></tr></thead>
+                    <tbody>
+                        <tr><td class="item-name">Biochemistry Reagents</td><td class="col-cat">1 Set</td><td class="price" data-cost="0">Free</td></tr>
+                        <tr><td class="item-name">Urine Strips</td><td class="col-cat">100 Tests</td><td class="price" data-cost="400">400</td></tr>
+                        <tr><td class="item-name">Blood Grouping</td><td class="col-cat">50 Tests</td><td class="price" data-cost="900">900</td></tr>
+                        <tr><td class="item-name">HIV Screening</td><td class="col-cat">25 Tests</td><td class="price" data-cost="1250">1,250</td></tr>
+                        <tr><td class="item-name">HBsAg (Hepatitis B)</td><td class="col-cat">25 Tests</td><td class="price" data-cost="375">375</td></tr>
+                        <tr><td class="item-name">Malaria Card</td><td class="col-cat">20 Tests</td><td class="price" data-cost="600">600</td></tr>
+                        <tr><td class="item-name">Dengue Combo</td><td class="col-cat">20 Tests</td><td class="price" data-cost="1800">1,800</td></tr>
+                        <tr><td class="item-name">Typhoid (IgG/IgM)</td><td class="col-cat">20 Tests</td><td class="price" data-cost="700">700</td></tr>
+                        <tr><td class="item-name">HCV (Hepatitis C)</td><td class="col-cat">20 Tests</td><td class="price" data-cost="800">800</td></tr>
+                        <tr><td class="item-name">VDRL / Syphilis</td><td class="col-cat">20 Tests</td><td class="price" data-cost="500">500</td></tr>
+                        <tr><td class="item-name">Troponin I/T</td><td class="col-cat">10 Tests</td><td class="price" data-cost="950">950</td></tr>
+                        <tr><td class="item-name">Rheumatoid Factor</td><td class="col-cat">10 Tests</td><td class="price" data-cost="450">450</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <!-- 3. Medicine -->
         <div class="card">
             <h2><i class="fas fa-pills" style="color:#F59E0B"></i> Medicine Stock</h2>
-            <p class="card-sub">175 types of common medicines.</p>
-            <table id="t3">
-                <thead><tr><th>Medicine</th><th class="col-cat">Quantity</th><th class="price">Cost</th></tr></thead>
-                <tbody>
-                    <tr><td>Antibiotics (Amox)</td><td class="col-cat">20 Strips</td><td class="price" data-cost="410">410</td></tr>
-                    <tr><td>Painkillers (Para)</td><td class="col-cat">50 Strips</td><td class="price" data-cost="112">112</td></tr>
-                    <tr><td>Gastric (Pan-D)</td><td class="col-cat">30 Strips</td><td class="price" data-cost="300">300</td></tr>
-                    <tr><td colspan="3" style="text-align:center; padding:15px; font-size:0.8rem; color:var(--text-gray)">+ 172 More Medicines</td></tr>
-                    <tr style="display:none"><td data-cost="9000"></td></tr>
-                </tbody>
-            </table>
-            <button class="btn-outline" style="width:100%; margin-top:10px; padding:12px;">Download Full Medicine List</button>
+            <p class="card-sub">175 types of essential medicines.</p>
+            <div class="table-wrap">
+                <table id="t3">
+                    <thead><tr><th>Medicine</th><th class="col-cat">Quantity</th><th class="price">Cost</th></tr></thead>
+                    <tbody>
+                        <tr><td class="item-name">Albendazole Oral Susp</td><td class="col-cat">10 Units</td><td class="price" data-cost="20">20</td></tr>
+                        <tr><td class="item-name">Albendazole Tabs 400mg</td><td class="col-cat">20 Units</td><td class="price" data-cost="18">18</td></tr>
+                        <tr><td class="item-name">Amoxicillin & Clav 625</td><td class="col-cat">2 Units</td><td class="price" data-cost="41">41</td></tr>
+                        <tr><td class="item-name">Azithromycin 500mg</td><td class="col-cat">5 Units</td><td class="price" data-cost="40">40</td></tr>
+                        <tr><td class="item-name">Paracetamol 650mg</td><td class="col-cat">5 Units</td><td class="price" data-cost="11">11</td></tr>
+                        <tr><td class="item-name">Pantoprazole 40mg</td><td class="col-cat">3 Units</td><td class="price" data-cost="30">30</td></tr>
+                        <tr><td class="item-name">Cefixime 200mg</td><td class="col-cat">2 Units</td><td class="price" data-cost="22">22</td></tr>
+                        <tr><td class="item-name">Metformin 500mg</td><td class="col-cat">5 Units</td><td class="price" data-cost="23">23</td></tr>
+                        <tr><td class="item-name">IV Cannula 22G</td><td class="col-cat">20 Units</td><td class="price" data-cost="280">280</td></tr>
+                        <tr><td colspan="3" style="text-align:center; padding:15px; font-size:0.8rem; color:var(--text-gray); font-style:italic">... + 165 More Essential Items ...</td></tr>
+                        <tr style="display:none"><td data-cost="9252"></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn-outline">Download Full Medicine List</button>
         </div>
     </div>
 
     <!-- Sticky Bottom Bar -->
     <div class="bottom-bar">
         <div>
-            <div class="total-label">Total Cost</div>
+            <div class="total-label">Total Investment</div>
             <div class="total-price" id="totalDisplay">...</div>
         </div>
         <a href="https://wa.me/916363111328" class="btn">
@@ -226,29 +269,22 @@
     </div>
 
     <script>
-        // 1. Menu Logic
+        // 1. Menu & Theme Logic
         const menu = document.getElementById('sideMenu');
         const overlay = document.getElementById('overlay');
-        function toggleMenu(open) {
-            if(open) {
-                menu.classList.add('open');
-                overlay.classList.add('open');
-            } else {
-                menu.classList.remove('open');
-                overlay.classList.remove('open');
-            }
-        }
-
-        // 2. Dark Mode Logic
         const themeBtn = document.getElementById('themeBtn');
         const body = document.body;
-        
-        // Check saved preference
+
+        function toggleMenu(open) {
+            menu.classList.toggle('open', open);
+            overlay.classList.toggle('open', open);
+        }
+
+        // Theme Init
         if(localStorage.getItem('theme') === 'dark') {
             body.classList.add('dark-theme');
             themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
         }
-
         themeBtn.addEventListener('click', () => {
             body.classList.toggle('dark-theme');
             const isDark = body.classList.contains('dark-theme');
@@ -256,18 +292,54 @@
             themeBtn.innerHTML = isDark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
         });
 
-        // 3. Calculator Logic
+        // 2. Calculator
         function calculate() {
             let total = 0;
             const rows = document.querySelectorAll('[data-cost]');
-            rows.forEach(row => {
-                total += parseFloat(row.getAttribute('data-cost'));
-            });
-            // Format to Indian Currency Style
+            rows.forEach(row => total += parseFloat(row.getAttribute('data-cost')));
             document.getElementById('totalDisplay').innerText = '₹ ' + total.toLocaleString('en-IN');
         }
-        
         calculate();
+
+        // 3. YouTube Autoplay on Scroll (Using IFrame API)
+        // Load the IFrame Player API code asynchronously.
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '100%',
+                width: '100%',
+                videoId: 'C4XGqhEq43A',
+                playerVars: {
+                    'playsinline': 1,
+                    'controls': 1,
+                    'mute': 1, // Required for autoplay on most browsers
+                    'rel': 0
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            // Setup Intersection Observer once player is ready
+            let observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        player.playVideo();
+                    } else {
+                        player.pauseVideo();
+                    }
+                });
+            }, { threshold: 0.5 }); // 50% of video must be visible
+
+            observer.observe(document.querySelector('.video-box'));
+        }
     </script>
 </body>
 </html>
