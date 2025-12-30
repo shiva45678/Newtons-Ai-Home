@@ -39,6 +39,7 @@
             --secondary-light: #059669;
             --accent-purple: #7C3AED; /* For Doctors App */
             --accent-orange: #EA580C; /* For HMS */
+            --accent-gold: #D97706; /* For Franchise */
             
             --primary-rgb: 37, 99, 235;
             --secondary-rgb: 5, 150, 105;
@@ -165,6 +166,23 @@
             border: 2px solid var(--accent-orange);
         }
         .btn-hosp:hover { background: var(--accent-orange); color: white; transform: translateY(-3px); box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3); }
+
+        .btn-franchise {
+            background: var(--heading);
+            color: var(--bg);
+            padding: 0.9rem 2.2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            border: 2px solid var(--heading);
+        }
+        .btn-franchise:hover { 
+            background: transparent; 
+            color: var(--heading); 
+            transform: translateY(-3px); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        body.dark-theme .btn-franchise { border-color: var(--text-main); background: var(--text-main); color: var(--bg); }
+        body.dark-theme .btn-franchise:hover { background: transparent; color: var(--text-main); }
 
         .btn-outline {
              background: rgba(var(--surface-light), 0.6);
@@ -361,6 +379,7 @@
         <ul style="list-style:none;">
             <li style="margin-bottom:1rem;"><a href="https://app.newtons.in" style="font-weight:700; color:var(--accent-purple);">Doctors App</a></li>
             <li style="margin-bottom:1rem;"><a href="https://hms.newtons.in" style="font-weight:700; color:var(--accent-orange);">Hospital HMS</a></li>
+            <li style="margin-bottom:1rem;"><a href="https://dr.newtons.in/franchise" style="font-weight:700; color:var(--text-main);">Apply for Franchise</a></li>
             <li style="margin-bottom:1rem;"><a href="#guide" style="color:var(--text-main);">Features & Guide</a></li>
             <li style="margin-bottom:1rem;"><a href="#download" style="color:var(--text-main);">Download App</a></li>
         </ul>
@@ -387,6 +406,11 @@
                 <a href="https://hms.newtons.in" target="_blank" class="btn btn-hosp">
                     <i class="fa-solid fa-hospital"></i> Hospitals & Clinics
                 </a>
+                <!-- Added Franchise Button Here -->
+                <a href="https://dr.newtons.in/franchise" target="_blank" class="btn btn-franchise">
+                    <i class="fa-solid fa-handshake"></i> Apply for Franchise
+                </a>
+
                 <div style="width:100%; display:flex; justify-content:center; gap:1rem; margin-top:0.5rem;">
                     <a href="#download" class="btn btn-outline" style="font-size:0.9rem;">
                         <i class="fa-brands fa-android"></i> Android
@@ -537,6 +561,7 @@
                     <ul style="list-style:none;">
                         <li style="margin-bottom:0.8rem;"><a href="#guide">User Guide</a></li>
                         <li style="margin-bottom:0.8rem;"><a href="mailto:support@newtons.in">Contact Us</a></li>
+                        <li style="margin-bottom:0.8rem;"><a href="https://dr.newtons.in/franchise" style="color:var(--text-secondary);">Franchise</a></li>
                     </ul>
                 </div>
             </div>
