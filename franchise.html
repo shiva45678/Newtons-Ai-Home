@@ -2,207 +2,120 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Franchise Setup | Newtons Ai</title>
-    <meta name="description" content="Turnkey Hospital Franchise Opportunities by Newtons Ai.">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Hospital Setup | Newtons Ai</title>
+    
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     
     <style>
         :root {
-            /* Minimalist Palette */
-            --primary: #2563EB; 
-            --primary-dark: #1D4ED8;
-            --success: #10B981;
-            
-            --bg: #FFFFFF;
-            --bg-secondary: #F8FAFC;
-            --surface: #FFFFFF;
-            
-            --text-main: #0F172A;
-            --text-muted: #64748B;
-            
-            --border: #E2E8F0;
-            --radius: 12px;
-            
-            --nav-height: 64px;
-            --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            /* Friendly, Clean Colors */
+            --blue: #2563EB; 
+            --blue-dark: #1D4ED8;
+            --bg: #F3F4F6;
+            --card-bg: #FFFFFF;
+            --text-dark: #111827;
+            --text-gray: #4B5563;
+            --border: #E5E7EB;
         }
 
+        /* Dark Mode Colors */
         body.dark-theme {
-            --primary: #60A5FA;
-            --primary-dark: #3B82F6;
-            --bg: #0B1120;
-            --bg-secondary: #111827;
-            --surface: #1E293B;
-            --text-main: #F1F5F9;
-            --text-muted: #94A3B8;
-            --border: #334155;
+            --bg: #111827;
+            --card-bg: #1F2937;
+            --text-dark: #F9FAFB;
+            --text-gray: #9CA3AF;
+            --border: #374151;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
         
         body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: var(--bg-secondary); 
-            color: var(--text-main); 
-            line-height: 1.5; 
-            transition: background-color 0.3s ease, color 0.3s ease;
-            overflow-x: hidden;
+            background-color: var(--bg); color: var(--text-dark); 
+            line-height: 1.5; padding-bottom: 80px; 
+            transition: background 0.3s, color 0.3s;
         }
 
-        /* --- TYPOGRAPHY --- */
-        h1, h2, h3 { color: var(--text-main); font-weight: 700; letter-spacing: -0.02em; }
-        h1 { font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.1; margin-bottom: 1rem; }
-        h2 { font-size: 1.5rem; margin-bottom: 1rem; }
-        h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
-        p { color: var(--text-muted); font-size: 1rem; max-width: 60ch; line-height: 1.6; }
-        
-        .font-mono { font-family: 'Courier New', monospace; letter-spacing: -0.5px; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
-        /* --- BUTTONS --- */
-        .btn {
-            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-            padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 0.9rem;
-            transition: all 0.2s var(--ease); cursor: pointer; text-decoration: none; border: 1px solid transparent;
-        }
-        .btn-primary { background-color: var(--primary); color: white; }
-        .btn-primary:hover { background-color: var(--primary-dark); transform: translateY(-1px); }
-        .btn-outline { border-color: var(--border); color: var(--text-muted); background: var(--surface); }
-        .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-        /* --- HEADER --- */
+        /* --- Header --- */
         header { 
-            position: fixed; top: 0; left: 0; width: 100%; height: var(--nav-height); 
-            background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border); z-index: 100;
-            display: flex; align-items: center;
-            transition: background 0.3s ease, border-color 0.3s ease;
+            background: var(--card-bg); height: 64px; 
+            border-bottom: 1px solid var(--border);
+            position: sticky; top: 0; z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 20px;
         }
-        body.dark-theme header { background: rgba(11, 17, 32, 0.9); }
-        
-        .header-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-        .logo { font-weight: 700; font-size: 1.25rem; color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-        
-        /* Desktop Nav */
-        .nav-desktop { display: none; }
-        .desktop-theme-toggle { display: none; } /* Hidden on mobile */
-        
-        @media (min-width: 769px) {
-            .nav-desktop { display: flex; gap: 30px; list-style: none; }
-            .nav-desktop a { color: var(--text-muted); font-size: 0.9rem; font-weight: 500; text-decoration: none; transition: color 0.2s; }
-            .nav-desktop a:hover, .nav-desktop a.active { color: var(--primary); }
-            .desktop-theme-toggle { display: flex; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1rem; padding: 8px; transition: color 0.2s; }
-            .desktop-theme-toggle:hover { color: var(--text-main); }
-        }
+        .logo { font-weight: 700; font-size: 1.2rem; color: var(--blue); text-decoration: none; }
+        .menu-btn { background: none; border: none; font-size: 1.4rem; color: var(--text-dark); cursor: pointer; }
 
-        .menu-btn { background: none; border: none; font-size: 1.25rem; color: var(--text-main); cursor: pointer; padding: 8px; }
-        @media (min-width: 769px) { .menu-btn { display: none; } }
+        /* --- Hero Section --- */
+        .hero { text-align: center; margin: 40px 0; }
+        h1 { font-size: 2rem; margin-bottom: 10px; line-height: 1.2; }
+        p { color: var(--text-gray); font-size: 1rem; max-width: 600px; margin: 0 auto; }
 
-        /* --- SIDE PANEL (MOBILE MENU) --- */
-        .side-panel {
-            position: fixed; top: 0; right: 0; width: 280px; height: 100vh;
-            background: var(--surface); border-left: 1px solid var(--border);
-            z-index: 200; transform: translateX(100%); transition: transform 0.3s var(--ease);
-            display: flex; flex-direction: column; padding: 20px;
-            box-shadow: -5px 0 25px rgba(0,0,0,0.1);
-        }
-        .side-panel.open { transform: translateX(0); }
-        
-        .panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
-        .panel-nav { list-style: none; display: flex; flex-direction: column; gap: 15px; }
-        .panel-nav a { font-size: 1.1rem; color: var(--text-main); text-decoration: none; font-weight: 500; display: block; padding: 8px 0; }
-        .panel-nav a.active { color: var(--primary); }
-        
-        .panel-footer { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border); }
-        .theme-switch-row { display: flex; justify-content: space-between; align-items: center; color: var(--text-main); font-weight: 500; }
-        
-        .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 150; opacity: 0; pointer-events: none; transition: opacity 0.3s; backdrop-filter: blur(2px); }
-        .overlay.open { opacity: 1; pointer-events: auto; }
-
-        /* --- MAIN LAYOUT --- */
-        .page-content { margin-top: 100px; padding-bottom: 120px; } /* Bottom padding for sticky bar */
-
-        .hero { text-align: center; max-width: 700px; margin: 0 auto 50px; }
-        
-        .video-box { 
-            position: relative; width: 100%; max-width: 800px; margin: 0 auto 50px; 
-            aspect-ratio: 16/9; background: #000; border-radius: var(--radius); overflow: hidden;
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+        /* --- Video Wrapper --- */
+        .video-box {
+            position: relative; width: 100%; max-width: 800px; margin: 0 auto 40px;
+            aspect-ratio: 16/9; background: #000; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         .video-box iframe { width: 100%; height: 100%; border: 0; }
 
-        .layout-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
-        @media (min-width: 900px) { .layout-grid { grid-template-columns: 2fr 1fr; } }
-
-        /* --- CARDS & TABLES --- */
+        /* --- Cards --- */
         .card { 
-            background: var(--surface); border: 1px solid var(--border); 
-            border-radius: var(--radius); padding: 24px; margin-bottom: 24px;
-            /* No shadow for cleaner look, relying on borders */
+            background: var(--card-bg); border-radius: 12px; padding: 20px; 
+            margin-bottom: 20px; border: 1px solid var(--border);
         }
+        .card h2 { font-size: 1.25rem; margin-bottom: 5px; display: flex; align-items: center; gap: 10px; }
+        .card-sub { font-size: 0.9rem; color: var(--text-gray); margin-bottom: 20px; }
 
-        .card-header { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
-        .card-icon { 
-            width: 40px; height: 40px; border-radius: 10px; 
-            background: rgba(37, 99, 235, 0.1); color: var(--primary);
-            display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;
-        }
-
-        /* Responsive Table - Clean List View on Mobile */
-        .clean-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-        .clean-table th { text-align: left; color: var(--text-muted); font-weight: 600; padding: 12px 8px; border-bottom: 1px solid var(--border); font-size: 0.8rem; text-transform: uppercase; }
-        .clean-table td { padding: 12px 8px; border-bottom: 1px solid var(--border); color: var(--text-main); }
-        .clean-table tr:last-child td { border-bottom: none; }
-        .text-right { text-align: right; }
-
-        @media (max-width: 600px) {
-            .clean-table thead { display: none; }
-            .clean-table tr { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); }
-            .clean-table td { border: none; padding: 0; }
-            /* First cell (Item Name) */
-            .clean-table td:nth-child(1) { font-weight: 500; padding-right: 10px; }
-            /* Second cell (Category) - Hide on mobile to simplify */
-            .clean-table td:nth-child(2) { display: none; } 
-            /* Third cell (Price) */
-            .clean-table td:last-child { font-weight: 700; color: var(--text-main); white-space: nowrap; }
-        }
-
-        /* --- DETAILS TOGGLE --- */
-        details summary { list-style: none; cursor: pointer; color: var(--primary); font-weight: 500; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
-        details summary::-webkit-details-marker { display: none; }
+        /* --- Simple Tables --- */
+        table { width: 100%; border-collapse: collapse; }
+        th { text-align: left; color: var(--text-gray); font-size: 0.85rem; padding: 10px 0; border-bottom: 1px solid var(--border); }
+        td { padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+        tr:last-child td { border-bottom: none; }
         
-        /* --- STICKY SIDEBAR (Desktop) --- */
-        .sidebar { display: none; }
-        @media (min-width: 900px) {
-            .sidebar { display: block; position: sticky; top: 100px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; height: fit-content; }
-            .summary-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.9rem; color: var(--text-muted); }
-            .total-row { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-            .total-price { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
-        }
+        .price { text-align: right; font-weight: 600; font-family: monospace; font-size: 1rem; }
+        
+        /* Mobile: Hide category column to keep it simple */
+        .col-cat { display: none; }
+        @media(min-width: 600px) { .col-cat { display: table-cell; color: var(--text-gray); font-size: 0.85rem; } }
 
-        /* --- MOBILE BOTTOM BAR (Sticky) --- */
-        .mobile-bar {
+        /* --- Buttons --- */
+        .btn { 
+            display: inline-block; padding: 10px 20px; background: var(--blue); color: white; 
+            border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer;
+        }
+        .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-dark); }
+
+        /* --- Side Menu (Right) --- */
+        .side-menu {
+            position: fixed; top: 0; right: 0; width: 260px; height: 100%;
+            background: var(--card-bg); z-index: 200; transform: translateX(100%);
+            transition: transform 0.3s; padding: 20px; border-left: 1px solid var(--border);
+            display: flex; flex-direction: column;
+        }
+        .side-menu.open { transform: translateX(0); }
+        .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 150; display: none; }
+        .overlay.open { display: block; }
+        
+        .menu-link { display: block; padding: 12px 0; color: var(--text-dark); text-decoration: none; font-size: 1.1rem; border-bottom: 1px solid var(--border); }
+        
+        .dark-mode-row { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 20px; }
+
+        /* --- Sticky Bottom Bar --- */
+        .bottom-bar {
             position: fixed; bottom: 0; left: 0; width: 100%;
-            background: var(--surface); border-top: 1px solid var(--border);
-            padding: 12px 20px; z-index: 90;
-            display: flex; align-items: center; justify-content: space-between;
-            padding-bottom: max(12px, env(safe-area-inset-bottom));
+            background: var(--card-bg); border-top: 1px solid var(--border);
+            padding: 15px 20px; display: flex; justify-content: space-between; align-items: center;
+            z-index: 90;
         }
-        @media (min-width: 900px) { .mobile-bar { display: none; } }
-        
-        .bar-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
-        .bar-price { font-size: 1.25rem; font-weight: 700; color: var(--text-main); }
-
-        /* --- ANIMATIONS (Fade In) --- */
-        .fade-in { opacity: 0; transition: opacity 0.8s ease; will-change: opacity; }
-        .fade-in.visible { opacity: 1; }
+        .total-label { font-size: 0.8rem; color: var(--text-gray); text-transform: uppercase; }
+        .total-price { font-size: 1.4rem; font-weight: 700; color: var(--blue); }
 
     </style>
 </head>
@@ -210,244 +123,151 @@
 
     <!-- Header -->
     <header>
-        <div class="container header-inner">
-            <a href="#" class="logo">
-                <i class="fa-solid fa-atom" style="color: var(--primary)"></i> Newtons Ai
-            </a>
-            
-            <!-- Desktop Nav -->
-            <ul class="nav-desktop">
-                <li><a href="#">Home</a></li>
-                <li><a href="#" class="active">Franchise</a></li>
-                <li><a href="#">Pricing</a></li>
-            </ul>
-
-            <div style="display: flex; gap: 15px; align-items: center;">
-                <button class="desktop-theme-toggle" id="themeToggleDesk" aria-label="Toggle Dark Mode">
-                    <i class="fa-regular fa-moon"></i>
-                </button>
-                <a href="https://hms.newtons.in" class="btn btn-primary" style="padding: 8px 16px;">App Login</a>
-                <button class="menu-btn" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
-            </div>
-        </div>
+        <a href="#" class="logo">Newtons Ai</a>
+        <button class="menu-btn" onclick="toggleMenu(true)"><i class="fa-solid fa-bars"></i></button>
     </header>
 
-    <!-- Side Panel (Mobile Menu) -->
-    <div class="overlay" id="overlay"></div>
-    <aside class="side-panel" id="sidePanel">
-        <div class="panel-header">
-            <span class="logo">Menu</span>
-            <button class="menu-btn" id="closePanel"><i class="fa-solid fa-xmark"></i></button>
+    <!-- Side Menu -->
+    <div class="overlay" onclick="toggleMenu(false)" id="overlay"></div>
+    <div class="side-menu" id="sideMenu">
+        <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+            <span style="font-weight:700; font-size:1.2rem; color:var(--text-dark)">Menu</span>
+            <button class="menu-btn" onclick="toggleMenu(false)"><i class="fa-solid fa-xmark"></i></button>
         </div>
-        <nav class="panel-nav">
-            <a href="#">Home</a>
-            <a href="#" class="active">Franchise Setup</a>
-            <a href="#">Pricing</a>
-            <a href="#">Contact Support</a>
-        </nav>
-        <div class="panel-footer">
-            <div class="theme-switch-row">
-                <span>Dark Mode</span>
-                <button class="btn btn-outline" id="themeToggleMobile" style="border-radius: 50%; width: 40px; height: 40px; padding: 0;">
-                    <i class="fa-solid fa-moon"></i>
-                </button>
-            </div>
-        </div>
-    </aside>
+        <a href="#" class="menu-link">Home</a>
+        <a href="#" class="menu-link">About Us</a>
+        <a href="#" class="menu-link">Contact Support</a>
+        <a href="https://hms.newtons.in" class="menu-link" style="color: var(--blue);">Login to App</a>
 
-    <!-- Content -->
-    <div class="container page-content">
-        
-        <section class="hero fade-in">
-            <h1>Turnkey Hospital Franchise</h1>
-            <p>A complete ecosystem for doctors. AI equipment, diagnostic kits, and pharmacy inventory—fully set up for you.</p>
-        </section>
-
-        <div class="video-box fade-in">
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=placeholder" title="YouTube video player" allowfullscreen></iframe>
-        </div>
-
-        <div class="layout-grid">
-            <main>
-                <!-- Card 1 -->
-                <div class="card fade-in">
-                    <div class="card-header">
-                        <div class="card-icon"><i class="fas fa-clinic-medical"></i></div>
-                        <div>
-                            <h3>Clinic Equipment</h3>
-                            <p style="font-size: 0.9rem; margin:0">Hardware & Infrastructure</p>
-                        </div>
-                    </div>
-                    <table class="clean-table" id="equipTable">
-                        <thead><tr><th>Item</th><th>Type</th><th class="text-right">Price</th></tr></thead>
-                        <tbody>
-                            <tr><td>HMS Software</td><td>Soft</td><td class="text-right font-mono" data-price="0">Included</td></tr>
-                            <tr><td>Biochemistry Analyser</td><td>Lab</td><td class="text-right font-mono" data-price="70000">70,000</td></tr>
-                            <tr><td>Cell Counter (3-Part)</td><td>Lab</td><td class="text-right font-mono" data-price="190000">190,000</td></tr>
-                            <tr><td>ECG Machine</td><td>Med</td><td class="text-right font-mono" data-price="16000">16,000</td></tr>
-                            <tr><td>Patient Beds (4)</td><td>Furn</td><td class="text-right font-mono" data-price="48000">48,000</td></tr>
-                            <tr><td>Laptops (3 Units)</td><td>Office</td><td class="text-right font-mono" data-price="30000">30,000</td></tr>
-                            <tr><td>Lab Consumables</td><td>Misc</td><td class="text-right font-mono" data-price="7900">7,900</td></tr>
-                            <!-- Simplified list for brevity -->
-                            <tr><td colspan="3" style="font-size: 0.8rem; color: var(--text-muted); text-align: center; padding: 10px;">+ 14 Other Items (Furniture, UPS, etc.)</td></tr>
-                            <tr style="display:none"><td data-price="130100">Hidden Sum</td></tr>
-                        </tbody>
-                    </table>
-                    <div style="text-align: right; margin-top: 15px;">
-                        <button class="btn btn-outline" style="font-size: 0.8rem; padding: 6px 12px;"><i class="fas fa-download"></i> CSV</button>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="card fade-in">
-                    <div class="card-header">
-                        <div class="card-icon" style="color: var(--success); background: rgba(16, 185, 129, 0.1)"><i class="fas fa-vial"></i></div>
-                        <div>
-                            <h3>Diagnostics</h3>
-                            <p style="font-size: 0.9rem; margin:0">Starter Pathology Kits</p>
-                        </div>
-                    </div>
-                    <table class="clean-table" id="diagTable">
-                        <thead><tr><th>Test Kit</th><th>Qty</th><th class="text-right">Price</th></tr></thead>
-                        <tbody>
-                            <tr><td>Biochem Reagents</td><td>1 Set</td><td class="text-right font-mono" data-price="0">Free</td></tr>
-                            <tr><td>Dengue Combo</td><td>20</td><td class="text-right font-mono" data-price="1800">1,800</td></tr>
-                            <tr><td>HIV Screening</td><td>25</td><td class="text-right font-mono" data-price="1250">1,250</td></tr>
-                            <tr><td>Blood Grouping</td><td>50</td><td class="text-right font-mono" data-price="900">900</td></tr>
-                            <tr style="display:none"><td data-price="4825">Hidden Sum</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="card fade-in">
-                    <div class="card-header">
-                        <div class="card-icon" style="color: #F59E0B; background: rgba(245, 158, 11, 0.1)"><i class="fas fa-pills"></i></div>
-                        <div>
-                            <h3>Pharmacy</h3>
-                            <p style="font-size: 0.9rem; margin:0">175 Essential Medicines</p>
-                        </div>
-                    </div>
-                    <details>
-                        <summary>View Inventory List <i class="fas fa-chevron-down" style="margin-left: auto;"></i></summary>
-                        <div style="margin-top: 15px;">
-                            <table class="clean-table" id="pharmaTable">
-                                <thead><tr><th>Medicine</th><th>Qty</th><th class="text-right">Total</th></tr></thead>
-                                <tbody>
-                                    <tr><td>Amoxicillin 625mg</td><td>20</td><td class="text-right font-mono" data-price="410">410</td></tr>
-                                    <tr><td>Paracetamol 650</td><td>50</td><td class="text-right font-mono" data-price="112">112</td></tr>
-                                    <tr><td>Azithromycin 500</td><td>10</td><td class="text-right font-mono" data-price="396">396</td></tr>
-                                    <tr style="display:none"><td data-price="9100">Hidden Sum</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </details>
-                </div>
-            </main>
-
-            <!-- Desktop Sidebar -->
-            <aside class="sidebar fade-in">
-                <h3 style="margin-bottom: 20px;">Summary</h3>
-                <div class="summary-row"><span>Equipment</span><span class="font-mono" id="sum-equip">0</span></div>
-                <div class="summary-row"><span>Diagnostics</span><span class="font-mono" id="sum-diag">0</span></div>
-                <div class="summary-row"><span>Pharmacy</span><span class="font-mono" id="sum-pharma">0</span></div>
-                
-                <div class="total-row">
-                    <span>Total Investment</span>
-                    <span class="total-price" id="desk-total">...</span>
-                </div>
-                <button class="btn btn-primary" style="width: 100%; margin-top: 20px;">Contact Sales</button>
-                <p style="font-size: 0.75rem; margin-top: 10px; text-align: center;">*Excludes Taxes</p>
-            </aside>
+        <div class="dark-mode-row">
+            <span style="color:var(--text-dark)">Dark Mode</span>
+            <button class="btn-outline" id="themeBtn" style="padding: 8px 12px; border-radius: 50%;">
+                <i class="fa-solid fa-moon"></i>
+            </button>
         </div>
     </div>
 
-    <!-- Mobile Bottom Bar -->
-    <div class="mobile-bar">
-        <div>
-            <div class="bar-label">Total Estimate</div>
-            <div class="bar-price" id="mob-total">...</div>
+    <div class="container">
+        <!-- Hero -->
+        <div class="hero">
+            <h1>Start Your Digital Hospital</h1>
+            <p>We provide the machines, the medicines, and the software. You provide the care.</p>
         </div>
-        <a href="https://wa.me/916363111328" class="btn btn-primary" style="border-radius: 20px; padding: 8px 20px;">
-            Chat <i class="fab fa-whatsapp"></i>
+
+        <!-- Video -->
+        <div class="video-box">
+            <iframe src="https://www.youtube.com/embed/C4XGqhEq43A" title="Setup Video" allowfullscreen></iframe>
+        </div>
+
+        <!-- 1. Machines -->
+        <div class="card">
+            <h2><i class="fas fa-bed" style="color:var(--blue)"></i> Machines & Furniture</h2>
+            <p class="card-sub">Everything from lab machines to patient beds.</p>
+            
+            <table id="t1">
+                <thead><tr><th>Item Name</th><th class="col-cat">Type</th><th class="price">Cost</th></tr></thead>
+                <tbody>
+                    <tr><td>Hospital Software</td><td class="col-cat">Software</td><td class="price" data-cost="0">Included</td></tr>
+                    <tr><td>Blood Test Machine</td><td class="col-cat">Lab</td><td class="price" data-cost="70000">70,000</td></tr>
+                    <tr><td>Cell Counter</td><td class="col-cat">Lab</td><td class="price" data-cost="190000">190,000</td></tr>
+                    <tr><td>ECG Machine</td><td class="col-cat">Medical</td><td class="price" data-cost="16000">16,000</td></tr>
+                    <tr><td>Patient Beds (4)</td><td class="col-cat">Furniture</td><td class="price" data-cost="48000">48,000</td></tr>
+                    <tr><td>Laptops (3)</td><td class="col-cat">Office</td><td class="price" data-cost="30000">30,000</td></tr>
+                    <tr><td>Tables & Chairs</td><td class="col-cat">Furniture</td><td class="price" data-cost="40000">40,000</td></tr>
+                    <!-- Hidden sum for other small items -->
+                    <tr style="display:none"><td data-cost="80000"></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 2. Lab Kits -->
+        <div class="card">
+            <h2><i class="fas fa-flask" style="color:#10B981"></i> Lab Test Kits</h2>
+            <p class="card-sub">Chemicals to start doing blood tests immediately.</p>
+            <table id="t2">
+                <thead><tr><th>Kit Name</th><th class="col-cat">Quantity</th><th class="price">Cost</th></tr></thead>
+                <tbody>
+                    <tr><td>Biochemistry Set</td><td class="col-cat">1 Set</td><td class="price" data-cost="0">Free</td></tr>
+                    <tr><td>Dengue Test</td><td class="col-cat">20 Tests</td><td class="price" data-cost="1800">1,800</td></tr>
+                    <tr><td>HIV Test</td><td class="col-cat">25 Tests</td><td class="price" data-cost="1250">1,250</td></tr>
+                    <tr><td>Blood Grouping</td><td class="col-cat">50 Tests</td><td class="price" data-cost="900">900</td></tr>
+                    <tr style="display:none"><td data-cost="4000"></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 3. Medicine -->
+        <div class="card">
+            <h2><i class="fas fa-pills" style="color:#F59E0B"></i> Medicine Stock</h2>
+            <p class="card-sub">175 types of common medicines.</p>
+            <table id="t3">
+                <thead><tr><th>Medicine</th><th class="col-cat">Quantity</th><th class="price">Cost</th></tr></thead>
+                <tbody>
+                    <tr><td>Antibiotics (Amox)</td><td class="col-cat">20 Strips</td><td class="price" data-cost="410">410</td></tr>
+                    <tr><td>Painkillers (Para)</td><td class="col-cat">50 Strips</td><td class="price" data-cost="112">112</td></tr>
+                    <tr><td>Gastric (Pan-D)</td><td class="col-cat">30 Strips</td><td class="price" data-cost="300">300</td></tr>
+                    <tr><td colspan="3" style="text-align:center; padding:15px; font-size:0.8rem; color:var(--text-gray)">+ 172 More Medicines</td></tr>
+                    <tr style="display:none"><td data-cost="9000"></td></tr>
+                </tbody>
+            </table>
+            <button class="btn-outline" style="width:100%; margin-top:10px; padding:12px;">Download Full Medicine List</button>
+        </div>
+    </div>
+
+    <!-- Sticky Bottom Bar -->
+    <div class="bottom-bar">
+        <div>
+            <div class="total-label">Total Cost</div>
+            <div class="total-price" id="totalDisplay">...</div>
+        </div>
+        <a href="https://wa.me/916363111328" class="btn">
+            <i class="fab fa-whatsapp"></i> Chat Now
         </a>
     </div>
 
     <script>
-        // --- Logic ---
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            // 1. Theme Logic
-            const body = document.body;
-            const toggles = [document.getElementById('themeToggleDesk'), document.getElementById('themeToggleMobile')];
-            
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                body.classList.add('dark-theme');
-                updateIcons(true);
+        // 1. Menu Logic
+        const menu = document.getElementById('sideMenu');
+        const overlay = document.getElementById('overlay');
+        function toggleMenu(open) {
+            if(open) {
+                menu.classList.add('open');
+                overlay.classList.add('open');
+            } else {
+                menu.classList.remove('open');
+                overlay.classList.remove('open');
             }
+        }
 
-            toggles.forEach(btn => {
-                if(!btn) return;
-                btn.addEventListener('click', () => {
-                    body.classList.toggle('dark-theme');
-                    const isDark = body.classList.contains('dark-theme');
-                    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-                    updateIcons(isDark);
-                });
-            });
+        // 2. Dark Mode Logic
+        const themeBtn = document.getElementById('themeBtn');
+        const body = document.body;
+        
+        // Check saved preference
+        if(localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-theme');
+            themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+        }
 
-            function updateIcons(isDark) {
-                toggles.forEach(btn => {
-                    if(!btn) return;
-                    const i = btn.querySelector('i');
-                    i.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-                });
-            }
-
-            // 2. Mobile Menu (Side Panel)
-            const panel = document.getElementById('sidePanel');
-            const overlay = document.getElementById('overlay');
-            const openBtn = document.querySelector('.menu-btn'); // Header btn
-            const closeBtn = document.getElementById('closePanel');
-
-            const togglePanel = (show) => {
-                panel.classList.toggle('open', show);
-                overlay.classList.toggle('open', show);
-                body.style.overflow = show ? 'hidden' : '';
-            };
-
-            openBtn.addEventListener('click', () => togglePanel(true));
-            closeBtn.addEventListener('click', () => togglePanel(false));
-            overlay.addEventListener('click', () => togglePanel(false));
-
-            // 3. Calculator & Animations
-            const format = num => '₹' + num.toLocaleString('en-IN');
-            
-            const getSum = (id, outId) => {
-                const rows = document.querySelectorAll(`#${id} [data-price]`);
-                let sum = 0;
-                rows.forEach(r => sum += parseFloat(r.getAttribute('data-price')));
-                document.getElementById(outId).innerText = format(sum);
-                return sum;
-            };
-
-            const total = getSum('equipTable', 'sum-equip') + 
-                          getSum('diagTable', 'sum-diag') + 
-                          getSum('pharmaTable', 'sum-pharma');
-
-            document.getElementById('desk-total').innerText = format(total);
-            document.getElementById('mob-total').innerText = format(total);
-
-            // 4. Fade In Animation (Simple Intersection Observer)
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if(entry.isIntersecting) entry.target.classList.add('visible');
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        themeBtn.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+            const isDark = body.classList.contains('dark-theme');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            themeBtn.innerHTML = isDark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
         });
+
+        // 3. Calculator Logic
+        function calculate() {
+            let total = 0;
+            const rows = document.querySelectorAll('[data-cost]');
+            rows.forEach(row => {
+                total += parseFloat(row.getAttribute('data-cost'));
+            });
+            // Format to Indian Currency Style
+            document.getElementById('totalDisplay').innerText = '₹ ' + total.toLocaleString('en-IN');
+        }
+        
+        calculate();
     </script>
 </body>
 </html>
