@@ -100,9 +100,9 @@
             /* UI Metrics */
             --radius-md: 12px;
             --radius-lg: 20px;
-            --shadow-sm: 0 2px 8px -2px rgba(var(--shadow-rgb), 0.05);
+            --shadow-sm: 0 4px 6px -1px rgba(var(--shadow-rgb), 0.05);
             --shadow-md: 0 12px 24px -6px rgba(var(--shadow-rgb), 0.08);
-            --shadow-hover: 0 20px 32px -8px rgba(var(--shadow-rgb), 0.12);
+            --shadow-hover: 0 20px 25px -5px rgba(var(--shadow-rgb), 0.1);
             --container-width: 1200px;
             --nav-height: 72px;
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -290,42 +290,97 @@
         .hero-content { max-width: 900px; position: relative; z-index: 1; }
         .hero-logo-lg { width: 100px; height: 100px; margin-bottom: 1.5rem; border-radius: 20px; box-shadow: var(--shadow-md); }
         
-        /* Added a visually hidden H1 for SEO if you don't want it visible, or make it visible */
+        /* Hidden H1 for SEO */
         .sr-only {
             position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
             overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
         }
 
-        /* --- Split Comparison Section --- */
+        /* --- IMPROVED UI/UX CARD STYLES --- */
         .split-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
             margin-top: -3rem;
             margin-bottom: 4rem;
+            align-items: stretch; /* Ensures cards are equal height */
         }
-        
+
         .split-card {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
             padding: 2.5rem;
             position: relative;
-            overflow: hidden;
-            transition: var(--transition);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            
+            /* Flexbox for Symmetrical Alignment */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
-        
-        .split-card.doctor { border-top: 5px solid var(--accent-purple); }
-        .split-card.doctor:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(124, 58, 237, 0.15); }
+
+        .split-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
+
+        /* Icon Container */
+        .card-icon {
+            width: 60px; height: 60px;
+            border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Doctor Theme */
+        .split-card.doctor { border-top: 6px solid var(--accent-purple); }
+        .split-card.doctor .card-icon { background: rgba(124, 58, 237, 0.1); color: var(--accent-purple); }
         .split-card.doctor h3 { color: var(--accent-purple); }
-        
-        .split-card.hospital { border-top: 5px solid var(--accent-orange); }
-        .split-card.hospital:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(234, 88, 12, 0.15); }
+
+        /* Hospital Theme */
+        .split-card.hospital { border-top: 6px solid var(--accent-orange); }
+        .split-card.hospital .card-icon { background: rgba(234, 88, 12, 0.1); color: var(--accent-orange); }
         .split-card.hospital h3 { color: var(--accent-orange); }
 
-        .feature-check { list-style: none; padding: 0; margin-top: 1.5rem; text-align: left; }
-        .feature-check li { margin-bottom: 0.8rem; display: flex; align-items: start; gap: 10px; font-size: 0.95rem; }
-        .feature-check li i { margin-top: 4px; }
+        /* Typography */
+        .split-card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .split-card .sub-head { color: var(--text-muted); font-size: 1rem; margin-bottom: 2rem; min-height: 3rem; }
+        
+        /* Badges */
+        .badge {
+            display: inline-block; padding: 4px 12px; border-radius: 50px;
+            font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+            margin-bottom: 1rem; width: fit-content;
+        }
+        .badge-doc { background: #f3e8ff; color: var(--accent-purple); }
+        body.dark-theme .badge-doc { background: rgba(124, 58, 237, 0.2); }
+        
+        .badge-hosp { background: #ffedd5; color: var(--accent-orange); }
+        body.dark-theme .badge-hosp { background: rgba(234, 88, 12, 0.2); }
+
+        /* Features List */
+        .feature-list { list-style: none; padding: 0; margin-bottom: 2rem; flex-grow: 1; text-align: left; }
+        .feature-list li {
+            display: flex; align-items: flex-start; gap: 12px;
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+        .feature-list li strong { color: var(--heading); font-weight: 600; display: block; margin-bottom: 2px; }
+        .feature-list i { margin-top: 4px; font-size: 1rem; }
+
+        /* Buttons */
+        .card-btn {
+            width: 100%; padding: 1rem; border-radius: 12px;
+            font-weight: 600; text-align: center;
+            margin-top: auto; /* Pushes button to bottom */
+            display: block;
+        }
+        .btn-purple { background: var(--accent-purple); color: white; }
+        .btn-purple:hover { background: #6D28D9; color:white; transform: translateY(-2px); }
+        .btn-orange { background: var(--accent-orange); color: white; }
+        .btn-orange:hover { background: #C2410C; color:white; transform: translateY(-2px); }
+
 
         /* --- Pricing Section Styles --- */
         .price-card {
@@ -401,8 +456,13 @@
             
             .hero-btns { flex-direction: column; width: 100%; padding: 0; }
             .btn { width: 100%; }
-            .split-grid { grid-template-columns: 1fr; margin-top: 1rem; }
+            .split-grid { grid-template-columns: 1fr; margin-top: 1rem; gap: 1.5rem; }
             h1 { font-size: 2.5rem; }
+
+            /* Mobile UI Adjustments */
+            .split-card { padding: 1.5rem 0.5rem; } /* Minimized padding */
+            .feature-list li { font-size: 0.9rem; }
+            .split-card .sub-head { min-height: auto; margin-bottom: 1.5rem; }
         }
         
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s; }
@@ -472,9 +532,11 @@
                 </a>
 
                 <div style="width:100%; display:flex; justify-content:center; gap:1rem; margin-top:0.5rem;">
-                    <a href="#download" class="btn btn-outline" style="font-size:0.9rem;">
-                        <i class="fa-brands fa-android"></i> Android
+                    <!-- Highlighted Download Button -->
+                    <a href="#download" class="btn" style="background:var(--primary); color:white; font-size:0.9rem; border:1px solid var(--primary);">
+                        <i class="fa-solid fa-download"></i> Download App
                     </a>
+                    <!-- Standard Outline Button -->
                     <a href="https://neetpg.newtons.in" target="_blank" class="btn btn-outline" style="font-size:0.9rem;">
                         <i class="fa-solid fa-graduation-cap"></i> NEET PG
                     </a>
@@ -483,41 +545,101 @@
         </div>
     </section>
 
-    <!-- Products Comparison Section -->
+    <!-- Products Comparison Section (UI/UX Improved) -->
     <section id="products">
         <div class="container">
             <div class="split-grid reveal">
                 
-                <!-- Doctor's App -->
+                <!-- Doctor's App Card -->
                 <div class="split-card doctor">
-                    <div style="background:rgba(124, 58, 237, 0.1); width:50px; height:50px; display:flex; align-items:center; justify-content:center; border-radius:12px; margin-bottom:1.5rem;">
-                        <i class="fa-solid fa-brain" style="color:var(--accent-purple); font-size:1.5rem;"></i>
+                    <span class="badge badge-doc">For Individual Doctors</span>
+                    <div class="card-icon">
+                        <i class="fa-solid fa-brain"></i>
                     </div>
-                    <h3>Clinical Copilot (App)</h3>
-                    <p>The core clinical tool for diagnosis and treatment planning.</p>
-                    <ul class="feature-check">
-                        <li><i class="fa-solid fa-check" style="color:var(--accent-purple);"></i> <strong>OPD Assistant:</strong> Fast history & differentials.</li>
-                        <li><i class="fa-solid fa-check" style="color:var(--accent-purple);"></i> <strong>Treatment Planner:</strong> Evidence-based protocols.</li>
-                        <li><i class="fa-solid fa-check" style="color:var(--accent-purple);"></i> <strong>ICU Assistant:</strong> Critical care & risk prediction.</li>
-                        <li><i class="fa-solid fa-check" style="color:var(--accent-purple);"></i> <strong>Suggestions Only:</strong> No auto-orders. You decide.</li>
+                    
+                    <h3>Clinical Copilot</h3>
+                    <p class="sub-head">AI Assistant for Diagnosis & Treatment.</p>
+                    
+                    <ul class="feature-list">
+                        <li>
+                            <i class="fa-solid fa-circle-check" style="color:var(--accent-purple)"></i>
+                            <div>
+                                <strong>OPD Assistant</strong>
+                                Instant history & differentials.
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check" style="color:var(--accent-purple)"></i>
+                            <div>
+                                <strong>Rx Planner</strong>
+                                Evidence-based standard protocols.
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check" style="color:var(--accent-purple)"></i>
+                            <div>
+                                <strong>ICU Support</strong>
+                                Real-time risk prediction.
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check" style="color:var(--accent-purple)"></i>
+                            <div>
+                                <strong>Doctor Control</strong>
+                                Suggestions only. You decide.
+                            </div>
+                        </li>
                     </ul>
-                    <a href="https://app.newtons.in" class="btn" style="background:var(--accent-purple); color:white; width:100%; margin-top:1rem;">Launch Doctor App</a>
+                    
+                    <a href="https://app.newtons.in" class="card-btn btn-purple">
+                        Launch Doctor App
+                    </a>
                 </div>
 
-                <!-- HMS for Hospitals -->
+                <!-- HMS Card -->
                 <div class="split-card hospital">
-                    <div style="background:rgba(234, 88, 12, 0.1); width:50px; height:50px; display:flex; align-items:center; justify-content:center; border-radius:12px; margin-bottom:1.5rem;">
-                        <i class="fa-solid fa-robot" style="color:var(--accent-orange); font-size:1.5rem;"></i>
+                    <span class="badge badge-hosp">For Hospitals & Clinics</span>
+                    <div class="card-icon">
+                        <i class="fa-solid fa-robot"></i>
                     </div>
-                    <h3>Hospital Autopilot (HMS)</h3>
-                    <p>Closed-loop automation for Clinics & Hospitals.</p>
-                    <ul class="feature-check">
-                        <li><i class="fa-solid fa-check" style="color:var(--accent-orange);"></i> <strong>Voice AI Agent:</strong> Talks to patients in local languages to draft history.</li>
-                        <li><i class="fa-solid fa-check" style="color:var(--accent-orange);"></i> <strong>Machine Integration:</strong> Pulls reports directly from Lab Analyzers.</li>
-                        <li><i class="fa-solid fa-check" style="color:var(--accent-orange);"></i> <strong>Active AI Loop:</strong> Auto-updates treatment based on lab data.</li>
-                        <li><i class="fa-solid fa-check" style="color:var(--accent-orange);"></i> <strong>Auto-Inventory:</strong> Manages Pharmacy & Lab stock automatically.</li>
+                    
+                    <h3>Hospital Autopilot</h3>
+                    <p class="sub-head">Automation for Clinics & Hospitals.</p>
+                    
+                    <ul class="feature-list">
+                        <li>
+                            <i class="fa-solid fa-circle-check" style="color:var(--accent-orange)"></i>
+                            <div>
+                                <strong>Voice Agent</strong>
+                                Drafts history via patient voice.
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check" style="color:var(--accent-orange)"></i>
+                            <div>
+                                <strong>Lab Sync</strong>
+                                Auto-pulls analyzer reports.
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check" style="color:var(--accent-orange)"></i>
+                            <div>
+                                <strong>Active Loop</strong>
+                                Auto-updates Rx via lab data.
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check" style="color:var(--accent-orange)"></i>
+                            <div>
+                                <strong>Inventory</strong>
+                                Auto-deducts pharmacy stock.
+                            </div>
+                        </li>
                     </ul>
-                    <a href="https://hms.newtons.in" target="_blank" class="btn" style="background:var(--accent-orange); color:white; width:100%; margin-top:1rem;">Deploy HMS</a>
+                    
+                    <a href="https://hms.newtons.in" target="_blank" class="card-btn btn-orange">
+                        Deploy HMS
+                    </a>
                 </div>
 
             </div>
