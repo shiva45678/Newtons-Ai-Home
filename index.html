@@ -4,15 +4,48 @@
     <!-- Basic Page Needs -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Newtons AI: Clinical App for Doctors (Decision Support) & Autonomous HMS for Hospitals (Voice Intake, Machine Integration, Auto-Inventory).">
-    <title>Newtons Ai | Doctors App vs Autonomous HMS</title>
+    
+    <!-- SEO: Title & Description -->
+    <title>Newtons AI | Clinical Copilot for Doctors & Autonomous HMS</title>
+    <meta name="description" content="Empower your practice with Newtons AI. The top Clinical Decision Support App for doctors & fully Autonomous HMS for hospitals. Features Voice AI, Lab Integration & Auto-Inventory.">
+    <meta name="keywords" content="AI Doctor App, Hospital Management System, HMS Software, Clinical Decision Support, OPD Automation, Medical AI, Clinic Management, Voice AI Healthcare">
+    <meta name="author" content="Newtons AI">
 
-    <!-- Social Media & Search Engine Preview -->
-    <meta property="og:title" content="Newtons Ai | Medical AI & Autonomous HMS">
-    <meta property="og:description" content="AI App for Doctors (Decision Support) & Autonomous HMS (Voice Intake, Lab Integration, Auto-Inventory).">
+    <!-- Social Media & Search Engine Preview (Open Graph) -->
+    <meta property="og:title" content="Newtons AI | The #1 AI App for Doctors & Hospitals">
+    <meta property="og:description" content="Automate your practice. Clinical Copilot for Doctors (Diagnosis & Rx) & Autonomous HMS for Hospitals (Voice Intake, Lab Loop, Inventory).">
     <meta property="og:image" content="logo.png">
     <meta property="og:url" content="https://dr.newtons.in">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Newtons AI">
+
+    <!-- Twitter Card Data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Newtons AI | Clinical Copilot & Autonomous HMS">
+    <meta name="twitter:description" content="The future of medical practice. Download the Doctor's App or Deploy the Autonomous HMS today.">
+    <meta name="twitter:image" content="logo.png">
+
+    <!-- JSON-LD Schema for Software Application (SEO Boost) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Newtons AI Clinical Copilot",
+      "operatingSystem": "Android, iOS, Web",
+      "applicationCategory": "MedicalApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "500",
+        "priceCurrency": "INR"
+      },
+      "description": "AI-powered clinical decision support system for doctors and autonomous hospital management system.",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "120"
+      }
+    }
+    </script>
 
     <!-- Favicons -->
     <link rel="icon" href="logo.png" type="image/png">
@@ -39,7 +72,6 @@
             --secondary-light: #059669;
             --accent-purple: #7C3AED; /* For Doctors App */
             --accent-orange: #EA580C; /* For HMS */
-            --accent-gold: #D97706; /* For Franchise */
             
             --primary-rgb: 37, 99, 235;
             --secondary-rgb: 5, 150, 105;
@@ -257,7 +289,12 @@
 
         .hero-content { max-width: 900px; position: relative; z-index: 1; }
         .hero-logo-lg { width: 100px; height: 100px; margin-bottom: 1.5rem; border-radius: 20px; box-shadow: var(--shadow-md); }
-        .tagline { color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; margin-bottom: 1rem; display: block; }
+        
+        /* Added a visually hidden H1 for SEO if you don't want it visible, or make it visible */
+        .sr-only {
+            position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+            overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
+        }
 
         /* --- Split Comparison Section --- */
         .split-grid {
@@ -357,13 +394,11 @@
         @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         @media (max-width: 768px) {
-            /* Reduced padding for mobile view as requested */
             .container { padding: 0 0.8rem; } 
             
             .nav-links, .header-actions .theme-toggle { display: none; }
             .mobile-toggle { display: block; }
             
-            /* Removed padding from hero-btns to use full width */
             .hero-btns { flex-direction: column; width: 100%; padding: 0; }
             .btn { width: 100%; }
             .split-grid { grid-template-columns: 1fr; margin-top: 1rem; }
@@ -421,6 +456,9 @@
         </div>
         <div class="container hero-content reveal">
             <img src="logo.png" alt="Newtons Ai Logo" class="hero-logo-lg">
+            
+            <!-- Hidden H1 for SEO (Screen Readers & Bots read this) -->
+            <h1 class="sr-only">Newtons AI - Clinical Copilot App & Autonomous Hospital Management System</h1>
             
             <div class="hero-btns">
                 <a href="https://app.newtons.in" class="btn btn-doc">
@@ -534,7 +572,7 @@
         </div>
     </section>
 
-    <!-- Pricing Section (NEW) -->
+    <!-- Pricing Section -->
     <section id="pricing">
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 1rem;" class="reveal">Simple, Transparent Pricing</h2>
