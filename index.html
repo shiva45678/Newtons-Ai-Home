@@ -4,12 +4,12 @@
     <!-- Basic Page Needs -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Clinical-grade AI for medical professionals. Empowering doctors, colleges, and institutions with advanced AI tools for enhanced learning, practice, and research.">
-    <title>Newtons Ai | Clinical-Grade Medical AI</title>
+    <meta name="description" content="Newtons AI: Clinical App for Doctors (Decision Support) & Autonomous HMS for Hospitals (Voice Intake, Machine Integration, Auto-Inventory).">
+    <title>Newtons Ai | Doctors App vs Autonomous HMS</title>
 
     <!-- Social Media & Search Engine Preview -->
-    <meta property="og:title" content="Newtons Ai | Best Ai for Doctors">
-    <meta property="og:description" content="Clinical-grade AI for medical professionals. Empowering doctors, colleges, and institutions.">
+    <meta property="og:title" content="Newtons Ai | Medical AI & Autonomous HMS">
+    <meta property="og:description" content="AI App for Doctors (Decision Support) & Autonomous HMS (Voice Intake, Lab Integration, Auto-Inventory).">
     <meta property="og:image" content="logo.png">
     <meta property="og:url" content="https://dr.newtons.in">
     <meta property="og:type" content="website">
@@ -21,20 +21,7 @@
     <!-- Resource Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://app.newtons.in">
     
-    <!-- Speculation Rules for Instant Loading -->
-    <script type="speculationrules">
-    {
-      "prerender": [
-        {
-          "source": "list",
-          "urls": ["https://app.newtons.in/"]
-        }
-      ]
-    }
-    </script>
-
     <!-- Stylesheets -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -50,6 +37,9 @@
             --border-light: #E2E8F0;
             --primary-light: #2563EB;
             --secondary-light: #059669;
+            --accent-purple: #7C3AED; /* For Doctors App */
+            --accent-orange: #EA580C; /* For HMS */
+            
             --primary-rgb: 37, 99, 235;
             --secondary-rgb: 5, 150, 105;
             --shadow-rgb: 0, 0, 0;
@@ -131,7 +121,7 @@
         section { padding: clamp(4rem, 8vw, 6rem) 0; position: relative; }
         .bg-surface { background-color: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 
-        /* --- Components --- */
+        /* --- Buttons --- */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -146,26 +136,47 @@
             border: 1px solid transparent;
         }
 
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.3);
-        }
-        .btn-primary:hover {
-            background: var(--secondary);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(var(--secondary-rgb), 0.3);
+        /* Hero Specific Buttons */
+        .hero-btns {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
         }
 
-        .btn-secondary {
-            background: rgba(var(--primary-rgb), 0.08);
-            color: var(--primary);
-            border-color: rgba(var(--primary-rgb), 0.2);
+        .btn-doc {
+            background: var(--primary);
+            color: white;
+            padding: 0.9rem 2.2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.4);
+            border: 1px solid var(--primary);
         }
-        .btn-secondary:hover {
-            background: rgba(var(--primary-rgb), 0.15);
-            transform: translateY(-2px);
+        .btn-doc:hover { background: var(--secondary); border-color: var(--secondary); color:white; transform: translateY(-3px); }
+
+        .btn-hosp {
+            background: var(--surface);
+            color: var(--accent-orange);
+            padding: 0.9rem 2.2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            border: 2px solid var(--accent-orange);
         }
+        .btn-hosp:hover { background: var(--accent-orange); color: white; transform: translateY(-3px); box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3); }
+
+        .btn-outline {
+             background: rgba(var(--surface-light), 0.6);
+            backdrop-filter: blur(5px);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+        }
+        body.dark-theme .btn-outline { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
+        .btn-outline:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
 
         /* --- Header --- */
         header {
@@ -203,7 +214,7 @@
 
         /* --- Hero Section --- */
         #hero {
-            min-height: 100vh;
+            min-height: 90vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -223,14 +234,43 @@
 
         @keyframes float {
             0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(20px, -20px) scale(1.05); } /* Reduced movement for stability */
+            100% { transform: translate(20px, -20px) scale(1.05); }
         }
 
-        .hero-content { max-width: 800px; position: relative; z-index: 1; }
+        .hero-content { max-width: 900px; position: relative; z-index: 1; }
         .hero-logo-lg { width: 100px; height: 100px; margin-bottom: 1.5rem; border-radius: 20px; box-shadow: var(--shadow-md); }
         .tagline { color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; margin-bottom: 1rem; display: block; }
+
+        /* --- Split Comparison Section --- */
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: -3rem;
+            margin-bottom: 4rem;
+        }
         
-        .hero-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 2rem; }
+        .split-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .split-card.doctor { border-top: 5px solid var(--accent-purple); }
+        .split-card.doctor:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(124, 58, 237, 0.15); }
+        .split-card.doctor h3 { color: var(--accent-purple); }
+        
+        .split-card.hospital { border-top: 5px solid var(--accent-orange); }
+        .split-card.hospital:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(234, 88, 12, 0.15); }
+        .split-card.hospital h3 { color: var(--accent-orange); }
+
+        .feature-check { list-style: none; padding: 0; margin-top: 1.5rem; text-align: left; }
+        .feature-check li { margin-bottom: 0.8rem; display: flex; align-items: start; gap: 10px; font-size: 0.95rem; }
+        .feature-check li i { margin-top: 4px; }
 
         /* --- Cards & Grid --- */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
@@ -248,94 +288,11 @@
 
         .card h3 { margin-bottom: 0.5rem; font-size: 1.25rem; }
         .card p { font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; }
-        .card-link { margin-top: auto; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
-        .card-link i { transition: transform 0.2s; }
-        .card-link:hover i { transform: translateX(4px); }
-
-        /* --- Stats Section --- */
-        .stats { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 3rem; }
-        .stat-item { text-align: center; padding: 1.5rem; background: var(--surface); border-radius: var(--radius-md); border: 1px solid var(--border); min-width: 200px; flex: 1; }
-        .stat-val { font-size: 2.5rem; font-weight: 800; color: var(--primary); display: block; line-height: 1; margin-bottom: 0.5rem; }
-        .stat-lbl { font-size: 0.9rem; font-weight: 600; color: var(--text-muted); }
-
-        /* --- Pricing --- */
-        .pricing-card { text-align: center; position: relative; overflow: hidden; }
-        .pricing-card.featured { border: 2px solid var(--primary); transform: scale(1.02); z-index: 2; }
-        .pricing-card.featured:hover { transform: scale(1.02) translateY(-5px); }
         
-        .ribbon {
-            position: absolute; top: 12px; right: -30px; transform: rotate(45deg);
-            background: var(--primary); color: white; padding: 4px 30px; font-size: 0.75rem; font-weight: 700;
-            width: 150px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .price-block { margin: 1.5rem 0; }
-        .price-main { font-size: 2.5rem; font-weight: 800; color: var(--heading); }
-        .price-sub { font-size: 0.9rem; color: var(--text-muted); display: block; margin-top: 4px; }
-        .price-old { text-decoration: line-through; color: var(--text-muted); font-size: 1rem; margin-right: 8px; }
-        .badge { background: rgba(var(--secondary-rgb), 0.1); color: var(--secondary); padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; vertical-align: middle; }
-
-        .feature-list { text-align: left; list-style: none; padding: 0; margin: 0 auto 2rem; max-width: 280px; }
-        .feature-list li { margin-bottom: 0.8rem; position: relative; padding-left: 24px; font-size: 0.95rem; }
-        .feature-list li::before {
-            content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
-            position: absolute; left: 0; color: var(--secondary);
-        }
-
-        /* --- Tabs (Guide & Download) --- */
-        .tab-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 2rem; }
-        .tab-btn {
-            background: var(--surface); color: var(--text-muted); border: 1px solid var(--border);
-            padding: 0.6rem 1.2rem; border-radius: 2rem; font-weight: 600; cursor: pointer; transition: var(--transition);
-        }
-        .tab-btn.active, .tab-btn:hover { background: var(--primary); color: white; border-color: var(--primary); box-shadow: var(--shadow-sm); }
-        
-        .tab-panel { display: none; animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-        .tab-panel.active { display: block; }
-        
-        @keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-
-        .step-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-        .step-card { background: var(--bg); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border); }
-        .step-card h4 { color: var(--primary); font-size: 1.1rem; }
-
-        /* --- Testimonials --- */
-        .reviews-wrapper { position: relative; overflow: hidden; padding: 1rem 0; }
-        .reviews-track {
-            display: flex; gap: 2rem; overflow-x: auto; scroll-behavior: smooth; 
-            padding-bottom: 1rem; scrollbar-width: none; /* Hide scrollbar */
-        }
-        .reviews-track::-webkit-scrollbar { display: none; }
-        
-        .review-card { min-width: 320px; flex: 0 0 auto; padding: 2rem; border-radius: var(--radius-lg); background: var(--bg); border: 1px solid var(--border); position: relative; }
-        .quote-mark { font-size: 3rem; color: rgba(var(--primary-rgb), 0.1); position: absolute; top: 1rem; right: 1.5rem; }
-        .review-text { font-style: italic; margin-bottom: 1.5rem; z-index: 1; position: relative; }
-        .reviewer h4 { margin: 0; font-size: 1rem; }
-        .reviewer p { font-size: 0.85rem; margin: 0; }
-
-        .slider-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; pointer-events: none; transform: translateY(-50%); }
-        .nav-arrow {
-            pointer-events: auto; background: var(--surface); color: var(--primary); width: 40px; height: 40px;
-            border-radius: 50%; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
-            cursor: pointer; box-shadow: var(--shadow-md); transition: var(--transition);
-        }
-        .nav-arrow:hover { background: var(--primary); color: white; }
-
         /* --- Footer --- */
         footer { background: var(--surface-dark); color: #9CA3AF; padding: 4rem 0 2rem; margin-top: auto; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; margin-bottom: 3rem; }
-        .footer-col h3 { color: white; font-size: 1.1rem; margin-bottom: 1.2rem; position: relative; padding-bottom: 0.5rem; }
-        .footer-col h3::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 3px; background: var(--secondary); border-radius: 2px; }
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 0.8rem; }
-        .footer-links a { color: inherit; transition: color 0.2s; }
-        .footer-links a:hover { color: var(--secondary); }
-        .copyright { text-align: center; padding-top: 2rem; border-top: 1px solid #374151; font-size: 0.9rem; }
-
-        /* --- Animations & Utilities --- */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; }
+        
         /* Mobile Menu */
         .mobile-nav {
             position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
@@ -343,26 +300,34 @@
             transition: right 0.3s ease; box-shadow: -5px 0 20px rgba(0,0,0,0.1);
         }
         .mobile-nav.open { right: 0; }
-        .mobile-links { list-style: none; margin-top: 3rem; }
-        .mobile-links a { display: block; padding: 1rem 0; font-size: 1.1rem; border-bottom: 1px solid var(--border); color: var(--text-main); }
         .mobile-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5);
             z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s;
         }
         .mobile-overlay.open { opacity: 1; pointer-events: auto; }
 
+        /* Tab Logic */
+        .tab-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 2rem; }
+        .tab-btn {
+            background: var(--surface); color: var(--text-muted); border: 1px solid var(--border);
+            padding: 0.6rem 1.2rem; border-radius: 2rem; font-weight: 600; cursor: pointer; transition: var(--transition);
+        }
+        .tab-btn.active, .tab-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+        .tab-panel { display: none; animation: slideUp 0.4s; }
+        .tab-panel.active { display: block; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
         @media (max-width: 768px) {
-            .nav-links, .header-actions .theme-toggle { display: none; } /* Show theme toggle in mobile menu ideally, but keeping simple */
+            .nav-links, .header-actions .theme-toggle { display: none; }
             .mobile-toggle { display: block; }
-            .hero-btns { flex-direction: column; width: 100%; }
+            .hero-btns { flex-direction: column; width: 100%; padding: 0 1rem; }
             .btn { width: 100%; }
+            .split-grid { grid-template-columns: 1fr; margin-top: 1rem; }
             h1 { font-size: 2.5rem; }
-            .slider-nav { display: none; } /* Hide arrows on mobile, swipe only */
-            .pricing-card.featured { transform: scale(1); }
         }
         
-        /* Utility: Hide Cache Warmer */
-        #cache-warmer { position: absolute; width: 0; height: 0; border: 0; visibility: hidden; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
@@ -375,18 +340,13 @@
             </a>
             <ul class="nav-links">
                 <li><a href="#hero" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#solutions">Solutions</a></li>
-                <li><a href="#guide">Guide</a></li>
-                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#guide">How it Works</a></li>
+                <li><a href="#download">Download</a></li>
             </ul>
             <div class="header-actions">
-                <button class="icon-btn theme-toggle" aria-label="Toggle Theme">
-                    <i class="fa-solid fa-moon"></i>
-                </button>
-                <button class="icon-btn mobile-toggle" aria-label="Menu">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
+                <button class="icon-btn theme-toggle"><i class="fa-solid fa-moon"></i></button>
+                <button class="icon-btn mobile-toggle"><i class="fa-solid fa-bars"></i></button>
             </div>
         </div>
     </header>
@@ -394,22 +354,16 @@
     <!-- Mobile Navigation -->
     <div class="mobile-overlay"></div>
     <div class="mobile-nav">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem;">
             <span style="font-weight:800; font-size:1.2rem; color:var(--primary);">Newtons Ai</span>
             <button class="icon-btn close-menu"><i class="fa-solid fa-times"></i></button>
         </div>
-        <ul class="mobile-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#solutions">Solutions</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#download">Download App</a></li>
+        <ul style="list-style:none;">
+            <li style="margin-bottom:1rem;"><a href="https://app.newtons.in" style="font-weight:700; color:var(--accent-purple);">Doctors App</a></li>
+            <li style="margin-bottom:1rem;"><a href="https://hms.newtons.in" style="font-weight:700; color:var(--accent-orange);">Hospital HMS</a></li>
+            <li style="margin-bottom:1rem;"><a href="#guide" style="color:var(--text-main);">Features & Guide</a></li>
+            <li style="margin-bottom:1rem;"><a href="#download" style="color:var(--text-main);">Download App</a></li>
         </ul>
-        <div style="margin-top: 2rem;">
-            <button class="btn btn-secondary" style="width:100%" id="mobile-theme-toggle">
-                <i class="fa-solid fa-moon"></i> Toggle Dark Mode
-            </button>
-        </div>
     </div>
 
     <!-- Hero Section -->
@@ -420,88 +374,70 @@
         </div>
         <div class="container hero-content reveal">
             <img src="logo.png" alt="Newtons Ai Logo" class="hero-logo-lg">
-            <span class="tagline">The Future of Medical Practice</span>
-            <h1>Clinical-Grade AI for<br>Medical Professionals</h1>
+            <span class="tagline">Two Powerful Platforms</span>
+            <h1>Intelligence for Doctors.<br>Automation for Hospitals.</h1>
             <p style="font-size: 1.15rem; margin-top: 1.5rem; color: var(--text-secondary);">
-                Empowering doctors, colleges, and hospitals with intelligent tools for diagnosis, management, and enhanced learning.
+                Select your solution: Clinical decision tools for individual doctors OR Full-stack automation with voice AI and machine integration for hospitals.
             </p>
-            <div class="hero-btns">
-                <a href="https://app.newtons.in" class="btn btn-primary">
-                    <i class="fa-solid fa-robot"></i> Try AI Assistant
-                </a>
-                <a href="https://hms.newtons.in" target="_blank" class="btn btn-secondary">
-                    <i class="fa-solid fa-hospital-user"></i> AI Hospital Software
-                </a>
-                <a href="https://neetpg.newtons.in" target="_blank" class="btn btn-secondary">
-                    <i class="fa-solid fa-graduation-cap"></i> NEET PG Prep
-                </a>
-                 <a href="#download" class="btn btn-primary" style="background: #111; color:#fff; border-color:#111;">
-                    <i class="fa-brands fa-apple"></i> / <i class="fa-brands fa-android"></i> Get App
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="bg-surface">
-        <div class="container">
-            <div style="text-align: center; max-width: 700px; margin: 0 auto 3rem;" class="reveal">
-                <h2>Why Newtons Ai?</h2>
-                <p>We bridge the gap between advanced technology and clinical healthcare, offering tools that streamline workflows and improve patient outcomes.</p>
-            </div>
             
-            <div class="stats reveal">
-                <div class="stat-item">
-                    <span class="stat-val">100k+</span>
-                    <span class="stat-lbl">Active Medical Users</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-val">10+</span>
-                    <span class="stat-lbl">Specialized AI Tools</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-val">Trusted</span>
-                    <span class="stat-lbl">By Top Institutions</span>
+            <div class="hero-btns">
+                <a href="https://app.newtons.in" class="btn btn-doc">
+                    <i class="fa-solid fa-user-doctor"></i> Doctor's App
+                </a>
+                <a href="https://hms.newtons.in" target="_blank" class="btn btn-hosp">
+                    <i class="fa-solid fa-hospital"></i> Hospitals & Clinics
+                </a>
+                <div style="width:100%; display:flex; justify-content:center; gap:1rem; margin-top:0.5rem;">
+                    <a href="#download" class="btn btn-outline" style="font-size:0.9rem;">
+                        <i class="fa-brands fa-android"></i> Android
+                    </a>
+                    <a href="https://neetpg.newtons.in" target="_blank" class="btn btn-outline" style="font-size:0.9rem;">
+                        <i class="fa-solid fa-graduation-cap"></i> NEET PG
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Solutions Section -->
-    <section id="solutions">
+    <!-- Products Comparison Section -->
+    <section id="products">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 3rem;" class="reveal">AI-Powered Assistants</h2>
-            <div class="grid reveal">
-                <div class="card">
-                    <h3><i class="fa-solid fa-stethoscope" style="color:var(--primary); margin-right:8px;"></i> OPD Assistant</h3>
-                    <p>Automates history taking, suggests differentials, and streamlines patient consultations with clinical precision.</p>
-                    <a href="https://app.newtons.in" class="card-link">Launch Assistant <i class="fa-solid fa-arrow-right"></i></a>
+            <div class="split-grid reveal">
+                
+                <!-- Doctor's App -->
+                <div class="split-card doctor">
+                    <div style="background:rgba(124, 58, 237, 0.1); width:50px; height:50px; display:flex; align-items:center; justify-content:center; border-radius:12px; margin-bottom:1.5rem;">
+                        <i class="fa-solid fa-brain" style="color:var(--accent-purple); font-size:1.5rem;"></i>
+                    </div>
+                    <h3>Clinical Copilot (App)</h3>
+                    <p style="font-weight:600; color:var(--text-main);">app.newtons.in</p>
+                    <p>The core clinical tool for diagnosis and treatment planning.</p>
+                    <ul class="feature-check">
+                        <li><i class="fa-solid fa-check" style="color:var(--accent-purple);"></i> <strong>OPD Assistant:</strong> Fast history & differentials.</li>
+                        <li><i class="fa-solid fa-check" style="color:var(--accent-purple);"></i> <strong>Treatment Planner:</strong> Evidence-based protocols.</li>
+                        <li><i class="fa-solid fa-check" style="color:var(--accent-purple);"></i> <strong>ICU Assistant:</strong> Critical care & risk prediction.</li>
+                        <li><i class="fa-solid fa-check" style="color:var(--accent-purple);"></i> <strong>Suggestions Only:</strong> No auto-orders. You decide.</li>
+                    </ul>
+                    <a href="https://app.newtons.in" class="btn" style="background:var(--accent-purple); color:white; width:100%; margin-top:1rem;">Launch Doctor App</a>
                 </div>
-                <div class="card">
-                    <h3><i class="fa-solid fa-hospital" style="color:var(--secondary); margin-right:8px;"></i> AI Hospital Manager</h3>
-                    <p>A complete cloud-based HMS that optimizes resource allocation, pharmacy, and report analysis.</p>
-                    <a href="https://hms.newtons.in" target="_blank" class="card-link">View Demo <i class="fa-solid fa-arrow-right"></i></a>
+
+                <!-- HMS for Hospitals -->
+                <div class="split-card hospital">
+                    <div style="background:rgba(234, 88, 12, 0.1); width:50px; height:50px; display:flex; align-items:center; justify-content:center; border-radius:12px; margin-bottom:1.5rem;">
+                        <i class="fa-solid fa-robot" style="color:var(--accent-orange); font-size:1.5rem;"></i>
+                    </div>
+                    <h3>Hospital Autopilot (HMS)</h3>
+                    <p style="font-weight:600; color:var(--text-main);">hms.newtons.in</p>
+                    <p>Closed-loop automation for Clinics & Hospitals.</p>
+                    <ul class="feature-check">
+                        <li><i class="fa-solid fa-check" style="color:var(--accent-orange);"></i> <strong>Voice AI Agent:</strong> Talks to patients in local languages to draft history.</li>
+                        <li><i class="fa-solid fa-check" style="color:var(--accent-orange);"></i> <strong>Machine Integration:</strong> Pulls reports directly from Lab Analyzers.</li>
+                        <li><i class="fa-solid fa-check" style="color:var(--accent-orange);"></i> <strong>Active AI Loop:</strong> Auto-updates treatment based on lab data.</li>
+                        <li><i class="fa-solid fa-check" style="color:var(--accent-orange);"></i> <strong>Auto-Inventory:</strong> Manages Pharmacy & Lab stock automatically.</li>
+                    </ul>
+                    <a href="https://hms.newtons.in" target="_blank" class="btn" style="background:var(--accent-orange); color:white; width:100%; margin-top:1rem;">Deploy HMS</a>
                 </div>
-                <div class="card">
-                    <h3><i class="fa-solid fa-brain" style="color:#9333ea; margin-right:8px;"></i> NEET PG Prep</h3>
-                    <p>Adaptive question banks and personalized study plans driven by AI to maximize exam scores.</p>
-                    <a href="https://neetpg.newtons.in" target="_blank" class="card-link">Start Learning <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-                <div class="card">
-                    <h3><i class="fa-solid fa-file-prescription" style="color:var(--primary); margin-right:8px;"></i> Rx Writer</h3>
-                    <p>Intelligent prescription suggestions ensuring accurate dosages and checking drug interactions.</p>
-                    <a href="https://app.newtons.in" class="card-link">Write Rx <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-                <div class="card">
-                    <h3><i class="fa-solid fa-heart-pulse" style="color:#e11d48; margin-right:8px;"></i> ICU & Emergency</h3>
-                    <p>Real-time predictive analytics for critical care, aiding in early deterioration detection.</p>
-                    <a href="https://app.newtons.in" class="card-link">Explore ICU Tools <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-                <div class="card">
-                    <h3><i class="fa-solid fa-user-doctor" style="color:var(--secondary); margin-right:8px;"></i> OSCE Simulator</h3>
-                    <p>Practice clinical scenarios with virtual patients to refine diagnostic and communication skills.</p>
-                    <a href="https://app.newtons.in" class="card-link">Start Simulation <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
+
             </div>
         </div>
     </section>
@@ -509,158 +445,45 @@
     <!-- Guide Section -->
     <section id="guide" class="bg-surface">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 2rem;" class="reveal">How It Works</h2>
+            <h2 style="text-align: center; margin-bottom: 2rem;" class="reveal">How They Work</h2>
             
             <div class="tab-nav reveal">
-                <button class="tab-btn active" onclick="openTab(event, 'guide-opd')">OPD Assistant</button>
-                <button class="tab-btn" onclick="openTab(event, 'guide-osce')">OSCE Simulator</button>
-                <button class="tab-btn" onclick="openTab(event, 'guide-icu')">ICU Assistant</button>
+                <button class="tab-btn active" onclick="openTab(event, 'workflow-doc')">Doctor's App Workflow</button>
+                <button class="tab-btn" onclick="openTab(event, 'workflow-hms')">HMS Automation Workflow</button>
             </div>
 
-            <div id="guide-opd" class="tab-panel active container">
-                <div class="step-grid">
-                    <div class="step-card">
-                        <h4>1. Input Vitals & Complaints</h4>
-                        <p>Enter patient age, sex, and chief complaints or a brief free-text summary.</p>
+            <!-- Doctor Workflow -->
+            <div id="workflow-doc" class="tab-panel active container">
+                <div class="grid">
+                    <div class="card" style="border-top: 3px solid var(--accent-purple);">
+                        <h4>1. OPD Assistant</h4>
+                        <p>Input chief complaints. AI suggests questions, generates differentials, and summarizes history for your review.</p>
                     </div>
-                    <div class="step-card">
-                        <h4>2. AI Interview</h4>
-                        <p>The AI generates targeted questions to refine the history and rule out conditions.</p>
+                    <div class="card" style="border-top: 3px solid var(--accent-purple);">
+                        <h4>2. Treatment Planner</h4>
+                        <p>Get standard treatment guidelines, dosage calculations, and drug interaction alerts. You manually prescribe.</p>
                     </div>
-                    <div class="step-card">
-                        <h4>3. Diagnosis & Plan</h4>
-                        <p>Receive differential diagnoses with confidence scores and a suggested treatment protocol.</p>
+                    <div class="card" style="border-top: 3px solid var(--accent-purple);">
+                        <h4>3. ICU Assistant</h4>
+                        <p>Manually input ABG/Vitals. AI predicts deterioration risk and suggests stabilization protocols.</p>
                     </div>
                 </div>
             </div>
 
-            <div id="guide-osce" class="tab-panel container">
-                <div class="step-grid">
-                    <div class="step-card">
-                        <h4>1. Select Scenario</h4>
-                        <p>Choose from a library of clinical cases ranging from common to rare conditions.</p>
+            <!-- HMS Workflow (Advanced) -->
+            <div id="workflow-hms" class="tab-panel container">
+                <div class="grid">
+                    <div class="card" style="border-top: 3px solid var(--accent-orange);">
+                        <h4>1. Voice Intake & Auto-Ordering</h4>
+                        <p>Patient <strong>talks to AI</strong> in local language. Doctor approves plan. HMS <strong>auto-orders</strong> meds from pharmacy and tests from internal lab.</p>
                     </div>
-                    <div class="step-card">
-                        <h4>2. Virtual Interaction</h4>
-                        <p>Interview the AI patient, perform virtual exams, and order investigations.</p>
+                    <div class="card" style="border-top: 3px solid var(--accent-orange);">
+                        <h4>2. Lab Loop & Machine Integration</h4>
+                        <p>HMS pulls data directly from <strong>Analyzers (e.g., CBC)</strong>. AI reads the report, <strong>auto-edits the treatment plan</strong> (e.g., changes antibiotics), and updates orders.</p>
                     </div>
-                    <div class="step-card">
-                        <h4>3. Feedback</h4>
-                        <p>Get an instant scorecard highlighting missed questions or incorrect diagnoses.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="guide-icu" class="tab-panel container">
-                <div class="step-grid">
-                    <div class="step-card">
-                        <h4>1. Live Monitoring</h4>
-                        <p>Input real-time vitals and ABG/Lab values into the dashboard.</p>
-                    </div>
-                    <div class="step-card">
-                        <h4>2. Risk Prediction</h4>
-                        <p>AI analyzes trends to predict mortality risk and organ failure probabilities.</p>
-                    </div>
-                    <div class="step-card">
-                        <h4>3. Intervention</h4>
-                        <p>Follow evidence-based guidelines suggested by the AI for stabilization.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 3rem;" class="reveal">
-                <h2>Simple, Transparent Pricing</h2>
-                <p>Invest in your medical practice with plans tailored for individuals and institutions.</p>
-            </div>
-            
-            <div class="grid reveal">
-                <!-- Individual Plan -->
-                <div class="pricing-card card">
-                    <h3>Unlimited Pro</h3>
-                    <p>For Doctors & Students</p>
-                    <div class="price-block">
-                        <span class="price-main">₹3,000</span> <span class="badge">Save 50%</span>
-                        <span class="price-sub">per year (or ₹500/mo)</span>
-                    </div>
-                    <ul class="feature-list">
-                        <li>Unlimited OPD & ICU Queries</li>
-                        <li>Advanced Differential Diagnosis</li>
-                        <li>Full Treatment Planning</li>
-                        <li>24/7 Priority Support</li>
-                    </ul>
-                    <a href="https://pro.newtons.in" target="_blank" class="btn btn-secondary" style="width:100%">Choose Pro</a>
-                </div>
-
-                <!-- Hospital Plan (Updated) -->
-                <div class="pricing-card card featured">
-                    <div class="ribbon">Best Value</div>
-                    <h3 style="color:var(--primary)">AI Hospital Pro</h3>
-                    <p>Complete HMS Solution</p>
-                    <div class="price-block">
-                        <span class="price-old">₹30,000</span>
-                        <span class="price-main">₹9,999</span>
-                        <span class="price-sub">per year</span>
-                        <div style="margin-top:8px; font-weight:600; color:var(--text-main)">OR ₹990 / month</div>
-                    </div>
-                    <ul class="feature-list">
-                        <li><strong>Full AI HMS Suite</strong></li>
-                        <li>Automated Reports & Pharmacy</li>
-                        <li>Smart Admission & Billing</li>
-                        <li>Multi-Doctor Access</li>
-                        <li>Data Analytics Dashboard</li>
-                    </ul>
-                    <a href="https://hms.newtons.in" target="_blank" class="btn btn-primary" style="width:100%">Deploy HMS</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="bg-surface">
-        <div class="container">
-            <h2 style="text-align:center; margin-bottom:2rem;">Trusted by the Community</h2>
-            <div class="reviews-wrapper reveal">
-                <div class="slider-nav">
-                    <button class="nav-arrow" id="prev-review"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="nav-arrow" id="next-review"><i class="fa-solid fa-chevron-right"></i></button>
-                </div>
-                <div class="reviews-track" id="reviews-track">
-                    <div class="review-card">
-                        <i class="fa-solid fa-quote-right quote-mark"></i>
-                        <p class="review-text">"The OSCE simulator is a game-changer. It feels like interacting with a real patient, and the feedback is incredibly detailed."</p>
-                        <div class="reviewer">
-                            <h4>Dr. A. Singh</h4>
-                            <p>Resident, AIIMS Delhi</p>
-                        </div>
-                    </div>
-                    <div class="review-card">
-                        <i class="fa-solid fa-quote-right quote-mark"></i>
-                        <p class="review-text">"Newtons Ai HMS streamlined our entire hospital workflow. The AI reporting feature saves us hours every day."</p>
-                        <div class="reviewer">
-                            <h4>Dr. P. Sharma</h4>
-                            <p>Director, Sharma Care Clinic</p>
-                        </div>
-                    </div>
-                    <div class="review-card">
-                        <i class="fa-solid fa-quote-right quote-mark"></i>
-                        <p class="review-text">"An essential tool for NEET PG prep. The explanations for complex questions are far better than standard textbooks."</p>
-                        <div class="reviewer">
-                            <h4>R. Gupta</h4>
-                            <p>Medical Student, KMC Manipal</p>
-                        </div>
-                    </div>
-                    <div class="review-card">
-                        <i class="fa-solid fa-quote-right quote-mark"></i>
-                        <p class="review-text">"The OPD Assistant is like having a senior consultant beside you. It catches differentials I might have missed."</p>
-                        <div class="reviewer">
-                            <h4>Dr. S. Khan</h4>
-                            <p>General Practitioner</p>
-                        </div>
+                    <div class="card" style="border-top: 3px solid var(--accent-orange);">
+                        <h4>3. Inventory & Billing</h4>
+                        <p>Stock is deducted from Pharmacy/Lab inventory in real-time as orders are executed. A single <strong>consolidated bill</strong> is generated automatically.</p>
                     </div>
                 </div>
             </div>
@@ -671,24 +494,23 @@
     <section id="download">
         <div class="container">
             <div style="text-align: center; max-width: 600px; margin: 0 auto 3rem;" class="reveal">
-                <h2>Get the App</h2>
-                <p>Install the Progressive Web App (PWA) on iOS or download the APK for Android for a seamless native experience.</p>
+                <h2>Download the Doctor App</h2>
+                <p>Access OPD Assistant, Treatment Planner & ICU tools on your mobile.</p>
             </div>
             
             <div class="grid" style="max-width: 900px; margin: 0 auto;">
                 <div class="card" style="text-align: center; align-items: center;">
                     <i class="fa-brands fa-android" style="font-size: 3rem; color: #3DDC84; margin-bottom: 1rem;"></i>
                     <h3>Android</h3>
-                    <p>Download the APK directly or install via Chrome.</p>
-                    <a href="https://github.com/shiva45678/Newtons-Ai-Home/releases/download/v1.01/Newtons.Ai.apk" class="btn btn-primary">
+                    <a href="https://github.com/shiva45678/Newtons-Ai-Home/releases/download/v1.01/Newtons.Ai.apk" class="btn" style="background:var(--primary); color:white;">
                         <i class="fa-solid fa-download"></i> Download APK
                     </a>
                 </div>
                 <div class="card" style="text-align: center; align-items: center;">
                     <i class="fa-brands fa-apple" style="font-size: 3rem; color: var(--text-main); margin-bottom: 1rem;"></i>
                     <h3>iOS / iPadOS</h3>
-                    <p>Open <strong>app.newtons.in</strong> in Safari, tap "Share", and select <strong>"Add to Home Screen"</strong>.</p>
-                    <a href="https://app.newtons.in" class="btn btn-secondary">Open Web App</a>
+                    <p>Open <strong>app.newtons.in</strong> -> Share -> "Add to Home Screen".</p>
+                    <a href="https://app.newtons.in" class="btn btn-outline">Open Web App</a>
                 </div>
             </div>
         </div>
@@ -703,43 +525,39 @@
                     <p style="font-style: italic; color: var(--secondary);">"AI won’t replace doctors. But doctors who use AI will replace those who don’t."</p>
                 </div>
                 <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="#guide">User Guide</a></li>
-                        <li><a href="#download">Download</a></li>
+                    <h3>Products</h3>
+                    <ul style="list-style:none;">
+                        <li style="margin-bottom:0.8rem;"><a href="https://app.newtons.in" style="color:#a78bfa;">Doctor's App</a></li>
+                        <li style="margin-bottom:0.8rem;"><a href="https://hms.newtons.in" style="color:#fb923c;">HMS (Hospitals & Clinics)</a></li>
+                        <li style="margin-bottom:0.8rem;"><a href="https://neetpg.newtons.in">NEET PG Prep</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h3>Products</h3>
-                    <ul class="footer-links">
-                        <li><a href="https://app.newtons.in">Clinical AI Assistant</a></li>
-                        <li><a href="https://hms.newtons.in">AI Hospital Management</a></li>
-                        <li><a href="https://neetpg.newtons.in">NEET PG Preparation</a></li>
-                        <li><a href="https://hospital.newtons.in">Franchise Program</a></li>
+                    <h3>Support</h3>
+                    <ul style="list-style:none;">
+                        <li style="margin-bottom:0.8rem;"><a href="#guide">User Guide</a></li>
+                        <li style="margin-bottom:0.8rem;"><a href="mailto:support@newtons.in">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="copyright">
-                &copy; <span id="year"></span> Newtons Ai. All Rights Reserved. Crafted with <i class="fa-solid fa-heart" style="color:#e11d48"></i> for Medicine.
+            <div style="text-align: center; padding-top: 2rem; border-top: 1px solid #374151; font-size: 0.9rem;">
+                &copy; <span id="year"></span> Newtons Ai. All Rights Reserved.
             </div>
         </div>
     </footer>
 
     <!-- Invisible Cache Warmer -->
-    <iframe id="cache-warmer" src="https://app.newtons.in"></iframe>
+    <iframe id="cache-warmer" src="https://app.newtons.in" style="width:0;height:0;border:0;visibility:hidden;"></iframe>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('year').textContent = new Date().getFullYear();
 
-            // --- Theme Toggler ---
+            // Theme Toggler
             const themeBtns = document.querySelectorAll('.theme-toggle, #mobile-theme-toggle');
             const body = document.body;
             const icon = document.querySelector('.theme-toggle i');
             
-            // Check Local Storage or System Preference
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             
@@ -753,21 +571,15 @@
                     body.classList.toggle('dark-theme');
                     const isDark = body.classList.contains('dark-theme');
                     localStorage.setItem('theme', isDark ? 'dark' : 'light');
-                    
-                    // Update Desktop Icon
-                    const desktopIcon = document.querySelector('.theme-toggle i');
-                    if(desktopIcon) {
-                        desktopIcon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-                    }
+                    if(icon) icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
                 });
             });
 
-            // --- Mobile Menu ---
+            // Mobile Menu
             const mobileBtn = document.querySelector('.mobile-toggle');
             const closeMenuBtn = document.querySelector('.close-menu');
             const mobileNav = document.querySelector('.mobile-nav');
             const overlay = document.querySelector('.mobile-overlay');
-            const mobileLinks = document.querySelectorAll('.mobile-links a');
 
             function toggleMenu() {
                 mobileNav.classList.toggle('open');
@@ -777,9 +589,8 @@
             if(mobileBtn) mobileBtn.addEventListener('click', toggleMenu);
             if(closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMenu);
             if(overlay) overlay.addEventListener('click', toggleMenu);
-            mobileLinks.forEach(l => l.addEventListener('click', toggleMenu));
 
-            // --- Scroll Animations (Intersection Observer) ---
+            // Scroll Animation
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -787,46 +598,10 @@
                     }
                 });
             }, { threshold: 0.1 });
-
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-            // --- Active Nav Link on Scroll ---
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-links a');
-
-            window.addEventListener('scroll', () => {
-                let current = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    if (pageYOffset >= (sectionTop - 150)) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href').includes(current)) {
-                        link.classList.add('active');
-                    }
-                });
-            });
-
-            // --- Testimonial Slider ---
-            const track = document.getElementById('reviews-track');
-            const prevBtn = document.getElementById('prev-review');
-            const nextBtn = document.getElementById('next-review');
-
-            if(track && prevBtn && nextBtn) {
-                nextBtn.addEventListener('click', () => {
-                    track.scrollBy({ left: 350, behavior: 'smooth' });
-                });
-                prevBtn.addEventListener('click', () => {
-                    track.scrollBy({ left: -350, behavior: 'smooth' });
-                });
-            }
         });
 
-        // --- Tab Logic ---
+        // Tab Switcher
         function openTab(evt, tabName) {
             const tabContent = document.getElementsByClassName("tab-panel");
             for (let i = 0; i < tabContent.length; i++) {
