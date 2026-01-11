@@ -18,8 +18,9 @@
             --bg: #F3F4F6;
             --card-bg: #FFFFFF;
             --text-dark: #111827;
-            --text-gray: #4B5563;
+            --text-gray: #6B7280;
             --border: #E5E7EB;
+            --green: #10B981;
         }
 
         /* Dark Mode Colors */
@@ -35,82 +36,146 @@
         
         body { 
             background-color: var(--bg); color: var(--text-dark); 
-            line-height: 1.5; padding-bottom: 90px;
+            line-height: 1.4; padding-bottom: 100px;
             transition: background 0.3s, color 0.3s;
+            overflow-x: hidden; /* Prevent horizontal scroll on body */
         }
 
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        /* Reduced padding for mobile optimization */
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 12px; }
 
         /* --- Header --- */
         header { 
-            background: var(--card-bg); height: 64px; 
+            background: var(--card-bg); height: 60px; 
             border-bottom: 1px solid var(--border);
             position: sticky; top: 0; z-index: 100;
             display: flex; align-items: center; justify-content: space-between;
-            padding: 0 20px;
+            padding: 0 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
-        .logo { font-weight: 700; font-size: 1.2rem; color: var(--blue); text-decoration: none; }
-        .menu-btn { background: none; border: none; font-size: 1.4rem; color: var(--text-dark); cursor: pointer; }
+        .logo { font-weight: 700; font-size: 1.1rem; color: var(--blue); text-decoration: none; }
+        .menu-btn { background: none; border: none; font-size: 1.3rem; color: var(--text-dark); cursor: pointer; padding: 5px; }
 
         /* --- Hero Section --- */
-        .hero { text-align: center; margin: 40px 0; }
-        h1 { font-size: 2rem; margin-bottom: 10px; line-height: 1.2; }
-        p { color: var(--text-gray); font-size: 1rem; max-width: 600px; margin: 0 auto; }
-
-        /* --- Video Wrapper --- */
-        .video-box {
-            position: relative; width: 100%; max-width: 800px; margin: 0 auto 40px;
-            aspect-ratio: 16/9; background: #000; border-radius: 12px; overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        /* The div replaced by YouTube API needs to fill the box */
-        #player { width: 100%; height: 100%; }
+        .hero { text-align: center; margin: 30px 0; padding: 0 10px; }
+        h1 { font-size: 1.75rem; margin-bottom: 8px; line-height: 1.2; letter-spacing: -0.02em; }
+        p { color: var(--text-gray); font-size: 0.95rem; max-width: 600px; margin: 0 auto; }
 
         /* --- Cards --- */
         .card { 
-            background: var(--card-bg); border-radius: 12px; padding: 20px; 
-            margin-bottom: 20px; border: 1px solid var(--border);
+            background: var(--card-bg); border-radius: 12px; padding: 15px; 
+            margin-bottom: 15px; border: 1px solid var(--border);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
         }
-        .card h2 { font-size: 1.25rem; margin-bottom: 5px; display: flex; align-items: center; gap: 10px; }
-        .card-sub { font-size: 0.9rem; color: var(--text-gray); margin-bottom: 20px; }
+        .card h2 { font-size: 1.1rem; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+        .card-sub { font-size: 0.85rem; color: var(--text-gray); margin-bottom: 15px; }
 
-        /* --- Simple Tables --- */
-        table { width: 100%; border-collapse: collapse; }
+        /* --- Optimized Tables for Mobile --- */
+        .table-wrap { 
+            width: 100%; 
+            overflow-x: hidden; /* Prevent scroll, force wrap */
+        }
+        
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            table-layout: fixed; /* Crucial for keeping columns in check */
+        }
+        
         th { 
-            text-align: left; color: var(--text-gray); font-size: 0.85rem; 
-            padding: 10px 0; border-bottom: 1px solid var(--border); 
+            text-align: left; color: var(--text-gray); font-size: 0.75rem; 
+            padding: 8px 0; border-bottom: 1px solid var(--border); 
             text-transform: uppercase; letter-spacing: 0.5px;
         }
-        td { padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+        
+        td { 
+            padding: 12px 0; 
+            border-bottom: 1px solid var(--border); 
+            vertical-align: top; /* Align to top so multi-line text looks good */
+        }
         tr:last-child td { border-bottom: none; }
+
+        /* Column Specifics */
+        .col-main { width: 50%; padding-right: 5px; } /* Name & Category */
+        .col-price { width: 25%; text-align: right; vertical-align: middle; }
+        .col-action { width: 25%; text-align: right; vertical-align: middle; }
+
+        /* Typography inside table */
+        .item-name { 
+            font-weight: 600; font-size: 0.95rem; color: var(--text-dark); 
+            display: block; line-height: 1.2; margin-bottom: 2px;
+            word-wrap: break-word;
+        }
+        .item-cat {
+            display: block; font-size: 0.75rem; color: var(--text-gray);
+            font-weight: 400; line-height: 1.2;
+        }
         
-        .item-name { font-weight: 500; }
-        .price { text-align: right; font-weight: 600; font-family: monospace; font-size: 1rem; color: var(--text-dark); }
-        
-        /* Mobile: Hide middle column */
-        .col-cat { display: none; }
-        @media(min-width: 600px) { .col-cat { display: table-cell; color: var(--text-gray); font-size: 0.9rem; } }
+        .price { 
+            font-weight: 700; font-family: 'Inter', monospace; 
+            font-size: 0.9rem; color: var(--text-dark); 
+            white-space: nowrap;
+        }
 
         /* --- Buttons --- */
+        /* General Btn */
         .btn { 
-            display: inline-block; padding: 10px 20px; background: var(--blue); color: white; 
-            border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer;
+            display: inline-flex; justify-content: center; align-items: center; gap: 8px;
+            padding: 12px 20px; background: var(--blue); color: white; 
+            border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; border: none; cursor: pointer;
         }
-        .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-dark); cursor: pointer; width: 100%; padding: 12px; border-radius: 8px; font-weight: 600; margin-top: 15px;}
-        .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+        
+        /* Table Action Button */
+        .btn-buy {
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+            padding: 8px 12px; /* Larger touch target */
+            background: var(--blue);
+            color: white;
+            border-radius: 6px;
+            border: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            white-space: nowrap;
+            min-width: 60px;
+        }
+        .btn-buy:active { transform: scale(0.96); }
+        .btn-buy:hover { background: var(--blue-dark); color: white; }
+        
+        /* Disabled state */
+        .btn-buy.disabled { 
+            background: transparent; 
+            color: var(--text-gray);
+            border: 1px solid var(--border);
+            opacity: 0.7; 
+            pointer-events: none; 
+            font-size: 0.75rem;
+            padding: 6px 8px;
+        }
+        
+        /* Special 'Try Now' Style */
+        .btn-try {
+            background: var(--text-dark);
+            color: white;
+        }
 
         /* --- Side Menu (Right) --- */
         .side-menu {
-            position: fixed; top: 0; right: 0; width: 280px; height: 100%;
+            position: fixed; top: 0; right: 0; width: 80%; max-width: 300px; height: 100%;
             background: var(--card-bg); z-index: 200; transform: translateX(100%);
-            transition: transform 0.3s; padding: 20px; border-left: 1px solid var(--border);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            padding: 20px; border-left: 1px solid var(--border);
             display: flex; flex-direction: column;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
         }
         .side-menu.open { transform: translateX(0); }
-        .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 150; display: none; }
-        .overlay.open { display: block; }
+        .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 150; display: none; opacity: 0; transition: opacity 0.3s; }
+        .overlay.open { display: block; opacity: 1; }
         
-        .menu-link { display: block; padding: 14px 0; color: var(--text-dark); text-decoration: none; font-size: 1.1rem; border-bottom: 1px solid var(--border); }
+        .menu-link { display: block; padding: 16px 0; color: var(--text-dark); text-decoration: none; font-size: 1.1rem; border-bottom: 1px solid var(--border); font-weight: 500; }
         
         .dark-mode-row { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid var(--border); }
 
@@ -118,14 +183,13 @@
         .bottom-bar {
             position: fixed; bottom: 0; left: 0; width: 100%;
             background: var(--card-bg); border-top: 1px solid var(--border);
-            padding: 15px 20px; display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 15px; display: flex; justify-content: space-between; align-items: center;
             z-index: 90;
-            padding-bottom: max(15px, env(safe-area-inset-bottom));
+            padding-bottom: max(12px, env(safe-area-inset-bottom));
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
         }
-        .total-label { font-size: 0.8rem; color: var(--text-gray); text-transform: uppercase; letter-spacing: 0.5px; }
-        .total-price { font-size: 1.4rem; font-weight: 700; color: var(--blue); }
-
-        .table-wrap { max-height: 400px; overflow-y: auto; scrollbar-width: thin; }
+        .total-label { font-size: 0.7rem; color: var(--text-gray); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+        .total-price { font-size: 1.3rem; font-weight: 700; color: var(--blue); line-height: 1; }
 
     </style>
 </head>
@@ -140,8 +204,8 @@
     <!-- Side Menu -->
     <div class="overlay" onclick="toggleMenu(false)" id="overlay"></div>
     <div class="side-menu" id="sideMenu">
-        <div style="display:flex; justify-content:space-between; margin-bottom:20px; align-items:center;">
-            <span style="font-weight:700; font-size:1.2rem; color:var(--text-dark)">Menu</span>
+        <div style="display:flex; justify-content:space-between; margin-bottom:10px; align-items:center;">
+            <span style="font-weight:700; font-size:1.3rem; color:var(--text-dark)">Menu</span>
             <button class="menu-btn" onclick="toggleMenu(false)"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <a href="#" class="menu-link">Home</a>
@@ -150,7 +214,7 @@
         <a href="https://hms.newtons.in" class="menu-link" style="color: var(--blue);">Login to App</a>
 
         <div class="dark-mode-row">
-            <span style="color:var(--text-dark)">Dark Mode</span>
+            <span style="color:var(--text-dark); font-weight:500;">Dark Mode</span>
             <button class="menu-btn" id="themeBtn" style="font-size: 1.2rem;">
                 <i class="fa-solid fa-moon"></i>
             </button>
@@ -164,11 +228,6 @@
             <p>We provide the machines, the medicines, and the software. You provide the care.</p>
         </div>
 
-        <!-- Video Box (YouTube API Target) -->
-        <div class="video-box">
-            <div id="player"></div>
-        </div>
-
         <!-- 1. Machines & Infrastructure -->
         <div class="card">
             <h2><i class="fas fa-bed" style="color:var(--blue)"></i> Machines & Furniture</h2>
@@ -176,33 +235,116 @@
             
             <div class="table-wrap">
                 <table id="t1">
-                    <thead><tr><th>Item Name</th><th class="col-cat">Category</th><th class="price">Cost</th></tr></thead>
+                    <thead><tr><th class="col-main">Item Details</th><th class="col-price">Cost</th><th class="col-action">Action</th></tr></thead>
                     <tbody>
-                        <tr><td class="item-name">Hospital Software</td><td class="col-cat">Software</td><td class="price" data-cost="0">Included</td></tr>
-                        <tr><td class="item-name">Biochemistry Analyser</td><td class="col-cat">Lab Machine</td><td class="price" data-cost="70000">70,000</td></tr>
-                        <tr><td class="item-name">Cell Counter (3-Part)</td><td class="col-cat">Lab Machine</td><td class="price" data-cost="190000">190,000</td></tr>
-                        <tr><td class="item-name">ECG Machine (3-Lead)</td><td class="col-cat">Medical</td><td class="price" data-cost="16000">16,000</td></tr>
-                        <tr><td class="item-name">Online UPS (Microtek)</td><td class="col-cat">Power</td><td class="price" data-cost="14000">14,000</td></tr>
-                        <tr><td class="item-name">Inverter & Battery</td><td class="col-cat">Power</td><td class="price" data-cost="15000">15,000</td></tr>
-                        <tr><td class="item-name">Fridge (2 Units)</td><td class="col-cat">Appliance</td><td class="price" data-cost="20000">20,000</td></tr>
-                        <tr><td class="item-name">Water Purifier</td><td class="col-cat">Appliance</td><td class="price" data-cost="4000">4,000</td></tr>
-                        <tr><td class="item-name">Centrifuge Machine</td><td class="col-cat">Lab</td><td class="price" data-cost="1500">1,500</td></tr>
-                        <tr><td class="item-name">Laptops (3 Units)</td><td class="col-cat">Office</td><td class="price" data-cost="30000">30,000</td></tr>
-                        <tr><td class="item-name">Printer</td><td class="col-cat">Office</td><td class="price" data-cost="3000">3,000</td></tr>
-                        <tr><td class="item-name">Patient Beds (4 Units)</td><td class="col-cat">Furniture</td><td class="price" data-cost="48000">48,000</td></tr>
-                        <tr><td class="item-name">Doctor & Reception Tables</td><td class="col-cat">Furniture</td><td class="price" data-cost="30000">30,000</td></tr>
-                        <tr><td class="item-name">Waiting Chairs</td><td class="col-cat">Furniture</td><td class="price" data-cost="10600">10,600</td></tr>
-                        <tr><td class="item-name">Examination Table</td><td class="col-cat">Furniture</td><td class="price" data-cost="5000">5,000</td></tr>
-                        <tr><td class="item-name">Doctor Chairs</td><td class="col-cat">Furniture</td><td class="price" data-cost="3000">3,000</td></tr>
-                        <tr><td class="item-name">Stools & Misc Furniture</td><td class="col-cat">Furniture</td><td class="price" data-cost="4000">4,000</td></tr>
-                        <tr><td class="item-name">Medical Supplies (BP etc)</td><td class="col-cat">Medical</td><td class="price" data-cost="8200">8,200</td></tr>
-                        <tr><td class="item-name">Marketing Billboards</td><td class="col-cat">Marketing</td><td class="price" data-cost="6000">6,000</td></tr>
-                        <tr><td class="item-name">Lab Consumables</td><td class="col-cat">Starter Pack</td><td class="price" data-cost="7900">7,900</td></tr>
-                        <tr><td class="item-name">General Supplies</td><td class="col-cat">Misc</td><td class="price" data-cost="1000">1,000</td></tr>
+                        <tr>
+                            <td><span class="item-name">Hospital Software</span><span class="item-cat">Software</span></td>
+                            <td class="price" data-cost="0">Included</td>
+                            <td class="col-action"><a href="https://hms.newtons.in" target="_blank" class="btn-buy btn-try">Try Now</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Biochemistry Analyser</span><span class="item-cat">Lab Machine</span></td>
+                            <td class="price" data-cost="70000">70k</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Cell Counter (3-Part)</span><span class="item-cat">Lab Machine</span></td>
+                            <td class="price" data-cost="190000">1.9L</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">ECG Machine (3-Lead)</span><span class="item-cat">Medical</span></td>
+                            <td class="price" data-cost="16000">16,000</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Online UPS (Microtek)</span><span class="item-cat">Power</span></td>
+                            <td class="price" data-cost="14000">14,000</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Inverter & Battery</span><span class="item-cat">Power</span></td>
+                            <td class="price" data-cost="15000">15,000</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Fridge (2 Units)</span><span class="item-cat">Appliance</span></td>
+                            <td class="price" data-cost="20000">20,000</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Water Purifier</span><span class="item-cat">Appliance</span></td>
+                            <td class="price" data-cost="4000">4,000</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Centrifuge Machine</span><span class="item-cat">Lab</span></td>
+                            <td class="price" data-cost="1500">1,500</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Laptops (3 Units)</span><span class="item-cat">Office</span></td>
+                            <td class="price" data-cost="30000">30,000</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Printer</span><span class="item-cat">Office</span></td>
+                            <td class="price" data-cost="3000">3,000</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Patient Beds (4 Units)</span><span class="item-cat">Furniture</span></td>
+                            <td class="price" data-cost="48000">48,000</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Doctor & Reception Tables</span><span class="item-cat">Furniture</span></td>
+                            <td class="price" data-cost="30000">30,000</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Waiting Chairs</span><span class="item-cat">Furniture</span></td>
+                            <td class="price" data-cost="10600">10,600</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Examination Table</span><span class="item-cat">Furniture</span></td>
+                            <td class="price" data-cost="5000">5,000</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Doctor Chairs</span><span class="item-cat">Furniture</span></td>
+                            <td class="price" data-cost="3000">3,000</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Stools & Misc Furniture</span><span class="item-cat">Furniture</span></td>
+                            <td class="price" data-cost="4000">4,000</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Medical Supplies</span><span class="item-cat">BP, Stethoscope, etc</span></td>
+                            <td class="price" data-cost="8200">8,200</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Marketing Billboards</span><span class="item-cat">Marketing</span></td>
+                            <td class="price" data-cost="6000">6,000</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Lab Consumables</span><span class="item-cat">Starter Pack</span></td>
+                            <td class="price" data-cost="7900">7,900</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">General Supplies</span><span class="item-cat">Misc</span></td>
+                            <td class="price" data-cost="1000">1,000</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
-            <button class="btn-outline">Download CSV List</button>
         </div>
 
         <!-- 2. Diagnostic Kits -->
@@ -212,48 +354,92 @@
             
             <div class="table-wrap">
                 <table id="t2">
-                    <thead><tr><th>Kit Name</th><th class="col-cat">Quantity</th><th class="price">Cost</th></tr></thead>
+                    <thead><tr><th class="col-main">Kit Details</th><th class="col-price">Cost</th><th class="col-action">Action</th></tr></thead>
                     <tbody>
-                        <tr><td class="item-name">Biochemistry Reagents</td><td class="col-cat">1 Set</td><td class="price" data-cost="0">Free</td></tr>
-                        <tr><td class="item-name">Urine Strips</td><td class="col-cat">100 Tests</td><td class="price" data-cost="400">400</td></tr>
-                        <tr><td class="item-name">Blood Grouping</td><td class="col-cat">50 Tests</td><td class="price" data-cost="900">900</td></tr>
-                        <tr><td class="item-name">HIV Screening</td><td class="col-cat">25 Tests</td><td class="price" data-cost="1250">1,250</td></tr>
-                        <tr><td class="item-name">HBsAg (Hepatitis B)</td><td class="col-cat">25 Tests</td><td class="price" data-cost="375">375</td></tr>
-                        <tr><td class="item-name">Malaria Card</td><td class="col-cat">20 Tests</td><td class="price" data-cost="600">600</td></tr>
-                        <tr><td class="item-name">Dengue Combo</td><td class="col-cat">20 Tests</td><td class="price" data-cost="1800">1,800</td></tr>
-                        <tr><td class="item-name">Typhoid (IgG/IgM)</td><td class="col-cat">20 Tests</td><td class="price" data-cost="700">700</td></tr>
-                        <tr><td class="item-name">HCV (Hepatitis C)</td><td class="col-cat">20 Tests</td><td class="price" data-cost="800">800</td></tr>
-                        <tr><td class="item-name">VDRL / Syphilis</td><td class="col-cat">20 Tests</td><td class="price" data-cost="500">500</td></tr>
-                        <tr><td class="item-name">Troponin I/T</td><td class="col-cat">10 Tests</td><td class="price" data-cost="950">950</td></tr>
-                        <tr><td class="item-name">Rheumatoid Factor</td><td class="col-cat">10 Tests</td><td class="price" data-cost="450">450</td></tr>
+                        <tr>
+                            <td><span class="item-name">Biochemistry Reagents</span><span class="item-cat">1 Set</span></td>
+                            <td class="price" data-cost="0">Free</td>
+                            <td class="col-action"><span class="btn-buy disabled">Included</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Urine Strips</span><span class="item-cat">100 Tests</span></td>
+                            <td class="price" data-cost="400">400</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Blood Grouping</span><span class="item-cat">50 Tests</span></td>
+                            <td class="price" data-cost="900">900</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">HIV Screening</span><span class="item-cat">25 Tests</span></td>
+                            <td class="price" data-cost="1250">1,250</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">HBsAg (Hepatitis B)</span><span class="item-cat">25 Tests</span></td>
+                            <td class="price" data-cost="375">375</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Malaria Card</span><span class="item-cat">20 Tests</span></td>
+                            <td class="price" data-cost="600">600</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Dengue Combo</span><span class="item-cat">20 Tests</span></td>
+                            <td class="price" data-cost="1800">1,800</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Typhoid (IgG/IgM)</span><span class="item-cat">20 Tests</span></td>
+                            <td class="price" data-cost="700">700</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">HCV (Hepatitis C)</span><span class="item-cat">20 Tests</span></td>
+                            <td class="price" data-cost="800">800</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">VDRL / Syphilis</span><span class="item-cat">20 Tests</span></td>
+                            <td class="price" data-cost="500">500</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Troponin I/T</span><span class="item-cat">10 Tests</span></td>
+                            <td class="price" data-cost="950">950</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
+                        <tr>
+                            <td><span class="item-name">Rheumatoid Factor</span><span class="item-cat">10 Tests</span></td>
+                            <td class="price" data-cost="450">450</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- 3. Medicine -->
+        <!-- 3. Medicine Starter Kit -->
         <div class="card">
-            <h2><i class="fas fa-pills" style="color:#F59E0B"></i> Medicine Stock</h2>
-            <p class="card-sub">175 types of essential medicines.</p>
+            <h2><i class="fas fa-pills" style="color:#F59E0B"></i> Medications Starter Kit</h2>
+            <p class="card-sub">Complete set of 175 types of essential medicines for initial setup.</p>
             <div class="table-wrap">
                 <table id="t3">
-                    <thead><tr><th>Medicine</th><th class="col-cat">Quantity</th><th class="price">Cost</th></tr></thead>
+                    <thead><tr><th class="col-main">Kit Details</th><th class="col-price">Cost</th><th class="col-action">Action</th></tr></thead>
                     <tbody>
-                        <tr><td class="item-name">Albendazole Oral Susp</td><td class="col-cat">10 Units</td><td class="price" data-cost="20">20</td></tr>
-                        <tr><td class="item-name">Albendazole Tabs 400mg</td><td class="col-cat">20 Units</td><td class="price" data-cost="18">18</td></tr>
-                        <tr><td class="item-name">Amoxicillin & Clav 625</td><td class="col-cat">2 Units</td><td class="price" data-cost="41">41</td></tr>
-                        <tr><td class="item-name">Azithromycin 500mg</td><td class="col-cat">5 Units</td><td class="price" data-cost="40">40</td></tr>
-                        <tr><td class="item-name">Paracetamol 650mg</td><td class="col-cat">5 Units</td><td class="price" data-cost="11">11</td></tr>
-                        <tr><td class="item-name">Pantoprazole 40mg</td><td class="col-cat">3 Units</td><td class="price" data-cost="30">30</td></tr>
-                        <tr><td class="item-name">Cefixime 200mg</td><td class="col-cat">2 Units</td><td class="price" data-cost="22">22</td></tr>
-                        <tr><td class="item-name">Metformin 500mg</td><td class="col-cat">5 Units</td><td class="price" data-cost="23">23</td></tr>
-                        <tr><td class="item-name">IV Cannula 22G</td><td class="col-cat">20 Units</td><td class="price" data-cost="280">280</td></tr>
-                        <tr><td colspan="3" style="text-align:center; padding:15px; font-size:0.8rem; color:var(--text-gray); font-style:italic">... + 165 More Essential Items ...</td></tr>
-                        <tr style="display:none"><td data-cost="9252"></td></tr>
+                        <tr>
+                            <td>
+                                <span class="item-name">Complete Pharmacy Starter Kit</span>
+                                <span class="item-cat">175+ Medicines (Antibiotics, Painkillers, etc.)</span>
+                            </td>
+                            <td class="price" data-cost="10000">10k</td>
+                            <td class="col-action"><a href="https://store.newtons.in" target="_blank" class="btn-buy">Buy</a></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
-            <button class="btn-outline">Download Full Medicine List</button>
         </div>
     </div>
 
@@ -300,46 +486,6 @@
             document.getElementById('totalDisplay').innerText = '₹ ' + total.toLocaleString('en-IN');
         }
         calculate();
-
-        // 3. YouTube Autoplay on Scroll (Using IFrame API)
-        // Load the IFrame Player API code asynchronously.
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        var player;
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player', {
-                height: '100%',
-                width: '100%',
-                videoId: 'C4XGqhEq43A',
-                playerVars: {
-                    'playsinline': 1,
-                    'controls': 1,
-                    'mute': 1, // Required for autoplay on most browsers
-                    'rel': 0
-                },
-                events: {
-                    'onReady': onPlayerReady
-                }
-            });
-        }
-
-        function onPlayerReady(event) {
-            // Setup Intersection Observer once player is ready
-            let observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        player.playVideo();
-                    } else {
-                        player.pauseVideo();
-                    }
-                });
-            }, { threshold: 0.5 }); // 50% of video must be visible
-
-            observer.observe(document.querySelector('.video-box'));
-        }
     </script>
 </body>
 </html>
