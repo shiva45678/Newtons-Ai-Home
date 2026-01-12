@@ -172,10 +172,17 @@
         /* Hero Specific Buttons */
         .hero-btns {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             gap: 1.5rem;
             margin-top: 2.5rem;
+        }
+
+        .hero-btn-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .btn-doc {
@@ -199,6 +206,7 @@
         }
         .btn-hosp:hover { background: var(--accent-orange); color: white; transform: translateY(-3px); box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3); }
 
+        /* Franchise Button (For New Section) */
         .btn-franchise {
             background: var(--heading);
             color: var(--bg);
@@ -454,7 +462,8 @@
             .nav-links, .header-actions .theme-toggle { display: none; }
             .mobile-toggle { display: block; }
             
-            .hero-btns { flex-direction: column; width: 100%; padding: 0; }
+            .hero-btns { margin-top: 1.5rem; }
+            .hero-btn-group { flex-direction: column; width: 100%; gap: 1rem; }
             .btn { width: 100%; }
             .split-grid { grid-template-columns: 1fr; margin-top: 1rem; gap: 1.5rem; }
             h1 { font-size: 2.5rem; }
@@ -502,7 +511,7 @@
             <li style="margin-bottom:1rem;"><a href="https://app.newtons.in" style="font-weight:700; color:var(--accent-purple);">Doctors App</a></li>
             <li style="margin-bottom:1rem;"><a href="https://hms.newtons.in" style="font-weight:700; color:var(--accent-orange);">Hospital HMS</a></li>
             <li style="margin-bottom:1rem;"><a href="#pricing" style="color:var(--text-main);">Plans & Pricing</a></li>
-            <li style="margin-bottom:1rem;"><a href="https://dr.newtons.in/franchise" style="font-weight:700; color:var(--text-main);">Apply for Franchise</a></li>
+            <li style="margin-bottom:1rem;"><a href="#business" style="font-weight:700; color:var(--text-main);">Apply for Franchise</a></li>
             <li style="margin-bottom:1rem;"><a href="#guide" style="color:var(--text-main);">Features & Guide</a></li>
             <li style="margin-bottom:1rem;"><a href="#download" style="color:var(--text-main);">Download App</a></li>
         </ul>
@@ -521,28 +530,27 @@
             <h1 class="sr-only">Newtons AI - Clinical Copilot App & Autonomous Hospital Management System</h1>
             
             <div class="hero-btns">
-                <a href="https://app.newtons.in" class="btn btn-doc">
-                    <i class="fa-solid fa-user-doctor"></i> Doctor's App
-                </a>
-                <a href="https://hms.newtons.in" target="_blank" class="btn btn-hosp">
-                    <i class="fa-solid fa-hospital"></i> AI App for Hospitals & Clinics
-                </a>
                 
-                <!-- CHANGED BUTTON HERE -->
-                <a href="https://store.newtons.in" target="_blank" class="btn btn-franchise">
-                    <i class="fa-solid fa-store"></i> Shop for Franchises or Clinics
-                </a>
-
-                <div style="width:100%; display:flex; justify-content:center; gap:1rem; margin-top:0.5rem;">
-                    <!-- Highlighted Download Button -->
-                    <a href="#download" class="btn" style="background:var(--primary); color:white; font-size:0.9rem; border:1px solid var(--primary);">
-                        <i class="fa-solid fa-download"></i> Download App
+                <!-- Primary Product Actions -->
+                <div class="hero-btn-group">
+                    <a href="https://app.newtons.in" class="btn btn-doc">
+                        <i class="fa-solid fa-user-doctor"></i> Doctor's App
                     </a>
-                    <!-- Standard Outline Button -->
-                    <a href="https://neetpg.newtons.in" target="_blank" class="btn btn-outline" style="font-size:0.9rem;">
+                    <a href="https://hms.newtons.in" target="_blank" class="btn btn-hosp">
+                        <i class="fa-solid fa-hospital"></i> AI App for Hospitals
+                    </a>
+                </div>
+
+                <!-- Secondary/Utility Actions -->
+                <div class="hero-btn-group" style="margin-top: 0.5rem;">
+                    <a href="#download" class="btn btn-outline" style="font-size:0.95rem;">
+                        <i class="fa-solid fa-download"></i> Download APK
+                    </a>
+                    <a href="https://neetpg.newtons.in" target="_blank" class="btn btn-outline" style="font-size:0.95rem;">
                         <i class="fa-solid fa-graduation-cap"></i> NEET PG
                     </a>
                 </div>
+
             </div>
         </div>
     </section>
@@ -780,6 +788,29 @@
         </div>
     </section>
 
+    <!-- NEW BUSINESS / FRANCHISE SECTION -->
+    <section id="business" style="background: var(--bg); border-top: 1px solid var(--border);">
+        <div class="container" style="text-align: center;">
+            <div class="reveal">
+                <span class="badge" style="background: var(--heading); color: var(--bg); margin-bottom: 1rem;">Business Opportunity</span>
+                <h2>Start Your Own AI Clinic</h2>
+                <p style="max-width: 650px; margin: 0 auto 2.5rem;">
+                    Join the Newtons AI network. Shop for pre-configured franchises or deploy our Autonomous HMS in your existing facility to automate operations.
+                </p>
+                
+                <a href="https://store.newtons.in" target="_blank" class="btn btn-franchise">
+                    <i class="fa-solid fa-store"></i> Shop for Franchises & Clinics
+                </a>
+                
+                <div style="margin-top: 2rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; color: var(--text-muted); font-size: 0.9rem;">
+                    <span><i class="fa-solid fa-check" style="color: var(--secondary);"></i> Smart Inventory</span>
+                    <span><i class="fa-solid fa-check" style="color: var(--secondary);"></i> Auto-Billing</span>
+                    <span><i class="fa-solid fa-check" style="color: var(--secondary);"></i> Hardware Included</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -802,7 +833,7 @@
                     <ul style="list-style:none;">
                         <li style="margin-bottom:0.8rem;"><a href="#guide">User Guide</a></li>
                         <li style="margin-bottom:0.8rem;"><a href="mailto:support@newtons.in">Contact Us</a></li>
-                        <li style="margin-bottom:0.8rem;"><a href="https://dr.newtons.in/franchise" style="color:var(--text-secondary);">Franchise</a></li>
+                        <li style="margin-bottom:0.8rem;"><a href="#business" style="color:var(--text-secondary);">Franchise</a></li>
                     </ul>
                 </div>
             </div>
