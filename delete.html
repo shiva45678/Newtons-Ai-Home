@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Settings - Delete Account</title>
+    <style>
+        /* --- General Page Styles --- */
+        :root {
+            --primary-color: #2563eb;
+            --danger-color: #dc2626;
+            --danger-bg: #fef2f2;
+            --border-color: #e5e7eb;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        /* --- Navbar --- */
+        nav {
+            background-color: white;
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand { font-weight: bold; font-size: 1.25rem; }
+        .user-menu { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* --- Main Container --- */
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* --- Settings Cards --- */
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-header h2 { margin: 0; font-size: 1.25rem; }
+        .card-body { padding: 1.5rem; }
+
+        /* --- Form Elements --- */
+        .form-group { margin-bottom: 1rem; }
+        label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+        
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            outline: 2px solid var(--primary-color);
+            border-color: transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .btn-primary:hover { background-color: #1d4ed8; }
+
+        /* --- Danger Zone Styles --- */
+        .danger-zone {
+            border: 1px solid var(--danger-color);
+        }
+        
+        .danger-zone .card-header {
+            background-color: var(--danger-bg);
+            color: var(--danger-color);
+            border-bottom: 1px solid #fecaca;
+        }
+
+        .danger-desc {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-danger-trigger {
+            background-color: white;
+            color: var(--danger-color);
+            border: 1px solid var(--danger-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-danger-trigger:hover {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        /* --- MODAL (The Popup) Styles --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s;
+            z-index: 1000;
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transform: translateY(-20px);
+            transition: transform 0.3s;
+        }
+
+        .modal-overlay.open .modal-box {
+            transform: translateY(0);
+        }
+
+        .modal-title {
+            margin-top: 0;
+            font-size: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .warning-text {
+            background-color: #fff5f5;
+            color: #c53030;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #c53030;
+        }
+
+        /* Modal Input & Button */
+        .confirm-label {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .confirm-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        
+        /* Make sure the user cannot copy-paste easily (optional UX choice to force reading) */
+        .verification-string {
+            font-weight: bold;
+            user-select: all;
+            background: #eee;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-cancel {
+            background-color: #e5e7eb;
+            color: #374151;
+        }
+
+        .btn-delete-confirm {
+            background-color: var(--danger-color);
+            color: white;
+            opacity: 0.5;
+            pointer-events: none; /* Disabled state */
+            transition: opacity 0.2s;
+        }
+
+        .btn-delete-confirm.active {
+            opacity: 1;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="brand">MyWebsite</div>
+        <div class="user-menu">User Settings</div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        
+        <!-- Editable Profile Form -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Profile Information</h2>
+            </div>
+            <div class="card-body">
+                <form id="profileForm" onsubmit="return false;">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <!-- Added 'required' to ensure data exists -->
+                        <input type="text" id="username" name="username" placeholder="Enter username" required value="john.doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter email address" required value="john@example.com">
+                    </div>
+                    <div style="text-align: right; margin-top: 1rem;">
+                        <button type="submit" class="btn-primary" onclick="saveProfile()">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- THE DANGER ZONE -->
+        <div class="card danger-zone">
+            <div class="card-header">
+                <h2>Delete Account</h2>
+            </div>
+            <div class="card-body">
+                <p class="danger-desc">
+                    Once you delete your account, there is no going back. Please be certain.
+                    All your uploaded data, profile details, and settings will be permanently removed.
+                </p>
+                
+                <button type="button" class="btn-danger-trigger" onclick="openDeleteModal()">
+                    Delete this account
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- THE MODAL (Hidden by default) -->
+    <div class="modal-overlay" id="deleteModal">
+        <div class="modal-box">
+            <h3 class="modal-title">Delete Account</h3>
+            
+            <div class="warning-text">
+                This action cannot be undone. This will permanently delete your account and remove all associated data from our servers.
+            </div>
+
+            <!-- ACTUAL DELETION FORM -->
+            <form action="/api/users/delete" method="POST" id="deleteForm">
+                
+                <!-- Security Token -->
+                <input type="hidden" name="csrf_token" value="abc-123-xyz-secure-token">
+                <input type="hidden" name="_method" value="DELETE"> 
+
+                <!-- Hidden inputs to carry the user data to the deletion endpoint if needed -->
+                <input type="hidden" name="target_username" id="hidden_target_username">
+                <input type="hidden" name="target_email" id="hidden_target_email">
+
+                <label class="confirm-label" for="confirmText">
+                    To confirm, type your email address <br>
+                    <span class="verification-string" id="emailToMatch">...</span>
+                    below:
+                </label>
+                
+                <input type="text" id="confirmText" class="confirm-input" autocomplete="off" placeholder="">
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-cancel" onclick="closeDeleteModal()">Cancel</button>
+                    <button type="submit" id="finalDeleteBtn" class="btn btn-delete-confirm">Delete Account</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // DOM Elements
+        const modal = document.getElementById('deleteModal');
+        const inputField = document.getElementById('confirmText');
+        const deleteBtn = document.getElementById('finalDeleteBtn');
+        const deleteForm = document.getElementById('deleteForm');
+        
+        const emailInput = document.getElementById('email');
+        const usernameInput = document.getElementById('username');
+        const emailToMatchSpan = document.getElementById('emailToMatch');
+        
+        // Hidden inputs for form submission
+        const hiddenUser = document.getElementById('hidden_target_username');
+        const hiddenEmail = document.getElementById('hidden_target_email');
+
+        // Mock "Save Profile" function
+        function saveProfile() {
+            if(emailInput.value && usernameInput.value) {
+                alert(`Profile Updated!\nUsername: ${usernameInput.value}\nEmail: ${emailInput.value}`);
+            } else {
+                alert("Please fill in both fields.");
+            }
+        }
+
+        // 1. Open the Modal & Set Verification Requirement
+        function openDeleteModal() {
+            const currentEmail = emailInput.value;
+            const currentUsername = usernameInput.value;
+
+            if(!currentEmail) {
+                alert("Please enter a valid email address in your profile before deleting.");
+                return;
+            }
+
+            // Update the verification text to match the CURRENT email value
+            emailToMatchSpan.innerText = currentEmail;
+            
+            // Populate hidden fields for the backend
+            hiddenUser.value = currentUsername;
+            hiddenEmail.value = currentEmail;
+
+            // UI Reset
+            modal.classList.add('open');
+            inputField.value = ''; 
+            deleteBtn.classList.remove('active'); 
+            inputField.placeholder = currentEmail;
+            inputField.focus(); 
+        }
+
+        // 2. Close the Modal
+        function closeDeleteModal() {
+            modal.classList.remove('open');
+        }
+
+        // 3. Close Modal on Outside Click
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeDeleteModal();
+            }
+        });
+
+        // 4. Input Logic (Check if typed email matches profile email)
+        inputField.addEventListener('input', function(e) {
+            const typedValue = e.target.value;
+            const requiredValue = emailInput.value; // Get the live value from the form
+            
+            // Exact match check
+            if (typedValue === requiredValue) {
+                deleteBtn.classList.add('active');
+            } else {
+                deleteBtn.classList.remove('active');
+            }
+        });
+
+        // 5. Handle Submit (Demo Alert)
+        deleteForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Stop actual submit for demo
+            
+            if (deleteBtn.classList.contains('active')) {
+                deleteBtn.innerText = "Deleting...";
+                
+                // Simulate server request
+                setTimeout(() => {
+                    console.log("Deleting User:", hiddenUser.value);
+                    console.log("Deleting Email:", hiddenEmail.value);
+                    alert("Account deletion request sent for: " + hiddenEmail.value);
+                    closeDeleteModal();
+                    // window.location.href = "/goodbye"; 
+                }, 1000);
+            }
+        });
+    </script>
+
+</body>
+</html>
