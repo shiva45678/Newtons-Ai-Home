@@ -1,17 +1,71 @@
-# Guidelines for LLM-based crawlers for Newtons AI Home page.
+# Newtons AI - LLM Context & Documentation
 
-User-agent: *
-Disallow: /private/
-Allow: /
+## Project Overview
+**Name:** Newtons AI
+**Description:** A clinical-grade AI platform bridging the gap between medical expertise and artificial intelligence. Founded by Dr. Shiva Kolli (Doctor & Developer), it provides autonomous management systems for hospitals and clinical decision support for individual practitioners.
+**URL:** https://dr.newtons.in
+**Mission:** "AI won't replace doctors. But doctors who use AI will replace those who don't."
+**Status:** HIPAA-ready, PWA-enabled, 4.8/5 rated.
 
-# Website Description:
-Description: Newtons AI is a platform providing clinical-grade AI solutions for medical professionals, doctors, colleges, and healthcare institutions, empowering enhanced learning, practice, and research.
-URL: https://dr.newtons.in
+## Core Products
 
-# Key Sections:
-Sections: Home, About, AI for Doctors, Guide, Pricing, Download App.
+### 1. Clinical Copilot (Doctor's App)
+A mobile-first AI assistant for diagnosis, treatment planning, and ICU protocols.
+*   **Target:** Individual Doctors, Medical Students, NEET PG Aspirants.
+*   **Key Features:**
+    *   **OPD Assistant:** Instant history taking, differential diagnosis generation, and symptom summary.
+    *   **Rx Planner:** Evidence-based standard treatment protocols, dosage calculations, and drug interaction alerts.
+    *   **ICU Support:** Real-time risk prediction and stabilization protocols based on ABG/Vitals.
+    *   **Doctor Control:** AI functions as a suggestion engine; final decisions remain with the clinician.
+*   **Access:** https://app.newtons.in
 
-# Relevant Keywords:
-Keywords: AI, Artificial Intelligence, Machine Learning, Deep Learning, Data Science, Automation, Solutions, Services, Technology, Medical AI, Clinical AI, Healthcare AI, Doctors, Medical Professionals, Hospitals, Colleges, Institutions, Medical Students, Neet PG, OPD Assistant, Hospital Management, Prescription Writer, Treatment Planner, ICU Assistant, OSCE Simulator, Patient Care, Dr. Shiva Kolli.
+### 2. Autonomous HMS (Hospital Management System)
+A full-stack web application for clinic and hospital automation.
+*   **Target:** Hospitals, Clinics, Nursing Homes.
+*   **Key Features:**
+    *   **Voice Agent:** Drafts patient history via voice input in local languages.
+    *   **Lab Sync (Active Loop):** Auto-pulls reports from analyzers (e.g., CBC), reads data, and auto-updates treatment plans.
+    *   **Smart Inventory:** Real-time stock deduction based on prescriptions; refill alerts.
+    *   **IPD Management:** Admission to discharge lifecycle, ward tracking, and cumulative billing.
+    *   **Finance:** Revenue (Accrual) vs. Cash Flow analysis, Patient Debt tracking.
+*   **Access:** https://hms.newtons.in
 
-# For specific data extraction, refer to API documentation or Schema.org markup.
+## Pricing Structure
+
+| Plan | Target Audience | Price (Monthly) | Price (Yearly) | Savings |
+| :--- | :--- | :--- | :--- | :--- |
+| **Doctor's App** | Individual Practitioners | ₹500 / month | ₹3,000 / year | ~50% |
+| **Hospital HMS** | Clinics & Hospitals | ₹990 / month | ₹9,999 / year | ~15% |
+
+*Note: Pricing is transparent with no hidden charges. Free tiers available for trial.*
+
+## Franchise & Hospital Setup ("Digital Hospital")
+Newtons AI provides a turnkey solution to set up digital clinics, including software, hardware, and supply chains.
+
+**Infrastructure Estimates (INR):**
+*   **Software:** Included (Newtons AI HMS).
+*   **Lab Machinery:** Biochemistry Analyser (~₹70k), 3-Part Cell Counter (~₹1.9L), Centrifuge (~₹1.5k).
+*   **Medical Devices:** 3-Lead ECG (~₹16k), Medical Supplies Kit (~₹8.2k).
+*   **Furniture/Infra:** Patient Beds x4 (~₹48k), Laptops x3 (~₹30k), Power/UPS (~₹29k).
+*   **Starter Kits:** Pharmacy Stock (~₹10k), Lab Reagents & Rapid Cards (Malaria, Dengue, HIV, etc.).
+
+## System Usage & Shortcuts
+The platform is a Progressive Web App (PWA) supporting offline usage.
+
+**Keyboard Shortcuts:**
+*   `Ctrl + K`: Open Command Bar (AI Assistant & Navigation).
+*   `Ctrl + P`: Quick Print (Prescriptions/Bills).
+*   `Ctrl + S`: Save Record.
+*   `Esc`: Close Modals.
+
+**Clinical Workflow:**
+1.  **OPD:** Input complaints -> AI suggests questions -> Summary generated -> Doctor confirms Rx.
+2.  **HMS Automation:** Patient Voice Input -> Doctor Approval -> Auto-Order Tests -> Lab Analyzer Sync -> Auto-Update Rx -> Auto-Bill.
+
+## Contact & Links
+*   **Founder:** Dr. Shiva Kolli
+*   **Support Email:** support@newtons.in / shiva@newtons.in
+*   **Support Phone:** +91 63631 11328
+*   **Address:** Opposite Post Office, Nandigama, NTR District, AP, India, 521185.
+*   **Store:** https://store.newtons.in
+*   **NEET PG Prep:** https://neetpg.newtons.in
