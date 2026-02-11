@@ -1,31 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Basic Page Needs -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO: Title & Description -->
     <title>Newtons AI | Clinical Copilot for Doctors & Autonomous HMS</title>
-    <meta name="description" content="Empower your practice with Newtons AI. The top Clinical Decision Support App for doctors & fully Autonomous HMS for hospitals. Features Voice AI, Lab Integration & Auto-Inventory.">
-    <meta name="keywords" content="AI Doctor App, Hospital Management System, HMS Software, Clinical Decision Support, OPD Automation, Medical AI, Clinic Management, Voice AI Healthcare">
+    <meta name="description" content="Empower your practice with Newtons AI. The top Clinical Decision Support App for doctors & fully Autonomous HMS for hospitals.">
+    <meta name="keywords" content="AI Doctor App, Hospital Management System, HMS Software, Clinical Decision Support, OPD Automation, Medical AI">
     <meta name="author" content="Newtons AI">
-
-    <!-- Social Media & Search Engine Preview (Open Graph) -->
     <meta property="og:title" content="Newtons AI | The #1 AI App for Doctors & Hospitals">
-    <meta property="og:description" content="Automate your practice. Clinical Copilot for Doctors (Diagnosis & Rx) & Autonomous HMS for Hospitals (Voice Intake, Lab Loop, Inventory).">
+    <meta property="og:description" content="Automate your practice. Clinical Copilot for Doctors & Autonomous HMS for Hospitals.">
     <meta property="og:image" content="logo.png">
     <meta property="og:url" content="https://dr.newtons.in">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Newtons AI">
-
-    <!-- Twitter Card Data -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Newtons AI | Clinical Copilot & Autonomous HMS">
-    <meta name="twitter:description" content="The future of medical practice. Download the Doctor's App or Deploy the Autonomous HMS today.">
+    <meta name="twitter:description" content="The future of medical practice.">
     <meta name="twitter:image" content="logo.png">
-
-    <!-- JSON-LD Schema for Software Application (SEO Boost) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -33,476 +24,846 @@
       "name": "Newtons AI Clinical Copilot",
       "operatingSystem": "Android, iOS, Web",
       "applicationCategory": "MedicalApplication",
-      "offers": {
-        "@type": "Offer",
-        "price": "500",
-        "priceCurrency": "INR"
-      },
+      "offers": { "@type": "Offer", "price": "500", "priceCurrency": "INR" },
       "description": "AI-powered clinical decision support system for doctors and autonomous hospital management system.",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "120"
-      }
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "120" }
     }
     </script>
-
-    <!-- Favicons -->
     <link rel="icon" href="logo.png" type="image/png">
     <link rel="apple-touch-icon" href="logo.png">
-
-    <!-- Resource Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- Stylesheets -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    
+
     <style>
         :root {
-            /* Light Theme */
-            --bg-light: #F3F4F6;
-            --surface-light: #FFFFFF;
-            --text-primary-light: #111827;
-            --text-secondary-light: #4B5563;
-            --heading-light: #0f172a;
-            --border-light: #E2E8F0;
-            --primary-light: #2563EB;
-            --secondary-light: #059669;
-            --accent-purple: #7C3AED; /* For Doctors App */
-            --accent-orange: #EA580C; /* For HMS */
-            
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --surface-2: #f1f5f9;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --heading: #0f172a;
+            --border: #e2e8f0;
+            --primary: #2563eb;
+            --secondary: #059669;
+            --accent-purple: #7c3aed;
+            --accent-purple-light: #ede9fe;
+            --accent-orange: #ea580c;
+            --accent-orange-light: #fff7ed;
             --primary-rgb: 37, 99, 235;
             --secondary-rgb: 5, 150, 105;
-            --shadow-rgb: 0, 0, 0;
-
-            /* Dark Theme */
-            --bg-dark: #0B0F19;
-            --surface-dark: #161B28;
-            --text-primary-dark: #F9FAFB;
-            --text-secondary-dark: #9CA3AF;
-            --heading-dark: #FFFFFF;
-            --border-dark: #2D3748;
-            --primary-dark: #3B82F6;
-            --secondary-dark: #10B981;
-            
-            /* Dynamic Variables */
-            --bg: var(--bg-light);
-            --surface: var(--surface-light);
-            --text-main: var(--text-primary-light);
-            --text-muted: var(--text-secondary-light);
-            --heading: var(--heading-light);
-            --border: var(--border-light);
-            --primary: var(--primary-light);
-            --secondary: var(--secondary-light);
-            
-            /* UI Metrics */
-            --radius-md: 12px;
-            --radius-lg: 20px;
-            --shadow-sm: 0 4px 6px -1px rgba(var(--shadow-rgb), 0.05);
-            --shadow-md: 0 12px 24px -6px rgba(var(--shadow-rgb), 0.08);
-            --shadow-hover: 0 20px 25px -5px rgba(var(--shadow-rgb), 0.1);
-            --container-width: 1200px;
+            --purple-rgb: 124, 58, 237;
+            --orange-rgb: 234, 88, 12;
+            --shadow-color: 226, 232, 240;
+            --glow-purple: rgba(124, 58, 237, 0.15);
+            --glow-orange: rgba(234, 88, 12, 0.15);
+            --glow-primary: rgba(37, 99, 235, 0.15);
+            --glow-green: rgba(5, 150, 105, 0.15);
+            --radius-md: 14px;
+            --radius-lg: 22px;
+            --radius-xl: 28px;
             --nav-height: 72px;
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --container: 1200px;
+            --ease: cubic-bezier(0.25, 0.8, 0.25, 1);
+            --mobile-px: 0.6rem;
         }
 
         body.dark-theme {
-            --bg: var(--bg-dark);
-            --surface: var(--surface-dark);
-            --text-main: var(--text-primary-dark);
-            --text-muted: var(--text-secondary-dark);
-            --heading: var(--heading-dark);
-            --border: var(--border-dark);
-            --primary: var(--primary-dark);
-            --secondary: var(--secondary-dark);
+            --bg: #0a0e1a;
+            --surface: #111827;
+            --surface-2: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --heading: #f8fafc;
+            --border: #1e293b;
+            --primary: #3b82f6;
             --primary-rgb: 59, 130, 246;
+            --shadow-color: 0, 0, 0;
+            --accent-purple-light: rgba(124, 58, 237, 0.15);
+            --accent-orange-light: rgba(234, 88, 12, 0.15);
+            --glow-purple: rgba(124, 58, 237, 0.25);
+            --glow-orange: rgba(234, 88, 12, 0.25);
+            --glow-primary: rgba(59, 130, 246, 0.25);
+            --glow-green: rgba(5, 150, 105, 0.25);
         }
 
-        /* --- Base Reset & Typography --- */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-height) + 20px); }
-        
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-height) + 24px); }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
             color: var(--text-main);
-            line-height: 1.6;
+            line-height: 1.7;
             font-size: 16px;
-            transition: background-color 0.4s ease, color 0.4s ease;
+            transition: background 0.5s var(--ease), color 0.5s var(--ease);
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, h4 { color: var(--heading); line-height: 1.2; font-weight: 700; margin-bottom: 0.75rem; }
-        h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); letter-spacing: -0.02em; }
-        h2 { font-size: clamp(2rem, 4vw, 2.5rem); letter-spacing: -0.01em; }
-        h3 { font-size: 1.5rem; }
-        p { margin-bottom: 1.5rem; color: var(--text-muted); }
-        
-        a { color: var(--primary); text-decoration: none; transition: var(--transition); }
-        a:hover { color: var(--secondary); }
+        h1, h2, h3, h4 { color: var(--heading); line-height: 1.15; font-weight: 800; }
+        h2 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.02em; }
+        h3 { font-size: 1.35rem; letter-spacing: -0.01em; }
+        p { color: var(--text-muted); margin-bottom: 1rem; }
+        a { color: var(--primary); text-decoration: none; transition: all 0.3s var(--ease); }
 
-        /* --- Layout --- */
-        .container {
-            width: 100%;
-            max-width: var(--container-width);
-            margin: 0 auto;
-            padding: 0 clamp(1rem, 5vw, 2rem);
+        .container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 2.5rem); }
+        section { padding: clamp(5rem, 10vw, 8rem) 0; position: relative; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.4;
         }
+        body.dark-theme::before { opacity: 0.15; }
 
-        section { padding: clamp(4rem, 8vw, 6rem) 0; position: relative; }
-        .bg-surface { background-color: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-
-        /* --- Buttons --- */
+        /* ========== BUTTONS ========== */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.6rem;
-            padding: 0.8rem 1.6rem;
-            border-radius: var(--radius-md);
+            gap: 0.55rem;
+            padding: 0.85rem 1.8rem;
+            border-radius: 50px;
             font-weight: 600;
             font-size: 1rem;
-            transition: var(--transition);
+            transition: all 0.35s var(--ease);
             cursor: pointer;
-            border: 1px solid transparent;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            letter-spacing: -0.01em;
         }
-
-        /* Hero Specific Buttons */
-        .hero-btns {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-            margin-top: 2.5rem;
+        .btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
-
-        .hero-btn-group {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+        .btn:hover::before { opacity: 1; }
 
         .btn-doc {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--accent-purple), #9333ea);
             color: white;
-            padding: 0.9rem 2.2rem;
-            font-size: 1.1rem;
-            border-radius: 50px;
-            box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.4);
-            border: 1px solid var(--primary);
+            box-shadow: 0 4px 20px var(--glow-purple);
         }
-        .btn-doc:hover { background: var(--secondary); border-color: var(--secondary); color:white; transform: translateY(-3px); }
+        .btn-doc:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 30px var(--glow-purple); color: white; }
 
         .btn-hosp {
-            background: var(--surface);
-            color: var(--accent-orange);
-            padding: 0.9rem 2.2rem;
-            font-size: 1.1rem;
-            border-radius: 50px;
-            border: 2px solid var(--accent-orange);
-        }
-        .btn-hosp:hover { background: var(--accent-orange); color: white; transform: translateY(-3px); box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3); }
-        
-        /* New Patient Button Style */
-        .btn-patient {
-            background: var(--secondary);
+            background: linear-gradient(135deg, var(--accent-orange), #dc2626);
             color: white;
-            padding: 0.9rem 2.2rem;
-            font-size: 1.1rem;
-            border-radius: 50px;
-            border: 2px solid var(--secondary);
-            box-shadow: 0 4px 15px rgba(var(--secondary-rgb), 0.3);
+            box-shadow: 0 4px 20px var(--glow-orange);
         }
-        .btn-patient:hover { 
-            background: #047857; 
-            border-color: #047857; 
-            color: white; 
-            transform: translateY(-3px); 
-            box-shadow: 0 6px 20px rgba(var(--secondary-rgb), 0.5);
-        }
+        .btn-hosp:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 30px var(--glow-orange); color: white; }
 
-        /* Franchise Button (For New Section) */
+        .btn-patient {
+            background: linear-gradient(135deg, var(--secondary), #0d9488);
+            color: white;
+            box-shadow: 0 4px 20px var(--glow-green);
+        }
+        .btn-patient:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 30px var(--glow-green); color: white; }
+
+        .btn-outline {
+            background: var(--surface);
+            color: var(--text-main);
+            border: 1.5px solid var(--border);
+            box-shadow: 0 2px 8px rgba(var(--shadow-color), 0.2);
+            font-size: 0.88rem;
+            padding: 0.6rem 1.2rem;
+        }
+        body.dark-theme .btn-outline { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
+        .btn-outline:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); box-shadow: 0 4px 16px var(--glow-primary); }
+
         .btn-franchise {
             background: var(--heading);
             color: var(--bg);
-            padding: 0.9rem 2.2rem;
-            font-size: 1.1rem;
-            border-radius: 50px;
-            border: 2px solid var(--heading);
+            font-size: 1.05rem;
+            padding: 1rem 2.4rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
-        .btn-franchise:hover { 
-            background: transparent; 
-            color: var(--heading); 
-            transform: translateY(-3px); 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        body.dark-theme .btn-franchise { border-color: var(--text-main); background: var(--text-main); color: var(--bg); }
-        body.dark-theme .btn-franchise:hover { background: transparent; color: var(--text-main); }
+        .btn-franchise:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 30px rgba(0,0,0,0.25); color: var(--bg); }
+        body.dark-theme .btn-franchise { background: white; color: #0a0e1a; }
+        body.dark-theme .btn-franchise:hover { color: #0a0e1a; }
 
-        .btn-outline {
-             background: rgba(var(--surface-light), 0.6);
-            backdrop-filter: blur(5px);
-            color: var(--text-main);
-            border: 1px solid var(--border);
-            padding: 0.7rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 500;
-        }
-        body.dark-theme .btn-outline { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
-        .btn-outline:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
-
-        /* --- Header --- */
+        /* ========== HEADER ========== */
         header {
             position: fixed;
             top: 0; width: 100%; z-index: 1000;
             height: var(--nav-height);
-            background: rgba(var(--surface-light), 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            transition: var(--transition);
+            background: rgba(248, 250, 252, 0.72);
+            backdrop-filter: blur(20px) saturate(1.8);
+            -webkit-backdrop-filter: blur(20px) saturate(1.8);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            transition: all 0.4s var(--ease);
         }
-        body.dark-theme header { background: rgba(22, 27, 40, 0.85); border-bottom-color: rgba(255,255,255,0.05); }
-        
+        body.dark-theme header { background: rgba(10, 14, 26, 0.78); border-bottom-color: rgba(255,255,255,0.06); }
+        header.scrolled { box-shadow: 0 4px 30px rgba(var(--shadow-color), 0.12); }
+
         .header-inner { display: flex; justify-content: space-between; align-items: center; height: 100%; }
-        
-        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 8px; }
-        .logo img { height: 32px; border-radius: 6px; }
 
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { font-weight: 500; color: var(--text-main); font-size: 0.95rem; position: relative; }
-        .nav-links a::after {
-            content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
-            background: var(--primary); transition: width 0.3s ease;
+        .logo {
+            font-size: 1.4rem; font-weight: 900; color: var(--primary);
+            display: flex; align-items: center; gap: 10px; letter-spacing: -0.02em;
         }
-        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .logo img { height: 36px; border-radius: 10px; box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.15); }
 
-        .header-actions { display: flex; gap: 1rem; align-items: center; }
+        .nav-links { display: flex; gap: 0.3rem; list-style: none; }
+        .nav-links a {
+            font-weight: 500; color: var(--text-muted); font-size: 0.92rem;
+            padding: 0.5rem 1rem; border-radius: 10px; transition: all 0.25s var(--ease);
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); background: rgba(var(--primary-rgb), 0.08); }
+
+        .header-actions { display: flex; gap: 0.5rem; align-items: center; }
         .icon-btn {
-            background: transparent; border: none; color: var(--text-main);
-            font-size: 1.25rem; cursor: pointer; padding: 8px; border-radius: 50%;
-            transition: var(--transition);
+            background: transparent; border: none; color: var(--text-muted);
+            font-size: 1.15rem; cursor: pointer; padding: 10px; border-radius: 12px;
+            transition: all 0.3s var(--ease); display: flex; align-items: center; justify-content: center;
         }
-        .icon-btn:hover { background: rgba(var(--primary-rgb), 0.1); color: var(--primary); }
+        .icon-btn:hover { background: rgba(var(--primary-rgb), 0.1); color: var(--primary); transform: scale(1.05); }
         .mobile-toggle { display: none; }
 
-        /* --- Hero Section --- */
+        /* ========== HERO ========== */
         #hero {
-            min-height: 90vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding-top: var(--nav-height);
-            background: radial-gradient(circle at 50% 50%, rgba(var(--primary-rgb), 0.08) 0%, transparent 60%);
+            position: relative;
             overflow: hidden;
         }
 
-        .hero-blobs { position: absolute; width: 100%; height: 100%; overflow: hidden; z-index: -1; pointer-events: none; }
-        .blob {
-            position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.4;
-            animation: float 20s infinite alternate ease-in-out;
-        }
-        .blob-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: var(--primary); }
-        .blob-2 { bottom: -10%; right: -10%; width: 400px; height: 400px; background: var(--secondary); animation-delay: -5s; }
+        .hero-bg { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
 
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(20px, -20px) scale(1.05); }
+        .hero-mesh {
+            position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 50% 0%, rgba(var(--purple-rgb), 0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 50% at 80% 50%, rgba(var(--primary-rgb), 0.08) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 60% at 20% 80%, rgba(var(--secondary-rgb), 0.08) 0%, transparent 70%);
         }
-
-        .hero-content { max-width: 900px; position: relative; z-index: 1; }
-        .hero-logo-lg { width: 100px; height: 100px; margin-bottom: 1.5rem; border-radius: 20px; box-shadow: var(--shadow-md); }
-        
-        /* Hidden H1 for SEO */
-        .sr-only {
-            position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-            overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
+        body.dark-theme .hero-mesh {
+            background:
+                radial-gradient(ellipse 80% 60% at 50% 0%, rgba(var(--purple-rgb), 0.2) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 50% at 80% 50%, rgba(var(--primary-rgb), 0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 60% at 20% 80%, rgba(var(--secondary-rgb), 0.1) 0%, transparent 70%);
         }
 
-        /* --- IMPROVED UI/UX CARD STYLES --- */
+        .hero-grid-pattern {
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(var(--primary-rgb), 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(var(--primary-rgb), 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+        }
+        body.dark-theme .hero-grid-pattern {
+            background-image:
+                linear-gradient(rgba(255,255,255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255, 0.03) 1px, transparent 1px);
+        }
+
+        .orb {
+            position: absolute; border-radius: 50%; filter: blur(80px);
+            animation: orbFloat 20s infinite ease-in-out; will-change: transform;
+        }
+        .orb-1 { top: 10%; left: 15%; width: 350px; height: 350px; background: rgba(var(--purple-rgb), 0.15); }
+        .orb-2 { bottom: 15%; right: 10%; width: 300px; height: 300px; background: rgba(var(--primary-rgb), 0.12); animation-delay: -7s; }
+        .orb-3 { top: 50%; left: 60%; width: 250px; height: 250px; background: rgba(var(--secondary-rgb), 0.1); animation-delay: -14s; }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -20px) scale(1.05); }
+            50% { transform: translate(-20px, 15px) scale(0.95); }
+            75% { transform: translate(15px, 25px) scale(1.03); }
+        }
+
+        .hero-content { max-width: 560px; position: relative; z-index: 1; }
+
+        .hero-logo-lg {
+            width: 80px; height: 80px;
+            margin-bottom: 2rem;
+            border-radius: 22px;
+            box-shadow: 0 8px 30px rgba(var(--primary-rgb), 0.2), 0 0 0 1px rgba(var(--primary-rgb), 0.08);
+            animation: logoFloat 6s ease-in-out infinite;
+        }
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .hero-cta-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            width: 100%;
+        }
+
+        .hero-cta-primary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            width: 100%;
+        }
+        .hero-cta-primary .btn {
+            width: 100%;
+            padding: 0.95rem 1rem;
+            font-size: 0.98rem;
+            font-weight: 700;
+        }
+
+        .hero-cta-center {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .hero-cta-center .btn {
+            width: 100%;
+            padding: 0.8rem 1.5rem;
+            font-size: 0.92rem;
+        }
+
+        .hero-cta-utils {
+            display: flex;
+            gap: 0.6rem;
+            justify-content: center;
+            margin-top: 0.25rem;
+        }
+
+        .hero-trust {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .trust-item i { font-size: 0.75rem; color: var(--secondary); }
+
+        /* ========== SECTION HEADERS ========== */
+        .section-header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 3.5rem;
+        }
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 14px;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 1rem;
+        }
+        .section-badge.purple { background: var(--accent-purple-light); color: var(--accent-purple); }
+        .section-badge.green { background: rgba(var(--secondary-rgb), 0.1); color: var(--secondary); }
+        .section-badge.neutral { background: var(--surface-2); color: var(--text-muted); border: 1px solid var(--border); }
+
+        .section-header h2 { margin-bottom: 0.75rem; }
+        .section-header p { font-size: 1.1rem; margin: 0; }
+
+        /* ========== PRODUCT CARDS ========== */
         .split-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
-            margin-top: -3rem;
-            margin-bottom: 4rem;
-            align-items: stretch; /* Ensures cards are equal height */
+            align-items: stretch;
         }
 
         .split-card {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
+            border-radius: var(--radius-xl);
             padding: 2.5rem;
             position: relative;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-sm);
-            
-            /* Flexbox for Symmetrical Alignment */
+            transition: all 0.4s var(--ease);
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            overflow: hidden;
         }
+        .split-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 4px;
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        }
+        .split-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(var(--shadow-color), 0.2);
+        }
+        .split-card.doctor::before { background: linear-gradient(90deg, var(--accent-purple), #a78bfa); }
+        .split-card.doctor:hover { box-shadow: 0 20px 60px var(--glow-purple); }
+        .split-card.hospital::before { background: linear-gradient(90deg, var(--accent-orange), #f97316); }
+        .split-card.hospital:hover { box-shadow: 0 20px 60px var(--glow-orange); }
 
-        .split-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
+        .split-card::after {
+            content: '';
+            position: absolute; inset: 0;
+            border-radius: var(--radius-xl);
+            opacity: 0; transition: opacity 0.4s; pointer-events: none;
+        }
+        .split-card.doctor::after { background: radial-gradient(circle at 50% 0%, var(--glow-purple), transparent 70%); }
+        .split-card.hospital::after { background: radial-gradient(circle at 50% 0%, var(--glow-orange), transparent 70%); }
+        .split-card:hover::after { opacity: 1; }
 
-        /* Icon Container */
         .card-icon {
-            width: 60px; height: 60px;
-            border-radius: 16px;
+            width: 56px; height: 56px; border-radius: 16px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.5rem; margin-bottom: 1.25rem; position: relative; z-index: 1;
         }
+        .split-card.doctor .card-icon { background: var(--accent-purple-light); color: var(--accent-purple); }
+        .split-card.hospital .card-icon { background: var(--accent-orange-light); color: var(--accent-orange); }
 
-        /* Doctor Theme */
-        .split-card.doctor { border-top: 6px solid var(--accent-purple); }
-        .split-card.doctor .card-icon { background: rgba(124, 58, 237, 0.1); color: var(--accent-purple); }
-        .split-card.doctor h3 { color: var(--accent-purple); }
-
-        /* Hospital Theme */
-        .split-card.hospital { border-top: 6px solid var(--accent-orange); }
-        .split-card.hospital .card-icon { background: rgba(234, 88, 12, 0.1); color: var(--accent-orange); }
-        .split-card.hospital h3 { color: var(--accent-orange); }
-
-        /* Typography */
-        .split-card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .split-card .sub-head { color: var(--text-muted); font-size: 1rem; margin-bottom: 2rem; min-height: 3rem; }
-        
-        /* Badges */
         .badge {
-            display: inline-block; padding: 4px 12px; border-radius: 50px;
-            font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
-            margin-bottom: 1rem; width: fit-content;
+            display: inline-flex; align-items: center; gap: 4px;
+            padding: 4px 12px; border-radius: 50px;
+            font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.6px; margin-bottom: 1rem; width: fit-content;
+            position: relative; z-index: 1;
         }
-        .badge-doc { background: #f3e8ff; color: var(--accent-purple); }
-        body.dark-theme .badge-doc { background: rgba(124, 58, 237, 0.2); }
-        
-        .badge-hosp { background: #ffedd5; color: var(--accent-orange); }
-        body.dark-theme .badge-hosp { background: rgba(234, 88, 12, 0.2); }
+        .badge-doc { background: var(--accent-purple-light); color: var(--accent-purple); }
+        .badge-hosp { background: var(--accent-orange-light); color: var(--accent-orange); }
 
-        /* Features List */
-        .feature-list { list-style: none; padding: 0; margin-bottom: 2rem; flex-grow: 1; text-align: left; }
+        .split-card h3 { font-size: 1.6rem; margin-bottom: 0.4rem; position: relative; z-index: 1; }
+        .split-card.doctor h3 { color: var(--accent-purple); }
+        .split-card.hospital h3 { color: var(--accent-orange); }
+        .split-card .sub-head { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.75rem; position: relative; z-index: 1; }
+
+        .feature-list {
+            list-style: none; margin-bottom: 2rem; flex-grow: 1;
+            text-align: left; position: relative; z-index: 1;
+        }
         .feature-list li {
-            display: flex; align-items: flex-start; gap: 12px;
-            margin-bottom: 1.2rem;
-            font-size: 0.95rem;
-            color: var(--text-muted);
+            display: flex; align-items: flex-start; gap: 14px;
+            margin-bottom: 1.2rem; font-size: 0.92rem; color: var(--text-muted); line-height: 1.5;
         }
-        .feature-list li strong { color: var(--heading); font-weight: 600; display: block; margin-bottom: 2px; }
-        .feature-list i { margin-top: 4px; font-size: 1rem; }
+        .feature-list li strong { color: var(--heading); font-weight: 600; display: block; margin-bottom: 1px; }
+        .feature-list li .check-icon {
+            width: 22px; height: 22px; min-width: 22px; border-radius: 7px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.7rem; margin-top: 2px;
+        }
+        .split-card.doctor .check-icon { background: var(--accent-purple-light); color: var(--accent-purple); }
+        .split-card.hospital .check-icon { background: var(--accent-orange-light); color: var(--accent-orange); }
 
-        /* Buttons */
         .card-btn {
-            width: 100%; padding: 1rem; border-radius: 12px;
-            font-weight: 600; text-align: center;
-            margin-top: auto; /* Pushes button to bottom */
-            display: block;
+            width: 100%; padding: 1rem; border-radius: 14px;
+            font-weight: 700; text-align: center; margin-top: auto;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            transition: all 0.35s var(--ease); position: relative; z-index: 1; font-size: 1rem;
         }
-        .btn-purple { background: var(--accent-purple); color: white; }
-        .btn-purple:hover { background: #6D28D9; color:white; transform: translateY(-2px); }
-        .btn-orange { background: var(--accent-orange); color: white; }
-        .btn-orange:hover { background: #C2410C; color:white; transform: translateY(-2px); }
+        .btn-purple { background: linear-gradient(135deg, var(--accent-purple), #9333ea); color: white; box-shadow: 0 4px 16px var(--glow-purple); }
+        .btn-purple:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--glow-purple); color: white; }
+        .btn-orange { background: linear-gradient(135deg, var(--accent-orange), #dc2626); color: white; box-shadow: 0 4px 16px var(--glow-orange); }
+        .btn-orange:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--glow-orange); color: white; }
 
+        .bg-surface { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 
-        /* --- Pricing Section Styles --- */
-        .price-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            text-align: center;
-            display: flex; flex-direction: column;
-            transition: var(--transition);
-            box-shadow: var(--shadow-sm);
+        /* ========== TABS ========== */
+        .tab-nav {
+            display: flex; justify-content: center; margin-bottom: 2.5rem;
+            background: var(--surface-2); padding: 5px; border-radius: 16px;
+            width: fit-content; margin-left: auto; margin-right: auto; border: 1px solid var(--border);
         }
-        .price-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
-        
-        .price-amount { font-size: 2.5rem; font-weight: 800; color: var(--heading); margin-bottom: 0.2rem; display: block;}
-        .price-period { font-size: 0.95rem; color: var(--text-muted); font-weight: 500; }
-        .price-divider { height: 1px; background: var(--border); width: 100%; margin: 1.5rem 0; }
-        .save-badge { 
-            display: inline-block; font-size: 0.75rem; padding: 4px 10px; border-radius: 12px;
-            font-weight: 700; margin-left: 8px; vertical-align: middle;
+        .tab-btn {
+            background: transparent; color: var(--text-muted); border: none;
+            padding: 0.65rem 1.5rem; border-radius: 12px;
+            font-weight: 600; font-size: 0.92rem; cursor: pointer;
+            transition: all 0.3s var(--ease); font-family: inherit;
         }
+        .tab-btn.active {
+            background: var(--surface); color: var(--heading);
+            box-shadow: 0 2px 8px rgba(var(--shadow-color), 0.15);
+        }
+        .tab-btn:hover:not(.active) { color: var(--heading); }
 
-        /* --- Cards & Grid --- */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .tab-panel { display: none; animation: fadeSlide 0.5s var(--ease); }
+        .tab-panel.active { display: block; }
+        @keyframes fadeSlide { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
 
         .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            transition: var(--transition);
-            display: flex; flex-direction: column;
-            box-shadow: var(--shadow-sm);
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius-lg); padding: 2rem;
+            transition: all 0.4s var(--ease); display: flex; flex-direction: column;
+            position: relative; overflow: hidden;
         }
-        .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: rgba(var(--primary-rgb), 0.3); }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(var(--shadow-color), 0.15);
+            border-color: rgba(var(--primary-rgb), 0.15);
+        }
+        .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
 
-        .card h3 { margin-bottom: 0.5rem; font-size: 1.25rem; }
-        .card p { font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; }
-        
-        /* --- Footer --- */
-        footer { background: var(--surface-dark); color: #9CA3AF; padding: 4rem 0 2rem; margin-top: auto; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; }
-        
-        /* Mobile Menu */
-        .mobile-nav {
-            position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
-            background: var(--surface); z-index: 1001; padding: 2rem;
-            transition: right 0.3s ease; box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+        .card h4 { font-size: 1.15rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
+        .card h4 .step-num {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 28px; height: 28px; border-radius: 8px;
+            font-size: 0.8rem; font-weight: 800; font-family: 'JetBrains Mono', monospace;
         }
-        .mobile-nav.open { right: 0; }
+        .card p { font-size: 0.95rem; flex-grow: 1; }
+
+        .card.purple-top::before { background: linear-gradient(90deg, var(--accent-purple), #a78bfa); }
+        .card.purple-top .step-num { background: var(--accent-purple-light); color: var(--accent-purple); }
+        .card.orange-top::before { background: linear-gradient(90deg, var(--accent-orange), #f97316); }
+        .card.orange-top .step-num { background: var(--accent-orange-light); color: var(--accent-orange); }
+
+        /* ========== PRICING ========== */
+        .pricing-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem; max-width: 780px; margin: 0 auto;
+        }
+        .price-card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius-xl); padding: 2.5rem;
+            text-align: center; display: flex; flex-direction: column;
+            transition: all 0.4s var(--ease); position: relative; overflow: hidden;
+        }
+        .price-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+        .price-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(var(--shadow-color), 0.18); }
+
+        .price-card.purple::before { background: linear-gradient(90deg, var(--accent-purple), #a78bfa); }
+        .price-card.purple:hover { box-shadow: 0 20px 50px var(--glow-purple); }
+        .price-card.orange::before { background: linear-gradient(90deg, var(--accent-orange), #f97316); }
+        .price-card.orange:hover { box-shadow: 0 20px 50px var(--glow-orange); }
+
+        .price-card .price-icon {
+            width: 60px; height: 60px; border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem; margin: 0 auto 1.25rem;
+        }
+        .price-card.purple .price-icon { background: var(--accent-purple-light); color: var(--accent-purple); }
+        .price-card.orange .price-icon { background: var(--accent-orange-light); color: var(--accent-orange); }
+
+        .price-card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .price-card.purple h3 { color: var(--accent-purple); }
+        .price-card.orange h3 { color: var(--accent-orange); }
+        .price-card .price-desc { font-size: 0.9rem; margin-bottom: 1.75rem; }
+
+        .price-block { margin-bottom: 0.5rem; }
+        .price-amount {
+            font-size: 2.8rem; font-weight: 900; color: var(--heading);
+            font-family: 'JetBrains Mono', monospace; letter-spacing: -0.03em; line-height: 1;
+        }
+        .price-period { font-size: 0.9rem; color: var(--text-muted); font-weight: 500; }
+        .price-or { font-size: 0.85rem; color: var(--text-muted); margin: 0.5rem 0; font-weight: 500; }
+        .price-alt .price-amount { font-size: 2rem; }
+        .save-badge {
+            display: inline-block; font-size: 0.72rem; padding: 3px 10px;
+            border-radius: 50px; font-weight: 700; margin-left: 4px; vertical-align: middle;
+        }
+        .save-badge.purple { background: var(--accent-purple-light); color: var(--accent-purple); }
+        .save-badge.orange { background: var(--accent-orange-light); color: var(--accent-orange); }
+        .price-divider { height: 1px; background: var(--border); margin: 1.75rem 0; }
+        .price-features { list-style: none; text-align: left; margin-bottom: 2rem; flex-grow: 1; }
+        .price-features li {
+            display: flex; align-items: center; gap: 10px;
+            font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.7rem;
+        }
+        .price-features li i { font-size: 0.8rem; }
+        .price-card.purple .price-features i { color: var(--accent-purple); }
+        .price-card.orange .price-features i { color: var(--accent-orange); }
+        .price-card .btn { width: 100%; padding: 0.9rem; font-size: 1rem; }
+
+        /* ========== DOWNLOAD ========== */
+        .download-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+            max-width: 800px; margin: 0 auto;
+        }
+        .download-card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius-xl); padding: 2.5rem;
+            text-align: center; display: flex; flex-direction: column; align-items: center;
+            transition: all 0.4s var(--ease);
+        }
+        .download-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(var(--shadow-color), 0.15); }
+
+        .download-icon {
+            width: 72px; height: 72px; border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; margin-bottom: 1.25rem;
+        }
+        .download-icon.android { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); color: #2e7d32; }
+        body.dark-theme .download-icon.android { background: rgba(46, 125, 50, 0.15); }
+        .download-icon.apple { background: var(--surface-2); color: var(--text-main); }
+        .download-card h3 { margin-bottom: 0.5rem; }
+        .download-card p { font-size: 0.92rem; margin-bottom: 1.25rem; }
+
+        /* ========== FRANCHISE ========== */
+        #business { position: relative; overflow: hidden; }
+        .business-bg {
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at center, rgba(var(--primary-rgb), 0.04) 0%, transparent 70%);
+        }
+        body.dark-theme .business-bg { background: radial-gradient(ellipse at center, rgba(var(--primary-rgb), 0.08) 0%, transparent 70%); }
+        .business-content { position: relative; z-index: 1; text-align: center; }
+        .business-content h2 { margin-bottom: 0.75rem; }
+        .business-content > p { font-size: 1.1rem; max-width: 600px; margin: 0 auto 2.5rem; }
+        .business-features {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin-top: 2rem;
+        }
+        .biz-chip {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 18px; border-radius: 50px;
+            background: var(--surface); border: 1px solid var(--border);
+            font-size: 0.88rem; font-weight: 500; color: var(--text-muted);
+            transition: all 0.3s var(--ease);
+        }
+        .biz-chip:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
+        .biz-chip i { color: var(--secondary); }
+
+        /* ========== FOOTER ========== */
+        footer { background: #0f172a; color: #94a3b8; padding: 5rem 0 2rem; }
+        body.dark-theme footer { background: #050810; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem; }
+        .footer-brand h3 { color: white; font-size: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+        .footer-brand p { color: #64748b; font-style: italic; font-size: 0.95rem; line-height: 1.7; }
+        .footer-col h4 {
+            color: #e2e8f0; font-size: 0.9rem; text-transform: uppercase;
+            letter-spacing: 1px; margin-bottom: 1.25rem; font-weight: 700;
+        }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.75rem; }
+        .footer-links a {
+            color: #64748b; font-size: 0.92rem; transition: all 0.3s;
+            display: inline-flex; align-items: center; gap: 6px;
+        }
+        .footer-links a:hover { color: white; transform: translateX(4px); }
+        .footer-links .link-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+        .footer-links .link-dot.purple { background: var(--accent-purple); }
+        .footer-links .link-dot.orange { background: var(--accent-orange); }
+        .footer-links .link-dot.green { background: var(--secondary); }
+        .footer-bottom {
+            text-align: center; padding-top: 2.5rem; margin-top: 3rem;
+            border-top: 1px solid #1e293b; font-size: 0.85rem; color: #475569;
+        }
+
+        /* ========== MOBILE NAV ========== */
         .mobile-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5);
-            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s;
+            position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px); z-index: 1000;
+            opacity: 0; pointer-events: none; transition: opacity 0.35s var(--ease);
         }
         .mobile-overlay.open { opacity: 1; pointer-events: auto; }
 
-        /* Tab Logic */
-        .tab-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 2rem; }
-        .tab-btn {
-            background: var(--surface); color: var(--text-muted); border: 1px solid var(--border);
-            padding: 0.6rem 1.2rem; border-radius: 2rem; font-weight: 600; cursor: pointer; transition: var(--transition);
+        .mobile-nav {
+            position: fixed; top: 0; right: -320px; width: 300px;
+            height: 100vh; height: 100dvh;
+            background: var(--surface); z-index: 1001; padding: 1.75rem;
+            transition: right 0.4s var(--ease); border-left: 1px solid var(--border);
+            overflow-y: auto; display: flex; flex-direction: column;
         }
-        .tab-btn.active, .tab-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
-        .tab-panel { display: none; animation: slideUp 0.4s; }
-        .tab-panel.active { display: block; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .mobile-nav.open { right: 0; }
+        .mobile-nav-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 2rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border);
+        }
+        .mobile-nav-links { list-style: none; flex-grow: 1; }
+        .mobile-nav-links li { margin-bottom: 0.25rem; }
+        .mobile-nav-links a {
+            display: flex; align-items: center; gap: 12px;
+            padding: 0.85rem 1rem; border-radius: 12px;
+            font-weight: 600; font-size: 0.95rem; color: var(--text-main);
+            transition: all 0.25s var(--ease);
+        }
+        .mobile-nav-links a:hover { background: rgba(var(--primary-rgb), 0.08); }
+        .mobile-nav-links a i { width: 20px; text-align: center; font-size: 1rem; }
+        .mobile-nav-links .purple { color: var(--accent-purple); }
+        .mobile-nav-links .orange { color: var(--accent-orange); }
+        .mobile-nav-links .green { color: var(--secondary); }
+        .mobile-nav-links .divider { height: 1px; background: var(--border); margin: 0.75rem 0; }
+
+        .mobile-nav-footer { padding-top: 1.25rem; border-top: 1px solid var(--border); }
+        .mobile-theme-toggle {
+            display: flex; align-items: center; gap: 10px;
+            padding: 0.85rem 1rem; border-radius: 12px;
+            font-weight: 600; font-size: 0.95rem; color: var(--text-muted);
+            cursor: pointer; background: none; border: none; width: 100%;
+            transition: all 0.25s; font-family: inherit;
+        }
+        .mobile-theme-toggle:hover { background: rgba(var(--primary-rgb), 0.08); color: var(--heading); }
+
+        /* ========== SCROLL REVEAL ========== */
+        .reveal {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
 
         @media (max-width: 768px) {
-            .container { padding: 0 0.8rem; } 
-            
-            .nav-links, .header-actions .theme-toggle { display: none; }
-            .mobile-toggle { display: block; }
-            
-            .hero-btns { margin-top: 1.5rem; }
-            .hero-btn-group { flex-direction: column; width: 100%; gap: 1rem; }
-            .btn { width: 100%; }
-            .split-grid { grid-template-columns: 1fr; margin-top: 1rem; gap: 1.5rem; }
-            h1 { font-size: 2.5rem; }
+            /* ===== GLOBAL: Minimal horizontal padding ===== */
+            .container { padding: 0 var(--mobile-px); }
 
-            /* Mobile UI Adjustments */
-            .split-card { padding: 1.5rem 0.5rem; } /* Minimized padding */
-            .feature-list li { font-size: 0.9rem; }
-            .split-card .sub-head { min-height: auto; margin-bottom: 1.5rem; }
+            section { padding: clamp(3rem, 8vw, 5rem) 0; }
+
+            .nav-links { display: none; }
+            .header-actions .theme-toggle { display: none; }
+            .mobile-toggle { display: flex; }
+
+            /* ===== HERO: Thumb-zone aligned ===== */
+            #hero {
+                min-height: 100vh;
+                min-height: 100dvh;
+                align-items: flex-end;
+                padding-bottom: env(safe-area-inset-bottom, 1.5rem);
+            }
+
+            .hero-content {
+                max-width: 100%;
+                padding-bottom: 2rem;
+            }
+
+            .hero-logo-lg {
+                width: 64px; height: 64px;
+                border-radius: 18px;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-cta-area { gap: 0.5rem; }
+
+            .hero-cta-primary {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            .hero-cta-primary .btn {
+                font-size: 0.95rem;
+                padding: 0.85rem 1rem;
+            }
+
+            .hero-cta-center .btn {
+                max-width: 100%;
+                font-size: 0.88rem;
+                padding: 0.7rem 1rem;
+            }
+
+            .hero-cta-utils {
+                flex-direction: row;
+                width: 100%;
+                gap: 0.5rem;
+            }
+            .hero-cta-utils .btn {
+                flex: 1;
+                width: auto;
+                padding: 0.55rem 0.5rem;
+                font-size: 0.8rem;
+            }
+
+            .hero-trust {
+                gap: 0.8rem;
+                margin-top: 1rem;
+            }
+            .trust-item { font-size: 0.72rem; gap: 4px; }
+            .trust-item i { font-size: 0.65rem; }
+
+            /* ===== CARDS: Tight padding ===== */
+            .split-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .split-card {
+                padding: 1.5rem 1rem;
+                border-radius: var(--radius-lg);
+            }
+            .split-card .sub-head { min-height: auto; margin-bottom: 1.25rem; }
+            .split-card h3 { font-size: 1.4rem; }
+            .feature-list li { gap: 10px; margin-bottom: 1rem; font-size: 0.88rem; }
+            .card-btn { padding: 0.85rem; border-radius: 12px; font-size: 0.95rem; }
+
+            /* ===== TABS ===== */
+            .tab-nav { width: 100%; border-radius: 12px; }
+            .tab-btn { flex: 1; font-size: 0.8rem; padding: 0.55rem 0.6rem; text-align: center; }
+
+            /* ===== WORKFLOW CARDS ===== */
+            .grid { grid-template-columns: 1fr; gap: 1rem; }
+            .card {
+                padding: 1.5rem 1rem;
+                border-radius: var(--radius-md);
+            }
+
+            /* ===== PRICING ===== */
+            .pricing-grid { grid-template-columns: 1fr; max-width: 100%; gap: 1rem; }
+            .price-card {
+                padding: 1.75rem 1.25rem;
+                border-radius: var(--radius-lg);
+            }
+            .price-amount { font-size: 2.4rem; }
+            .price-alt .price-amount { font-size: 1.7rem; }
+
+            /* ===== DOWNLOAD ===== */
+            .download-grid { grid-template-columns: 1fr; max-width: 100%; gap: 1rem; }
+            .download-card {
+                padding: 2rem 1.25rem;
+                border-radius: var(--radius-lg);
+            }
+
+            /* ===== BUSINESS ===== */
+            .business-features { gap: 0.4rem; }
+            .biz-chip { font-size: 0.8rem; padding: 7px 12px; }
+            .btn-franchise { padding: 0.85rem 1.8rem; font-size: 0.95rem; }
+
+            /* ===== FOOTER ===== */
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+            /* ===== SECTION HEADER ===== */
+            .section-header { margin-bottom: 2.5rem; }
+            .section-header p { font-size: 0.95rem; }
         }
-        
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 380px) {
+            --mobile-px: 0.4rem;
+            .container { padding: 0 0.4rem; }
+            .hero-logo-lg { width: 56px; height: 56px; border-radius: 16px; margin-bottom: 1.25rem; }
+            .hero-cta-primary .btn { font-size: 0.88rem; padding: 0.8rem 0.6rem; }
+            .hero-cta-center .btn { font-size: 0.82rem; }
+            .hero-cta-utils .btn { font-size: 0.75rem; padding: 0.5rem 0.4rem; }
+            .split-card { padding: 1.25rem 0.8rem; }
+            .price-card { padding: 1.5rem 1rem; }
+            .card { padding: 1.25rem 0.8rem; }
+            .download-card { padding: 1.5rem 1rem; }
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 8px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+        ::selection { background: rgba(var(--primary-rgb), 0.2); color: var(--heading); }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
+    <header id="main-header">
         <div class="container header-inner">
             <a href="#" class="logo">
-                <img src="logo.png" alt="Logo"> Newtons Ai
+                <img src="logo.png" alt="Newtons AI Logo"> Newtons Ai
             </a>
             <ul class="nav-links">
                 <li><a href="#hero" class="active">Home</a></li>
@@ -512,433 +873,423 @@
                 <li><a href="#download">Download</a></li>
             </ul>
             <div class="header-actions">
-                <button class="icon-btn theme-toggle"><i class="fa-solid fa-moon"></i></button>
-                <button class="icon-btn mobile-toggle"><i class="fa-solid fa-bars"></i></button>
+                <button class="icon-btn theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+                <button class="icon-btn mobile-toggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
             </div>
         </div>
     </header>
 
-    <!-- Mobile Navigation -->
     <div class="mobile-overlay"></div>
-    <div class="mobile-nav">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem;">
-            <span style="font-weight:800; font-size:1.2rem; color:var(--primary);">Newtons Ai</span>
-            <button class="icon-btn close-menu"><i class="fa-solid fa-times"></i></button>
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+        <div class="mobile-nav-header">
+            <span class="logo" style="font-size:1.2rem;">
+                <img src="logo.png" alt="Logo" style="height:28px; border-radius:8px;"> Newtons Ai
+            </span>
+            <button class="icon-btn close-menu" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
         </div>
-        <ul style="list-style:none;">
-            <li style="margin-bottom:1rem;"><a href="https://app.newtons.in" style="font-weight:700; color:var(--accent-purple);">Doctors App</a></li>
-            <li style="margin-bottom:1rem;"><a href="https://hms.newtons.in" style="font-weight:700; color:var(--accent-orange);">Hospital HMS</a></li>
-            <!-- ADDED: Patient Login Link in Mobile Menu -->
-            <li style="margin-bottom:1rem;"><a href="https://hms.newtons.in/patient-login" style="font-weight:700; color:var(--secondary);">Patient Login</a></li>
-            <li style="margin-bottom:1rem;"><a href="#pricing" style="color:var(--text-main);">Plans & Pricing</a></li>
-            <li style="margin-bottom:1rem;"><a href="#business" style="font-weight:700; color:var(--text-main);">Apply for Franchise</a></li>
-            <li style="margin-bottom:1rem;"><a href="#guide" style="color:var(--text-main);">Features & Guide</a></li>
-            <li style="margin-bottom:1rem;"><a href="#download" style="color:var(--text-main);">Download App</a></li>
+        <ul class="mobile-nav-links">
+            <li><a href="https://app.newtons.in" class="purple"><i class="fa-solid fa-user-doctor"></i> Doctor's App</a></li>
+            <li><a href="https://hms.newtons.in" class="orange"><i class="fa-solid fa-hospital"></i> Hospital HMS</a></li>
+            <li><a href="https://hms.newtons.in/patient-login" class="green"><i class="fa-solid fa-hospital-user"></i> Patient Login</a></li>
+            <li class="divider"></li>
+            <li><a href="#products"><i class="fa-solid fa-cubes"></i> Products</a></li>
+            <li><a href="#guide"><i class="fa-solid fa-compass"></i> How it Works</a></li>
+            <li><a href="#pricing"><i class="fa-solid fa-tag"></i> Plans & Pricing</a></li>
+            <li><a href="#download"><i class="fa-solid fa-download"></i> Download App</a></li>
+            <li><a href="#business"><i class="fa-solid fa-store"></i> Franchise</a></li>
         </ul>
-    </div>
-
-    <!-- Hero Section -->
-    <section id="hero">
-        <div class="hero-blobs">
-            <div class="blob blob-1"></div>
-            <div class="blob blob-2"></div>
+        <div class="mobile-nav-footer">
+            <button class="mobile-theme-toggle" id="mobile-theme-toggle">
+                <i class="fa-solid fa-circle-half-stroke"></i> Toggle Theme
+            </button>
         </div>
+    </nav>
+
+    <section id="hero">
+        <div class="hero-bg">
+            <div class="hero-mesh"></div>
+            <div class="hero-grid-pattern"></div>
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+
         <div class="container hero-content reveal">
-            <img src="logo.png" alt="Newtons Ai Logo" class="hero-logo-lg">
-            
-            <!-- Hidden H1 for SEO (Screen Readers & Bots read this) -->
+            <img src="logo.png" alt="Newtons AI Logo" class="hero-logo-lg" width="80" height="80">
             <h1 class="sr-only">Newtons AI - Clinical Copilot App & Autonomous Hospital Management System</h1>
-            
-            <div class="hero-btns">
-                
-                <!-- Primary Product Actions -->
-                <div class="hero-btn-group">
+
+            <div class="hero-cta-area">
+                <div class="hero-cta-primary">
                     <a href="https://app.newtons.in" class="btn btn-doc">
                         <i class="fa-solid fa-user-doctor"></i> Doctor's App
                     </a>
                     <a href="https://hms.newtons.in" target="_blank" class="btn btn-hosp">
-                        <i class="fa-solid fa-hospital"></i> AI App for Hospitals
+                        <i class="fa-solid fa-hospital"></i> Hospital HMS
                     </a>
                 </div>
 
-                <!-- ADDED: Patient Login Button -->
-                <div class="hero-btn-group" style="margin-top: 1rem;">
+                <div class="hero-cta-center">
                     <a href="https://hms.newtons.in/patient-login" class="btn btn-patient">
                         <i class="fa-solid fa-hospital-user"></i> Patient Login
                     </a>
                 </div>
 
-                <!-- Secondary/Utility Actions -->
-                <div class="hero-btn-group" style="margin-top: 0.5rem;">
-                    <a href="#download" class="btn btn-outline" style="font-size:0.95rem;">
+                <div class="hero-cta-utils">
+                    <a href="#download" class="btn btn-outline">
                         <i class="fa-solid fa-download"></i> Download App
                     </a>
-                    <a href="https://neetpg.newtons.in" target="_blank" class="btn btn-outline" style="font-size:0.95rem;">
+                    <a href="https://neetpg.newtons.in" target="_blank" class="btn btn-outline">
                         <i class="fa-solid fa-graduation-cap"></i> NEET PG
                     </a>
                 </div>
+            </div>
 
+            <div class="hero-trust">
+                <span class="trust-item"><i class="fa-solid fa-shield-halved"></i> HIPAA-ready</span>
+                <span class="trust-item"><i class="fa-solid fa-star"></i> 4.8★ rated</span>
+                <span class="trust-item"><i class="fa-solid fa-users"></i> 500+ doctors</span>
             </div>
         </div>
     </section>
 
-    <!-- Products Comparison Section (UI/UX Improved) -->
     <section id="products">
         <div class="container">
-            <div class="split-grid reveal">
-                
-                <!-- Doctor's App Card -->
-                <div class="split-card doctor">
-                    <span class="badge badge-doc">For Individual Doctors</span>
-                    <div class="card-icon">
-                        <i class="fa-solid fa-brain"></i>
-                    </div>
-                    
+            <div class="section-header reveal">
+                <span class="section-badge neutral"><i class="fa-solid fa-cubes"></i> Our Products</span>
+                <h2>Two Products. One Mission.</h2>
+                <p>Choose the tool that fits your practice — or use both together.</p>
+            </div>
+
+            <div class="split-grid">
+                <div class="split-card doctor reveal reveal-delay-1">
+                    <span class="badge badge-doc"><i class="fa-solid fa-circle" style="font-size:6px;"></i> For Individual Doctors</span>
+                    <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
                     <h3>Clinical Copilot</h3>
-                    <p class="sub-head">AI Assistant for Diagnosis & Treatment.</p>
-                    
+                    <p class="sub-head">AI assistant for diagnosis, treatment & ICU protocols.</p>
                     <ul class="feature-list">
                         <li>
-                            <i class="fa-solid fa-circle-check" style="color:var(--accent-purple)"></i>
-                            <div>
-                                <strong>OPD Assistant</strong>
-                                Instant history & differentials.
-                            </div>
+                            <span class="check-icon"><i class="fa-solid fa-check"></i></span>
+                            <div><strong>OPD Assistant</strong>Instant history & differentials.</div>
                         </li>
                         <li>
-                            <i class="fa-solid fa-circle-check" style="color:var(--accent-purple)"></i>
-                            <div>
-                                <strong>Rx Planner</strong>
-                                Evidence-based standard protocols.
-                            </div>
+                            <span class="check-icon"><i class="fa-solid fa-check"></i></span>
+                            <div><strong>Rx Planner</strong>Evidence-based standard protocols.</div>
                         </li>
                         <li>
-                            <i class="fa-solid fa-circle-check" style="color:var(--accent-purple)"></i>
-                            <div>
-                                <strong>ICU Support</strong>
-                                Real-time risk prediction.
-                            </div>
+                            <span class="check-icon"><i class="fa-solid fa-check"></i></span>
+                            <div><strong>ICU Support</strong>Real-time risk prediction.</div>
                         </li>
                         <li>
-                            <i class="fa-solid fa-circle-check" style="color:var(--accent-purple)"></i>
-                            <div>
-                                <strong>Doctor Control</strong>
-                                Suggestions only. You decide.
-                            </div>
+                            <span class="check-icon"><i class="fa-solid fa-check"></i></span>
+                            <div><strong>Doctor Control</strong>Suggestions only. You decide.</div>
                         </li>
                     </ul>
-                    
                     <a href="https://app.newtons.in" class="card-btn btn-purple">
-                        Launch Doctor App
+                        <i class="fa-solid fa-arrow-right"></i> Launch Doctor App
                     </a>
                 </div>
 
-                <!-- HMS Card -->
-                <div class="split-card hospital">
-                    <span class="badge badge-hosp">For Hospitals & Clinics</span>
-                    <div class="card-icon">
-                        <i class="fa-solid fa-robot"></i>
-                    </div>
-                    
+                <div class="split-card hospital reveal reveal-delay-2">
+                    <span class="badge badge-hosp"><i class="fa-solid fa-circle" style="font-size:6px;"></i> For Hospitals & Clinics</span>
+                    <div class="card-icon"><i class="fa-solid fa-robot"></i></div>
                     <h3>Hospital Autopilot</h3>
-                    <p class="sub-head">Automation for Clinics & Hospitals.</p>
-                    
+                    <p class="sub-head">Full automation for clinics & hospital operations.</p>
                     <ul class="feature-list">
                         <li>
-                            <i class="fa-solid fa-circle-check" style="color:var(--accent-orange)"></i>
-                            <div>
-                                <strong>Voice Agent</strong>
-                                Drafts history via patient voice.
-                            </div>
+                            <span class="check-icon"><i class="fa-solid fa-check"></i></span>
+                            <div><strong>Voice Agent</strong>Drafts history via patient voice.</div>
                         </li>
                         <li>
-                            <i class="fa-solid fa-circle-check" style="color:var(--accent-orange)"></i>
-                            <div>
-                                <strong>Lab Sync</strong>
-                                Auto-pulls analyzer reports.
-                            </div>
+                            <span class="check-icon"><i class="fa-solid fa-check"></i></span>
+                            <div><strong>Lab Sync</strong>Auto-pulls analyzer reports.</div>
                         </li>
                         <li>
-                            <i class="fa-solid fa-circle-check" style="color:var(--accent-orange)"></i>
-                            <div>
-                                <strong>Active Loop</strong>
-                                Auto-updates Rx via lab data.
-                            </div>
+                            <span class="check-icon"><i class="fa-solid fa-check"></i></span>
+                            <div><strong>Active Loop</strong>Auto-updates Rx via lab data.</div>
                         </li>
                         <li>
-                            <i class="fa-solid fa-circle-check" style="color:var(--accent-orange)"></i>
-                            <div>
-                                <strong>Inventory</strong>
-                                Auto-deducts pharmacy stock.
-                            </div>
+                            <span class="check-icon"><i class="fa-solid fa-check"></i></span>
+                            <div><strong>Inventory</strong>Auto-deducts pharmacy stock.</div>
                         </li>
                     </ul>
-                    
                     <a href="https://hms.newtons.in" target="_blank" class="card-btn btn-orange">
-                        Deploy HMS
+                        <i class="fa-solid fa-arrow-right"></i> Deploy HMS
                     </a>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Guide Section -->
     <section id="guide" class="bg-surface">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 2rem;" class="reveal">How They Work</h2>
-            
-            <div class="tab-nav reveal">
-                <button class="tab-btn active" onclick="openTab(event, 'workflow-doc')">Doctor's App Workflow</button>
-                <button class="tab-btn" onclick="openTab(event, 'workflow-hms')">HMS Automation Workflow</button>
+            <div class="section-header reveal">
+                <span class="section-badge green"><i class="fa-solid fa-compass"></i> Workflows</span>
+                <h2>How They Work</h2>
+                <p>Simple, powerful workflows for doctors and hospitals.</p>
             </div>
 
-            <!-- Doctor Workflow -->
-            <div id="workflow-doc" class="tab-panel active container">
+            <div class="tab-nav reveal">
+                <button class="tab-btn active" onclick="openTab(event, 'workflow-doc')">
+                    <i class="fa-solid fa-user-doctor" style="margin-right:4px;"></i> Doctor's App
+                </button>
+                <button class="tab-btn" onclick="openTab(event, 'workflow-hms')">
+                    <i class="fa-solid fa-hospital" style="margin-right:4px;"></i> HMS Automation
+                </button>
+            </div>
+
+            <div id="workflow-doc" class="tab-panel active">
                 <div class="grid">
-                    <div class="card" style="border-top: 3px solid var(--accent-purple);">
-                        <h4>1. OPD Assistant</h4>
+                    <div class="card purple-top reveal reveal-delay-1">
+                        <h4><span class="step-num">1</span> OPD Assistant</h4>
                         <p>Input chief complaints. AI suggests questions, generates differentials, and summarizes history for your review.</p>
                     </div>
-                    <div class="card" style="border-top: 3px solid var(--accent-purple);">
-                        <h4>2. Treatment Planner</h4>
+                    <div class="card purple-top reveal reveal-delay-2">
+                        <h4><span class="step-num">2</span> Treatment Planner</h4>
                         <p>Get standard treatment guidelines, dosage calculations, and drug interaction alerts. You manually prescribe.</p>
                     </div>
-                    <div class="card" style="border-top: 3px solid var(--accent-purple);">
-                        <h4>3. ICU Assistant</h4>
-                        <p>Manually input ABG/Vitals. AI predicts deterioration risk and suggests stabilization protocols.</p>
+                    <div class="card purple-top reveal reveal-delay-3">
+                        <h4><span class="step-num">3</span> ICU Assistant</h4>
+                        <p>Input ABG/Vitals. AI predicts deterioration risk and suggests stabilization protocols.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- HMS Workflow (Advanced) -->
-            <div id="workflow-hms" class="tab-panel container">
+            <div id="workflow-hms" class="tab-panel">
                 <div class="grid">
-                    <div class="card" style="border-top: 3px solid var(--accent-orange);">
-                        <h4>1. Voice Intake & Auto-Ordering</h4>
-                        <p>Patient <strong>talks to AI</strong> in local language. Doctor approves plan. HMS <strong>auto-orders</strong> meds from pharmacy and tests from internal lab.</p>
+                    <div class="card orange-top reveal reveal-delay-1">
+                        <h4><span class="step-num">1</span> Voice Intake</h4>
+                        <p>Patient <strong>talks to AI</strong> in local language. Doctor approves. HMS <strong>auto-orders</strong> meds and tests.</p>
                     </div>
-                    <div class="card" style="border-top: 3px solid var(--accent-orange);">
-                        <h4>2. Lab Loop & Machine Integration</h4>
-                        <p>HMS pulls data directly from <strong>Analyzers (e.g., CBC)</strong>. AI reads the report, <strong>auto-edits the treatment plan</strong> (e.g., changes antibiotics), and updates orders.</p>
+                    <div class="card orange-top reveal reveal-delay-2">
+                        <h4><span class="step-num">2</span> Lab Loop</h4>
+                        <p>HMS pulls data from <strong>Analyzers (e.g., CBC)</strong>. AI reads reports, <strong>auto-edits treatment</strong>, and updates orders.</p>
                     </div>
-                    <div class="card" style="border-top: 3px solid var(--accent-orange);">
-                        <h4>3. Inventory & Billing</h4>
-                        <p>Stock is deducted from Pharmacy/Lab inventory in real-time as orders are executed. A single <strong>consolidated bill</strong> is generated automatically.</p>
+                    <div class="card orange-top reveal reveal-delay-3">
+                        <h4><span class="step-num">3</span> Inventory & Billing</h4>
+                        <p>Stock deducted in real-time. A <strong>consolidated bill</strong> is generated automatically at discharge.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
     <section id="pricing">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 1rem;" class="reveal">Simple, Transparent Pricing</h2>
-            <p style="text-align: center; max-width: 600px; margin: 0 auto 3rem;">Choose the plan that fits your practice.</p>
+            <div class="section-header reveal">
+                <span class="section-badge neutral"><i class="fa-solid fa-tag"></i> Pricing</span>
+                <h2>Simple, Transparent Plans</h2>
+                <p>Start free. Scale when ready. No hidden charges.</p>
+            </div>
 
-            <div class="grid" style="max-width: 900px; margin: 0 auto;">
-                
-                <!-- Doctor Plan -->
-                <div class="price-card reveal" style="border-top: 5px solid var(--accent-purple);">
-                    <h3 style="color: var(--accent-purple);">Doctors App</h3>
-                    <p style="margin-bottom: 1.5rem;">For individual practitioners.</p>
-                    
-                    <div>
+            <div class="pricing-grid">
+                <div class="price-card purple reveal reveal-delay-1">
+                    <div class="price-icon"><i class="fa-solid fa-user-doctor"></i></div>
+                    <h3>Doctor's App</h3>
+                    <p class="price-desc">For individual practitioners.</p>
+                    <div class="price-block">
                         <span class="price-amount">₹500</span>
-                        <span class="price-period">per month</span>
+                        <span class="price-period">/ month</span>
                     </div>
-                    <div style="margin: 0.5rem 0;">
-                        <span style="font-size: 0.9rem; color: var(--text-muted);">OR</span>
+                    <div class="price-or">or</div>
+                    <div class="price-alt">
+                        <span class="price-amount">₹3,000</span>
+                        <span class="price-period">/ year</span>
+                        <span class="save-badge purple">SAVE 50%</span>
                     </div>
-                    <div>
-                        <span class="price-amount" style="font-size: 2rem;">₹3,000</span>
-                        <span class="price-period">per year</span>
-                        <span class="save-badge" style="background: #efe9ff; color: var(--accent-purple);">SAVE 50%</span>
-                    </div>
-
                     <div class="price-divider"></div>
-
-                    <a href="https://app.newtons.in" class="btn" style="background: var(--accent-purple); color: white;">Get Started</a>
+                    <ul class="price-features">
+                        <li><i class="fa-solid fa-check"></i> OPD Assistant</li>
+                        <li><i class="fa-solid fa-check"></i> Treatment Planner</li>
+                        <li><i class="fa-solid fa-check"></i> ICU Protocols</li>
+                        <li><i class="fa-solid fa-check"></i> Drug Interactions</li>
+                        <li><i class="fa-solid fa-check"></i> Unlimited Patients</li>
+                    </ul>
+                    <a href="https://app.newtons.in" class="btn btn-doc">Get Started</a>
                 </div>
 
-                <!-- Hospital Plan -->
-                <div class="price-card reveal" style="border-top: 5px solid var(--accent-orange);">
-                    <h3 style="color: var(--accent-orange);">Hospitals App</h3>
-                    <p style="margin-bottom: 1.5rem;">Complete HMS Automation.</p>
-                    
-                    <div>
+                <div class="price-card orange reveal reveal-delay-2">
+                    <div class="price-icon"><i class="fa-solid fa-hospital"></i></div>
+                    <h3>Hospital HMS</h3>
+                    <p class="price-desc">Complete clinic & hospital automation.</p>
+                    <div class="price-block">
                         <span class="price-amount">₹990</span>
-                        <span class="price-period">per month</span>
+                        <span class="price-period">/ month</span>
                     </div>
-                    <div style="margin: 0.5rem 0;">
-                        <span style="font-size: 0.9rem; color: var(--text-muted);">OR</span>
+                    <div class="price-or">or</div>
+                    <div class="price-alt">
+                        <span class="price-amount">₹9,999</span>
+                        <span class="price-period">/ year</span>
+                        <span class="save-badge orange">SAVE 15%</span>
                     </div>
-                    <div>
-                        <span class="price-amount" style="font-size: 2rem;">₹9,999</span>
-                        <span class="price-period">per year</span>
-                        <span class="save-badge" style="background: #fff4e6; color: var(--accent-orange);">SAVE 15%</span>
-                    </div>
-
                     <div class="price-divider"></div>
-
-                    <a href="https://hms.newtons.in" class="btn" style="background: var(--accent-orange); color: white;">Deploy HMS</a>
+                    <ul class="price-features">
+                        <li><i class="fa-solid fa-check"></i> Voice AI Intake</li>
+                        <li><i class="fa-solid fa-check"></i> Lab Analyzer Sync</li>
+                        <li><i class="fa-solid fa-check"></i> Auto Rx Updates</li>
+                        <li><i class="fa-solid fa-check"></i> Smart Inventory</li>
+                        <li><i class="fa-solid fa-check"></i> Auto Billing</li>
+                    </ul>
+                    <a href="https://hms.newtons.in" target="_blank" class="btn btn-hosp">Deploy HMS</a>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Download Section -->
     <section id="download" class="bg-surface">
         <div class="container">
-            <div style="text-align: center; max-width: 600px; margin: 0 auto 3rem;" class="reveal">
-                <h2>Download the Doctor App</h2>
-                <p>Access OPD Assistant, Treatment Planner & ICU tools on your mobile.</p>
+            <div class="section-header reveal">
+                <span class="section-badge purple"><i class="fa-solid fa-download"></i> Download</span>
+                <h2>Get the Doctor App</h2>
+                <p>Access OPD, Treatment Planner & ICU tools on your phone.</p>
             </div>
-            
-            <div class="grid" style="max-width: 900px; margin: 0 auto;">
-                <div class="card" style="text-align: center; align-items: center;">
-                    <i class="fa-brands fa-google-play" style="font-size: 3rem; color: #3DDC84; margin-bottom: 1rem;"></i>
+
+            <div class="download-grid">
+                <div class="download-card reveal reveal-delay-1">
+                    <div class="download-icon android"><i class="fa-brands fa-google-play"></i></div>
                     <h3>Android</h3>
-                    <a href="https://play.google.com/store/apps/details?id=com.newtonsai.chat&pcampaignid=web_share" target="_blank" class="btn" style="background:var(--primary); color:white;">
-                        <i class="fa-brands fa-google-play"></i> Get it on Google Play
+                    <p>Available on Google Play Store.</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.newtonsai.chat&pcampaignid=web_share" target="_blank" class="btn btn-doc" style="width:100%;">
+                        <i class="fa-brands fa-google-play"></i> Get on Google Play
                     </a>
                 </div>
-                <div class="card" style="text-align: center; align-items: center;">
-                    <i class="fa-brands fa-apple" style="font-size: 3rem; color: var(--text-main); margin-bottom: 1rem;"></i>
+                <div class="download-card reveal reveal-delay-2">
+                    <div class="download-icon apple"><i class="fa-brands fa-apple"></i></div>
                     <h3>iOS / iPadOS</h3>
-                    <p>Open <strong>app.newtons.in</strong> -> Share -> "Add to Home Screen".</p>
-                    <a href="https://app.newtons.in" class="btn btn-outline">Open Web App</a>
+                    <p>Open → Share → "Add to Home Screen".</p>
+                    <a href="https://app.newtons.in" class="btn btn-outline" style="width:100%; font-size:0.95rem; padding:0.85rem 1.2rem;">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Web App
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- NEW BUSINESS / FRANCHISE SECTION -->
-    <section id="business" style="background: var(--bg); border-top: 1px solid var(--border);">
-        <div class="container" style="text-align: center;">
-            <div class="reveal">
-                <span class="badge" style="background: var(--heading); color: var(--bg); margin-bottom: 1rem;">Business Opportunity</span>
-                <h2>Start Your Own AI Clinic</h2>
-                <p style="max-width: 650px; margin: 0 auto 2.5rem;">
-                    Join the Newtons AI network. Shop for pre-configured franchises or deploy our Autonomous HMS in your existing facility to automate operations.
-                </p>
-                
-                <a href="https://store.newtons.in" target="_blank" class="btn btn-franchise">
-                    <i class="fa-solid fa-store"></i> Shop for Franchises & Clinics
-                </a>
-                
-                <div style="margin-top: 2rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; color: var(--text-muted); font-size: 0.9rem;">
-                    <span><i class="fa-solid fa-check" style="color: var(--secondary);"></i> Smart Inventory</span>
-                    <span><i class="fa-solid fa-check" style="color: var(--secondary);"></i> Auto-Billing</span>
-                    <span><i class="fa-solid fa-check" style="color: var(--secondary);"></i> Hardware Included</span>
-                </div>
+    <section id="business">
+        <div class="business-bg"></div>
+        <div class="container business-content reveal">
+            <span class="section-badge neutral"><i class="fa-solid fa-rocket"></i> Opportunity</span>
+            <h2>Start Your Own AI Clinic</h2>
+            <p>Join the Newtons AI network. Deploy our Autonomous HMS with pre-configured hardware in your own facility.</p>
+            <a href="https://store.newtons.in" target="_blank" class="btn btn-franchise">
+                <i class="fa-solid fa-store"></i> Shop Franchises & Clinics
+            </a>
+            <div class="business-features">
+                <span class="biz-chip"><i class="fa-solid fa-check-circle"></i> Smart Inventory</span>
+                <span class="biz-chip"><i class="fa-solid fa-check-circle"></i> Auto-Billing</span>
+                <span class="biz-chip"><i class="fa-solid fa-check-circle"></i> Hardware Included</span>
+                <span class="biz-chip"><i class="fa-solid fa-check-circle"></i> Full Training</span>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-col">
-                    <h3 style="border:none; color:white; font-size:1.5rem;">Newtons Ai</h3>
-                    <p style="font-style: italic; color: var(--secondary);">"AI won’t replace doctors. But doctors who use AI will replace those who don’t."</p>
+                <div class="footer-brand">
+                    <h3><img src="logo.png" alt="Logo" style="height:28px; border-radius:8px;"> Newtons Ai</h3>
+                    <p>"AI won't replace doctors. But doctors who use AI will replace those who don't."</p>
                 </div>
                 <div class="footer-col">
-                    <h3>Products</h3>
-                    <ul style="list-style:none;">
-                        <li style="margin-bottom:0.8rem;"><a href="https://app.newtons.in" style="color:#a78bfa;">Doctor's App</a></li>
-                        <li style="margin-bottom:0.8rem;"><a href="https://hms.newtons.in" style="color:#fb923c;">HMS (Hospitals & Clinics)</a></li>
-                        <!-- ADDED: Patient Login in Footer -->
-                        <li style="margin-bottom:0.8rem;"><a href="https://hms.newtons.in/patient-login" style="color:var(--secondary);">Patient Login</a></li>
-                        <li style="margin-bottom:0.8rem;"><a href="#pricing">Pricing</a></li>
-                        <li style="margin-bottom:0.8rem;"><a href="https://neetpg.newtons.in">NEET PG Prep</a></li>
+                    <h4>Products</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://app.newtons.in"><span class="link-dot purple"></span> Doctor's App</a></li>
+                        <li><a href="https://hms.newtons.in"><span class="link-dot orange"></span> HMS for Hospitals</a></li>
+                        <li><a href="https://hms.newtons.in/patient-login"><span class="link-dot green"></span> Patient Login</a></li>
+                        <li><a href="#pricing">Plans & Pricing</a></li>
+                        <li><a href="https://neetpg.newtons.in">NEET PG Prep</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h3>Support</h3>
-                    <ul style="list-style:none;">
-                        <li style="margin-bottom:0.8rem;"><a href="#guide">User Guide</a></li>
-                        <li style="margin-bottom:0.8rem;"><a href="mailto:support@newtons.in">Contact Us</a></li>
-                        <li style="margin-bottom:0.8rem;"><a href="#business" style="color:var(--text-secondary);">Franchise</a></li>
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#guide">User Guide</a></li>
+                        <li><a href="mailto:support@newtons.in">Contact Us</a></li>
+                        <li><a href="#business">Franchise</a></li>
+                        <li><a href="https://store.newtons.in">Store</a></li>
                     </ul>
                 </div>
             </div>
-            <div style="text-align: center; padding-top: 2rem; border-top: 1px solid #374151; font-size: 0.9rem;">
+            <div class="footer-bottom">
                 &copy; <span id="year"></span> Newtons Ai. All Rights Reserved.
             </div>
         </div>
     </footer>
 
-    <!-- Invisible Cache Warmer -->
-    <iframe id="cache-warmer" src="https://app.newtons.in" style="width:0;height:0;border:0;visibility:hidden;"></iframe>
+    <iframe src="https://app.newtons.in" style="width:0;height:0;border:0;visibility:hidden;" title="Cache warmer" loading="lazy"></iframe>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('year').textContent = new Date().getFullYear();
 
-            // Theme Toggler
-            const themeBtns = document.querySelectorAll('.theme-toggle, #mobile-theme-toggle');
             const body = document.body;
-            const icon = document.querySelector('.theme-toggle i');
-            
+            const themeIcon = document.querySelector('.theme-toggle i');
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            
-            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-                body.classList.add('dark-theme');
-                if(icon) icon.classList.replace('fa-moon', 'fa-sun');
-            }
 
-            themeBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    body.classList.toggle('dark-theme');
-                    const isDark = body.classList.contains('dark-theme');
-                    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-                    if(icon) icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-                });
+            function setTheme(dark) {
+                body.classList.toggle('dark-theme', dark);
+                localStorage.setItem('theme', dark ? 'dark' : 'light');
+                if (themeIcon) themeIcon.className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            }
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) setTheme(true);
+
+            document.querySelectorAll('.theme-toggle, #mobile-theme-toggle').forEach(btn => {
+                btn.addEventListener('click', () => setTheme(!body.classList.contains('dark-theme')));
             });
 
-            // Mobile Menu
-            const mobileBtn = document.querySelector('.mobile-toggle');
-            const closeMenuBtn = document.querySelector('.close-menu');
             const mobileNav = document.querySelector('.mobile-nav');
             const overlay = document.querySelector('.mobile-overlay');
 
-            function toggleMenu() {
-                mobileNav.classList.toggle('open');
-                overlay.classList.toggle('open');
+            function toggleMenu(open) {
+                const isOpen = open !== undefined ? open : !mobileNav.classList.contains('open');
+                mobileNav.classList.toggle('open', isOpen);
+                overlay.classList.toggle('open', isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
             }
 
-            if(mobileBtn) mobileBtn.addEventListener('click', toggleMenu);
-            if(closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMenu);
-            if(overlay) overlay.addEventListener('click', toggleMenu);
+            document.querySelector('.mobile-toggle')?.addEventListener('click', () => toggleMenu(true));
+            document.querySelector('.close-menu')?.addEventListener('click', () => toggleMenu(false));
+            overlay?.addEventListener('click', () => toggleMenu(false));
+            document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+                link.addEventListener('click', () => toggleMenu(false));
+            });
 
-            // Scroll Animation
-            const observer = new IntersectionObserver((entries) => {
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('scrolled', window.scrollY > 50);
+            }, { passive: true });
+
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const observerNav = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+                        if (active) active.classList.add('active');
                     }
                 });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            }, { rootMargin: '-40% 0px -60% 0px' });
+            sections.forEach(s => observerNav.observe(s));
+
+            const revealObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('active');
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
         });
 
-        // Tab Switcher
         function openTab(evt, tabName) {
-            const tabContent = document.getElementsByClassName("tab-panel");
-            for (let i = 0; i < tabContent.length; i++) {
-                tabContent[i].classList.remove("active");
-            }
-            const tabLinks = document.getElementsByClassName("tab-btn");
-            for (let i = 0; i < tabLinks.length; i++) {
-                tabLinks[i].classList.remove("active");
-            }
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+
+            document.querySelectorAll(`#${tabName} .reveal`).forEach(el => {
+                el.classList.remove('active');
+                requestAnimationFrame(() => { requestAnimationFrame(() => el.classList.add('active')); });
+            });
         }
     </script>
 </body>
