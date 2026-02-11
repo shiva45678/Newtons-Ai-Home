@@ -205,6 +205,24 @@
             border: 2px solid var(--accent-orange);
         }
         .btn-hosp:hover { background: var(--accent-orange); color: white; transform: translateY(-3px); box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3); }
+        
+        /* New Patient Button Style */
+        .btn-patient {
+            background: var(--secondary);
+            color: white;
+            padding: 0.9rem 2.2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            border: 2px solid var(--secondary);
+            box-shadow: 0 4px 15px rgba(var(--secondary-rgb), 0.3);
+        }
+        .btn-patient:hover { 
+            background: #047857; 
+            border-color: #047857; 
+            color: white; 
+            transform: translateY(-3px); 
+            box-shadow: 0 6px 20px rgba(var(--secondary-rgb), 0.5);
+        }
 
         /* Franchise Button (For New Section) */
         .btn-franchise {
@@ -510,6 +528,8 @@
         <ul style="list-style:none;">
             <li style="margin-bottom:1rem;"><a href="https://app.newtons.in" style="font-weight:700; color:var(--accent-purple);">Doctors App</a></li>
             <li style="margin-bottom:1rem;"><a href="https://hms.newtons.in" style="font-weight:700; color:var(--accent-orange);">Hospital HMS</a></li>
+            <!-- ADDED: Patient Login Link in Mobile Menu -->
+            <li style="margin-bottom:1rem;"><a href="https://hms.newtons.in/patient-login" style="font-weight:700; color:var(--secondary);">Patient Login</a></li>
             <li style="margin-bottom:1rem;"><a href="#pricing" style="color:var(--text-main);">Plans & Pricing</a></li>
             <li style="margin-bottom:1rem;"><a href="#business" style="font-weight:700; color:var(--text-main);">Apply for Franchise</a></li>
             <li style="margin-bottom:1rem;"><a href="#guide" style="color:var(--text-main);">Features & Guide</a></li>
@@ -538,6 +558,13 @@
                     </a>
                     <a href="https://hms.newtons.in" target="_blank" class="btn btn-hosp">
                         <i class="fa-solid fa-hospital"></i> AI App for Hospitals
+                    </a>
+                </div>
+
+                <!-- ADDED: Patient Login Button -->
+                <div class="hero-btn-group" style="margin-top: 1rem;">
+                    <a href="https://hms.newtons.in/patient-login" class="btn btn-patient">
+                        <i class="fa-solid fa-hospital-user"></i> Patient Login
                     </a>
                 </div>
 
@@ -824,6 +851,8 @@
                     <ul style="list-style:none;">
                         <li style="margin-bottom:0.8rem;"><a href="https://app.newtons.in" style="color:#a78bfa;">Doctor's App</a></li>
                         <li style="margin-bottom:0.8rem;"><a href="https://hms.newtons.in" style="color:#fb923c;">HMS (Hospitals & Clinics)</a></li>
+                        <!-- ADDED: Patient Login in Footer -->
+                        <li style="margin-bottom:0.8rem;"><a href="https://hms.newtons.in/patient-login" style="color:var(--secondary);">Patient Login</a></li>
                         <li style="margin-bottom:0.8rem;"><a href="#pricing">Pricing</a></li>
                         <li style="margin-bottom:0.8rem;"><a href="https://neetpg.newtons.in">NEET PG Prep</a></li>
                     </ul>
