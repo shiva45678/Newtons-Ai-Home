@@ -158,6 +158,13 @@
         }
         .btn-doc:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 30px var(--glow-purple); color: white; }
 
+        .btn-cms {
+            background: linear-gradient(135deg, var(--primary), #1d4ed8);
+            color: white;
+            box-shadow: 0 4px 20px var(--glow-primary);
+        }
+        .btn-cms:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 30px var(--glow-primary); color: white; }
+
         .btn-hosp {
             background: linear-gradient(135deg, var(--accent-orange), #dc2626);
             color: white;
@@ -290,7 +297,7 @@
             75% { transform: translate(15px, 25px) scale(1.03); }
         }
 
-        .hero-content { max-width: 560px; position: relative; z-index: 1; }
+        .hero-content { max-width: 600px; position: relative; z-index: 1; }
 
         .hero-logo-lg {
             width: 80px; height: 80px;
@@ -314,7 +321,7 @@
 
         .hero-cta-primary {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 0.75rem;
             width: 100%;
         }
@@ -891,6 +898,7 @@
         </div>
         <ul class="mobile-nav-links">
             <li><a href="https://app.newtons.in" class="purple"><i class="fa-solid fa-user-doctor"></i> Doctor's App</a></li>
+            <li><a href="https://cms.newtons.in" target="_blank" style="color: var(--primary);"><i class="fa-solid fa-laptop-medical"></i> Clinic CMS</a></li>
             <li><a href="https://hms.newtons.in" class="orange"><i class="fa-solid fa-hospital"></i> Hospital HMS</a></li>
             <li><a href="https://hospital.newtons.in" target="_blank" class="green"><i class="fa-solid fa-house-medical"></i> Newtons Hospitals</a></li>
             <li class="divider"></li>
@@ -924,6 +932,9 @@
                 <div class="hero-cta-primary">
                     <a href="https://app.newtons.in" class="btn btn-doc">
                         <i class="fa-solid fa-user-doctor"></i> Doctor's App
+                    </a>
+                    <a href="https://cms.newtons.in" target="_blank" class="btn btn-cms">
+                        <i class="fa-solid fa-laptop-medical"></i> Clinic CMS
                     </a>
                     <a href="https://hms.newtons.in" target="_blank" class="btn btn-hosp">
                         <i class="fa-solid fa-hospital"></i> Hospital HMS
