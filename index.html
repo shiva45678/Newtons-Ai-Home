@@ -408,7 +408,7 @@
         /* ========== PRODUCT CARDS ========== */
         .split-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             align-items: stretch;
         }
@@ -438,6 +438,8 @@
         .split-card.doctor:hover { box-shadow: 0 20px 60px var(--glow-purple); }
         .split-card.hospital::before { background: linear-gradient(90deg, var(--accent-orange), #f97316); }
         .split-card.hospital:hover { box-shadow: 0 20px 60px var(--glow-orange); }
+        .split-card.cms::before { background: linear-gradient(90deg, var(--primary), #60a5fa); }
+        .split-card.cms:hover { box-shadow: 0 20px 60px var(--glow-primary); }
 
         .split-card::after {
             content: '';
@@ -447,6 +449,7 @@
         }
         .split-card.doctor::after { background: radial-gradient(circle at 50% 0%, var(--glow-purple), transparent 70%); }
         .split-card.hospital::after { background: radial-gradient(circle at 50% 0%, var(--glow-orange), transparent 70%); }
+        .split-card.cms::after { background: radial-gradient(circle at 50% 0%, var(--glow-primary), transparent 70%); }
         .split-card:hover::after { opacity: 1; }
 
         .card-icon {
@@ -456,6 +459,7 @@
         }
         .split-card.doctor .card-icon { background: var(--accent-purple-light); color: var(--accent-purple); }
         .split-card.hospital .card-icon { background: var(--accent-orange-light); color: var(--accent-orange); }
+        .split-card.cms .card-icon { background: rgba(var(--primary-rgb), 0.1); color: var(--primary); }
 
         .badge {
             display: inline-flex; align-items: center; gap: 4px;
@@ -466,10 +470,12 @@
         }
         .badge-doc { background: var(--accent-purple-light); color: var(--accent-purple); }
         .badge-hosp { background: var(--accent-orange-light); color: var(--accent-orange); }
+        .badge-cms { background: rgba(var(--primary-rgb), 0.1); color: var(--primary); }
 
         .split-card h3 { font-size: 1.6rem; margin-bottom: 0.4rem; position: relative; z-index: 1; }
         .split-card.doctor h3 { color: var(--accent-purple); }
         .split-card.hospital h3 { color: var(--accent-orange); }
+        .split-card.cms h3 { color: var(--primary); }
         .split-card .sub-head { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.75rem; position: relative; z-index: 1; }
 
         .feature-list {
@@ -488,6 +494,7 @@
         }
         .split-card.doctor .check-icon { background: var(--accent-purple-light); color: var(--accent-purple); }
         .split-card.hospital .check-icon { background: var(--accent-orange-light); color: var(--accent-orange); }
+        .split-card.cms .check-icon { background: rgba(var(--primary-rgb), 0.1); color: var(--primary); }
 
         .card-btn {
             width: 100%; padding: 1rem; border-radius: 14px;
@@ -499,6 +506,8 @@
         .btn-purple:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--glow-purple); color: white; }
         .btn-orange { background: linear-gradient(135deg, var(--accent-orange), #dc2626); color: white; box-shadow: 0 4px 16px var(--glow-orange); }
         .btn-orange:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--glow-orange); color: white; }
+        .btn-blue { background: linear-gradient(135deg, var(--primary), #1d4ed8); color: white; box-shadow: 0 4px 16px var(--glow-primary); }
+        .btn-blue:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--glow-primary); color: white; }
 
         .bg-surface { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 
@@ -551,6 +560,8 @@
         .card.purple-top .step-num { background: var(--accent-purple-light); color: var(--accent-purple); }
         .card.orange-top::before { background: linear-gradient(90deg, var(--accent-orange), #f97316); }
         .card.orange-top .step-num { background: var(--accent-orange-light); color: var(--accent-orange); }
+        .card.blue-top::before { background: linear-gradient(90deg, var(--primary), #60a5fa); }
+        .card.blue-top .step-num { background: rgba(var(--primary-rgb), 0.1); color: var(--primary); }
 
         /* ========== PRICING ========== */
         .pricing-grid {
@@ -740,6 +751,7 @@
         /* ========== RESPONSIVE ========== */
         @media (max-width: 1024px) {
             .footer-grid { grid-template-columns: 1fr 1fr; }
+            .split-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -974,8 +986,8 @@
         <div class="container">
             <div class="section-header reveal">
                 <span class="section-badge neutral"><i class="fa-solid fa-cubes"></i> Our Products</span>
-                <h2>Two Products. One Mission.</h2>
-                <p>Choose the tool that fits your practice — or use both together.</p>
+                <h2>Three Products. One Mission.</h2>
+                <p>Choose the tool that fits your practice — or use them together.</p>
             </div>
 
             <div class="split-grid">
@@ -1007,7 +1019,39 @@
                     </a>
                 </div>
 
-                <div class="split-card hospital reveal reveal-delay-2">
+                <div class="split-card cms reveal reveal-delay-2">
+                    <span class="badge badge-cms"><i class="fa-solid fa-circle" style="font-size:6px;"></i> For Small Clinics</span>
+                    <div class="card-icon"><i class="fa-solid fa-desktop"></i></div>
+                    <h3>Clinic CMS</h3>
+                    <p class="sub-head">Every HMS feature, run from one computer — no hardware, no paper trail needed.</p>
+                    <ul class="feature-list">
+                        <li>
+                            <span class="check-icon"><i class="fa-solid fa-check"></i></span>
+                            <div><strong>OP Slips & Prescriptions</strong>Generate and print instantly.</div>
+                        </li>
+                        <li>
+                            <span class="check-icon"><i class="fa-solid fa-check"></i></span>
+                            <div><strong>Pharmacy Inventory</strong>Track and maintain stock.</div>
+                        </li>
+                        <li>
+                            <span class="check-icon"><i class="fa-solid fa-check"></i></span>
+                            <div><strong>Lab Reports</strong>Enter, store & print results.</div>
+                        </li>
+                        <li>
+                            <span class="check-icon"><i class="fa-solid fa-check"></i></span>
+                            <div><strong>Consents & Billing</strong>Consent capture plus admission, lab, OP & pharmacy billing.</div>
+                        </li>
+                        <li>
+                            <span class="check-icon"><i class="fa-solid fa-check"></i></span>
+                            <div><strong>Referrals & Sick Leave</strong>Prepare and print referral letters & certificates.</div>
+                        </li>
+                    </ul>
+                    <a href="https://cms.newtons.in" target="_blank" class="card-btn btn-blue">
+                        <i class="fa-solid fa-arrow-right"></i> Launch Clinic CMS
+                    </a>
+                </div>
+
+                <div class="split-card hospital reveal reveal-delay-3">
                     <span class="badge badge-hosp"><i class="fa-solid fa-circle" style="font-size:6px;"></i> For Hospitals & Clinics</span>
                     <div class="card-icon"><i class="fa-solid fa-robot"></i></div>
                     <h3>Hospital Autopilot</h3>
@@ -1043,12 +1087,15 @@
             <div class="section-header reveal">
                 <span class="section-badge green"><i class="fa-solid fa-compass"></i> Workflows</span>
                 <h2>How They Work</h2>
-                <p>Simple, powerful workflows for doctors and hospitals.</p>
+                <p>Simple, powerful workflows for doctors, clinics and hospitals.</p>
             </div>
 
             <div class="tab-nav reveal">
                 <button class="tab-btn active" onclick="openTab(event, 'workflow-doc')">
                     <i class="fa-solid fa-user-doctor" style="margin-right:4px;"></i> Doctor's App
+                </button>
+                <button class="tab-btn" onclick="openTab(event, 'workflow-cms')">
+                    <i class="fa-solid fa-desktop" style="margin-right:4px;"></i> Clinic CMS
                 </button>
                 <button class="tab-btn" onclick="openTab(event, 'workflow-hms')">
                     <i class="fa-solid fa-hospital" style="margin-right:4px;"></i> HMS Automation
@@ -1068,6 +1115,23 @@
                     <div class="card purple-top reveal reveal-delay-3">
                         <h4><span class="step-num">3</span> ICU Assistant</h4>
                         <p>Input ABG/Vitals. AI predicts deterioration risk and suggests stabilization protocols.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="workflow-cms" class="tab-panel">
+                <div class="grid">
+                    <div class="card blue-top reveal reveal-delay-1">
+                        <h4><span class="step-num">1</span> OP & Prescription</h4>
+                        <p>Register the patient, print the OP slip, and generate the prescription — all from a single desktop, no separate hardware needed.</p>
+                    </div>
+                    <div class="card blue-top reveal reveal-delay-2">
+                        <h4><span class="step-num">2</span> Lab, Pharmacy & Consents</h4>
+                        <p>Enter and print lab reports, maintain pharmacy stock, and capture patient consents — all stored against the patient record.</p>
+                    </div>
+                    <div class="card blue-top reveal reveal-delay-3">
+                        <h4><span class="step-num">3</span> Billing & Documents</h4>
+                        <p>Bill admissions, OP visits, lab and pharmacy in one place, then prepare and print referral letters and sick leave certificates.</p>
                     </div>
                 </div>
             </div>
@@ -1211,6 +1275,7 @@
                     <h4>Products</h4>
                     <ul class="footer-links">
                         <li><a href="https://app.newtons.in"><span class="link-dot purple"></span> Doctor's App</a></li>
+                        <li><a href="https://cms.newtons.in" target="_blank"><span class="link-dot" style="background: var(--primary);"></span> Clinic CMS</a></li>
                         <li><a href="https://hms.newtons.in"><span class="link-dot orange"></span> HMS for Hospitals</a></li>
                         <li><a href="https://hospital.newtons.in" target="_blank"><span class="link-dot green"></span> Newtons Hospitals</a></li>
                         <li><a href="#pricing">Plans & Pricing</a></li>
