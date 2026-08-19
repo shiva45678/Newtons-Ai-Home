@@ -61,8 +61,8 @@
             --glow-primary: rgba(37, 99, 235, 0.15);
             --glow-green: rgba(5, 150, 105, 0.15);
             --radius-md: 14px;
-            --radius-lg: 22px;
-            --radius-xl: 28px;
+            --radius-lg: 20px;
+            --radius-xl: 26px;
             --nav-height: 72px;
             --container: 1200px;
             --ease: cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -114,7 +114,7 @@
         a { color: var(--primary); text-decoration: none; transition: color 0.25s var(--ease); }
 
         .container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 2.5rem); }
-        section { padding: clamp(5rem, 10vw, 8rem) 0; position: relative; }
+        section { padding: clamp(4.5rem, 8vw, 7rem) 0; position: relative; }
         .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
         body::before {
@@ -410,19 +410,19 @@
         .section-header h2 { margin-bottom: 0.75rem; }
         .section-header p { font-size: 1.1rem; margin: 0; }
 
-        /* ========== PRODUCT CARDS ========== */
+        /* ========== COMPACT PRODUCT CARDS ========== */
         .split-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: stretch;
         }
 
         .split-card {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: var(--radius-xl);
-            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            padding: 1.6rem;
             position: relative;
             transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
             display: flex;
@@ -433,24 +433,24 @@
         .split-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; height: 4px;
-            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+            top: 0; left: 0; right: 0; height: 3.5px;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
         }
         .split-card:hover {
-            transform: translate3d(0, -8px, 0);
-            box-shadow: 0 20px 60px rgba(var(--shadow-color), 0.2);
+            transform: translate3d(0, -5px, 0);
+            box-shadow: 0 16px 45px rgba(var(--shadow-color), 0.18);
         }
         .split-card.doctor::before { background: linear-gradient(90deg, var(--accent-purple), #a78bfa); }
-        .split-card.doctor:hover { box-shadow: 0 20px 60px var(--glow-purple); }
+        .split-card.doctor:hover { box-shadow: 0 16px 45px var(--glow-purple); }
         .split-card.hospital::before { background: linear-gradient(90deg, var(--accent-orange), #f97316); }
-        .split-card.hospital:hover { box-shadow: 0 20px 60px var(--glow-orange); }
+        .split-card.hospital:hover { box-shadow: 0 16px 45px var(--glow-orange); }
         .split-card.cms::before { background: linear-gradient(90deg, var(--primary), #60a5fa); }
-        .split-card.cms:hover { box-shadow: 0 20px 60px var(--glow-primary); }
+        .split-card.cms:hover { box-shadow: 0 16px 45px var(--glow-primary); }
 
         .split-card::after {
             content: '';
             position: absolute; inset: 0;
-            border-radius: var(--radius-xl);
+            border-radius: var(--radius-lg);
             opacity: 0; transition: opacity 0.3s; pointer-events: none;
         }
         .split-card.doctor::after { background: radial-gradient(circle at 50% 0%, var(--glow-purple), transparent 70%); }
@@ -458,62 +458,122 @@
         .split-card.cms::after { background: radial-gradient(circle at 50% 0%, var(--glow-primary), transparent 70%); }
         .split-card:hover::after { opacity: 1; }
 
+        .card-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
         .card-icon {
-            width: 56px; height: 56px; border-radius: 16px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; margin-bottom: 1.25rem; position: relative; z-index: 1;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
         }
         .split-card.doctor .card-icon { background: var(--accent-purple-light); color: var(--accent-purple); }
         .split-card.hospital .card-icon { background: var(--accent-orange-light); color: var(--accent-orange); }
         .split-card.cms .card-icon { background: rgba(var(--primary-rgb), 0.1); color: var(--primary); }
 
         .badge {
-            display: inline-flex; align-items: center; gap: 4px;
-            padding: 4px 12px; border-radius: 50px;
-            font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
-            letter-spacing: 0.6px; margin-bottom: 1rem; width: fit-content;
-            position: relative; z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         .badge-doc { background: var(--accent-purple-light); color: var(--accent-purple); }
         .badge-hosp { background: var(--accent-orange-light); color: var(--accent-orange); }
         .badge-cms { background: rgba(var(--primary-rgb), 0.1); color: var(--primary); }
 
-        .split-card h3 { font-size: 1.6rem; margin-bottom: 0.4rem; position: relative; z-index: 1; }
+        .split-card h3 { 
+            font-size: 1.35rem; 
+            margin-bottom: 0.35rem; 
+            position: relative; 
+            z-index: 1; 
+        }
         .split-card.doctor h3 { color: var(--accent-purple); }
         .split-card.hospital h3 { color: var(--accent-orange); }
         .split-card.cms h3 { color: var(--primary); }
-        .split-card .sub-head { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.75rem; position: relative; z-index: 1; }
+
+        .split-card .sub-head { 
+            color: var(--text-muted); 
+            font-size: 0.88rem; 
+            margin-bottom: 1.25rem; 
+            line-height: 1.45;
+            min-height: 2.6rem;
+            position: relative; 
+            z-index: 1; 
+        }
 
         .feature-list {
-            list-style: none; margin-bottom: 2rem; flex-grow: 1;
-            text-align: left; position: relative; z-index: 1;
+            list-style: none;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            text-align: left;
+            position: relative;
+            z-index: 1;
         }
         .feature-list li {
-            display: flex; align-items: flex-start; gap: 14px;
-            margin-bottom: 1.2rem; font-size: 0.92rem; color: var(--text-muted); line-height: 1.5;
+            display: flex;
+            align-items: baseline;
+            gap: 9px;
+            margin-bottom: 0.65rem;
+            font-size: 0.86rem;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
-        .feature-list li strong { color: var(--heading); font-weight: 600; display: block; margin-bottom: 1px; }
+        .feature-list li strong { 
+            color: var(--heading); 
+            font-weight: 600;
+            display: inline;
+        }
         .feature-list li .check-icon {
-            width: 22px; height: 22px; min-width: 22px; border-radius: 7px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 0.7rem; margin-top: 2px;
+            width: 18px;
+            height: 18px;
+            min-width: 18px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            transform: translateY(2px);
         }
         .split-card.doctor .check-icon { background: var(--accent-purple-light); color: var(--accent-purple); }
         .split-card.hospital .check-icon { background: var(--accent-orange-light); color: var(--accent-orange); }
         .split-card.cms .check-icon { background: rgba(var(--primary-rgb), 0.1); color: var(--primary); }
 
         .card-btn {
-            width: 100%; padding: 1rem; border-radius: 14px;
-            font-weight: 700; text-align: center; margin-top: auto;
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-            transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease); position: relative; z-index: 1; font-size: 1rem;
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.92rem;
+            text-align: center;
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+            position: relative;
+            z-index: 1;
         }
-        .btn-purple { background: linear-gradient(135deg, var(--accent-purple), #9333ea); color: white; box-shadow: 0 4px 16px var(--glow-purple); }
-        .btn-purple:hover { transform: translate3d(0, -2px, 0); box-shadow: 0 8px 25px var(--glow-purple); color: white; }
-        .btn-orange { background: linear-gradient(135deg, var(--accent-orange), #dc2626); color: white; box-shadow: 0 4px 16px var(--glow-orange); }
-        .btn-orange:hover { transform: translate3d(0, -2px, 0); box-shadow: 0 8px 25px var(--glow-orange); color: white; }
-        .btn-blue { background: linear-gradient(135deg, var(--primary), #1d4ed8); color: white; box-shadow: 0 4px 16px var(--glow-primary); }
-        .btn-blue:hover { transform: translate3d(0, -2px, 0); box-shadow: 0 8px 25px var(--glow-primary); color: white; }
+        .btn-purple { background: linear-gradient(135deg, var(--accent-purple), #9333ea); color: white; box-shadow: 0 4px 14px var(--glow-purple); }
+        .btn-purple:hover { transform: translate3d(0, -2px, 0); box-shadow: 0 6px 20px var(--glow-purple); color: white; }
+        .btn-orange { background: linear-gradient(135deg, var(--accent-orange), #dc2626); color: white; box-shadow: 0 4px 14px var(--glow-orange); }
+        .btn-orange:hover { transform: translate3d(0, -2px, 0); box-shadow: 0 6px 20px var(--glow-orange); color: white; }
+        .btn-blue { background: linear-gradient(135deg, var(--primary), #1d4ed8); color: white; box-shadow: 0 4px 14px var(--glow-primary); }
+        .btn-blue:hover { transform: translate3d(0, -2px, 0); box-shadow: 0 6px 20px var(--glow-primary); color: white; }
 
         .bg-surface { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 
@@ -770,12 +830,11 @@
         /* ========== RESPONSIVE ========== */
         @media (max-width: 1024px) {
             .footer-grid { grid-template-columns: 1fr 1fr; }
-            .split-grid { grid-template-columns: 1fr 1fr; }
+            .split-grid { grid-template-columns: 1fr; max-width: 600px; margin: 0 auto; gap: 1.25rem; }
         }
 
         @media (max-width: 768px) {
             .container { padding: 0 var(--mobile-px); }
-
             section { padding: clamp(3rem, 8vw, 5rem) 0; }
 
             .nav-links { display: none; }
@@ -789,81 +848,42 @@
                 padding-bottom: env(safe-area-inset-bottom, 1.5rem);
             }
 
-            .hero-content {
-                max-width: 100%;
-                padding-bottom: 2rem;
-            }
+            .hero-content { max-width: 100%; padding-bottom: 2rem; }
+            .hero-logo-lg { width: 64px; height: 64px; border-radius: 18px; margin-bottom: 1.5rem; }
 
-            .hero-logo-lg {
-                width: 64px; height: 64px;
-                border-radius: 18px;
-                margin-bottom: 1.5rem;
-            }
+            .hero-cta-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; width: 100%; }
+            .hero-cta-grid .hero-btn-main { grid-column: 1 / -1; font-size: 0.9rem; padding: 0.85rem 1rem; }
+            .hero-cta-grid .btn:not(.hero-btn-main) { font-size: 0.78rem; padding: 0.75rem 0.3rem; gap: 0.35rem; }
 
-            .hero-cta-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.5rem;
-                width: 100%;
-            }
-
-            .hero-cta-grid .hero-btn-main {
-                grid-column: 1 / -1;
-                font-size: 0.9rem;
-                padding: 0.85rem 1rem;
-            }
-
-            .hero-cta-grid .btn:not(.hero-btn-main) {
-                font-size: 0.78rem;
-                padding: 0.75rem 0.3rem;
-                gap: 0.35rem;
-            }
-
-            .hero-trust {
-                gap: 0.8rem;
-                margin-top: 1rem;
-            }
+            .hero-trust { gap: 0.8rem; margin-top: 1rem; }
             .trust-item { font-size: 0.72rem; gap: 4px; }
             .trust-item i { font-size: 0.65rem; }
 
-            .split-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .split-card {
-                padding: 1.5rem 1rem;
-                border-radius: var(--radius-lg);
-            }
-            .split-card .sub-head { min-height: auto; margin-bottom: 1.25rem; }
-            .split-card h3 { font-size: 1.4rem; }
-            .feature-list li { gap: 10px; margin-bottom: 1rem; font-size: 0.88rem; }
-            .card-btn { padding: 0.85rem; border-radius: 12px; font-size: 0.95rem; }
+            .split-card { padding: 1.35rem 1.15rem; border-radius: var(--radius-md); }
+            .split-card .sub-head { min-height: auto; margin-bottom: 1rem; font-size: 0.85rem; }
+            .split-card h3 { font-size: 1.25rem; }
+            .feature-list li { gap: 8px; margin-bottom: 0.55rem; font-size: 0.82rem; }
+            .card-btn { padding: 0.75rem; border-radius: 10px; font-size: 0.9rem; }
 
             .tab-nav { width: 100%; border-radius: 12px; }
             .tab-btn { flex: 1; font-size: 0.8rem; padding: 0.55rem 0.6rem; text-align: center; }
 
             .grid { grid-template-columns: 1fr; gap: 1rem; }
-            .card {
-                padding: 1.5rem 1rem;
-                border-radius: var(--radius-md);
-            }
+            .card { padding: 1.5rem 1rem; border-radius: var(--radius-md); }
 
             .pricing-grid { grid-template-columns: 1fr; max-width: 100%; gap: 1rem; }
-            .price-card {
-                padding: 1.75rem 1.25rem;
-                border-radius: var(--radius-lg);
-            }
+            .price-card { padding: 1.75rem 1.25rem; border-radius: var(--radius-lg); }
             .price-amount { font-size: 2.4rem; }
             .price-alt .price-amount { font-size: 1.7rem; }
 
             .download-grid { grid-template-columns: 1fr; max-width: 100%; gap: 1rem; }
-            .download-card {
-                padding: 2rem 1.25rem;
-                border-radius: var(--radius-lg);
-            }
+            .download-card { padding: 2rem 1.25rem; border-radius: var(--radius-lg); }
 
             .business-features { gap: 0.4rem; }
             .biz-chip { font-size: 0.8rem; padding: 7px 12px; }
             .btn-franchise { padding: 0.85rem 1.8rem; font-size: 0.95rem; }
 
             .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-
             .section-header { margin-bottom: 2.5rem; }
             .section-header p { font-size: 0.95rem; }
         }
@@ -874,7 +894,7 @@
             .hero-logo-lg { width: 56px; height: 56px; border-radius: 16px; margin-bottom: 1.25rem; }
             .hero-cta-grid .hero-btn-main { font-size: 0.82rem; padding: 0.8rem 0.5rem; }
             .hero-cta-grid .btn:not(.hero-btn-main) { font-size: 0.7rem; padding: 0.7rem 0.15rem; gap: 0.25rem; }
-            .split-card { padding: 1.25rem 0.8rem; }
+            .split-card { padding: 1.15rem 0.85rem; }
             .price-card { padding: 1.5rem 1rem; }
             .card { padding: 1.25rem 0.8rem; }
             .download-card { padding: 1.5rem 1rem; }
@@ -983,6 +1003,7 @@
         </div>
     </section>
 
+    <!-- OPTIMIZED PRODUCTS SECTION -->
     <section id="products">
         <div class="container">
             <div class="section-header reveal">
@@ -992,91 +1013,96 @@
             </div>
 
             <div class="split-grid">
+                <!-- CARD 1: DOCTOR -->
                 <div class="split-card doctor reveal reveal-delay-1">
-                    <span class="badge badge-doc"><i class="fa-solid fa-circle" style="font-size:6px;"></i> For Individual Doctors</span>
-                    <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
+                    <div class="card-header-row">
+                        <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
+                        <span class="badge badge-doc"><i class="fa-solid fa-circle" style="font-size:5px;"></i> For Doctors</span>
+                    </div>
                     <h3>Clinical Copilot</h3>
                     <p class="sub-head">AI assistant for diagnosis, treatment & ICU protocols.</p>
                     <ul class="feature-list">
                         <li>
                             <span class="check-icon"><i class="fa-solid fa-check"></i></span>
-                            <div><strong>OPD Assistant</strong>Instant history & differentials.</div>
+                            <span><strong>OPD Assistant:</strong> Instant history & differentials.</span>
                         </li>
                         <li>
                             <span class="check-icon"><i class="fa-solid fa-check"></i></span>
-                            <div><strong>Rx Planner</strong>Evidence-based standard protocols.</div>
+                            <span><strong>Rx Planner:</strong> Evidence-based drug protocols.</span>
                         </li>
                         <li>
                             <span class="check-icon"><i class="fa-solid fa-check"></i></span>
-                            <div><strong>ICU Support</strong>Real-time risk prediction.</div>
+                            <span><strong>ICU Support:</strong> Real-time risk & vitals triage.</span>
                         </li>
                         <li>
                             <span class="check-icon"><i class="fa-solid fa-check"></i></span>
-                            <div><strong>Doctor Control</strong>Suggestions only. You decide.</div>
+                            <span><strong>Doctor Control:</strong> Suggestions only. You decide.</span>
                         </li>
                     </ul>
                     <a href="https://app.newtons.in" class="card-btn btn-purple">
-                        <i class="fa-solid fa-arrow-right"></i> Launch Doctor App
+                        Launch Doctor App <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
 
+                <!-- CARD 2: CMS -->
                 <div class="split-card cms reveal reveal-delay-2">
-                    <span class="badge badge-cms"><i class="fa-solid fa-circle" style="font-size:6px;"></i> For Small Clinics</span>
-                    <div class="card-icon"><i class="fa-solid fa-desktop"></i></div>
+                    <div class="card-header-row">
+                        <div class="card-icon"><i class="fa-solid fa-desktop"></i></div>
+                        <span class="badge badge-cms"><i class="fa-solid fa-circle" style="font-size:5px;"></i> For Small Clinics</span>
+                    </div>
                     <h3>Clinic CMS</h3>
-                    <p class="sub-head">Every HMS feature, run from one computer — no hardware, no paper trail needed.</p>
+                    <p class="sub-head">Run your entire OPD & clinic without hardware or paperwork.</p>
                     <ul class="feature-list">
                         <li>
                             <span class="check-icon"><i class="fa-solid fa-check"></i></span>
-                            <div><strong>OP Slips & Prescriptions</strong>Generate and print instantly.</div>
+                            <span><strong>OP & Rx:</strong> Instant registration & prescription slips.</span>
                         </li>
                         <li>
                             <span class="check-icon"><i class="fa-solid fa-check"></i></span>
-                            <div><strong>Pharmacy Inventory</strong>Track and maintain stock.</div>
+                            <span><strong>Pharmacy & Lab:</strong> Stock tracking & test reports.</span>
                         </li>
                         <li>
                             <span class="check-icon"><i class="fa-solid fa-check"></i></span>
-                            <div><strong>Lab Reports</strong>Enter, store & print results.</div>
+                            <span><strong>Consents & Billing:</strong> Fast billing for OP, tests & beds.</span>
                         </li>
                         <li>
                             <span class="check-icon"><i class="fa-solid fa-check"></i></span>
-                            <div><strong>Consents & Billing</strong>Consent capture plus admission, lab, OP & pharmacy billing.</div>
-                        </li>
-                        <li>
-                            <span class="check-icon"><i class="fa-solid fa-check"></i></span>
-                            <div><strong>Referrals & Sick Leave</strong>Prepare and print referral letters & certificates.</div>
+                            <span><strong>Referrals & Sick Leaves:</strong> One-click certificates.</span>
                         </li>
                     </ul>
                     <a href="https://cms.newtons.in" target="_blank" class="card-btn btn-blue">
-                        <i class="fa-solid fa-arrow-right"></i> Launch Clinic CMS
+                        Launch Clinic CMS <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
 
+                <!-- CARD 3: HOSPITAL -->
                 <div class="split-card hospital reveal reveal-delay-3">
-                    <span class="badge badge-hosp"><i class="fa-solid fa-circle" style="font-size:6px;"></i> For Hospitals & Clinics</span>
-                    <div class="card-icon"><i class="fa-solid fa-robot"></i></div>
+                    <div class="card-header-row">
+                        <div class="card-icon"><i class="fa-solid fa-robot"></i></div>
+                        <span class="badge badge-hosp"><i class="fa-solid fa-circle" style="font-size:5px;"></i> For Hospitals</span>
+                    </div>
                     <h3>Hospital Autopilot</h3>
-                    <p class="sub-head">Full automation for clinics & hospital operations.</p>
+                    <p class="sub-head">Full autonomous automation for high-volume hospitals.</p>
                     <ul class="feature-list">
                         <li>
                             <span class="check-icon"><i class="fa-solid fa-check"></i></span>
-                            <div><strong>Voice Agent</strong>Drafts history via patient voice.</div>
+                            <span><strong>Voice Intake:</strong> Patient speaks history in native tongue.</span>
                         </li>
                         <li>
                             <span class="check-icon"><i class="fa-solid fa-check"></i></span>
-                            <div><strong>Lab Sync</strong>Auto-pulls analyzer reports.</div>
+                            <span><strong>Lab Sync:</strong> Auto-pulls data from analyzers.</span>
                         </li>
                         <li>
                             <span class="check-icon"><i class="fa-solid fa-check"></i></span>
-                            <div><strong>Active Loop</strong>Auto-updates Rx via lab data.</div>
+                            <span><strong>Active Loop:</strong> Auto-edits treatment based on labs.</span>
                         </li>
                         <li>
                             <span class="check-icon"><i class="fa-solid fa-check"></i></span>
-                            <div><strong>Inventory</strong>Auto-deducts pharmacy stock.</div>
+                            <span><strong>Auto-Inventory:</strong> Live stock deduction & billing.</span>
                         </li>
                     </ul>
                     <a href="https://hms.newtons.in" target="_blank" class="card-btn btn-orange">
-                        <i class="fa-solid fa-arrow-right"></i> Deploy HMS
+                        Deploy HMS <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
