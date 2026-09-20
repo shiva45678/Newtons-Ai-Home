@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Newtons AI | Clinical Copilot for Doctors & Autonomous HMS</title>
     <meta name="description" content="Empower your practice with Newtons AI. The top Clinical Decision Support App for doctors & fully Autonomous HMS for hospitals.">
     <meta name="keywords" content="AI Doctor App, Hospital Management System, HMS Software, Clinical Decision Support, OPD Automation, Medical AI">
@@ -34,6 +34,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://app.newtons.in">
+    <link rel="dns-prefetch" href="https://app.newtons.in">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
@@ -67,7 +68,7 @@
             --nav-height: 72px;
             --container: 1200px;
             --ease: cubic-bezier(0.25, 0.8, 0.25, 1);
-            --mobile-px: 0.6rem;
+            --mobile-px: 0.75rem;
         }
 
         body.dark-theme {
@@ -105,6 +106,11 @@
             transition: background 0.4s var(--ease), color 0.4s var(--ease);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
         }
 
         h1, h2, h3, h4 { color: var(--heading); line-height: 1.15; font-weight: 800; }
@@ -159,35 +165,44 @@
             opacity: 0;
             transition: opacity 0.25s;
         }
-        .btn:hover::before { opacity: 1; }
+
+        @media (hover: hover) {
+            .btn:hover::before { opacity: 1; }
+            .btn-doc:hover { transform: translate3d(0, -3px, 0) scale(1.02); box-shadow: 0 8px 30px var(--glow-green); color: white; }
+            .btn-cms:hover { transform: translate3d(0, -3px, 0) scale(1.02); box-shadow: 0 8px 30px var(--glow-primary); color: white; }
+            .btn-hosp:hover { transform: translate3d(0, -3px, 0) scale(1.02); box-shadow: 0 8px 30px var(--glow-orange); color: white; }
+            .btn-patient:hover { transform: translate3d(0, -3px, 0) scale(1.02); box-shadow: 0 8px 30px var(--glow-purple); color: white; }
+            .btn-outline:hover { border-color: var(--primary); color: var(--primary); transform: translate3d(0, -2px, 0); box-shadow: 0 4px 16px var(--glow-primary); }
+            .btn-franchise:hover { transform: translate3d(0, -3px, 0) scale(1.02); box-shadow: 0 8px 30px rgba(0,0,0,0.25); color: var(--bg); }
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
 
         .btn-doc {
             background: linear-gradient(135deg, var(--secondary), #0d9488);
             color: white;
             box-shadow: 0 4px 20px var(--glow-green);
         }
-        .btn-doc:hover { transform: translate3d(0, -3px, 0) scale(1.02); box-shadow: 0 8px 30px var(--glow-green); color: white; }
 
         .btn-cms {
             background: linear-gradient(135deg, var(--primary), #1d4ed8);
             color: white;
             box-shadow: 0 4px 20px var(--glow-primary);
         }
-        .btn-cms:hover { transform: translate3d(0, -3px, 0) scale(1.02); box-shadow: 0 8px 30px var(--glow-primary); color: white; }
 
         .btn-hosp {
             background: linear-gradient(135deg, var(--accent-orange), #dc2626);
             color: white;
             box-shadow: 0 4px 20px var(--glow-orange);
         }
-        .btn-hosp:hover { transform: translate3d(0, -3px, 0) scale(1.02); box-shadow: 0 8px 30px var(--glow-orange); color: white; }
 
         .btn-patient {
             background: linear-gradient(135deg, var(--accent-purple), #9333ea);
             color: white;
             box-shadow: 0 4px 20px var(--glow-purple);
         }
-        .btn-patient:hover { transform: translate3d(0, -3px, 0) scale(1.02); box-shadow: 0 8px 30px var(--glow-purple); color: white; }
 
         .btn-outline {
             background: var(--surface);
@@ -198,7 +213,6 @@
             padding: 0.6rem 1.2rem;
         }
         body.dark-theme .btn-outline { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
-        .btn-outline:hover { border-color: var(--primary); color: var(--primary); transform: translate3d(0, -2px, 0); box-shadow: 0 4px 16px var(--glow-primary); }
 
         .btn-download-text {
             border-color: rgba(var(--primary-rgb), 0.35);
@@ -223,7 +237,6 @@
             padding: 1rem 2.4rem;
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
-        .btn-franchise:hover { transform: translate3d(0, -3px, 0) scale(1.02); box-shadow: 0 8px 30px rgba(0,0,0,0.25); color: var(--bg); }
         body.dark-theme .btn-franchise { background: white; color: #0a0e1a; }
         body.dark-theme .btn-franchise:hover { color: #0a0e1a; }
 
@@ -412,7 +425,7 @@
         .section-header h2 { margin-bottom: 0.75rem; }
         .section-header p { font-size: 1.1rem; margin: 0; }
 
-        /* ========== COMPACT PRODUCT CARDS ========== */
+        /* ========== PRODUCT CARDS ========== */
         .split-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -597,8 +610,8 @@
         }
         .tab-btn:hover:not(.active) { color: var(--heading); }
 
-        .tab-panel { display: none; opacity: 0; transform: translate3d(0, 10px, 0); transition: opacity 0.3s var(--ease), transform 0.3s var(--ease); }
-        .tab-panel.active { display: block; opacity: 1; transform: translate3d(0, 0, 0); }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
 
@@ -829,6 +842,17 @@
         .reveal-delay-2 { transition-delay: 0.16s; }
         .reveal-delay-3 { transition-delay: 0.24s; }
 
+        /* Accessible Reduced Motion Support */
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+
         /* ========== RESPONSIVE ========== */
         @media (max-width: 1024px) {
             .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -891,8 +915,8 @@
         }
 
         @media (max-width: 380px) {
-            --mobile-px: 0.4rem;
-            .container { padding: 0 0.4rem; }
+            --mobile-px: 0.45rem;
+            .container { padding: 0 0.45rem; }
             .hero-logo-lg { width: 56px; height: 56px; border-radius: 16px; margin-bottom: 1.25rem; }
             .hero-cta-grid .hero-btn-main { font-size: 0.82rem; padding: 0.8rem 0.5rem; }
             .hero-cta-grid .btn:not(.hero-btn-main) { font-size: 0.7rem; padding: 0.7rem 0.15rem; gap: 0.25rem; }
@@ -925,24 +949,24 @@
             </ul>
             <div class="header-actions">
                 <button class="icon-btn theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
-                <button class="icon-btn mobile-toggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+                <button class="icon-btn mobile-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"><i class="fa-solid fa-bars"></i></button>
             </div>
         </div>
     </header>
 
     <div class="mobile-overlay"></div>
-    <nav class="mobile-nav" aria-label="Mobile navigation">
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
         <div class="mobile-nav-header">
             <span class="logo" style="font-size:1.2rem;">
-                <img src="logo.png" alt="Logo" width="28" height="28" style="border-radius:8px;"> Newtons Ai
+                <img src="logo.png" alt="Newtons AI Logo" width="28" height="28" style="border-radius:8px;"> Newtons Ai
             </span>
             <button class="icon-btn close-menu" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <ul class="mobile-nav-links">
             <li><a href="https://app.newtons.in" class="green"><i class="fa-solid fa-user-doctor"></i> Doctor's App</a></li>
-            <li><a href="https://cms.newtons.in" target="_blank" style="color: var(--primary);"><i class="fa-solid fa-laptop-medical"></i> Clinic CMS</a></li>
+            <li><a href="https://cms.newtons.in" target="_blank" rel="noopener noreferrer" style="color: var(--primary);"><i class="fa-solid fa-laptop-medical"></i> Clinic CMS</a></li>
             <li><a href="https://hms.newtons.in" class="orange"><i class="fa-solid fa-hospital"></i> Hospital HMS</a></li>
-            <li><a href="https://hospital.newtons.in" target="_blank" class="purple"><i class="fa-solid fa-house-medical"></i> Newtons Hospitals</a></li>
+            <li><a href="https://hospital.newtons.in" target="_blank" rel="noopener noreferrer" class="purple"><i class="fa-solid fa-house-medical"></i> Newtons Hospitals</a></li>
             <li class="divider"></li>
             <li><a href="#products"><i class="fa-solid fa-cubes"></i> Products</a></li>
             <li><a href="#guide"><i class="fa-solid fa-compass"></i> How it Works</a></li>
@@ -966,7 +990,7 @@
             <div class="orb orb-3"></div>
         </div>
 
-        <div class="container hero-content reveal">
+        <div class="container hero-content">
             <img src="logo.png" alt="Newtons AI Logo" class="hero-logo-lg" width="80" height="80">
             <h1 class="sr-only">Newtons AI - Clinical Copilot App & Autonomous Hospital Management System</h1>
 
@@ -976,22 +1000,22 @@
                         <i class="fa-solid fa-user-doctor"></i> Newtons Ai
                     </a>
                     
-                    <a href="https://cms.newtons.in" target="_blank" class="btn btn-cms">
+                    <a href="https://cms.newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-cms">
                         <i class="fa-solid fa-laptop-medical"></i> Clinic CMS App
                     </a>
-                    <a href="https://hms.newtons.in" target="_blank" class="btn btn-hosp">
+                    <a href="https://hms.newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-hosp">
                         <i class="fa-solid fa-hospital"></i> Hospital HMS
                     </a>
-                    <a href="https://hospital.newtons.in" target="_blank" class="btn btn-patient">
+                    <a href="https://hospital.newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-patient">
                         <i class="fa-solid fa-house-medical"></i> Newtons Hospitals
                     </a>
                     <a href="#download" class="btn btn-outline btn-download-text">
                         <i class="fa-solid fa-download"></i> <span class="highlight-target">Download App</span>
                     </a>
-                    <a href="https://neetpg.newtons.in" target="_blank" class="btn btn-outline">
+                    <a href="https://neetpg.newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
                         <i class="fa-solid fa-graduation-cap"></i> NeetPG/SS
                     </a>
-                    <a href="https://consents.newtons.in" target="_blank" class="btn btn-outline">
+                    <a href="https://consents.newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
                         <i class="fa-solid fa-file-signature"></i> Consents
                     </a>
                 </div>
@@ -1072,7 +1096,7 @@
                             <span><strong>Referrals & Sick Leaves:</strong> One-click certificates.</span>
                         </li>
                     </ul>
-                    <a href="https://cms.newtons.in" target="_blank" class="card-btn btn-blue">
+                    <a href="https://cms.newtons.in" target="_blank" rel="noopener noreferrer" class="card-btn btn-blue">
                         Launch Clinic CMS <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
@@ -1103,7 +1127,7 @@
                             <span><strong>Auto-Inventory:</strong> Live stock deduction & billing.</span>
                         </li>
                     </ul>
-                    <a href="https://hms.newtons.in" target="_blank" class="card-btn btn-orange">
+                    <a href="https://hms.newtons.in" target="_blank" rel="noopener noreferrer" class="card-btn btn-orange">
                         Deploy HMS <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
@@ -1240,7 +1264,7 @@
                         <li><i class="fa-solid fa-check"></i> Smart Inventory</li>
                         <li><i class="fa-solid fa-check"></i> Auto Billing</li>
                     </ul>
-                    <a href="https://hms.newtons.in" target="_blank" class="btn btn-hosp">Deploy HMS</a>
+                    <a href="https://hms.newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-hosp">Deploy HMS</a>
                 </div>
             </div>
         </div>
@@ -1259,7 +1283,7 @@
                     <div class="download-icon android"><i class="fa-brands fa-google-play"></i></div>
                     <h3>Android</h3>
                     <p>Available on Google Play Store.</p>
-                    <a href="https://androidapps.newtons.in" target="_blank" class="btn btn-doc" style="width:100%;">
+                    <a href="https://androidapps.newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-doc" style="width:100%;">
                         <i class="fa-brands fa-google-play"></i> Get on Google Play
                     </a>
                 </div>
@@ -1281,7 +1305,7 @@
             <span class="section-badge neutral"><i class="fa-solid fa-rocket"></i> Opportunity</span>
             <h2>Start Your Own AI Clinic</h2>
             <p>Join the Newtons AI network. Deploy our Autonomous HMS with pre-configured hardware in your own facility.</p>
-            <a href="https://store.newtons.in" target="_blank" class="btn btn-franchise">
+            <a href="https://store.newtons.in" target="_blank" rel="noopener noreferrer" class="btn btn-franchise">
                 <i class="fa-solid fa-store"></i> Shop Franchises & Clinics
             </a>
             <div class="business-features">
@@ -1297,19 +1321,19 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <h3><img src="logo.png" alt="Logo" width="28" height="28" style="border-radius:8px;"> Newtons Ai</h3>
+                    <h3><img src="logo.png" alt="Newtons AI Logo" width="28" height="28" style="border-radius:8px;"> Newtons Ai</h3>
                     <p>"AI won't replace doctors. But doctors who use AI will replace those who don't."</p>
                 </div>
                 <div class="footer-col">
                     <h4>Products</h4>
                     <ul class="footer-links">
                         <li><a href="https://app.newtons.in"><span class="link-dot green"></span> Doctor's App</a></li>
-                        <li><a href="https://cms.newtons.in" target="_blank"><span class="link-dot" style="background: var(--primary);"></span> Clinic CMS</a></li>
-                        <li><a href="https://hms.newtons.in"><span class="link-dot orange"></span> HMS for Hospitals</a></li>
-                        <li><a href="https://hospital.newtons.in" target="_blank"><span class="link-dot purple"></span> Newtons Hospitals</a></li>
+                        <li><a href="https://cms.newtons.in" target="_blank" rel="noopener noreferrer"><span class="link-dot" style="background: var(--primary);"></span> Clinic CMS</a></li>
+                        <li><a href="https://hms.newtons.in" target="_blank" rel="noopener noreferrer"><span class="link-dot orange"></span> HMS for Hospitals</a></li>
+                        <li><a href="https://hospital.newtons.in" target="_blank" rel="noopener noreferrer"><span class="link-dot purple"></span> Newtons Hospitals</a></li>
                         <li><a href="#pricing">Plans & Pricing</a></li>
-                        <li><a href="https://neetpg.newtons.in">NEET PG Prep</a></li>
-                        <li><a href="https://consents.newtons.in">Consent Forms</a></li>
+                        <li><a href="https://neetpg.newtons.in" target="_blank" rel="noopener noreferrer">NEET PG Prep</a></li>
+                        <li><a href="https://consents.newtons.in" target="_blank" rel="noopener noreferrer">Consent Forms</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -1318,29 +1342,32 @@
                         <li><a href="#guide">User Guide</a></li>
                         <li><a href="mailto:support@newtons.in">Contact Us</a></li>
                         <li><a href="#business">Franchise</a></li>
-                        <li><a href="https://store.newtons.in">Store</a></li>
+                        <li><a href="https://store.newtons.in" target="_blank" rel="noopener noreferrer">Store</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                &copy; <span id="year"></span> Newtons Ai. All Rights Reserved.
+                &copy; <span id="year">2026</span> Newtons Ai. All Rights Reserved.
             </div>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('year').textContent = new Date().getFullYear();
+            const yearEl = document.getElementById('year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
 
             const body = document.body;
-            const themeIcon = document.querySelector('.theme-toggle i');
+            const themeIcons = document.querySelectorAll('.theme-toggle i, #mobile-theme-toggle i');
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
             function setTheme(dark) {
                 body.classList.toggle('dark-theme', dark);
                 localStorage.setItem('theme', dark ? 'dark' : 'light');
-                if (themeIcon) themeIcon.className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+                themeIcons.forEach(icon => {
+                    icon.className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+                });
             }
             if (savedTheme === 'dark' || (!savedTheme && prefersDark)) setTheme(true);
 
@@ -1350,17 +1377,38 @@
 
             const mobileNav = document.querySelector('.mobile-nav');
             const overlay = document.querySelector('.mobile-overlay');
+            const mobileToggleBtn = document.querySelector('.mobile-toggle');
 
             function toggleMenu(open) {
                 const isOpen = open !== undefined ? open : !mobileNav.classList.contains('open');
                 mobileNav.classList.toggle('open', isOpen);
                 overlay.classList.toggle('open', isOpen);
+                if (mobileToggleBtn) {
+                    mobileToggleBtn.setAttribute('aria-expanded', isOpen);
+                }
                 document.body.style.overflow = isOpen ? 'hidden' : '';
             }
 
-            document.querySelector('.mobile-toggle')?.addEventListener('click', () => toggleMenu(true));
+            mobileToggleBtn?.addEventListener('click', () => toggleMenu(true));
             document.querySelector('.close-menu')?.addEventListener('click', () => toggleMenu(false));
             overlay?.addEventListener('click', () => toggleMenu(false));
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+                    toggleMenu(false);
+                }
+            });
+
+            function scrollToElement(target) {
+                const headerOffset = 80;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = Math.max(0, elementPosition + window.pageYOffset - headerOffset);
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
 
             // Smooth internal anchor scroll handling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1372,7 +1420,6 @@
                     if (target) {
                         e.preventDefault();
                         
-                        // Immediately blur element to prevent any virtual keyboard or focus ring
                         this.blur();
                         if (document.activeElement && document.activeElement.blur) {
                             document.activeElement.blur();
@@ -1380,21 +1427,28 @@
 
                         if (mobileNav.classList.contains('open')) {
                             toggleMenu(false);
+                            // Defer scroll by one animation frame to allow body overflow lock to release
+                            requestAnimationFrame(() => {
+                                scrollToElement(target);
+                            });
+                        } else {
+                            scrollToElement(target);
                         }
-
-                        const headerOffset = 80;
-                        const elementPosition = target.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
 
                         history.pushState(null, null, href);
                     }
                 });
             });
+
+            // Adjust position if page was loaded with an anchor hash
+            if (window.location.hash) {
+                const initialTarget = document.querySelector(window.location.hash);
+                if (initialTarget) {
+                    setTimeout(() => {
+                        scrollToElement(initialTarget);
+                    }, 150);
+                }
+            }
 
             // Scrolled header background style
             const header = document.getElementById('main-header');
@@ -1415,12 +1469,14 @@
             const observerNav = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        navLinks.forEach(l => l.classList.remove('active'));
-                        const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-                        if (active) active.classList.add('active');
+                        const targetLink = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+                        if (targetLink) {
+                            navLinks.forEach(l => l.classList.remove('active'));
+                            targetLink.classList.add('active');
+                        }
                     }
                 });
-            }, { rootMargin: '-30% 0px -70% 0px' });
+            }, { rootMargin: '-25% 0px -65% 0px' });
             sections.forEach(s => observerNav.observe(s));
 
             // Reveal animations observer
@@ -1433,25 +1489,17 @@
                 });
             }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
             document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-            // Modern prefetch without running interactive scripts that steal keyboard focus
-            if ('requestIdleCallback' in window) {
-                requestIdleCallback(() => {
-                    const link = document.createElement('link');
-                    link.rel = 'prefetch';
-                    link.href = 'https://app.newtons.in';
-                    link.as = 'document';
-                    document.head.appendChild(link);
-                });
-            }
         });
 
         function openTab(evt, tabName) {
             document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            
             const target = document.getElementById(tabName);
             if (target) {
                 target.classList.add('active');
+                // Ensure all reveal elements inside the newly active tab are immediately visible
+                target.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
             }
             evt.currentTarget.classList.add('active');
         }
