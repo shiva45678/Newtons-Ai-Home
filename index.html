@@ -33,6 +33,7 @@
     <link rel="apple-touch-icon" href="logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://app.newtons.in">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
@@ -147,6 +148,8 @@
             white-space: nowrap;
             letter-spacing: -0.01em;
             will-change: transform;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
         }
         .btn::before {
             content: '';
@@ -1359,7 +1362,7 @@
             document.querySelector('.close-menu')?.addEventListener('click', () => toggleMenu(false));
             overlay?.addEventListener('click', () => toggleMenu(false));
 
-            // Smooth internal anchor scroll handling (ensures precise landing accounting for fixed header)
+            // Smooth internal anchor scroll handling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
@@ -1368,9 +1371,17 @@
                     const target = document.querySelector(href);
                     if (target) {
                         e.preventDefault();
+                        
+                        // Immediately blur element to prevent any virtual keyboard or focus ring
+                        this.blur();
+                        if (document.activeElement && document.activeElement.blur) {
+                            document.activeElement.blur();
+                        }
+
                         if (mobileNav.classList.contains('open')) {
                             toggleMenu(false);
                         }
+
                         const headerOffset = 80;
                         const elementPosition = target.getBoundingClientRect().top;
                         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -1423,15 +1434,14 @@
             }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
             document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-            // Idle load cache warmer iframe
+            // Modern prefetch without running interactive scripts that steal keyboard focus
             if ('requestIdleCallback' in window) {
                 requestIdleCallback(() => {
-                    const iframe = document.createElement('iframe');
-                    iframe.src = "https://app.newtons.in";
-                    iframe.style.cssText = "width:0;height:0;border:0;visibility:hidden;position:absolute;";
-                    iframe.title = "Cache warmer";
-                    iframe.loading = "lazy";
-                    document.body.appendChild(iframe);
+                    const link = document.createElement('link');
+                    link.rel = 'prefetch';
+                    link.href = 'https://app.newtons.in';
+                    link.as = 'document';
+                    document.head.appendChild(link);
                 });
             }
         });
